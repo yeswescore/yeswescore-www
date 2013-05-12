@@ -9,7 +9,8 @@
     "mongoose": "3.5.x",
     "q": "0.8.x",
     "winston": "0.6.x",
-    "csv": "0.2.7"
+    "csv": "0.2.7",
+    "ejs": "0.8.x"
   },
   "devDependencies": {
     "mocha": "1.8.1"
