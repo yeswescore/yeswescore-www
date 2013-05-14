@@ -197,7 +197,6 @@ body.inputmodeon .button-form[data-input-mode="process"] {
 	z-index: 50; /* above content z-index=5 */
 	color: #FFF;
 	background-color: #19171c;
-	border-bottom: 1px solid #535154;
 }
 
 #header .backButton {
@@ -522,6 +521,7 @@ ul>li.player>a {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
+	background-color: #19171c;
 }
 
 .content-container {
@@ -532,8 +532,10 @@ ul>li.player>a {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
-	width:1020px;
-	background-color:#0000;
+	width:960px;
+	height:100%;
+    margin: 0 auto;	
+    background-color: #fff;
 }
 
 #content>.background {
@@ -1269,14 +1271,23 @@ ul>li.player>a {
 	cursor:pointer;
 }
 
-.ltcol, .ctcol { /*margin:0 10px; padding:10px*/ }
-.ltcol { float:left; width:200px; }
+.ltcol { 
+	float:left; 
+	width:200px; 
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 8px;	
+}
 
 .game {
-	float:right; 
+	float:left; 
 	width:700px;
 	padding-left: 3px;
 	padding-right: 3px;
+}
+
+.clear {
+    clear: both;
 }
 
 .game .infobar {
