@@ -6,21 +6,21 @@
 	font-family: 'Open Sans';
 	font-style: normal;
 	font-weight: 400;
-	src: url(/styles/webfonts/opensans-400.ttf) format('truetype'); 
+	src: url(../styles/webfonts/opensans-400.ttf) format('truetype'); 
 }
 
 @font-face {
 	font-family: 'Open Sans';
 	font-style: normal;
 	font-weight: 700;
-	src: url(/styles/webfonts/opensans-700.ttf) format('truetype');
+	src: url(../styles/webfonts/opensans-700.ttf) format('truetype');
 }
 
 @font-face {
 	font-family: 'Open Sans';
 	font-style: normal;
 	font-weight: 800;
-	src: url(/styles/webfonts/opensans-800.ttf) format('truetype'); 
+	src: url(../styles/webfonts/opensans-800.ttf) format('truetype'); 
 }
 /* 
  disabled: bug on WP8
@@ -78,6 +78,18 @@ update the app
 /**********************************************************
   mylib
 **********************************************************/
+.intro-back {
+	background-color: #000;
+}
+
+.intro {
+	/*display:block;*/
+	width: 450x;
+	height: 550px;
+	background-image: url(../images/intro.jpg);
+	background-repeat:no-repeat;
+	background-position:center center;
+}
 
 img.undoSelect {
 	cursor:pointer;
@@ -88,14 +100,14 @@ span.undoSelect {
 }
 
 input.mylib-forms {
-	display: block;
 	padding: 2px;
 	border: solid 1px #ededed;
 	outline: 0;
-	background: #ededed;
+	background: #fff;
 	-webkit-border-radius: 10px;
 	border-radius: 10px;
 	-webkit-appearance: none;
+	width:180px;
 }
 
 input[type="text"] {
@@ -199,6 +211,20 @@ body.inputmodeon .button-form[data-input-mode="process"] {
 	background-color: #19171c;
 }
 
+#header .title {
+	position: absolute;
+	top: 13px;
+	width: 100%;
+	/*font-family: Helvetica, Arial, sans-serif;*/
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 800;
+	font-size: 16px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	text-align: center;
+	color: white;
+}
+
 #header .backButton {
 	position: absolute;
 	display: none; /* initial */
@@ -234,19 +260,7 @@ body.inputmodeon .button-form[data-input-mode="process"] {
 	color: #45b1db;
 }
 
-#header .title {
-	position: absolute;
-	top: 13px;
-	width: 100%;
-	/*font-family: Helvetica, Arial, sans-serif;*/
-	font-family: 'Open Sans', sans-serif;
-	font-weight: 800;
-	font-size: 16px;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	text-align: center;
-	color: white;
-}
+
 
 #header .connectionStatus {
 	position: absolute;
@@ -438,16 +452,9 @@ body.inputmodeon .button-form[data-input-mode="process"] {
 }
 
 .button-search {
-	/*font-family: 'Sosa', sans-serif;
-  font-size: 20px;
-  color: #5e5e5e;
-  */
 	width: 17px;
 	height: 17px;
-	background-image: url(images/ico-magnifier-glass.jpg);
-	/*#ifdef NOCORDOVA*/
-	background-image: url(/images/ico-magnifier-glass.jpg);
-	/*#endif*/
+	background-image: url(../images/ico-magnifier-glass.jpg);
 	background-size: 100%;
 	background-repeat: no-repeat;
 	cursor: pointer;
@@ -536,6 +543,7 @@ ul>li.player>a {
 	height:100%;
     margin: 0 auto;	
     background-color: #fff;
+    margin-top: 20px;
 }
 
 #content>.background {
@@ -1012,18 +1020,20 @@ ul>li.player>a {
 	width: 15%;
 }
 
+
 /* search bar */
 .indexViewTemplate .input-search-background {
 	width: 100%;
-	padding-right: 20px;
+	margin:0 auto;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
-.indexViewTemplate .input-search-background input.mylib-forms {
-	width: 100%;
-	height: 32px;
+.indexViewTemplate .input-search-background input.mylib-forms {/	
+	width: 180px;
+	height:24px;	
+	text-align:center;
 }
 
 .indexViewTemplate .button-search {
@@ -1039,11 +1049,43 @@ ul>li.player>a {
 	right: 0;
 }
 
+.intro-pos {
+	padding-top:300px;
+	width:300px;
+	margin:0 auto;
+	text-align:center;
+}
+
+/*
+.intro .input-search-background {
+	width: 100%;
+	padding-right: 20px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.intro .button-search {
+	position: absolute;
+	right: 5px;
+	top: 8px;
+}
+*/
+
+.indexViewTemplate .searchword {
+	color:white;
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 700;
+	src: url(../styles/webfonts/opensans-700.ttf) format('truetype');	
+}
+
 /* filter links */
 .indexViewTemplate .searchbar {
 	position: relative;
 	overflow: visible;
 	z-index: 20;
+	text-align:center;
 }
 
 .indexViewTemplate .results {
@@ -1166,6 +1208,60 @@ ul>li.player>a {
 	overflow: hidden;
 }
 
+/* column */
+
+.ltcol .game-player {
+	color: #000;
+	font-family: Open Sans;
+	font-size: 16px;
+	/* trunk text */
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	padding-left:10px;
+}
+
+.ltcol .city {
+	font-family: Open Sans;
+	font-size: 12px;
+	/* trunk text */
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	padding-left:10px;
+}
+
+.ltcol .title1 {
+	font-family: Open Sans;
+	font-weight:800;
+	font-size: 16px;
+	/* trunk text */
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	padding-left:10px;
+}
+
+.ltcol .title2 {
+	font-family: Open Sans;
+	font-weight:700;	
+	font-size: 14px;
+	/* trunk text */
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	padding-left:10px;
+}
+
+.ltcol .title3 {
+	font-family: Open Sans;
+	font-size: 12px;
+	/* trunk text */
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	padding-left:10px;
+}
 /* index.html */
 .index {
 	padding: 0;
@@ -1273,7 +1369,7 @@ ul>li.player>a {
 
 .ltcol { 
 	float:left; 
-	width:200px; 
+	width:220px; 
 	padding-left: 3px;
 	padding-right: 3px;
 	padding-top: 8px;	
@@ -1281,9 +1377,22 @@ ul>li.player>a {
 
 .game {
 	float:left; 
-	width:700px;
-	padding-left: 3px;
-	padding-right: 3px;
+	width:680px;
+	padding-left: 12px;
+	padding-right: 0px;
+}
+
+
+
+.commentBoard {
+	background-color: #41c68f;
+	padding-left: 15px;
+	padding-top: 10px;
+	padding-right: 15px;
+	padding-bottom: 10px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .clear {
@@ -1486,9 +1595,11 @@ ul>li.player>a {
 
 .scoreBoard .score-grid {
 	position: relative;
-	width: 100%;
+	width: 320px;
 	margin-top: 8px;
 	margin-bottom: 13px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .scoreBoard .score-grid .ui-grid-c .ui-block-a,.scoreBoard .score-grid .ui-grid-c .ui-block-b,.scoreBoard .score-grid .ui-grid-c .ui-block-c,.scoreBoard .score-grid .ui-grid-c .ui-block-e
@@ -1676,6 +1787,17 @@ ul>li.player>a {
 }
 
 .comments .zone-list {
+  background-color:#41c68f;  
+  width:100%;
+  min-height: 100%;
+  padding: 9px;
+  padding-bottom: 110px;
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:        border-box;
+}
+
+.commentBoard .zone-list {
   background-color:#41c68f;  
   width:100%;
   min-height: 100%;
