@@ -25,6 +25,7 @@ if (fs.existsSync('../../yeswescore-server/server/conf.js')) {
   app.listen(Conf.get('www.http.port'));
 } else {
   // spawning blank error page
+  var http = require('http')
   http.createServer(function (req, res) {
     console.log('missing configuration file ' + confFile);
     res.send(500, ''); // we do not give any info to the user
