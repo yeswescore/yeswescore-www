@@ -60,10 +60,4 @@ app.use(express.logger({stream:winstonStream}));
 // static
 app.use(express.static(__dirname + '/public'));
 
-// default Content-Type
-app.use(function (req, res, next) {
-  res.type('application/json; charset=utf-8');
-  next();
-});
-
 module.exports = app;
