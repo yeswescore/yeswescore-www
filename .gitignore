@@ -1,3 +1,6 @@
 #
 node_modules
+# excluding port file in server 
+.port
+#
 .project
