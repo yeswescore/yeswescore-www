@@ -27,7 +27,7 @@ if (fs.existsSync('../../yeswescore-server/server/conf.js')) {
   // spawning blank error page
   var http = require('http')
   http.createServer(function (req, res) {
-    console.log('missing configuration file ' + confFile);
+    console.log('missing configuration file');
     res.send(500, ''); // we do not give any info to the user
   }).listen(80);
 }
