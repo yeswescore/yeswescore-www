@@ -12,7 +12,7 @@ app.use(function (req, res, next) {
 });
 
 //
-var logsPath = Conf.get("logs.path");
+var logsPath = Conf.get("www.logs.path");
 // definition of access, default & stats loggers.
 var logs = {
   access : {
