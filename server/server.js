@@ -28,6 +28,8 @@ if (fs.existsSync('../../yeswescore-server/server/conf.js')) {
   var http = require('http')
   http.createServer(function (req, res) {
     console.log('missing configuration file');
-    res.send(500, ''); // we do not give any info to the user
+    // we do not give any info to the user
+    res.writeHead(500);
+    res.end('');
   }).listen(80);
 }
