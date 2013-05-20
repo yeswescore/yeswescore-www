@@ -7,6 +7,12 @@ if (fs.existsSync('../../yeswescore-server/server/conf.js')) {
   var Conf = require('../../yeswescore-server/server/conf.js');
   
   // dynamic pages
+  app.get('/', function (req, res) {
+      res.render('index.ejs', {
+        layout: false
+      });
+  });
+  
   app.get('/test.html', function (req, res) {
     // list of games
     var host = Conf.get('http.host')

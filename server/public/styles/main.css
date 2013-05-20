@@ -76,7 +76,7 @@ update the app
 }
 
 /**********************************************************
-  mylib
+  Intro
 **********************************************************/
 .intro-back {
 	background-color: #000;
@@ -84,13 +84,40 @@ update the app
 
 .intro {
 	/*display:block;*/
-	width: 450x;
-	height: 550px;
+	width: 800px;
+	height: 800px;
 	background-image: url(../images/intro.jpg);
 	background-repeat:no-repeat;
 	background-position:center center;
+  margin:auto;
 }
 
+.intro-pos.indexViewTemplate {
+  padding-top:450px;
+  width:300px;
+  margin:0 auto;
+  text-align:center;
+}
+
+/*
+.intro .input-search-background {
+  width: 100%;
+  padding-right: 20px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.intro .button-search {
+  position: absolute;
+  right: 5px;
+  top: 8px;
+}
+*/
+
+/**********************************************************
+  mylib
+**********************************************************/
 img.undoSelect {
 	cursor:pointer;
 }
@@ -1048,29 +1075,6 @@ ul>li.player>a {
 	position: absolute;
 	right: 0;
 }
-
-.intro-pos {
-	padding-top:300px;
-	width:300px;
-	margin:0 auto;
-	text-align:center;
-}
-
-/*
-.intro .input-search-background {
-	width: 100%;
-	padding-right: 20px;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
-.intro .button-search {
-	position: absolute;
-	right: 5px;
-	top: 8px;
-}
-*/
 
 .indexViewTemplate .searchword {
 	color:white;
