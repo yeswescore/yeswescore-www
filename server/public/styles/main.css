@@ -78,25 +78,61 @@ update the app
 /**********************************************************
   Intro
 **********************************************************/
-.intro-back {
-	background-color: #000;
-}
-
 .intro {
-	/*display:block;*/
-	width: 800px;
-	height: 800px;
-	background-image: url(../images/intro.jpg);
-	background-repeat:no-repeat;
-	background-position:center center;
+  position:relative;
+  width: 718px;
+  height: 800px;
+  background-image: url(../images/intro.jpg);
+  background-repeat:no-repeat;
+  background-position:center center;
   margin:auto;
 }
 
-.intro-pos.indexViewTemplate {
-  padding-top:450px;
-  width:300px;
-  margin:0 auto;
+.intro .search {
+  padding-top:510px;
   text-align:center;
+  width:100%;
+  color:white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+}
+
+.intro .search .text {
+  height:35px;
+  font-size: 20px;
+}
+
+.intro .search .bar {
+  display:inline-block;
+  position:relative;
+  background-color:white;
+  border-radius: 10px;
+  text-align:left;
+  width:230px;
+  height:25px;
+  
+  /*
+  background-image: url(/images/ico-magnifier-glass.jpg);
+  background-position: right center;
+  background-repeat:no-repeat;
+  background-size: 50%;
+  */
+}
+
+.intro .search .bar input {
+  position:absolute;
+  margin-top:3px;
+  margin-left:5px;
+  width:190px;
+}
+.intro .search .bar .magnifier {
+ position:absolute;
+ right:0px;
+ width:30px;
+ height:25px;
+ border-top-right-radius: 10px;
+ border-bottom-right-radius: 10px;
+ background-color: #e9f1f3;
 }
 
 /*
@@ -201,6 +237,10 @@ body {
 	background-color: white;
 	margin: 0;
 	padding: 0;
+}
+
+body.dark {
+  background-color: black;  
 }
 
 p {
