@@ -85,7 +85,7 @@ update the app
   background-image: url(../images/intro.jpg);
   background-repeat:no-repeat;
   background-position:center center;
-  margin:auto;
+  margin:0 auto;
 }
 
 .intro .search {
@@ -150,6 +150,39 @@ update the app
   top: 8px;
 }
 */
+
+.footer {
+  /* the rotation is centered on the div :
+     so, if width is W
+     bottom = W / 2 - H / 2
+     right = - W
+   */
+  position:fixed;
+  width:200px;
+  height:18px;
+  right:-91px;
+  bottom:91px;
+  background-color:#98012e;
+  color:white;
+  font-family: 'Open Sans', sans-serif;
+  font-size:10px;
+  font-weight:400;
+  text-align:center;
+
+  /* the rotation is centered on the div */
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+
+.footer a {
+  text-decoration:none;
+  color:white;
+}
+.footer a:hover {
+  text-decoration:underline;
+}
 
 /**********************************************************
   mylib
