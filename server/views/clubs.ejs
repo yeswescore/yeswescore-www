@@ -1,0 +1,25 @@
+<html>
+<head>
+  <title>YesWeScore</title>
+  <meta charset="utf-8">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:800,700,400' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="styles/main.css">  
+</head>
+<body class="dark">
+  <div class="intro">
+    <div class="search">
+      <div class="text">RECHERCHER UN CLUB</div>
+     
+
+		<ul>
+		<% for(var i=0; i < clubs.length; i++) {%>
+		   <li style="color:black;"><%= clubs[i].name %> - <%= clubs[i].location.city %> - <a href="club/<%= clubs[i].id %>">Plus d'infos</a></li>
+		<% } %>
+		</ul>
+
+
+
+    </div>
+  </div>
+</body>
+</html>
