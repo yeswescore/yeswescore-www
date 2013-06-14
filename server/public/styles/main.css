@@ -265,6 +265,10 @@ input:-ms-input-placeholder {
 /**********************************************************
 	GENERAL UI ELEMENTS
 **********************************************************/
+html {
+ padding:0; margin:0; 
+}
+
 body {
 	color: #000;
 	background-color: white;
@@ -309,6 +313,7 @@ body.inputmodeon .button-form[data-input-mode="process"] {
 	z-index: 50; /* above content z-index=5 */
 	color: #FFF;
 	background-color: #19171c;
+  display:none;
 }
 
 #header .title {
@@ -628,10 +633,10 @@ ul>li.player>a {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
+  background-color:blue;
 }
 
 .content-container {
-  background-color: #19171c;
   padding-top: 44px; /* #header */
   padding-bottom: 42px; /* #navbar */
   padding-left: 10px;
@@ -639,11 +644,8 @@ ul>li.player>a {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  width:960px;
   height:100%;
-  margin: 0 auto;	
-  background-color: #fff;
-  margin-top: 20px;
+  margin: 0 auto;
 }
 
 #content>.background {
@@ -724,6 +726,16 @@ ul>li.player>a {
 	margin-right: auto;
 	margin-left: auto;
 	height: 30px;
+}
+
+
+/**
+ * 
+ * Index
+ * 
+ */
+.index.background,.index.content-container {
+  background-color: #19171c;
 }
 
 /*****/
