@@ -628,22 +628,22 @@ ul>li.player>a {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
-	background-color: #19171c;
 }
 
 .content-container {
-	padding-top: 44px; /* #header */
-	padding-bottom: 42px; /* #navbar */
-	padding-left: 10px;
-	padding-right: 10px;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-	width:960px;
-	height:100%;
-    margin: 0 auto;	
-    background-color: #fff;
-    margin-top: 20px;
+  background-color: #19171c;
+  padding-top: 44px; /* #header */
+  padding-bottom: 42px; /* #navbar */
+  padding-left: 10px;
+  padding-right: 10px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width:960px;
+  height:100%;
+  margin: 0 auto;	
+  background-color: #fff;
+  margin-top: 20px;
 }
 
 #content>.background {
