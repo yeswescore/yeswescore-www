@@ -7,8 +7,8 @@
 	font-style: normal;
 	font-weight: 400;
 	src: /*#ifdef NOCORDOVA*/ url(/styles/webfonts/opensans-400.ttf) format(
-		'truetype'), /*#endif*/ 
-     url(styles/webfonts/opensans-400.ttf) format( 'truetype');
+		'truetype'), /*#endif*/  
+      url(styles/webfonts/opensans-400.ttf) format( 'truetype');
 }
 
 @font-face {
@@ -16,8 +16,8 @@
 	font-style: normal;
 	font-weight: 700;
 	src: /*#ifdef NOCORDOVA*/ url(/styles/webfonts/opensans-700.ttf) format(
-		'truetype'), /*#endif*/ 
-     url(styles/webfonts/opensans-700.ttf) format( 'truetype');
+		'truetype'), /*#endif*/  
+      url(styles/webfonts/opensans-700.ttf) format( 'truetype');
 }
 
 @font-face {
@@ -25,8 +25,8 @@
 	font-style: normal;
 	font-weight: 800;
 	src: /*#ifdef NOCORDOVA*/ url(/styles/webfonts/opensans-800.ttf) format(
-		'truetype'), /*#endif*/ 
-     url(styles/webfonts/opensans-800.ttf) format( 'truetype');
+		'truetype'), /*#endif*/  
+      url(styles/webfonts/opensans-800.ttf) format( 'truetype');
 }
 /* 
  disabled: bug on WP8
@@ -44,53 +44,50 @@
 no connection
 ******************/
 .offline {
-	position:absolute;
-  top: 0px;
-	left:0px;
-	height:100%;
-	width:100%;
-	background-color:#a0a0a0;
-	-moz-opacity:0.38;
-	opacity:0.38;
-	filter:alpha(opacity=38);
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+	width: 100%;
+	background-color: #a0a0a0;
+	-moz-opacity: 0.38;
+	opacity: 0.38;
+	filter: alpha(opacity = 38);
 	z-index: 20000;
 	pointer-events: none;
-  cursor: default;
+	cursor: default;
 }
 
 /*******************
 update the app
 ******************/
 .update {
-  background-color: #46b1dd;
-  color: white;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  padding-top: 40px;
-  
+	background-color: #46b1dd;
+	color: white;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	padding-top: 40px;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 16px;
 	font-weight: bold;
-  text-align: center;
-  
-  filter: initial;
-  opacity: initial;
-  -moz-opacity: initial;
+	text-align: center;
+	filter: initial;
+	opacity: initial;
+	-moz-opacity: initial;
 }
 
 /**********************************************************
   mylib
 **********************************************************/
-
 img.undoSelect {
-	cursor:pointer;
+	cursor: pointer;
 }
 
 span.undoSelect {
-	cursor:pointer;
+	cursor: pointer;
 }
 
 input.mylib-forms {
@@ -141,14 +138,14 @@ input[type="text"][disabled] {
 }
 
 input:-ms-input-placeholder {
-  color: #bdbdbd;
+	color: #bdbdbd;
 }
 
 .button {
-  -ms-user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: -moz-none;
-  cursor: pointer;
+	-ms-user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: -moz-none;
+	cursor: pointer;
 }
 
 /* @see bug android 4.1 http://stackoverflow.com/questions/12694556/android-tap-highlight-jelly-bean */
@@ -158,14 +155,14 @@ input:-ms-input-placeholder {
 }
 
 *[data-input-mode="show"] {
-  display: none;
+	display: none;
 }
 
 /**********************************************************
 	WP8 specifics.
 **********************************************************/
-@media screen and (orientation: portrait) {
-	@-ms-viewport {
+@media screen and (orientation: portrait) { @
+	-ms-viewport {
 		width: 320px; /* should be device-width
                          but there is a bug in ie10 (puts screen resolution, not css resolution)
                          @see http://timkadlec.com/2013/01/windows-phone-8-and-device-width/
@@ -194,17 +191,16 @@ p {
 /**********************************************************
 	INPUT MODE
 **********************************************************/
-
 body.inputmodeon *[data-input-mode="hide"] {
-  display: none;
+	display: none;
 }
 
 body.inputmodeon *[data-input-mode="show"] {
-  display: block;
+	display: block;
 }
 
 body.inputmodeon .button-form[data-input-mode="process"] {
-  bottom: -50px;
+	bottom: -50px;
 }
 
 /**********************************************************
@@ -277,36 +273,31 @@ body.inputmodeon .button-form[data-input-mode="process"] {
 	right: 13px;
 }
 
-
 /**********************************************************
 	AUTOCOMPLETE
 **********************************************************/
 #autocomplete {
-  position: fixed;
-  z-index: 12;
-  width: 100%;
-  bottom: 54px;
-  text-align: center;
+	position: fixed;
+	z-index: 12;
+	width: 100%;
+	bottom: 54px;
+	text-align: center;
 }
 
 #autocomplete div {
-  float: left;
-  border:  1px solid #d0ebf6;
-  background-color: #46b1db;
-  
-  padding: 5px;
-  margin-right: 5px;
-  margin-bottom: 2px;
-  
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  
-  font-family: 'Open Sans', sans-serif;
+	float: left;
+	border: 1px solid #d0ebf6;
+	background-color: #46b1db;
+	padding: 5px;
+	margin-right: 5px;
+	margin-bottom: 2px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	font-family: 'Open Sans', sans-serif;
 	font-weight: bold;
 	font-size: 12px;
 	color: white;
-  
-  cursor: pointer;
+	cursor: pointer;
 }
 
 /**********************************************************
@@ -421,8 +412,6 @@ body.inputmodeon .button-form[data-input-mode="process"] {
 	BUTTON STYLES
 **********************************************************/
 
-
-
 /***
   pictos
   */
@@ -459,7 +448,6 @@ body.inputmodeon .button-form[data-input-mode="process"] {
 .button-filter .oval:nth-child(3) {
 	top: 20px;
 }
-
 
 .button-option-up {
 	width: 69px;
@@ -527,7 +515,7 @@ ul>li {
 	background: #fff;
 	border-top: 1px solid #8c8c8e;
 	height: 100px;
-	cursor:pointer;
+	cursor: pointer;
 }
 
 ul>li:first-child {
@@ -586,8 +574,8 @@ ul>li.player>a {
 .content-container {
 	padding-top: 44px; /* #header */
 	padding-bottom: 42px; /* #navbar */
-	padding-left: 10px;
-	padding-right: 10px;
+	padding-left: 20px;
+	padding-right: 40px;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
@@ -612,10 +600,8 @@ ul>li.player>a {
 /**********************************************************
 	FORM ELEMENTS
 **********************************************************/
-
-
 .success {
-	display : none;
+	display: none;
 	width: 100%;
 	height: 50px;
 	margin-top: 10px;
@@ -634,7 +620,7 @@ ul>li.player>a {
 	border-right: 1px solid #74c5e3;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
-	box-sizing: border-box;	
+	box-sizing: border-box;
 }
 
 .form-button-black {
@@ -657,8 +643,11 @@ ul>li.player>a {
 
 .form-button-white {
 	margin-top: 15px;
-	position: relative; height : 30px;
-	width: 130px; margin-right : auto; margin-left : auto;
+	position: relative;
+	height: 30px;
+	width: 130px;
+	margin-right: auto;
+	margin-left: auto;
 	line-height: 28px;
 	text-align: center;
 	font-family: 'Open Sans', sans-serif;
@@ -674,7 +663,6 @@ ul>li.player>a {
 }
 
 /*****/
-
 .blue-screen {
 	/* we have to absolutly position this, because of content padding. */
 	width: 100%;
@@ -691,25 +679,25 @@ ul>li.player>a {
 }
 
 .blue-screen .zone-list {
-  background-color:#45b1db;  
-  width:100%;
-  min-height: 100%;
-  padding: 9px;
-  padding-bottom: 110px;
-  -moz-box-sizing:    border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing:        border-box;
+	background-color: #45b1db;
+	width: 100%;
+	min-height: 100%;
+	padding: 9px;
+	padding-bottom: 110px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .gameAdd .zone-list {
-  background-color:#45b1db;  
-  width:100%;
-  min-height: 100%;
-  padding: 9px;
-  padding-bottom: 110px;
-  -moz-box-sizing:    border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing:        border-box;
+	background-color: #45b1db;
+	width: 100%;
+	min-height: 100%;
+	padding: 9px;
+	padding-bottom: 110px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .gameAdd.content-container {
@@ -719,7 +707,6 @@ ul>li.player>a {
 .gameAdd.background {
 	background-color: #45b1db;
 }
-
 
 .form-label {
 	padding-top: 8px;
@@ -739,14 +726,16 @@ ul>li.player>a {
 }
 
 .form-radio-android * {
-  vertical-align: middle;
+	vertical-align: middle;
 }
+
 .form-radio-android input {
-  clear:left;
+	clear: left;
 }
-.form-radio-android label { 
-  width:18px;
-  display:inline-block;
+
+.form-radio-android label {
+	width: 18px;
+	display: inline-block;
 }
 
 /* */
@@ -763,9 +752,8 @@ ul>li.player>a {
 	background-color: #19171c;
 	border-radius: 12px;
 	cursor: pointer;
-  
-  -ms-user-select: none;
-  -webkit-user-select: none;
+	-ms-user-select: none;
+	-webkit-user-select: none;
 }
 
 .form-button.selected {
@@ -805,15 +793,13 @@ ul>li.player>a {
 }
 
 .gameAdd .simple .ui-grid-b .ui-block-c,.gameAdd .ui-grid-b.me .ui-block-c
-{
+	{
 	width: 20%;
 }
 
 .gameAdd .simple .additionnal-options {
-  display: none;
+	display: none;
 }
-
-
 
 /**********************************************************
 	TABLE
@@ -999,11 +985,10 @@ ul>li.player>a {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: bold;
 	font-size: 20px;
-	color: #000;	
+	color: #000;
 }
 
 /* club.html */
-
 
 /* playerForm.html */
 .button-form {
@@ -1088,13 +1073,12 @@ ul>li.player>a {
 }
 
 .link-form .button.send {
-  background-color:#41c68f;
-  border: 1px solid #96e1c3;
+	background-color: #41c68f;
+	border: 1px solid #96e1c3;
 }
 
-
 .link-form .button.send.ko {
-  background-color: #f2734c;
+	background-color: #f2734c;
 	border: 1px solid #f2734c;
 }
 
@@ -1117,32 +1101,31 @@ ul>li.player>a {
 .indexViewTemplate>.search {
 	width: 100%;
 	height: 24px;
-	text-align:center;
-	cursor:pointer;
+	text-align: center;
+	cursor: pointer;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: bold;
 	font-size: 14px;
 	line-height: 12px;
 	white-space: nowrap;
-	padding-top:10px;
+	padding-top: 10px;
 }
 
-.indexViewTemplate>.search .ui-block-a{
+.indexViewTemplate>.search .ui-block-a {
 	border-right: 2px solid #c5c5c5;
 }
 
-.indexViewTemplate>.search .ui-block-b{
+.indexViewTemplate>.search .ui-block-b {
 	border-right: 2px solid #c5c5c5;
-	padding-left:2px;	
-	padding-right:2px;
+	padding-left: 2px;
+	padding-right: 2px;
 }
 
-.indexViewTemplate>.search .ui-block-c{
+.indexViewTemplate>.search .ui-block-c {
 	border-right: 2px solid #c5c5c5;
-	padding-left:2px;		
-	padding-right:2px;
+	padding-left: 2px;
+	padding-right: 2px;
 }
-
 
 /* layout grille */
 .indexViewTemplate>.ui-grid-a {
@@ -1211,29 +1194,118 @@ ul>li.player>a {
 	line-height: 14px;
 }
 
-/***************
-INTRO
-****************/
-.intro-pos {
-	padding-top:300px;
-	width:300px;
-	margin:0 auto;
-	text-align:center;
-}
-
-.intro-back {
-	background-color: #000;
-}
-
+/**********************************************************
+  Intro
+**********************************************************/
 .intro {
-	/*display:block;*/
-	width: 450x;
-	height: 550px;
-	background-image: url(../images/intro.jpg);
-	background-repeat:no-repeat;
-	background-position:center center;
+  position:relative;
+  width: 718px;
+  height: 800px;
+  background-image: url(../images/intro.jpg);
+  background-repeat:no-repeat;
+  background-position:center center;
+  margin:0 auto;
 }
 
+.intro .search {
+  padding-top:510px;
+  text-align:center;
+  width:100%;
+  color:white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+}
+
+.intro .search .text {
+  height:35px;
+  font-size: 20px;
+}
+
+.intro .search .bar {
+  display:inline-block;
+  position:relative;
+  background-color:white;
+  border-radius: 10px;
+  text-align:left;
+  width:230px;
+  height:25px;
+  
+  /*
+  background-image: url(/images/ico-magnifier-glass.jpg);
+  background-position: right center;
+  background-repeat:no-repeat;
+  background-size: 50%;
+  */
+}
+
+.intro .search .bar input {
+  position:absolute;
+  margin-top:3px;
+  margin-left:5px;
+  width:190px;
+}
+.intro .search .bar .magnifier {
+ position:absolute;
+ right:0px;
+ width:30px;
+ height:25px;
+ border-top-right-radius: 10px;
+ border-bottom-right-radius: 10px;
+ background-color: #e9f1f3;
+}
+
+/*
+.intro .input-search-background {
+  width: 100%;
+  padding-right: 20px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.intro .button-search {
+  position: absolute;
+  right: 5px;
+  top: 8px;
+}
+*/
+
+.footer {
+  /* the rotation is centered on the div :
+     so, if width is W
+     bottom = W / 2 - H / 2
+     right = - W
+   */
+  position:fixed;
+  width:200px;
+  height:18px;
+  right:-91px;
+  bottom:91px;
+  background-color:#98012e;
+  color:white;
+  font-family: 'Open Sans', sans-serif;
+  font-size:10px;
+  font-weight:400;
+  text-align:center;
+
+  /* the rotation is centered on the div */
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+
+.footer a {
+  text-decoration:none;
+  color:white;
+}
+.footer a:hover {
+  text-decoration:underline;
+}
+
+/**************************
+		TABLE
+*****************************/
 
 .ui-grid-a .menu-options>.ui-block-a {
 	width: 60%;
@@ -1244,15 +1316,13 @@ INTRO
 	padding-left: 3px;
 }
 
-
-
 .indexViewTemplate .filters .title-menu {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: bold;
 	font-size: 14px;
 	/*text-decoration:underline;*/
-	padding-bottom:8px;
-	padding-left: 30px;	
+	padding-bottom: 8px;
+	padding-left: 30px;
 }
 
 .indexViewTemplate .filters a.disabled {
@@ -1261,27 +1331,25 @@ INTRO
 	cursor: default;
 }
 
-
-
 .indexViewTemplate .filters {
 	display: none; /* default=invisible */
 	position: absolute;
-	left : 4px;
-	top:44px;
+	left: 4px;
+	top: 44px;
 	width: 99%;
 	height: 130px;
 	background-color: #ededed;
 	-webkit-bottom-right-radius: 10px;
-	-webkit-bottom-left-radius: 10px;	
+	-webkit-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	border-bottom-left-radius: 10px;	
+	border-bottom-left-radius: 10px;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
-	border:1px solid #44b1da;
-	padding-top:2px;	
-	padding-left:3px;
-	padding-right:3px;
+	border: 1px solid #44b1da;
+	padding-top: 2px;
+	padding-left: 3px;
+	padding-right: 3px;
 }
 
 .indexViewTemplate .filters .separator {
@@ -1289,30 +1357,27 @@ INTRO
 	top: 34px;
 	left: 55%;
 	height: 94px;
-	width:2px;
+	width: 2px;
 	border-right: 2px solid #44b1da;
 }
 
 .indexViewTemplate .filters a {
 	display: block;
-
 	height: 26px;
 	line-height: 26px;
 	width: 100%;
-
 	font-family: 'Open Sans', sans-serif;
 	font-weight: normal;
 	font-size: 12px;
 	color: #0000;
 	cursor: pointer;
 	/*padding: 2px 0px 2px 60px;*/
-	padding-bottom:5px;
+	padding-bottom: 5px;
 }
 
 .filters a[data-filter^='match'] {
 	
 }
-
 
 .filters a[data-filter='match-geo'] {
 	background-image: url(images/ico-match-geo.png);
@@ -1320,9 +1385,9 @@ INTRO
 	background-image: url(/images/ico-match-geo.png);
 	/*#endif*/
 	padding-left: 30px;
-	background-size:26px 26px;
-    background-repeat: no-repeat;	
-    background-position: left center;
+	background-size: 26px 26px;
+	background-repeat: no-repeat;
+	background-position: left center;
 }
 
 .filters a[data-filter='match-not'] {
@@ -1331,9 +1396,9 @@ INTRO
 	background: url(/images/icon-match-nofilter.png);
 	/*#endif*/
 	padding-left: 30px;
-	background-size:26px 26px;
-    background-repeat: no-repeat;	
-    background-position: left center;
+	background-size: 26px 26px;
+	background-repeat: no-repeat;
+	background-position: left center;
 }
 
 .filters a[data-filter='match-club'] {
@@ -1342,13 +1407,13 @@ INTRO
 	background: url(/images/ico-match-club.png);
 	/*#endif*/
 	padding-left: 30px;
-	background-size:26px 26px;
-    background-repeat: no-repeat;	
-    background-position: left center;	
+	background-size: 26px 26px;
+	background-repeat: no-repeat;
+	background-position: left center;
 }
 
 .filters a[data-filter^='filter'] {
-
+	
 }
 
 .filters a[data-filter='filter-date'] {
@@ -1357,9 +1422,9 @@ INTRO
 	background: url(/images/ico-filter-date.png);
 	/*#endif*/
 	padding-left: 30px;
-	background-size:26px 26px;
-    background-repeat: no-repeat;	
-    background-position: left center;
+	background-size: 26px 26px;
+	background-repeat: no-repeat;
+	background-position: left center;
 }
 
 .filters a[data-filter='filter-location'] {
@@ -1368,20 +1433,20 @@ INTRO
 	background: url(/images/ico-match-city.png);
 	/*#endif*/
 	padding-left: 30px;
-	background-size:26px 26px;
-    background-repeat: no-repeat;	
-    background-position: left center;
+	background-size: 26px 26px;
+	background-repeat: no-repeat;
+	background-position: left center;
 }
 
 .filters a[data-filter='filter-club'] {
 	background: url(images/ico-match-club.png);
 	/*#ifdef NOCORDOVA*/
-	background: url(/images/ico-match-club.png) ;
+	background: url(/images/ico-match-club.png);
 	/*#endif*/
 	padding-left: 30px;
-	background-size:26px 26px;
-    background-repeat: no-repeat;	
-    background-position: left center;	
+	background-size: 26px 26px;
+	background-repeat: no-repeat;
+	background-position: left center;
 }
 
 .filters a[data-filter='filter-status'] {
@@ -1390,13 +1455,13 @@ INTRO
 	background: url(/images/ico-filter-status.png);
 	/*#endif*/
 	padding-left: 30px;
-	background-size:26px 26px;
-    background-repeat: no-repeat;	
-    background-position: left center;	
+	background-size: 26px 26px;
+	background-repeat: no-repeat;
+	background-position: left center;
 }
 
 .search a.select {
-	color:#44b1da;
+	color: #44b1da;
 	font-weight: bold;
 }
 
@@ -1504,8 +1569,8 @@ INTRO
 	text-align: right;
 	/* trunk text */
 	white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 
 #listGamesView .game-player {
@@ -1557,9 +1622,6 @@ INTRO
 }
 
 /* account.html */
-
-
-
 .account {
 	padding: 0;
 	padding-left: 1px;
@@ -1595,9 +1657,17 @@ INTRO
 	border: 1px solid #c0c0c0;
 }
 
-.account a.sendButton.ok { background-color: #46b1db; border: 1px solid #41c68f;pointer-events: none;cursor: default; }
-.account a.sendButton.ko { background-color: #f2734c; border: 1px solid #f2734c; }
+.account a.sendButton.ok {
+	background-color: #46b1db;
+	border: 1px solid #41c68f;
+	pointer-events: none;
+	cursor: default;
+}
 
+.account a.sendButton.ko {
+	background-color: #f2734c;
+	border: 1px solid #f2734c;
+}
 
 .account a[disabled] {
 	background-color: #b0b0b0;
@@ -1620,7 +1690,7 @@ INTRO
 
 /* game.html */
 .undoAction {
-	cursor:pointer;
+	cursor: pointer;
 }
 
 .game {
@@ -1686,7 +1756,6 @@ INTRO
 	height: 100%;
 }
 
-
 .game .socialbar .button {
 	display: table;
 	height: 100%;
@@ -1699,9 +1768,9 @@ INTRO
 	cursor: pointer;
 }
 
-.game .socialbar .ko { 
-	background-color: #f2734c; 
-	border: 1px solid #f2734c; 
+.game .socialbar .ko {
+	background-color: #f2734c;
+	border: 1px solid #f2734c;
 }
 
 .game .socialbar .buttonSpecial {
@@ -1732,7 +1801,6 @@ INTRO
 	position: relative;
 }
 
-
 .game .socialbar .buttonSpecial span {
 	display: table-cell;
 	vertical-align: middle;
@@ -1756,7 +1824,6 @@ INTRO
 	height: 100%;
 }
 
-
 .serverbar .button {
 	display: table;
 	height: 100%;
@@ -1769,10 +1836,9 @@ INTRO
 	cursor: pointer;
 }
 
-.serverbar .select { 
-	background-color: #f2734c; 
+.serverbar .select {
+	background-color: #f2734c;
 }
-
 
 .serverbar .button a {
 	display: table-cell;
@@ -1814,13 +1880,13 @@ INTRO
 }
 
 .game .facebook .message {
-  display: none;
-  font-size: 12px;
-  font-family: Open Sans;
-  font-weight: 700;
-  color: white;
-  text-align: center;
-  margin-top: 10px;
+	display: none;
+	font-size: 12px;
+	font-family: Open Sans;
+	font-weight: 700;
+	color: white;
+	text-align: center;
+	margin-top: 10px;
 }
 
 .game .facebook img {
@@ -1829,17 +1895,39 @@ INTRO
 	left: 15px;
 }
 
+.game .facebook.ok {
+	background-color: #41c68f;
+	border: 1px solid #41c68f;
+}
 
-.game .facebook.ok { background-color: #41c68f; border: 1px solid #41c68f; }
-.game .facebook.ko { background-color: #f2734c; border: 1px solid #f2734c; }
+.game .facebook.ko {
+	background-color: #f2734c;
+	border: 1px solid #f2734c;
+}
 
-.game .facebook.ok .message.ok { display: block; }
-.game .facebook.ok .message.ko { display: none; }
-.game .facebook.ok img { display: none; }
+.game .facebook.ok .message.ok {
+	display: block;
+}
 
-.game .facebook.ko .message.ok { display: none; }
-.game .facebook.ko .message.ko { display: block; }
-.game .facebook.ko img { display: none; }
+.game .facebook.ok .message.ko {
+	display: none;
+}
+
+.game .facebook.ok img {
+	display: none;
+}
+
+.game .facebook.ko .message.ok {
+	display: none;
+}
+
+.game .facebook.ko .message.ko {
+	display: block;
+}
+
+.game .facebook.ko img {
+	display: none;
+}
 
 .scoreBoard {
 	background-color: #45b1db;
@@ -1855,27 +1943,23 @@ INTRO
 	box-sizing: border-box;
 }
 
-
 .scoreBoard .playerInfos {
 	text-align: center;
 }
 
 .scoreBoard .player-info {
-	display:block;
-	float:right;
-	width:25px;
-	height:25px;
-	cursor:pointer;
+	display: block;
+	float: right;
+	width: 25px;
+	height: 25px;
+	cursor: pointer;
 	background-image: url(images/info-player.png);
 	/*#ifdef NOCORDOVA*/
 	background-image: url(/images/info-player.png);
-	/*#endif*/	
-	
+	/*#endif*/
 	background-size: 100%;
 	background-repeat: no-repeat;
 }
-
-
 
 .scoreBoard .playerInfos .other {
 	line-height: 10px;
@@ -1883,18 +1967,16 @@ INTRO
 	/* allow empty scoreboard height to equal full scoreboard */
 }
 
-
 .server-ball {
-	width:25px;
-	height:25px;
+	width: 25px;
+	height: 25px;
 	background-image: url(images/ball.png);
 	/*#ifdef NOCORDOVA*/
 	background-image: url(/images/ball.png);
-	/*#endif*/	
+	/*#endif*/
 	background-size: 100%;
-	background-repeat: no-repeat;	
+	background-repeat: no-repeat;
 }
-
 
 .scoreBoard .playerInfos .player-name {
 	display: block;
@@ -1906,8 +1988,6 @@ INTRO
 	line-height: 16px;
 }
 
-
-
 .scoreBoard .playerInfos .club {
 	font-family: Open Sans;
 	font-size: 10px;
@@ -1917,8 +1997,6 @@ INTRO
 	font-family: Open Sans;
 	font-size: 10px;
 }
-
-
 
 .scoreBoard .score-grid {
 	position: relative;
@@ -2063,16 +2141,15 @@ INTRO
 }
 
 .comments .zone-score {
-	position:fixed;
-	top:44; left:0;
-	width:100%;
+	position: fixed;
+	top: 44;
+	left: 0;
+	width: 100%;
 }
 
 .comments.background {
 	background-color: #41c68f;
 }
-
-
 
 .comments.content-container {
 	padding-left: 0px;
@@ -2120,15 +2197,15 @@ INTRO
 }
 
 .comments .zone-list {
-  background-color:#41c68f;  
-  width:100%;
-  min-height: 100%;
-  padding: 9px;
-  padding-top:54px;
-  padding-bottom: 110px;
-  -moz-box-sizing:    border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing:        border-box;
+	background-color: #41c68f;
+	width: 100%;
+	min-height: 100%;
+	padding: 9px;
+	padding-top: 54px;
+	padding-bottom: 110px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .list-comment-title {
@@ -2201,17 +2278,17 @@ INTRO
 }
 
 .textarea-comment {
-  -webkit-appearance:caret;
-  font-family: 'Open Sans', sans-serif;
-  font-weight:normal;
-  font-size:12px;
-  padding: 5px;
-  margin: 0;
-  width:100%;
-  height:100px;
-  -moz-box-sizing:    border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing:        border-box;
+	-webkit-appearance: caret;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: normal;
+	font-size: 12px;
+	padding: 5px;
+	margin: 0;
+	width: 100%;
+	height: 100px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .textarea-comment:focus {
@@ -2225,14 +2302,14 @@ INTRO
 	Bootstrap failure
 **********************************************************/
 .button.retry {
-  position: relative;
-  margin-top: 20px;
-  margin-right: 20px;
-  margin-left: 20px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  color: white;
-  background-color:#41c68f;
+	position: relative;
+	margin-top: 20px;
+	margin-right: 20px;
+	margin-left: 20px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	color: white;
+	background-color: #41c68f;
 	-webkit-border-radius: 20px;
 	border-radius: 20px;
 }

@@ -5,10 +5,9 @@ var PlayersCollection = Backbone.Collection.extend({
   	
   query: '',
  	
-	initialize: function (param) {
-		this.changeSort("name");
-		
-	},
+  initialize: function (param) {
+	this.changeSort("name");		
+  },
 	  
   url:function() {
     //console.log('url() : mode de Players',this.mode); 	
@@ -22,7 +21,7 @@ var PlayersCollection = Backbone.Collection.extend({
       return Y.Conf.get("api.url.players");
   },
 	
-	setMode:function(m,q) {
+  setMode:function(m,q) {
     this.mode=m;
     this.query=q;
   },

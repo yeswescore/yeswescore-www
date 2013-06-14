@@ -24,6 +24,9 @@
     "countPlayers":"Nombre de joueurs",  
     "countTeams":"Nombre d'équipes"                             
   },
+  "clublist": {
+    "title": "LISTE DES CLUBS" 
+  },  
   "clubadd": {
     "title": "AJOUTER UN CLUB",
     "name" : "Nom",

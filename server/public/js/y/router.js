@@ -32,7 +32,9 @@
       'players/follow': 'playerFollow',                                              
       'players/:id': 'player',
       'clubs/add': 'clubAdd',
-      'clubs/follow': 'clubFollow',      
+      'clubs/follow': 'clubFollow', 
+      'clubs/list/:id': 'clubList',      
+      'clubs/list': 'clubList',           
       'clubs/:id': 'club',
       'account': 'account'
     },
@@ -64,6 +66,11 @@
     clubAdd: function (id) {
       this.changePage(this.createViewFactory(Y.Views.ClubAdd));
     },
+    
+    clubList: function (id) {
+      this.changePage(this.createViewFactory(Y.Views.ClubList, { id: id }));
+    },
+    
 
     clubFollow: function () {
       this.changePage(this.createViewFactory(Y.Views.ClubFollow));

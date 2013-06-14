@@ -1,5 +1,10 @@
 Y.Views.Index = Y.View.extend({
   el: "#content",
+  
+  events: {
+    "keyup input#search-basic": "searchOnKey",
+    "mousedown .magnifier": "searchButton"
+  },  
 
   pageName: "index",
   pageHash : "index",  
@@ -12,7 +17,7 @@ Y.Views.Index = Y.View.extend({
     this.indexViewTemplate = Y.Templates.get('index');
     
     Y.GUI.header.hide();
-    Y.GUI.navbar.hide();
+    //Y.GUI.navbar.hide();
 
     //we capture config from bootstrap
     //FIXME: put a timer
@@ -51,6 +56,27 @@ Y.Views.Index = Y.View.extend({
 
     });
   },
+
+  searchButton: function () {
+    this.search();
+  },
+
+  searchOnKey: function (event) {
+    if(event.keyCode == 13){
+      // the user has pressed on ENTER
+      this.search();
+    }
+    return this;
+  },
+  
+  search: function () {
+  
+	var q = $("#search-basic").val();
+  	
+  	if (q.length>0)
+  	  Y.Router.navigate('clubs/list/'+q, {trigger: true});
+   
+  },  
 
   // should not take any parameters
   render: function () {

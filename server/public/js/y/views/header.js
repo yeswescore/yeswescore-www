@@ -40,7 +40,7 @@ Y.Views.Header = Y.View.extend({
     
     //console.log('pageName '+pageName);
     
-    if (pageName == "gameList" || pageName == "account" || pageName == "gameAdd" || pageName == "index")
+    if (pageName == "index")
       this.hideBack();
     else
       this.showBack();
@@ -57,6 +57,11 @@ Y.Views.Header = Y.View.extend({
   hide: function () { 
 
 	  this.$el.hide();
+  },
+
+  show: function () { 
+
+	  this.$el.show();
   },
 
   animateConnection: (function () {

@@ -134,9 +134,6 @@
             // we are now "loading"
             console.log('avant status loading ');
             this.status = "loading";
-            console.log('typeof ' + typeof this.load);
-            
-            console.log(callback);
             
             this.load(_.bind(function onConfLoaded(err) {
               // error handling

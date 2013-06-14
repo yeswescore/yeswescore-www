@@ -32,6 +32,8 @@ Y.Views.GameList = Y.View.extend({
       
   myinitialize: function (param) {
   	
+  	Y.GUI.header.show();
+  	
   	//FIXME: refacto
   	this.sortOption = Y.User.getFiltersSort();
   	this.searchOption = Y.User.getFiltersSearch();
