@@ -38,7 +38,9 @@ Y.Views.Header = Y.View.extend({
   repaintBack: function () {
     var pageName = Y.GUI.content.pageName;
     
-    if (pageName == "gameList" || pageName == "account" || pageName == "gameAdd")
+    //console.log('pageName '+pageName);
+    
+    if (pageName == "gameList" || pageName == "account" || pageName == "gameAdd" || pageName == "index")
       this.hideBack();
     else
       this.showBack();
@@ -51,6 +53,11 @@ Y.Views.Header = Y.View.extend({
       return status;
     };
   })(),
+
+  hide: function () { 
+
+	  this.$el.hide();
+  },
 
   animateConnection: (function () {
     // private vars

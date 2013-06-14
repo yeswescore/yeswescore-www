@@ -10,6 +10,9 @@ Y.Views.Index = Y.View.extend({
     var that = this;
     //
     this.indexViewTemplate = Y.Templates.get('index');
+    
+    Y.GUI.header.hide();
+    Y.GUI.navbar.hide();
 
     //we capture config from bootstrap
     //FIXME: put a timer

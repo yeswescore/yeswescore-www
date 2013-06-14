@@ -9,8 +9,8 @@
     currentView: null,
 
     routes: {
-      '': 'gameList',
-      'index': 'gameList',
+      '': 'index',
+      'index': 'index',
       'sort/:id': 'gameList',
       'search/form': 'searchForm',      
       'games/me/:id': 'gameMe',

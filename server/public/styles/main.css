@@ -1211,6 +1211,30 @@ ul>li.player>a {
 	line-height: 14px;
 }
 
+/***************
+INTRO
+****************/
+.intro-pos {
+	padding-top:300px;
+	width:300px;
+	margin:0 auto;
+	text-align:center;
+}
+
+.intro-back {
+	background-color: #000;
+}
+
+.intro {
+	/*display:block;*/
+	width: 450x;
+	height: 550px;
+	background-image: url(../images/intro.jpg);
+	background-repeat:no-repeat;
+	background-position:center center;
+}
+
+
 .ui-grid-a .menu-options>.ui-block-a {
 	width: 60%;
 }

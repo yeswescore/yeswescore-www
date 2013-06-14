@@ -5,10 +5,10 @@
 
   var events = {
     // input mode
-    'click input': 'inputModeOn', // we cannot use focus, bugs with device virtual keyboard :(
+    //'click input': 'inputModeOn', // we cannot use focus, bugs with device virtual keyboard :(
     'blur input': 'inputModeOffDelayed',
-    'click textarea': 'inputModeOn', // we cannot use focus, bugs with device virtual keyboard :(
-    'blur textarea': 'inputModeOffDelayed',
+    //'click textarea': 'inputModeOn', // we cannot use focus, bugs with device virtual keyboard :(
+    //'blur textarea': 'inputModeOffDelayed',
 
     // helpers
     'click *[data-js-call]': 'mycall',
