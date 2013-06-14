@@ -12,6 +12,8 @@ Y.Views.Club = Y.View.extend({
   
 	//header    
   	Y.GUI.header.title(i18n.t('club.title'));
+  	
+  	Y.GUI.header.show();
   
     // loading templates.
     this.templates = {
