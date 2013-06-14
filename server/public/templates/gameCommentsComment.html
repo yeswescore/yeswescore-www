@@ -1,0 +1,37 @@
+<div class="comment" id="comment<%= streamItem.id %>">
+  <% 
+    //var startConvert = new Date(streamItem.dates.creation);
+    var startConvert = Date.fromString(streamItem.dates.creation);
+    var startDate = String(startConvert.getDate()).padLeft(2, "0") +' '+startConvert.getMonthName()+' '+startConvert.getFullYear();
+    var startTime = ' '+String(startConvert.getHours()).padLeft(2, "0") + ':' + String(startConvert.getMinutes()).padLeft(2, "0");
+    var now = new Date();
+    var today = (startConvert.getDate() == now.getDate() &&
+                 startConvert.getMonth() == now.getMonth() &&
+                 startConvert.getFullYear() == now.getFullYear());
+  %>
+	<div class="infocomment">
+    <span class="player-name">
+      <% if (streamItem.owner.player!==undefined) { %>
+        <%= (streamItem.owner.player.name ||'Anonymous') %>
+      <% } %>
+      <% if (streamItem.owner.facebook!==undefined) { %>
+        <%= (streamItem.owner.facebook.name ||'Anonymous') %> 
+      <% } %>
+    </span> <span data-i18n="gamecomment.said"></span>
+    <% if (!today) { %>
+      <span data-i18n="gamecomment.the"></span> <%= startDate %> 
+    <% } %>
+      <span data-i18n="gamecomment.by"></span> <%= startTime %>
+  </div> 
+
+  <%= streamItem.data.text %> 
+
+  <div class="links">
+	  <% if (streamItem.owner.player!==undefined && owner && streamItem.owner.player.id === owner.id ) { %> 
+            <a class="deleteComment" data-js-streamitemid="<%= streamItem.id %>" data-js-call="deleteComment" data-i18n="gamecomment.delete"></a> 
+    <% } %>
+	  <% if (streamItem.owner.player!==undefined && owner && streamItem.owner.player.id !== owner.id ) { %> 
+        <a class="warnComment" data-js-streamitemid="<%= streamItem.id %>" data-js-call="reportComment" data-i18n="gamecomment.alert"></a> 
+    <% } %>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="info background"></div>
+<div class="info content-container">
+  <div class="simple">
+  
+    <div class="ui-grid-a" style="padding-top:10px">
+        <div class="ui-block-a" style="width:30%">
+        <img src="./images/player-pic.jpg" width="60px" height="60px" />
+        </div>
+        <div class="ui-block-b titlePlayer" style="width:70%">
+        <%= player.name %>
+        </div>
+    </div> 
+     
+     <%
+     if (player.club !== undefined) 
+     {
+     %>
+    <hr/>
+    <b><label data-i18n="playerform.club"></label> :</b> <%= player.club.name %>
+    <br/><a href="#clubs/<%= player.club.id %>" data-i18n="player.more"></a>
+    <%
+    }
+    %>
+    <hr/>
+    <b><label data-i18n="playerform.rank"></label> :</b> <%= player.rank %>
+    <br/>
+    
+    <div class="account">
+      <a href="#games/me/<%= player.id %>" id="lastResult" data-i18n="player.lastresults" data-js-navigate></a>
+    </div>
+ 
+  </div>
+</div>
+
+<!--
+  COMMENT SAVE
+-->
+<div class="button-form">
+  <div class="background rounded"></div>
+  <div class="background trapeze"></div>
+  <div class="link-form">  
+  <% if (follow === 'true') { %> 
+  <div class="button-selected" id="followButton" data-i18n="message.nofollow"></div> 
+  <% } else { %> 
+  <div class="button" id="followButton" data-i18n="message.follow"></div>
+  <% } %>
+  </div>  
+</div>

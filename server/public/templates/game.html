@@ -1,0 +1,216 @@
+<div class="content-container">
+  <div class="game">
+
+    <!--
+      INFO BAR
+    -->
+    <div class="infobar">
+      <!-- icons -->
+      <div class="ui-grid-d header">
+        <div class="ui-block-a">
+          <img src="./images/chrono.png" width="15" height="19" style="margin-top:1px;">
+        </div>
+        <div class="ui-block-b">
+          <img src="./images/calendar.png" width="17" height="20">
+        </div>
+        <div class="ui-block-c">
+          <img src="./images/house.png" width="21" height="19">
+        </div>
+        <div class="ui-block-d">
+          <img src="./images/eye.png" width="20" height="12" style="margin-top:4px;">
+        </div>
+        <div class="ui-block-e">
+        <% if (game.owner === playerid) { %>
+          <img src="./images/undo.png" width="20" height="20" class="undoSelect">
+        <% }
+           else { 
+         %>
+          <img src="./images/people.png" width="24" height="18">
+        <% } %>                  
+        </div>
+      </div>
+      <!-- infos -->
+      <div class="ui-grid-d text" >
+        <div class="ui-block-a">
+          <span class="timer"><%= timer %></span>
+        </div>
+        <div class="ui-block-b">
+        <%
+        if (game.dates) {        
+            if (game.dates.start !== undefined ) {            
+              if (game.dates.start==="") {
+                 game.dates = {
+                   startDate : '',
+                   startTime : ''
+                 };              
+              }
+              else { 
+                //game.dates.startConvert = new Date(game.dates.start);
+                game.dates.startConvert = Date.fromString(game.dates.start);
+                game.dates.startConvert.month = game.dates.startConvert.getMonth() + 1;
+                game.dates.startDate = ('0'+game.dates.startConvert.getDate()).slice(-2)+'/'+('0'+game.dates.startConvert.month).slice(-2)+'/'+(''+game.dates.startConvert.getFullYear()).slice(-2);
+                game.dates.startTime = ('0'+game.dates.startConvert.getHours()).slice(-2)+'h'+('0'+game.dates.startConvert.getMinutes()).slice(-2);
+              }
+           } 
+           else {                      
+             game.dates = {
+               startDate : '',
+               startTime : ''
+             };           
+          }
+        }
+        else {        
+           game.dates = {
+             startDate : '',
+             startTime : ''
+           };           
+        }
+        %>
+        <b>
+        <%= game.dates.startDate  %><br/>
+        <%= game.dates.startTime %>
+        </b>
+        </div>
+        <div class="ui-block-c">
+        <b><%= game.location.city %></b>
+        </div>
+        <div class="ui-block-d">
+        <b><span data-i18n="game.public"></span></b>
+        </div>
+        <div class="ui-block-e">
+        <% if (game.owner === playerid) { %>
+        <b><span data-i18n="game.undo" class="undoSelect"></span></b>
+        <% } 
+        else { %>
+        <b><span data-i18n="game.spectators"></span></b>
+        <% } %>
+        </div>
+      </div>
+    </div>
+
+    <!--
+      SCOREBOARD
+    -->
+    <div id="scoreBoard">
+  
+    </div>
+
+    <!--
+      SOCIAL BAR
+    -->
+    <div class="socialbar">
+      <% if (game.owner === playerid) { %>
+	      <div class="ui-grid-b">
+		   <div class="ui-block-a button">
+		   <%
+		     if (game.status === "finished" || game.status === "canceled") 
+             {
+             %>
+              <a id ="statusRestart" data-i18n="game.restart"></a>
+             <%
+             }
+             else {
+             %>
+              <a id="optionButton" data-i18n="game.options"></a>
+             <%
+             }
+             %>
+		   </div>
+          <div id="facebook" class="ui-block-b share">
+            <div class="facebook"><img src="./images/facebook.png" width="11" height="22" /></div>
+          </div>
+		      <div class="ui-block-c button status">
+                <% if (game.status === "created" ) { %>
+		        <a id="statusButton" data-i18n="game.begin"></a>
+                <% }
+                else if (game.status === "finished" || game.status === "canceled") 
+                {
+                %>
+                <a id ="statusButton" data-i18n="game.gamefinished"></a>
+                <%                  
+                }
+                else {
+                %>
+                <a id="statusButton" data-i18n="game.finish"></a>
+                <%
+                }
+                %>
+		      </div>
+        </div>
+      <% } else { %> 
+        <div class="ui-grid-b">
+          <div class="ui-block-a button">
+            <a id="followButton">
+              <% if (follow === 'true') { %>
+              <span data-i18n="message.nofollow"></span>
+              <% } else { %>
+              <span data-i18n="message.follow"></span>
+              <% } %> 
+            </a>
+          </div>
+          <div id="facebook" class="ui-block-b">
+            <div class="facebook">
+              <span class="message ok">ok</span>
+              <span class="message ko">error</span>
+              <img src="./images/facebook.png" width="11" height="22" />
+            </div>
+          </div>          
+          <div class="ui-block-c buttonSpecial">
+            <%
+            if (game.status === "finished") {
+            %>
+            <span data-i18n="game.gamefinished"></span>
+            <%                  
+            }
+            else if (game.status === "created") {
+            %>
+            <span data-i18n="game.gamecreated"></span>
+            <%                  
+            }            
+            else if (game.status === "canceled") {
+            %>
+            <span data-i18n="game.gamecanceled"></span>
+            <%                  
+            } 
+            else  {
+            %>
+            <span data-i18n="game.gameongoing"></span>
+            <%
+            }
+            %>
+          </div>
+       </div>
+      <% } %>
+      
+      
+      <br/>
+    </div>
+    <% if (game.owner === playerid && game.infos.startTeam === undefined) { %>
+    <div class="serverbar">
+      <div class="ui-grid-b">
+		<div class="ui-block-a button">
+		<a id="startTeam1"><%= game.teams[0].players[0].name %></a>
+		</div>
+        <div class="ui-block-b question">
+        <label>Qui sert en Premier?</label>
+        </div>
+		<div class="ui-block-c button">
+		<a id="startTeam2"><%= game.teams[1].players[0].name %></a>		
+		</div>
+      </div>      
+    </div>
+    <% } %>
+    
+    
+  </div>
+</div>
+
+
+<!--
+  COMMENT BUTTON
+-->
+<div class="button-comments" data-js-href="#games/<%= game.id %>/comments/">
+  <div class="background rounded"></div>
+  <div class="background trapeze"></div>
+  <div class="link-comments"></div>
+</div>

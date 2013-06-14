@@ -1,0 +1,230 @@
+<html>
+<head>
+<title>YesWeScore</title>
+<meta charset="utf-8">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:800,700,400' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="../styles/main.css">  
+</head>
+<body>
+  <!-- this is the header div at the top -->
+  <div id="header">
+    <div class="backButton" style="display: block;"><div class="triangle"></div></div>
+    <div class="title">YES WE SCORE</div>
+  </div>
+     
+  <div id="content">
+    <div class="content-container">
+   
+  <div class="ltcol">   
+  
+    <div class="ui-grid-a">
+      <div class="ui-block-a" style="width: 20%;">
+      <img src="../images/club-pic.jpg" width="40px" height="40px" />
+      </div>
+      <div class="ui-block-b" style="width: 80%;valign:top;">
+      <div class="game-player">
+      <% if (club !== undefined) {   %>
+      <%= club.name %>
+      <% } %>
+      </div>
+      <div class="city">
+      <% if (club.location !== undefined) {   %>      
+      <%= club.location.city %>
+      <% } %>
+      </div>
+      </div>
+    </div>     
+    <hr/>
+
+    <br/><br/>
+    
+    <span class="title1">LES MATCHS</span>
+    <hr/>
+    
+    <% for(var i=0; i < games.length; i++) {
+      var game = games[i];
+    %>
+    <span class="title2"><%= game.teams[0].players[0].name %></span><br/>
+    <span class="title3">  
+    <%
+       if (game.teams[0].players[0].club !== undefined) {  
+ 	%> 
+    <%= game.teams[0].players[0].club.name %>  
+    <%
+       } 
+    %>    
+    <%= game.teams[0].players[0].rank %>
+    </span>
+    <br/>
+    <span class="title2"><%= game.teams[1].players[0].name %></span><br/>
+    <span class="title3">
+    <%
+       if (game.teams[1].players[0].club !== undefined) { 
+    %> 
+    <%= game.teams[1].players[0].club.name %>  
+    <%
+       } 
+    %>    
+    <%= game.teams[1].players[0].rank %></span>      
+    <hr/>   
+	<% } %>
+
+    <hr/>
+    
+    
+  </div>    
+   
+      
+    <div class="game">
+
+    <!--
+      INFO BAR
+    -->
+    <div class="infobar">
+      <!-- icons -->
+      <div class="ui-grid-d header">
+        <div class="ui-block-a">
+          <img src="../images/chrono.png" width="15" height="19" style="margin-top:1px;">
+        </div>
+        <div class="ui-block-b">
+          <img src="../images/calendar.png" width="17" height="20">
+        </div>
+        <div class="ui-block-c">
+          <img src="../images/house.png" width="21" height="19">
+        </div>
+        <div class="ui-block-d">
+          <img src="../images/eye.png" width="20" height="12" style="margin-top:4px;">
+        </div>
+        <div class="ui-block-e">
+        
+          <img src="../images/people.png" width="24" height="18">
+                          
+        </div>
+      </div>
+      <!-- infos -->
+      <div class="ui-grid-d text">
+        <div class="ui-block-a">
+          <span class="timer"></span>
+        </div>
+        <div class="ui-block-b">
+        <b></b>
+        </div>
+        <div class="ui-block-c">
+        <b></b>
+        </div>
+        <div class="ui-block-d">
+        <b><span data-i18n="game.public">Public</span></b>
+        </div>
+        <div class="ui-block-e">
+        
+        <b><span data-i18n="game.spectators">Mode Spectateur</span></b>
+        
+        </div>
+      </div>
+    </div>
+
+    <!--
+      SCOREBOARD
+    -->
+    <div id="scoreBoard"><div class="scoreBoard">
+  <div class="playerInfos">
+    <a href="" class="player-name"> 
+
+    </a>
+    <div class="other">
+      <span class="club">
+       
+      </span>
+      <span class="player-rank">
+
+      </span>
+    </div>
+  </div>
+
+  <div class="score-grid">
+    <div class="ui-grid-c">
+        <div class="ui-block-a legend">1</div>
+        <div class="ui-block-b legend">2</div>
+        <div class="ui-block-c legend">3</div>
+        <div class="ui-block-d legend"></div>
+        <div class="ui-block-e legend">sets</div>
+    </div>
+
+    <div class="ui-grid-c">
+        <div class="ui-block-a" id="team1_set1_div"><div class="score ongoing"></div></div>
+        <div class="ui-block-b" id="team1_set2_div"><div class="score">&nbsp;</div></div>
+        <div class="ui-block-c" id="team1_set3_div"><div class="score">&nbsp;</div></div>
+        <div class="ui-block-d"></div>
+        <div class="ui-block-e" id="team1_sets_div"><div class="score sets">0</div></div>
+    </div>
+    <!-- /grid-a -->
+
+    <div class="ui-grid-c" style="margin-top:6px;">
+        <div class="ui-block-a" id="team2_set1_div"><div class="score ongoing"></div></div>
+        <div class="ui-block-b" id="team2_set2_div"><div class="score">&nbsp;</div></div>
+        <div class="ui-block-c" id="team2_set3_div"><div class="score">&nbsp;</div></div>
+        <div class="ui-block-d"></div>
+        <div class="ui-block-e" id="team2_sets_div"><div class="score sets">0</div></div>
+    </div>
+    <div class="separator"></div>
+  </div>
+
+  <div class="playerInfos">
+    <a href="" class="player-name"> 
+  
+    </a>
+    <div class="other">
+      <span class="club">
+     
+      </span>
+      <span class="player-rank">
+     
+      </span>
+    </div>
+  </div>
+ 
+</div></div>
+
+     
+   <div class="commentBoard">  
+     <div>COMMENTAIRES</div>  
+     
+     <div class="textarea-border">
+        <textarea rows="10" cols="40" class="textarea-comment" id="messageText" placeHolder="Ecrire un commentaire"></textarea>
+     </div>
+     
+     <div class="zone-list">
+        <div>
+          <div class="list-comment-title" data-i18n="gamecomment.title"></div>
+
+           
+           <div class="list-comment"><div style=""><div class="comment" id="comment5198c8320e516cb934000064">
+  
+              <div class="infocomment">
+                <span class="player-name">Rose Sanchez</span> <span data-i18n="gamecomment.said">a dit</span>                
+                <span data-i18n="gamecomment.by">&agrave;</span>  14:40
+              </div> 
+            
+              Ah ben comme on est fix&eacute;   
+            
+              <div class="links">
+                <a class="warnComment" data-js-streamitemid="5198c8320e516cb934000064" data-js-call="reportComment" data-i18n="gamecomment.alert">signaler</a> 
+              </div>
+            </div>
+           </div>
+            
+
+
+        </div>
+      </div>
+     
+    </div>
+
+  </div>
+   
+  <div class="clear"></div>
+  
+</div>
+
+
+</body></html>

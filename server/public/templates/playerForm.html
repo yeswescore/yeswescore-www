@@ -1,0 +1,91 @@
+<div class="blue-screen background"></div>
+<div class="blue-screen content-container">
+  
+    <div class="zone-list">
+   
+  <div class="simple">
+  
+    <span class="success label label-info hide"></span>
+    
+    <div id="intro_firstconnection">
+    <label class="form-label" data-i18n="playerform.firstconnection"></label>
+    </div>
+    
+    <div>
+    	<label  class="form-label" for="name" data-i18n="playerform.name"></label><label  class="form-label">*</label> 
+    </div>
+    <div>
+    	<input type="text" id="name" name="name" data-i18n="[placeholder]playerform.name;" value="<%= data.name %>" /> 
+    	<span class="name_error label label-info hide"></span>
+    </div>
+    
+    <div style="padding-top:10px">
+      <label class="form-label" for="rank" data-i18n="playerform.rank"></label>
+    </div>
+    <div>
+      <input type="text" id="rank" name="rank" data-i18n="[placeholder]playerform.rank;" value="<%= data.rank %>" /> 
+      <span class="rank_error label label-info hide"></span>
+    </div>    
+    
+    <div id="form_firstconnection">    
+      <div style="padding-top:10px">
+      	<label  class="form-label" for="email" data-i18n="playerform.mail"></label>
+      </div>
+      <div>
+      	<input type="text" id="email" name="email" data-i18n="[placeholder]playerform.mail;" value="<%= data.email %>" /> 
+      	<span class="email_error label label-info hide"></span>
+      </div>
+      <div style="padding-top:10px">
+      	<label  class="form-label" for="password" data-i18n="playerform.password"></label>
+      </div>
+      <div>
+      	<input type="password" id="password" name="password" data-i18n="[placeholder]playerform.password;" value="<%= data.password %>" />
+      	<span class="password_error label label-info hide"></span>
+      </div>
+  
+      <!-- 
+      <div style="padding-top:10px">
+      	<label  class="form-label" for="idlicence" data-i18n="playerform.idlicence"></label>
+      </div>
+      <div>
+      	<input type="text" id="idlicence" name="idlicence" data-i18n="[placeholder]playerform.idlicence;" value="<%= data.idlicence %>" /> 
+      	<span class="idlicence_error label label-info hide"></span>
+      </div>
+      -->
+      
+      <!-- FIXME: Find club_id in Ajax -->
+      <div style="padding-top:10px">
+      	<label class="form-label" for="club" data-i18n="playerform.clubname"></label>
+      </div>
+      <div>
+        <input type="text" id="club" name="club" data-i18n="[placeholder]playerform.clubname;" value="<%= data.club %>" data-autocomplete="autocompleteClubs" data-autocomplete-onselected="autocompleteChoose"/>
+       	
+        <span class="club_error label label-info hide"></span>
+      </div>
+    
+      
+    
+    </div>
+    
+    <!-- 
+    <div class="account">
+      <a class="buttonGrey" id="savePlayer" data-i18n="playerform.save"></a>
+    </div>    
+     -->
+            
+  </div>
+  
+  <div style="padding:20px"></div>
+  
+  </div>
+  
+</div>
+
+ 
+<div class="button-form" data-input-mode="process">
+  <div class="background rounded"></div>
+  <div class="background trapeze"></div>
+  <div class="link-form"><div class="button" id="savePlayer" data-i18n="playerform.save"></div></div>  
+</div>
+
+	

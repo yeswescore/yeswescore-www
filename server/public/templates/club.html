@@ -1,0 +1,51 @@
+<div class="info background"></div>
+<div class="info content-container">
+<div class="simple">
+  
+    <div class="ui-grid-a" style="padding-top:10px">
+        <div class="ui-block-a" style="width:30%">
+        <img src="./images/club-pic.jpg" width="60px" height="60px" />
+        </div>
+        <div class="ui-block-b titlePlayer" style="width:70%">
+        <%= club.name %>
+        </div>
+    </div> 
+     
+    <hr/>
+    <b data-i18n="club.sport"></b> : <span style="text-transform:uppercase;"><%= club.sport %></span>
+    <hr/>
+    <b data-i18n="club.city"></b> : <%= club.location.city %>
+    <hr/>
+    <b data-i18n="club.outdoor"></b> : <%= club.outdoor %>
+    <hr/>
+    <b data-i18n="club.indoor"></b> : <%= club.indoor %>
+    <hr/>
+    <b data-i18n="club.countPlayers"></b> : <%= club.countPlayers %>
+    <hr/>
+    <b data-i18n="club.countTeams"></b> : <%= club.countTeams %>
+    <hr/>    
+            
+    <div class="account">
+      <a href="#players/club/<%= club.id %>" class="button" id="listPlayer" data-i18n="club.listplayers" data-js-navigate></a>  
+      <a href="#games/club/<%= club.id %>" class="button" id="lastResult" data-i18n="club.lastresult" data-js-navigate></a>
+    </div>
+    
+    <div style="padding:40px"></div>
+  
+  </div>
+</div>
+
+<!--
+  COMMENT SAVE
+-->
+<div class="button-form">
+  <div class="background rounded"></div>
+  <div class="background trapeze"></div>
+  <div class="link-form">  
+  <% if (follow === 'true') { %> 
+  <div class="button-selected" id="followButton" data-i18n="message.nofollow"></div> 
+  <% } else { %> 
+  <div class="button" id="followButton" data-i18n="message.follow"></div>
+  <% } %>
+  </div>  
+</div>
