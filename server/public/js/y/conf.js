@@ -254,9 +254,9 @@
           return this.getRaw(k);
         }, this);
         // saving when cordova is ready.
-        Cordova.ready(function () {
-          Cordova.File.write(filename, JSON.stringify(permanentObjs), callback || function () { });
-        });
+        //Cordova.ready(function () {
+        //  Cordova.File.write(filename, JSON.stringify(permanentObjs), callback || function () { });
+        //});
       }
     },
 

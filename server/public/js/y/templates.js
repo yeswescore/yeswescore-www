@@ -32,7 +32,7 @@
           "account", 
           "clubAdd", "clubListAutoComplete", "club", "clubList","clubListSearch", 
           "gameAdd", "gameComments","gameEnd", "gameListSearch", "gameList","gameSelect","gameInput",
-          "gameCommentsScore", "gameCommentsComment","gameScoreBoard", "game", "gameForm",
+          "gameCommentsScore", "gameCommentsComment","gameScoreBoard", "game", "gameForm", "gameshortList",
           "index", "empty", "error","ongoing",
           "searchForm",
           "player", "playerForget", "playerForm", "playerListAutoComplete", "playerList",

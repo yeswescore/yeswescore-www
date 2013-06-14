@@ -6,10 +6,12 @@ Y.Views.ClubList = Y.View.extend({
     "click li": "chooseClub"
   },
 
-  listview : "#listPlayersView",
+  listview : "#listClubsView",
 
   pageName: "clubList",
   pageHash : "clubs/list", 
+  
+  clubs:null,
 
   initialize : function() {
   
@@ -21,7 +23,9 @@ Y.Views.ClubList = Y.View.extend({
     // loading templates.
     this.templates = {
       clublist:  Y.Templates.get('clubList'),
-      clubsearch: Y.Templates.get('clubListSearch')
+      clubsearch: Y.Templates.get('clubListSearch'),
+      error: Y.Templates.get('error'),
+      ongoing: Y.Templates.get('ongoing')  
     };
         
     //this.playerListViewTemplate = Y.Templates.get('playerList');
@@ -32,11 +36,12 @@ Y.Views.ClubList = Y.View.extend({
 
 	console.log('id  ',this.id);
 
+    this.clubs = new ClubsCollection();
+
 	// renderList
     if (this.id !== 'null') {
-      this.clubs = new ClubsCollection();
       this.clubs.setMode('search', this.id);
-      this.clubs.once('sync', this.renderList, this);            
+      this.clubs.on('sync', this.renderList, this);            
       this.clubs.fetch();
     }
     
@@ -55,6 +60,7 @@ Y.Views.ClubList = Y.View.extend({
     $(this.listview).empty();
     
     this.clubs.setMode('search', q);
+    /*
     this.clubs.fetch();
     
 	try {
@@ -65,7 +71,22 @@ Y.Views.ClubList = Y.View.extend({
     }
     catch(e) {
 
-    }
+    }*/
+    
+    var that = this;
+    this.clubs.fetch().done($.proxy(function () {  
+
+      if (that.clubs.toJSON().length === 0) {
+        $(that.listview).html(that.templates.error());
+      }
+      else
+        $(that.listview).html(that.templates.clublist({ clubs: that.clubs.toJSON(), query: q }));
+    	
+    
+    	
+      $(that.listview).i18n();
+      
+    }, this));    
     
 
     return this;
@@ -74,13 +95,12 @@ Y.Views.ClubList = Y.View.extend({
   // render the content into div of view
   render : function() {
     this.$el.html(this.templates.clubsearch({}));
+    this.$el.i18n(); 
 
     return this;
   },
 
   renderList : function(query) {
-  
-  	console.log('renderList clubs ',this.clubs.toJSON());
   
     $(this.listview).html(this.templates.clublist({
       clubs : this.clubs.toJSON(),

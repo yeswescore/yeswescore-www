@@ -18,15 +18,15 @@
     "city":"Ville",
     "site":"Site",
     "listplayers":"Liste des joueurs",
-    "lastresult":"Dernier résultat",
+    "lastresult":"Dernier résultat"  
     "outdoor":"Court(s) extérieur(s)",
     "indoor":"Court(s) intérieur(s)",  
     "countPlayers":"Nombre de joueurs",  
-    "countTeams":"Nombre d'équipes"                
+    "countTeams":"Nombre d'équipes"                             
   },
   "clublist": {
-    "title": "LISTE DES CLUBS"  
-  },
+    "title": "LISTE DES CLUBS" 
+  },  
   "clubadd": {
     "title": "AJOUTER UN CLUB",
     "name" : "Nom",
@@ -57,7 +57,7 @@
     "private" : "Privé",
     "comments" : "COMMENTAIRES", 
     "50lastcomments" : "DERNIERS COMMENTAIRES",
-    "10lastcomments" : "DERNIERS COMMENTAIRES",
+    "10lastcomments" : "DERNIERS COMMENTAIRES",    
     "1comment" : "1 COMMENTAIRE",    
     "0comment" : "0 COMMENTAIRE",
     "fbversus1" : "va bientot jouer contre",
@@ -66,7 +66,7 @@
     "fbegality" : "Egalité",    
     "fbversus3" : "a joué contre",
     "fbstatus1" : "a gagné",
-    "fbstatus2" : "mène le jeu",
+    "fbstatus2" : "mêne le jeu",
     "fbpromo" : "Bientôt les résultats sportifs de vos amis au creux de votre main avec YesWeScore." 
   },   
   "gamelist": {
@@ -76,7 +76,7 @@
   },
   "gameadd": {
     "title": "CREER UNE PARTIE",
-    "refresh": "Rafraichir",    
+    "refresh": "Rafraichir",        
     "player1": "Joueur 1",
     "player1_holder": "Moi",    
     "player2": "Joueur 2",    
@@ -87,7 +87,7 @@
     "city" : "Ville",    
     "court" : "Court", 
     "tour" : "Tour",
-    "surface" : "Surface",
+    "surface" : "Terrain",
     "official" : "Officiel",
 	"selection":"Selection",
 	"poule":"Poule",
@@ -143,7 +143,7 @@
     "title": "COMMENTAIRES",
     "delete" : "supprimer",
     "alert" : "signaler",
-    "alerted" : "Message signalé.",    
+    "alerted" : "Message signalé.",     
     "said" : "a dit",
     "by" : "à",
     "the" : "le",    
@@ -197,11 +197,11 @@
     "signinok":"Chargement réussi",
     "signinerror":"Chargement impossible",    
     "loading":"CHARGEMENT",       
-    "bad_rank":"Le classement est invalide",   
-    "empty_name":"Vous devez indiquer au moins un nom et/ou prénom",     
+    "bad_rank":"Le classement est invalide",
+    "empty_name":"Vous devez indiquer au moins un nom et/ou prénom",    
     "bad_name":"Le nom peut contenir seulement des lettres et au moins 3 caractères",
     "bad_password":"Votre mot de passe contient des caractères interdits ( Autorisé : A-Z a-z 0-9 !@#$%^&*()_ ) ou il est inférieur à 6 caractères",
-    "bad_licence":"Le numéro de licence est invalide. Il faut au moins 4 caractères composés de chiffres et lettres",           
+    "bad_licence":"Le numéro de licence est invalide. Il faut au moins 4 caractères composés de chiffres et lettres",        
     "bad_mail":"Votre mail est invalide"     
   },
   "player": {
@@ -252,12 +252,12 @@
  	"myclub": "Mon Club",   
  	"clubfollowed": "Club suivis",   
  	"gamefollowed": "Matchs suivis",   
- 	"playerfollowed": "Joueurs suivis",       
+ 	"playerfollowed": "Joueurs suivis",     
     "gameplaceholder": "Rechercher par nom, par club",
     "playerplaceholder": "Rechercher par nom",  
     "clubplaceholder": "Rechercher par nom",  
-    "filtermatchnot" : "Aucun", 
-    "filtermatchgeo" : "Matchs à proximité",
+    "filtermatchnot" : "Aucun",    
+    "filtermatchgeo" : "Matchs é proximité",
     "filtermatchclub" : "Matchs de mon club",
     "filtermatchfollowed" : "Matchs suivis",                    
     "filterdate" : "par date",
@@ -266,15 +266,15 @@
     "filterstatusall" : "Tous",  
     "filterstatusongoing" : "En direct",
     "filterstatusfinished" : "Terminé",
-    "filterstatuscreated" : "A venir",  
+    "filterstatuscreated" : "A venir",               
     "filtername" : "par nom",
     "ongoing" : "Recherche en cours",
-    "update" : "Enregistrer",
+    "update" : "Enregistrer,
 	"infogeo": "Activer votre GPS",   
  	"infomyclub": "Indiquer votre club",   
  	"infoclubfollowed": "Gérer les clubs suivis",   
  	"infogamefollowed": "Gérer les matchs suivis",   
- 	"infoplayerfollowed": "Gérer les joueurs suivis"         
+ 	"infoplayerfollowed": "Gérer les joueurs suivis"        
   },
   "bootstrap": {
     "updaterequired": "Veuillez mettre &agrave; jour l'application pour continuer &agrave; l'utiliser",

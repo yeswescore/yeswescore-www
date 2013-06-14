@@ -1,6 +1,6 @@
 Y.Views.Club = Y.View.extend({
   el : "#content",
-
+  
   events : {
     'click #followButton' : 'followClub'
   },
@@ -16,6 +16,8 @@ Y.Views.Club = Y.View.extend({
     // loading templates.
     this.templates = {
       layout: Y.Templates.get('empty'),
+      game: Y.Templates.get('game'),  
+      listmatch: Y.Templates.get('gameshortList'),           
       club:  Y.Templates.get('club')
     };
     
@@ -26,17 +28,7 @@ Y.Views.Club = Y.View.extend({
     this.club.once('sync', this.renderClub, this);      
     this.club.fetch();
     
-    var clubs_follow = Y.Conf.get("owner.clubs.followed");
-    if (clubs_follow !== undefined)
-    {
-      if (clubs_follow.indexOf(this.id) === -1) {
-        this.follow = 'false';
-      }
-      else
-        this.follow = 'true';          
-    }
-    else
-      this.follow = 'false';    
+    this.follow = 'false';    
 
   },
 
@@ -103,6 +95,12 @@ Y.Views.Club = Y.View.extend({
     this.$el.html(this.templates.club({
       club : this.club.toJSON(),follow:this.follow
     }));
+    
+    this.games = new GamesCollection();
+    //this.$listmatch.html(this.templates.listmatch({'games':this.games}));
+    $("#listMatchClubs").html(this.templates.listmatch({'games':this.games}));
+    
+    $(".game").html(this.templates.game({}));    
     
 	this.$el.i18n();    
 
