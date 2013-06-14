@@ -15,10 +15,13 @@ if [ -f ".port" ]
 then
   wwwport=`cat .port | head -1`
   port=`cat ../../yeswescore-server/server/.port`
+  proxyport=`cat ../../yeswescore-proxy/server/.port`
   echo "using port number $wwwport from file .port for www"
   echo "using port number $port from file .port for api"
+  echo "using port number $proxyport from file .port for proxy"
   export YESWESCORE_PORT=$port
   export YESWESCORE_WWW_PORT=$wwwport
+  export YESWESCORE_PROXY_PORT=$proxyport
   if [ "$1" = "debug" ]
   then
     echo "debug mode activated"
