@@ -3,6 +3,7 @@ Y.Views.Club = Y.View.extend({
   
   events : {
     'click #followButton' : 'followClub',
+    'mousedown .button.send' : 'sendComment',
     'click li': 'goToGame'
   },
 
@@ -23,6 +24,7 @@ Y.Views.Club = Y.View.extend({
       game: Y.Templates.get('game'),  
       listmatch: Y.Templates.get('gameShortList'),           
       club:  Y.Templates.get('club'),
+      comment: Y.Templates.get('gameCommentsComment'),
       error: Y.Templates.get('error'),
       ongoing: Y.Templates.get('ongoing')      
     };
@@ -100,6 +102,9 @@ Y.Views.Club = Y.View.extend({
       
       console.log(this.gameid);
       this.renderGame();
+      
+      this.renderComments();
+
        
     }
   },  
@@ -120,6 +125,8 @@ Y.Views.Club = Y.View.extend({
   },
 
   renderListComments : function() {
+    $listComment = this.$(".list-comment");
+    
     this.streamItemsCollection.forEach(function (streamItem) {
       if (!document.getElementById("comment"+streamItem.get('id'))) {
         // small fade-in effect using an hidden container.
@@ -232,6 +239,46 @@ Y.Views.Club = Y.View.extend({
     }  
   },  
  
+  sendComment : function() {
+    var playerid = this.owner.id
+    , token  = this.owner.get('token')
+    , gameid = this.gameid
+    , comment = $('#messageText').val()
+    , that = this;
+
+    if (comment.length === 0)
+      return; // empty => doing nothing.
+      
+    //filter
+    comment = comment.toString().replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/'/g, "&#39;").replace(/"/g, "&#34;");  
+      
+    //on bloque le textarea  
+    $('.button').addClass('disabled');
+      
+    var stream = new StreamModel({
+          type : "comment",
+          playerid : playerid,
+          token : token,
+          text : comment,
+          gameid : gameid
+    });
+    stream.save().done(function (streamItem) {
+      that.streamItemsCollection.fetch();
+      that.$('#messageText').val('');
+      that.scrollTop();
+      that.$('.button').removeClass("disabled");
+      
+    }).fail(function (err) {
+	    that.$(".button.send").addClass("ko");
+	    that.shareTimeout = window.setTimeout(function () {
+	      that.$(".button.send").removeClass("ko");
+	      that.shareTimeout = null;
+	  	  that.$('.button').removeClass("disabled");    
+	    }, 4000);
+    });   
+    
+  }, 
+ 
   // render the content into div of view
   renderClub : function() {
   	
@@ -252,6 +299,9 @@ Y.Views.Club = Y.View.extend({
 
   onClose : function() {
     this.undelegateEvents();
-    this.club.off("sync", this.renderClub, this);
+    this.club.off("sync", this.renderClub, this);   
+    this.game.off("sync", this.syncGame, this);
+    this.streamItemsCollection.off('success', this.renderListComments, this);
+    this.poller.stop();    
   }
 });
