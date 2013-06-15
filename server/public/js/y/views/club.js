@@ -170,6 +170,9 @@ Y.Views.Club = Y.View.extend({
         $("#listMatchClubs").html(that.templates.listmatch({ games: that.games.toJSON(), clubid: that.clubid }));  	
         //$(that.listview).i18n();
       }
+      
+      that.renderGame();
+      
     }, this));  
   },
   
@@ -290,7 +293,7 @@ Y.Views.Club = Y.View.extend({
     }));
 
 	this.renderListGame();
-	this.renderGame();
+	
 		
 	this.$el.i18n();    
 
