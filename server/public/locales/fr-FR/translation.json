@@ -1,4 +1,10 @@
 {
+  "about": {
+    "title": "A PROPOS",
+    "informations": "Informations:",
+    "submitidea": "Soumettre une suggestion",
+    "submitbug": "Rapporter un bug"
+  },
   "account": {
     "title": "PROFIL",
     "mymatch": "Mes Matchs",
@@ -7,7 +13,9 @@
     "playersfollowed": "Joueurs Suivis",
     "myclub": "Mon Club",
     "myprofil": "Mon profil",
-    "connect": "Connectez-vous"    
+    "connect": "Connexion / Enregistrement",
+    "disconnect": "Deconnexion",
+    "about": "A propos"
   },
   "app": {
     "name": "Yes We Score"
@@ -25,8 +33,8 @@
     "countTeams":"Nombre d'équipes"                             
   },
   "clublist": {
-    "title": "LISTE DES CLUBS" 
-  },  
+    "title": "LISTE DES CLUBS"
+  },    
   "clubadd": {
     "title": "AJOUTER UN CLUB",
     "name" : "Nom",
@@ -66,7 +74,7 @@
     "fbegality" : "Egalité",    
     "fbversus3" : "a joué contre",
     "fbstatus1" : "a gagné",
-    "fbstatus2" : "mêne le jeu",
+    "fbstatus2" : "mène le jeu",
     "fbpromo" : "Bientôt les résultats sportifs de vos amis au creux de votre main avec YesWeScore." 
   },   
   "gamelist": {
@@ -160,6 +168,7 @@
     "title": "MES OPTIONS",
     "whoserverdfirst" : "Qui a servi en premier ?",
     "delete": "Supprimer le match",
+    "confirmdelete": "Confirmer la suppression",
     "date":"Date du match",
     "time":"Heure du match",
     "city":"Ville",
@@ -167,7 +176,10 @@
   },
   "gamefollow": {
     "title": "MATCHS SUIVIS"
-  },      
+  },
+  "home": {
+    "connexionlost": "Connexion perdue"
+  },
   "index": {
     "title": "ACCUEIL",
     "games": "Matchs",
@@ -183,6 +195,7 @@
     "error": "Une erreur s'est produite",
     "error_emptyplayer" : "Vous devez indiquer un joueur",
     "error_emptyyou" : "Vous devez indiquer au moins un nom et un classement pour vous",    
+    "error_deconnexion": "Erreur de deconnexion",
     "nofollowplayerok":"Vous ne suivez plus ce joueur",
     "followplayerok":"Vous suivez ce joueur",
     "nofollowgameok":"Vous ne suivez plus ce match",
@@ -193,9 +206,11 @@
     "nofollow":"Ne plus suivre", 
     "mailspam":"Mail envoyé",
     "mailspam_sentence":"Attention, le mail qui rappelle votre mot de passe peut arriver dans le spam.",
-    "mailerror":"Mail inconnu",
+    "mailerror":"Mail inconnu, ou qui n'a pas été confirmé",
+    "password_mismatch":"Erreur, les mots de passe ne sont pas identiques",
+    "registering_error":"Erreur d'enregistrement",
     "signinok":"Chargement réussi",
-    "signinerror":"Chargement impossible",    
+    "signinerror":"Erreur, mot de passe incorrect",
     "loading":"CHARGEMENT",       
     "bad_rank":"Le classement est invalide",
     "empty_name":"Vous devez indiquer au moins un nom et/ou prénom",    
@@ -237,8 +252,12 @@
     "email": "Email",
     "emailplaceholder": "Email",    
     "password": "Mot de passe",
+    "passwordconfirm": "Confirmez votre mot de passe",
     "passwordforgotten": "Mot de passe oublié",    
-    "connexion": "Connexion"   
+    "connexion": "Connexion",
+    "deconnexion": "Deconnexion",
+    "registered": "Vous êtes enregistré",
+    "registering": "Vous pouvez vous enregistrer en choisissant un mot de passe."
   },   
   "nav": {
     "matchs": "Matchs",
@@ -246,7 +265,11 @@
     "account": "Mon Compte"
   },
   "search": {
-    "title": "Recherche",
+    "title": "RECHERCHE",
+    "zone": "Zone",    
+    "filters":"Filtres :",    
+    "filtergps":"GPS",
+    "filtermyclub":"Mon Club",     
  	"introform": "Personnalisez votre accueil",   
  	"geo": "A proximité",   
  	"myclub": "Mon Club",   
@@ -257,7 +280,7 @@
     "playerplaceholder": "Rechercher par nom",  
     "clubplaceholder": "Rechercher par nom",  
     "filtermatchnot" : "Aucun",    
-    "filtermatchgeo" : "Matchs é proximité",
+    "filtermatchgeo" : "Matchs à proximité",
     "filtermatchclub" : "Matchs de mon club",
     "filtermatchfollowed" : "Matchs suivis",                    
     "filterdate" : "par date",
@@ -270,7 +293,8 @@
     "filtername" : "par nom",
     "ongoing" : "Recherche en cours",
     "update" : "Enregistrer,
-	"infogeo": "Activer votre GPS",   
+	"infogeo": "GPS",   
+    "gpsoff" : "desactivé",	
  	"infomyclub": "Indiquer votre club",   
  	"infoclubfollowed": "Gérer les clubs suivis",   
  	"infogamefollowed": "Gérer les matchs suivis",   
