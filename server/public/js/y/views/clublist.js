@@ -59,6 +59,7 @@ Y.Views.ClubList = Y.View.extend({
     var q = $("#search-basic").val();
     $(this.listview).empty();
     
+    var that = this;
     this.clubs.setMode('search', q);
     /*
     this.clubs.fetch();
@@ -73,7 +74,7 @@ Y.Views.ClubList = Y.View.extend({
 
     }*/
     
-    var that = this;
+
     this.clubs.fetch().done($.proxy(function () {  
 
       if (that.clubs.toJSON().length === 0) {

@@ -16,7 +16,6 @@ if (game.error!==undefined)
   }
 }
 
-
 team1_set1 = '&nbsp;'; 
 team1_set2 = '&nbsp;'; 
 team1_set3 = '&nbsp;';
@@ -79,13 +78,23 @@ else if (game.status === "finished") game.status = i18n.t('game.finished');
 else if (game.status === "created") game.status = i18n.t('game.created');
  
 %>
-<li id="#games/<%= game.id %>">
-
-  <span class="title2">Pierre qui roule</span><br/>
-  <span class="title3">Club FFT Reims - Classement</span>
+<li id="<%= game.id %>">
+  <span class="title2"><%= game.teams[0].players[0].name %></span><br/>
+  <span class="title3">
+  <% 
+    if (game.teams[0].players[0].club !== undefined) {  
+      print(game.teams[0].players[0].club.name);  
+    } 
+  %>   
+   - <%= game.teams[0].players[0].rank %></span>
   <br/>
-  <span class="title2">Philippe Attique</span><br/>
-  <span class="title3">Club FFT Reims - Classement</span>  
- 
+  <span class="title2"><%= game.teams[1].players[0].name %></span><br/>
+  <span class="title3">
+  <% 
+    if (game.teams[1].players[0].club !== undefined) {  
+      print(game.teams[1].players[0].club.name);  
+    } 
+  %>  
+  - <%= game.teams[1].players[0].rank %></span>   
 </li>
 <% } %>

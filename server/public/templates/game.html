@@ -25,23 +25,54 @@
       <!-- infos -->
       <div class="ui-grid-d text">
         <div class="ui-block-a">
-          <span class="timer">01:56</span>
+          <span class="timer"><%= timer %></span>
         </div>
         <div class="ui-block-b">
-        
+        <%
+        if (game.dates) {        
+            if (game.dates.start !== undefined ) {            
+              if (game.dates.start==="") {
+                 game.dates = {
+                   startDate : '',
+                   startTime : ''
+                 };              
+              }
+              else { 
+                //game.dates.startConvert = new Date(game.dates.start);
+                game.dates.startConvert = Date.fromString(game.dates.start);
+                game.dates.startConvert.month = game.dates.startConvert.getMonth() + 1;
+                game.dates.startDate = ('0'+game.dates.startConvert.getDate()).slice(-2)+'/'+('0'+game.dates.startConvert.month).slice(-2)+'/'+(''+game.dates.startConvert.getFullYear()).slice(-2);
+                game.dates.startTime = ('0'+game.dates.startConvert.getHours()).slice(-2)+'h'+('0'+game.dates.startConvert.getMinutes()).slice(-2);
+              }
+           } 
+           else {                      
+             game.dates = {
+               startDate : '',
+               startTime : ''
+             };           
+          }
+        }
+        else {        
+           game.dates = {
+             startDate : '',
+             startTime : ''
+           };           
+        }
+        %>
         <b>
-        13/05/13 à 14h55
+        <%= game.dates.startDate  %><br/>
+        <%= game.dates.startTime %>
         </b>
         </div>
         <div class="ui-block-c">
-        <b>Arromanches les Bains</b>
+        <b><%= game.location.city %></b>
         </div>
         <div class="ui-block-d">
-        <b><span data-i18n="game.public">Public</span></b>
+        <b><span data-i18n="game.public"></span></b>
         </div>
         <div class="ui-block-e">
         
-        <b><span data-i18n="game.spectators">Mode Spectateur</span></b>
+        <b><span data-i18n="game.spectators"></span></b>
         
         </div>
       </div>
@@ -50,21 +81,43 @@
     <!--
       SCOREBOARD
     -->
-    <div id="scoreBoard"><div class="scoreBoard">
-  <div class="playerInfos">
-    <a href="#players/5190e2db21b5443848000028" class="player-name"> 
-      Joueur 1
-    </a>
+<div class="scoreBoard">
+
+   <%
+   if (game.teams[0].players[0].owner === undefined) 
+   { 
+   %>     
+  <div class="player-info" id="#players/<%= game.teams[0].players[0].id %>"></div>
+     <div class="playerInfos" id="#players/<%= game.teams[0].players[0].id %>">  
+  <%
+   }
+   else {
+   %>
+     <div class="playerInfos">     
+   <%
+   }
+  %>
+  
+  
+    <span class="player-name"> 
+      <b class="server1">&nbsp;&nbsp;&nbsp;</b>&nbsp;<%= game.teams[0].players[0].name %>
+    </span>
+  
     <div class="other">
       <span class="club">
-         ARROMANCHE TENNIS PORT WILSON
+        <%
+         if (game.teams[0].players[0].club !== undefined) {  
+           print(' '+game.teams[0].players[0].club.name);  
+         } 
+        %>
       </span>
       <span class="player-rank">
-        15/2
+        <%= game.teams[0].players[0].rank %>
       </span>
     </div>
-  </div>
-
+  </div> 
+   
+    
   <div class="score-grid">
     <div class="ui-grid-c">
         <div class="ui-block-a legend">1</div>
@@ -75,217 +128,72 @@
     </div>
 
     <div class="ui-grid-c">
-        <div class="ui-block-a" id="team1_set1_div"><div class="score ongoing">4</div></div>
-        <div class="ui-block-b" id="team1_set2_div"><div class="score">&nbsp;</div></div>
-        <div class="ui-block-c" id="team1_set3_div"><div class="score">&nbsp;</div></div>
+        <div class="ui-block-a" id="team1_set1_div"><div class="score"><%= team1_set1 %></div></div>
+        <div class="ui-block-b" id="team1_set2_div"><div class="score"><%= team1_set2 %></div></div>
+        <div class="ui-block-c" id="team1_set3_div"><div class="score"><%= team1_set3 %></div></div>
         <div class="ui-block-d"></div>
-        <div class="ui-block-e" id="team1_sets_div"><div class="score sets">0</div></div>
+        <div class="ui-block-e" id="team1_sets_div"><div class="score sets"><%= team1_sets %></div></div>
     </div>
     <!-- /grid-a -->
 
     <div class="ui-grid-c" style="margin-top:6px;">
-        <div class="ui-block-a" id="team2_set1_div"><div class="score ongoing">3</div></div>
-        <div class="ui-block-b" id="team2_set2_div"><div class="score">&nbsp;</div></div>
-        <div class="ui-block-c" id="team2_set3_div"><div class="score">&nbsp;</div></div>
+        <div class="ui-block-a" id="team2_set1_div"><div class="score"><%= team2_set1 %></div></div>
+        <div class="ui-block-b" id="team2_set2_div"><div class="score"><%= team2_set2 %></div></div>
+        <div class="ui-block-c" id="team2_set3_div"><div class="score"><%= team2_set3 %></div></div>
         <div class="ui-block-d"></div>
-        <div class="ui-block-e" id="team2_sets_div"><div class="score sets">0</div></div>
+        <div class="ui-block-e" id="team2_sets_div"><div class="score sets"><%= team2_sets %></div></div>
     </div>
     <div class="separator"></div>
   </div>
 
-  <div class="playerInfos">
-    <a href="#players/5190e2db21b544384800002d" class="player-name"> 
-     Joueur 2
-    </a>
+   <%
+   if (game.teams[1].players[0].owner === undefined) 
+   { 
+   %>     
+    <div class="player-info" id="#players/<%= game.teams[1].players[0].id %>"></div>
+      <div class="playerInfos" id="#players/<%= game.teams[1].players[0].id %>">  
+  <%
+   }
+   else {
+   %>
+      <div class="playerInfos">     
+   <%
+   }
+  %>
+         
+    
+    <span class="player-name">   
+       <b class="server2">&nbsp;&nbsp;&nbsp;</b>&nbsp;<%= game.teams[1].players[0].name %>
+    </span>
     <div class="other">
       <span class="club">
-       ARROMANCHE TENNIS PORT WILSON
+      <% 
+        if (game.teams[1].players[0].club !== undefined) {  
+          print(' '+game.teams[1].players[0].club.name);  
+        } 
+      %>
       </span>
       <span class="player-rank">
-        15/2
+        <%= game.teams[1].players[0].rank %>
       </span>
     </div>
   </div>
+  
  
-</div></div>
+</div>
 
-     
+    <!--
+      LISTCOMMENTS
+    -->     
    <div class="commentBoard">  
-     <div>COMMENTAIRES</div>  
+     <div class="list-comment-title" data-i18n="gamecomment.title"></div> 
      
      <div class="textarea-border">
         <textarea rows="10" cols="40" class="textarea-comment" id="messageText" placeHolder="Ecrire un commentaire"></textarea>
      </div>
      
      <div class="zone-list">
-        <div>
-          <div class="list-comment-title" data-i18n="gamecomment.title"></div>
-          <!-- 
           <div class="list-comment"></div>
-           -->
-           
-           <div class="list-comment"><div style=""><div class="comment" id="comment5198c8320e516cb934000064">
-  
-              <div class="infocomment">
-                <span class="player-name">
-                  
-                    Rose Sanchez
-                  
-                  
-                </span> <span data-i18n="gamecomment.said">a dit</span>
-                
-                  <span data-i18n="gamecomment.by">à</span>  14:40
-              </div> 
-            
-              Ah ben comme ça on est fixé sur la venue de Federer à l'open 13 (bon y avait pas trop de suspens   )  
-            
-              <div class="links">
-                
-                 
-                    <a class="warnComment" data-js-streamitemid="5198c8320e516cb934000064" data-js-call="reportComment" data-i18n="gamecomment.alert">signaler</a> 
-                
-              </div>
-            </div>
-            </div><div style=""><div class="comment" id="comment5198c8320e516cb934000063">
-              
-              <div class="infocomment">
-                <span class="player-name">
-                  
-                    Athénaïs Lopez
-                  
-                  
-                </span> <span data-i18n="gamecomment.said">a dit</span>
-                
-                  <span data-i18n="gamecomment.by">à</span>  14:40
-              </div> 
-            
-              C'était pas lui qui disait que la victoire de Federer à Bercy était sa plus belle édition parce qu'il était fan et tout et tout ? 
-            
-              <div class="links">
-                
-                 
-                    <a class="warnComment" data-js-streamitemid="5198c8320e516cb934000063" data-js-call="reportComment" data-i18n="gamecomment.alert">signaler</a> 
-                
-              </div>
-            </div>
-            </div>
-            
-            
-            <div style=""><div class="comment" id="comment5198c8320e516cb934000061">
-              
-              <div class="infocomment">
-                <span class="player-name">
-                  
-                    Clarisse Pla
-                  
-                  
-                </span> <span data-i18n="gamecomment.said">a dit</span>
-                
-                  <span data-i18n="gamecomment.by">à</span>  14:40
-              </div> 
-            
-              Jean-François Couillemolle. 
-            
-              <div class="links">
-                
-                 
-                    <a class="warnComment" data-js-streamitemid="5198c8320e516cb934000061" data-js-call="reportComment" data-i18n="gamecomment.alert">signaler</a> 
-                
-              </div>
-            </div>
-            </div><div style=""><div class="comment" id="comment5198c8320e516cb934000060">
-              
-              <div class="infocomment">
-                <span class="player-name">
-                  
-                    Aliénor Vidal
-                  
-                  
-                </span> <span data-i18n="gamecomment.said">a dit</span>
-                
-                  <span data-i18n="gamecomment.by">à</span>  14:40
-              </div> 
-            
-              j'arrive pas à faire venir Roger à mon Open 13 et ça me fout les boules. 
-            
-              <div class="links">
-                
-                 
-                    <a class="warnComment" data-js-streamitemid="5198c8320e516cb934000060" data-js-call="reportComment" data-i18n="gamecomment.alert">signaler</a> 
-                
-              </div>
-            </div>
-            </div><div style=""><div class="comment" id="comment5198c8320e516cb93400005f">
-              
-              <div class="infocomment">
-                <span class="player-name">
-                  
-                    Zélie Sanchez
-                  
-                  
-                </span> <span data-i18n="gamecomment.said">a dit</span>
-                
-                  <span data-i18n="gamecomment.by">à</span>  14:40
-              </div> 
-            
-              Enfin quelqu'un qui ose dire les vrais choses   Lui c'est un vrai connaisseur   
-            
-              <div class="links">
-                
-                 
-                    <a class="warnComment" data-js-streamitemid="5198c8320e516cb93400005f" data-js-call="reportComment" data-i18n="gamecomment.alert">signaler</a> 
-                
-              </div>
-            </div>
-            </div><div style=""><div class="comment" id="comment5198c8320e516cb93400005e">
-              
-              <div class="infocomment">
-                <span class="player-name">
-                  
-                    Jade Gil
-                  
-                  
-                </span> <span data-i18n="gamecomment.said">a dit</span>
-                
-                  <span data-i18n="gamecomment.by">à</span>  14:40
-              </div> 
-            
-              Il a fait le bon choix le Caujolle, je préfère qu'il nous achète Berdych, Delpo et Tipsarevic plutôt que l'autre mannequin pour montres. Cela aurait été clairement mieux qu'il se débarasse aussi de Tsonga et Gasquet qui génèrent vraiment trop de vacarme dans les gradins (pour les remplacer par des joueurs moins chers et moins bruyants comme par exemple Cilic, Nishikori, Haas), mais on ne peut pas trop lui en vouloir, c'est du bon boulot pour JF. 
-            
-              <div class="links">
-                
-                 
-                    <a class="warnComment" data-js-streamitemid="5198c8320e516cb93400005e" data-js-call="reportComment" data-i18n="gamecomment.alert">signaler</a> 
-                
-              </div>
-            </div>
-            </div><div style=""><div class="comment" id="comment5198c8320e516cb93400005d">
-              
-              <div class="infocomment">
-                <span class="player-name">
-                  
-                    Athénaïs Lopez
-                  
-                  
-                </span> <span data-i18n="gamecomment.said">a dit</span>
-                
-                  <span data-i18n="gamecomment.by">à</span>  14:40
-              </div> 
-            
-              Merci! 
-            
-              <div class="links">
-                
-                 
-                    <a class="warnComment" data-js-streamitemid="5198c8320e516cb93400005d" data-js-call="reportComment" data-i18n="gamecomment.alert">signaler</a> 
-                
-              </div>
-            </div>
-            </div>
-                  </div>
-      
-          
-        </div>
       </div>
      
     </div>

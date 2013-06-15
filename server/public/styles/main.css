@@ -578,7 +578,7 @@ ul>li {
 	list-style: none;
 	background: #fff;
 	border-top: 1px solid #8c8c8e;
-	height: 100px;
+	/*height: 100px;*/
 	cursor:pointer;
 }
 
@@ -1465,7 +1465,8 @@ ul>li.player>a {
 
 .game {
 	float:left; 
-	width:680px;
+	max-width:680px;
+	width:100%;
 	padding-left: 12px;
 	padding-right: 0px;
 }
