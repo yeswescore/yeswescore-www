@@ -81,20 +81,22 @@ else if (game.status === "created") game.status = i18n.t('game.created');
 <li id="<%= game.id %>">
   <span class="title2"><%= game.teams[0].players[0].name %></span><br/>
   <span class="title3">
+  <%= game.teams[0].players[0].rank %> - 
   <% 
     if (game.teams[0].players[0].club !== undefined) {  
       print(game.teams[0].players[0].club.name);  
     } 
   %>   
-   - <%= game.teams[0].players[0].rank %></span>
+  </span>
   <br/>
   <span class="title2"><%= game.teams[1].players[0].name %></span><br/>
   <span class="title3">
+  <%= game.teams[1].players[0].rank %> - 
   <% 
     if (game.teams[1].players[0].club !== undefined) {  
       print(game.teams[1].players[0].club.name);  
     } 
   %>  
-  - <%= game.teams[1].players[0].rank %></span>   
+  </span>   
 </li>
 <% } %>

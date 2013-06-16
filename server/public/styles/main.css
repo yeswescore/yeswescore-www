@@ -203,7 +203,7 @@ input.mylib-forms {
 	-webkit-border-radius: 10px;
 	border-radius: 10px;
 	-webkit-appearance: none;
-	width:180px;
+	width:98%;
 }
 
 input[type="text"] {
@@ -629,7 +629,8 @@ ul>li.player>a {
 **********************************************************/
 #content {
 	z-index: 5;
-	width: 100%;
+	width: 900px;
+	margin:0 auto;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
@@ -1465,8 +1466,7 @@ ul>li.player>a {
 
 .game {
 	float:left; 
-	max-width:680px;
-	width:100%;
+	width:600px;
 	padding-left: 12px;
 	padding-right: 0px;
 }
@@ -1482,7 +1482,7 @@ ul>li.player>a {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
-	height:400px;
+	height:600px;
 	overflow-y : scroll;
 }
 

@@ -32,6 +32,8 @@ Y.Views.Club = Y.View.extend({
     // we render immediatly
     this.render();        
 
+	this.streamItemsCollection = null;
+
     this.club = new ClubModel({id : this.id});   
     this.club.once('sync', this.renderClub, this);      
     this.club.fetch();
@@ -172,6 +174,7 @@ Y.Views.Club = Y.View.extend({
       }
       
       that.renderGame();
+      that.renderComments();
       
     }, this));  
   },
@@ -243,6 +246,10 @@ Y.Views.Club = Y.View.extend({
   },  
  
   sendComment : function() {
+  
+    if (this.owner===undefined)
+      Y.Router.navigate("players/signin", {trigger: true});  
+   
     var playerid = this.owner.id
     , token  = this.owner.get('token')
     , gameid = this.gameid
@@ -303,8 +310,9 @@ Y.Views.Club = Y.View.extend({
   onClose : function() {
     this.undelegateEvents();
     this.club.off("sync", this.renderClub, this);   
-    this.game.off("sync", this.syncGame, this);
-    this.streamItemsCollection.off('success', this.renderListComments, this);
-    this.poller.stop();    
+	if (this.streamItemsCollection!==null) {
+      this.streamItemsCollection.off('success', this.renderListComments, this);
+      this.poller.stop();    
+    }
   }
 });

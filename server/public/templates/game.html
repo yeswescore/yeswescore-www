@@ -68,7 +68,14 @@
         <b><%= game.location.city %></b>
         </div>
         <div class="ui-block-d">
-        <b><span data-i18n="game.public"></span></b>
+        <b>
+        <%
+        if (game.status === "ongoing") game.status = i18n.t('game.ongoing');
+        else if (game.status === "finished") game.status = i18n.t('game.finished');
+        else if (game.status === "created") game.status = i18n.t('game.created');
+        print(game.status);
+        %>
+        </b>
         </div>
         <div class="ui-block-e">
         
@@ -192,7 +199,9 @@
         <textarea rows="10" cols="40" class="textarea-comment" id="messageText" placeHolder="Ecrire un commentaire"></textarea>
      </div>
      
-     <div class="button send" data-i18n="gamecomment.send"></div>
+     <div class="form-button-black"> 
+       <span class="button send" data-i18n="gamecomment.send"></span>
+     </div>
      
      <div class="zone-list">
           <div class="list-comment"></div>
