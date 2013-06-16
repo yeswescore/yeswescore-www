@@ -124,8 +124,8 @@ Y.Views.PlayerSignin = Y.View.extend({
       type: 'GET',
       data: {
         // auth
-        playerid: this.player.get('id'),
-        token: this.player.get('token'),
+        //playerid: this.player.get('id'),
+        //token: this.player.get('token'),
         // email param
         email: email
       },
@@ -210,15 +210,21 @@ Y.Views.PlayerSignin = Y.View.extend({
     this.hideError();
     //
     var that = this;
-    var player = Y.User.getPlayer();
-    player.set('email', email);
-    player.set('uncryptedPassword', password);
-    player.save().done(function (result) {
-		  Y.User.setPlayer(new PlayerModel(result));
-      that.updateStatus(that.status.REGISTERED);
-    }).fail(function () {
-      that.displayError(i18n.t("message.registering_error"));
-    });;
+    
+    Y.User.createPlayerAsync(function (err, player) {
+
+	    var player = Y.User.getPlayer();
+	    player.set('email', email);
+	    player.set('uncryptedPassword', password);
+	    player.save().done(function (result) {
+			  Y.User.setPlayer(new PlayerModel(result));
+	      that.updateStatus(that.status.REGISTERED);
+	    }).fail(function () {
+	      that.displayError(i18n.t("message.registering_error"));
+	    });;
+	    
+    });
+
   },
   
   // render the content into div of view

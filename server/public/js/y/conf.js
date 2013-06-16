@@ -68,6 +68,7 @@
             }
 
             this.set("api.url.auth", apiBaseUrl + "/v2/auth/");
+            this.set("api.url.auth.registered", apiBaseUrl + "/v2/auth/registered/");            
             this.set("api.url.bootstrap", apiBaseUrl + "/bootstrap/conf.json?version=%VERSION%");
             this.set("api.url.facebook.login", apiBaseUrl + "/v2/facebook/login/");
             this.set("api.url.games", apiBaseUrl + "/v2/games/");
@@ -87,6 +88,7 @@
             break;
           case Y.Env.PROD:
             this.set("api.url.auth", "http://api.yeswescore.com/v2/auth/");
+            this.set("api.url.auth.registered", "http://api.yeswescore.com/v2/auth/registered/");            
             this.set("api.url.bootstrap", "http://api.yeswescore.com/bootstrap/conf.json?version=%VERSION%");
             this.set("api.url.facebook.login", "http://api.yeswescore.com/v2/facebook/login/");
             this.set("api.url.games", "http://api.yeswescore.com/v2/games/");

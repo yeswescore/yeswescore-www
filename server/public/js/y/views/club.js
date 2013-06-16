@@ -2,7 +2,6 @@ Y.Views.Club = Y.View.extend({
   el : "#content",
   
   events : {
-    'click #followButton' : 'followClub',
     'mousedown .button.send' : 'sendComment',
     'click li': 'goToGame'
   },
@@ -32,63 +31,20 @@ Y.Views.Club = Y.View.extend({
     this.render();        
 
 	this.streamItemsCollection = null;
+	this.game = null;
 
     this.club = new ClubModel({id : this.id});   
     this.club.once('sync', this.renderClub, this);      
     this.club.fetch();
     
     this.follow = 'false';    
+    
+    // loading owner
+    this.owner = Y.User.getPlayer();
 
   },
 
-	followClub: function() {
-  
-        if (this.follow === 'true') {
-
-          var clubs_follow = Y.Conf.get("owner.clubs.followed");
-          if (clubs_follow !== undefined)
-          {
-            if (clubs_follow.indexOf(this.id) !== -1) {
-              //On retire l'elmt
-              clubs_follow.splice(clubs_follow.indexOf(this.id), 1);
-              Y.Conf.set("owner.clubs.followed", clubs_follow, { permanent: true });
-            }
-          }
-          
-          $('span.success').css({display:"block"});
-          $('span.success').html(i18n.t('message.nofollowclubok')).show();
-          $("#followButton").text(i18n.t('message.follow'));
-          $('#followButton').removeClass('button-selected');
-          $('#followButton').addClass('button'); 
-
-          this.follow = 'false';
-
-        } else {
-        
-          //Via localStorage
-          var clubs_follow = Y.Conf.get("owner.clubs.followed");
-          if (clubs_follow !== undefined)
-          {
-            if (clubs_follow.indexOf(this.id) === -1) {
-              clubs_follow.push(this.id);
-              Y.Conf.set("owner.clubs.followed", clubs_follow, { permanent: true });
-            }
-          }
-          else
-            Y.Conf.set("owner.clubs.followed", [this.id]);
-
-		  $('span.success').css({display:"block"});
-          $('span.success').html(i18n.t('message.followclubok')).show();
-          $("#followButton").text(i18n.t('message.nofollow'));
-          $('#followButton').removeClass('button');
-          $('#followButton').addClass('button-selected');          
-          
-
-          this.follow = 'true';
-
-        }	
-  
-  },    
+	
 
   render: function () {
     // empty page.
@@ -104,12 +60,13 @@ Y.Views.Club = Y.View.extend({
       console.log(this.gameid);
       this.renderGame();
       
-      this.renderComments();
+      //this.renderComments();
 
        
     }
   },  
 
+  /*
   renderComments : function() {
     
     if (this.gameid!=0) {
@@ -124,29 +81,8 @@ Y.Views.Club = Y.View.extend({
 	        
     }
   },
+  */
 
-  renderListComments : function() {
-    $listComment = this.$(".list-comment");
-    
-    this.streamItemsCollection.forEach(function (streamItem) {
-      if (!document.getElementById("comment"+streamItem.get('id'))) {
-        // small fade-in effect using an hidden container.
-        var divHiddenContainer = document.createElement("div");
-        divHiddenContainer.style.display = "none";
-        
-        //filter
-        streamItem = streamItem.toJSON();
-        streamItem.data.text = streamItem.data.text.toString().replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/'/g, "&#39;").replace(/"/g, "&#34;");
-        
-        $(divHiddenContainer).html(this.templates.comment({
-          streamItem  : streamItem,
-          owner : (this.owner) ? this.owner.toJSON() : null
-        }));
-        $listComment.prepend(divHiddenContainer);
-        $(divHiddenContainer).fadeIn();
-      }
-    }, this);  
-  },
  
   renderListGame : function() {
     var that = this;    
@@ -173,75 +109,108 @@ Y.Views.Club = Y.View.extend({
       }
       
       that.renderGame();
-      that.renderComments();
+      //that.renderComments();
       
     }, this));  
   },
   
   renderGame : function() {
-  	var that = this;
-  
+    
     if (this.gameid == 0) {
-      $(".game").html(this.templates.error({}));  
+      $("#scoreBoard").html(this.templates.error({}));  
     }
     else {
-      this.game = new GameModel({id : this.gameid});
-      //$(".game").html(this.templates.game({}));   
-	  this.game.fetch().done($.proxy(function () {  
-	      if (that.game.toJSON().length === 0) {
-	        $(".game").html(that.templates.error());
-	        $(".game").i18n();
-	      }
-	      else {	      
-		  	var timer = '';
-		  	var game = that.game;
+    
+      var pollingOptions = { delay: Y.Conf.get("game.refresh") };
+    
+	  this.game = new GameModel({id : this.gameid});
+	  this.game.on("sync", this.renderViewGame, this);
+	  this.poller = Backbone.Poller.get(this.game, pollingOptions);
+	  this.poller.start();
+	  //this.game.fetch();
+	  
+	  this.streamItemsCollection = new StreamsCollection([], {gameid : this.gameid});
+	  this.streamItemsCollection.on("sync", this.renderListComments, this); 
+	  //this.streamItemsCollection.fetch();
+	  this.poller2 = Backbone.Poller.get(this.streamItemsCollection, pollingOptions);
+	  this.poller2.start();	  
+	  
+	        
+    }
+  },  
+  
+  renderViewGame : function() {
+ 
+    if (this.game.toJSON().length === 0) {
+	  $("#scoreBoard").html(this.templates.error());
+	  $("#scoreBoard").i18n();
+	}
+	else {	      
+	  var timer = '';
+	  var game = this.game;
 		  	  
-		    if ( game.get('status') === "finished" ) {
+	  if ( game.get('status') === "finished" ) {
 		       
-		      var dateEnd = Date.fromString(game.get('dates').end);      
-		      var dateStart = Date.fromString(game.get('dates').start);
+	    var dateEnd = Date.fromString(game.get('dates').end);      
+		var dateStart = Date.fromString(game.get('dates').start);
 		          	
-		      timer = dateEnd - dateStart;
-		      var dateTimer = new Date(0, 0, 0, 0, 0, 0, timer);  
+		timer = dateEnd - dateStart;
+		var dateTimer = new Date(0, 0, 0, 0, 0, 0, timer);  
 		      
-		      if (timer>0)       
-		        timer = ('0'+dateTimer.getHours()).slice(-2)+':'+('0'+dateTimer.getMinutes()).slice(-2);  
-		      else
-		         timer = '00:00';   
+		if (timer>0)       
+		  timer = ('0'+dateTimer.getHours()).slice(-2)+':'+('0'+dateTimer.getMinutes()).slice(-2);  
+		else
+		  timer = '00:00';   
 		         
-		      $("#statusButton").html(i18n.t('game.finished'));	         
-		      $("#optionButton").attr("id","statusRestart");
-		 	  $("#statusRestart").html(i18n.t('game.restart'));
-		 	  
-		 	  //var score = this.calculScore();
-		 	  //var scoreboard = score.split('/'); 
-		 	  //$('#team1_sets_div').html('<div class="score sets">'+scoreboard[0]+'</div>');
-		 	  //$('#team2_sets_div').html('<div class="score sets">'+scoreboard[1]+'</div>');            
-		        
-		    }
-		    else if ( game.get('status') === "ongoing" ) {
-		        
-		      var dateEnd = new Date();
-		      var dateStart = Date.fromString(game.get('dates').start);
-		      timer = dateEnd - dateStart;
+		$("#statusButton").html(i18n.t('game.finished'));	         
+		$("#optionButton").attr("id","statusRestart");
+		$("#statusRestart").html(i18n.t('game.restart'));
+		 	  		        
+	  }
+	  else if ( game.get('status') === "ongoing" ) {		        
+		 var dateEnd = new Date();
+		 var dateStart = Date.fromString(game.get('dates').start);
+		 timer = dateEnd - dateStart;
    
-		      if (timer>0)
-		      {		          
-			    var dateTimer = new Date(0, 0, 0, 0, 0, 0, timer);         
-			    timer = ('0'+dateTimer.getHours()).slice(-2)+':'+('0'+dateTimer.getMinutes()).slice(-2);        
-		      }
-		      else {
-		        timer = '00:00';  		    
-		      }       
-		    }	      
-	      
+		 if (timer>0)
+		 {		          
+	       var dateTimer = new Date(0, 0, 0, 0, 0, 0, timer);         
+		   timer = ('0'+dateTimer.getHours()).slice(-2)+':'+('0'+dateTimer.getMinutes()).slice(-2);        
+		 }
+		 else {
+		   timer = '00:00';  		    
+		 }       
+	  }	      
 	   
-	        $(".game").html(that.templates.game({ 
-	        game: that.game.toJSON(),timer : timer }));  	
-	        $(".game").i18n();
-	      }
-	  }, this));            
-    }  
+	  $("#scoreBoard").html(this.templates.game({ 
+	  game: this.game.toJSON(),timer : timer }));  	
+	  $("#scoreBoard").i18n();
+	        
+	 }
+  },  
+  
+  renderListComments : function() {
+  
+    $listComment = this.$(".list-comment");
+    
+    this.streamItemsCollection.forEach(function (streamItem) {
+      if (!document.getElementById("comment"+streamItem.get('id'))) {
+        // small fade-in effect using an hidden container.
+        var divHiddenContainer = document.createElement("div");
+        divHiddenContainer.style.display = "none";
+        
+        //filter
+        streamItem = streamItem.toJSON();
+        streamItem.data.text = streamItem.data.text.toString().replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/'/g, "&#39;").replace(/"/g, "&#34;");
+        
+        $(divHiddenContainer).html(this.templates.comment({
+          streamItem  : streamItem,
+          owner : (this.owner) ? this.owner.toJSON() : null
+        }));
+        $listComment.prepend(divHiddenContainer);
+        $(divHiddenContainer).fadeIn();
+      }
+    }, this);  
   },  
  
   sendComment : function() {
@@ -311,10 +280,17 @@ Y.Views.Club = Y.View.extend({
 
   onClose : function() {
     this.undelegateEvents();
-    this.club.off("sync", this.renderClub, this);   
-	if (this.streamItemsCollection!==null) {
-      this.streamItemsCollection.off('success', this.renderListComments, this);
+    this.club.off("sync", this.renderClub, this);  
+     
+	if (this.game!==null) {
+      this.game.off('sync', this.renderViewGame, this);
       this.poller.stop();    
     }
+    
+	if (this.streamItemsCollection!==null) {    
+      this.streamItemsCollection.off("sync", this.renderListComments, this);
+      this.poller2.stop();      	
+    }
+    
   }
 });

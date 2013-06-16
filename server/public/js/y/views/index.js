@@ -19,18 +19,7 @@ Y.Views.Index = Y.View.extend({
     Y.GUI.header.hide();
     //Y.GUI.navbar.hide();
 
-    //we capture config from bootstrap
-    //FIXME: put a timer
-    //this.config = new Config();
-    //this.config.fetch();
-
-    // we need to do 2 things 
-    // - fetch games
-    // - read/create the player
-    // THEN
-    //  render games & player.
-
-    // second: read/create player
+	/*
     var playerDeferred = $.Deferred();
     this.$el.html("please wait, loading player");
     Y.User.getPlayerAsync(function (err, player) {
@@ -55,6 +44,10 @@ Y.Views.Index = Y.View.extend({
       that.render();
 
     });
+    */
+    
+    this.render();
+    
   },
 
   searchButton: function () {
