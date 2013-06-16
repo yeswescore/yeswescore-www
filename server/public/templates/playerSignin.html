@@ -1,36 +1,55 @@
-<div class="gameAdd background"></div>
-<div class="gameAdd content-container">
-  <div class="simple" style="padding-top:40px">
+<div class="blue-screen signin background"></div>
+<div class="blue-screen signin content-container">
+  <div class="container unregistered">
+    <div class="msg label label-info hide"></div>
+    <div class="error label label-error hide"></div>
 
-	<span class="success label label-info hide" style="color: red"></span>
-
-	<div>
-		<label class="form-label" data-i18n="playersignin.email"></label>
-	</div>
+    <!--
+     4 status : registered, unregistered, login, registering
+    -->
+    <div class="hideIfRegistered">
+	    <div>
+		    <label class="form-label" data-i18n="playersignin.email"></label>
+	    </div>
 	
-	<div>
-	  <input type="text" id="email" name="email" data-i18n="[placeholder]playersignin.email;" value="" /> 
-	  <span class="email_error label label-info hide"></span>
-	</div>
+	    <div>
+	      <input type="email" id="email" name="email" data-i18n="[placeholder]playersignin.email;" value="" />
+	    </div>
 
-	<div>
-	  <label class="form-label" for="password" data-i18n="playersignin.password"></label>
-	</div>
+      <div class="hideIfUnregistered">
+
+        <div class="hideIfLogin label label-info" data-i18n="playersignin.registering"></div>
+
+	      <div>
+	        <label class="form-label" for="password" data-i18n="playersignin.password"></label>
+	      </div>
   
-	<div>
-	  <input type="password" id="password" name="password" data-i18n="[placeholder]playersignin.password" value="" /> 
-	  <span class="password_error label label-info hide"></span>
-	</div>
+	      <div>
+	        <input type="password" id="password" name="password" data-i18n="[placeholder]playersignin.password" value="" /> 
+	      </div>
+
+	      <div class="hideIfLogin">
+	        <div>
+	          <label class="form-label" for="password" data-i18n="playersignin.passwordconfirm"></label>
+	        </div>
+
+	        <input type="password" id="password_confirm" name="password" data-i18n="[placeholder]playersignin.password" value="" /> 
+	      </div>
   
-    <div class="form-button-black"> 
-      <span id="signinUser" data-i18n="playersignin.connexion"></span>
-    </div>
+        <div class="password_error label label-error hide"></div>
+      </div>
+
+      <div id="connexion" class="form-button-black" data-i18n="playersignin.connexion"> 
+      </div>
     
-    <div class="form-button-white">      
-      <span id="forgetPassword" data-i18n="playersignin.passwordforgotten"></span>
-    </div>  
+      <div id="forgetPassword" class="form-button-white hideIfUnregistered hideIfRegistering hide" data-i18n="playersignin.passwordforgotten">
+      </div>
+    </div>
 
+    <div class="hideIfUnregistered hideIfLogin hideIfRegistering">
+      <div class="label label-info" data-i18n="playersignin.registered"></div>
 
- </div>
- 
+      <div id="deconnexion" class="form-button-black" data-i18n="playersignin.deconnexion"> </div>
+    </div>
+  </div>
 </div>

@@ -196,17 +196,17 @@ span.undoSelect {
 }
 
 input.mylib-forms {
+	display: block;
 	padding: 2px;
 	border: solid 1px #ededed;
 	outline: 0;
-	background: #fff;
+	background: #ededed;
 	-webkit-border-radius: 10px;
 	border-radius: 10px;
 	-webkit-appearance: none;
-	width:98%;
 }
 
-input[type="text"] {
+input[type="password"] {
 	color: #000;
 	background: #fff;
 	border: 0;
@@ -222,7 +222,25 @@ input[type="text"] {
 	box-sizing: border-box;
 }
 
-input[type="text"][disabled] {
+input[type="text"],
+input[type="email"] {
+	color: #000;
+	background: #fff;
+	border: 0;
+	border-radius: 12px;
+	padding-left: 10px;
+	height: 30px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	width: 100%;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+input[type="text"][disabled],
+input[type="email"][disabled]{
 	background-color: #e4e4e4;
 }
 
@@ -756,6 +774,35 @@ ul>li.player>a {
 	font-size: 12px;
 	color: white;
 }
+
+.label-info {
+	padding-left: 10px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	font-size: 12px;
+	color: #000;
+}
+
+.label-error {
+	padding-left: 10px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	font-size: 12px;
+	color: #6e3321;
+}
+
+.form-radio-android * {
+  vertical-align: middle;
+}
+.form-radio-android input {
+  clear:left;
+}
+.form-radio-android label { 
+  width:18px;
+  display:inline-block;
+}
+
+
 /* */
 .form-button {
 	position: absolute;
@@ -1987,6 +2034,41 @@ ul>li.player>a {
 	-webkit-appearance: caret;
 	-moz-appearance: caret;
 	border: 0;
+}
+
+
+/*
+  players/signin
+  singin
+  
+  3 states :
+   - container.unregistered: display email
+   - container.login       : display email+password
+   - container.registering : display email+double password
+   - container.registered  : display sign-out button
+  */
+.signin.content-container {
+	padding-bottom: 0px;
+}
+
+.signin.background {
+	background-color: #45b1db;
+}
+
+.signin .container.unregistered .hideIfUnregistered {
+  display: none;
+}
+
+.signin .container.login .hideIfLogin {
+  display: none;
+}
+
+.signin .container.registered .hideIfRegistered {
+  display: none;
+}
+
+.signin .container.registering .hideIfRegistering {
+  display: none;
 }
 
 /**********************************************************

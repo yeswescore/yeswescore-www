@@ -14,8 +14,7 @@ Y.Views.Club = Y.View.extend({
   initialize : function() {
   
 	//header    
-  	Y.GUI.header.title(i18n.t('club.title'));
-  	
+  	Y.GUI.header.title(i18n.t('club.title'));  	
   	Y.GUI.header.show();
   
     // loading templates.
@@ -152,7 +151,7 @@ Y.Views.Club = Y.View.extend({
   renderListGame : function() {
     var that = this;    
     this.games = new GamesCollection();
-    this.games.setSearch('club',this.club.get('id'));  
+    this.games.addSearch('club',this.club.get('id'));  
     //this.$listmatch.html(this.templates.listmatch({'games':this.games}));
     $("#listMatchClubs").html(that.templates.ongoing());
 
@@ -249,43 +248,46 @@ Y.Views.Club = Y.View.extend({
   
     if (this.owner===undefined)
       Y.Router.navigate("players/signin", {trigger: true});  
+   else {
    
-    var playerid = this.owner.id
-    , token  = this.owner.get('token')
-    , gameid = this.gameid
-    , comment = $('#messageText').val()
-    , that = this;
-
-    if (comment.length === 0)
-      return; // empty => doing nothing.
-      
-    //filter
-    comment = comment.toString().replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/'/g, "&#39;").replace(/"/g, "&#34;");  
-      
-    //on bloque le textarea  
-    $('.button').addClass('disabled');
-      
-    var stream = new StreamModel({
-          type : "comment",
-          playerid : playerid,
-          token : token,
-          text : comment,
-          gameid : gameid
-    });
-    stream.save().done(function (streamItem) {
-      that.streamItemsCollection.fetch();
-      that.$('#messageText').val('');
-      that.scrollTop();
-      that.$('.button').removeClass("disabled");
-      
-    }).fail(function (err) {
-	    that.$(".button.send").addClass("ko");
-	    that.shareTimeout = window.setTimeout(function () {
-	      that.$(".button.send").removeClass("ko");
-	      that.shareTimeout = null;
-	  	  that.$('.button').removeClass("disabled");    
-	    }, 4000);
-    });   
+	    var playerid = this.owner.id
+	    , token  = this.owner.get('token')
+	    , gameid = this.gameid
+	    , comment = $('#messageText').val()
+	    , that = this;
+	
+	    if (comment.length === 0)
+	      return; // empty => doing nothing.
+	      
+	    //filter
+	    comment = comment.toString().replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/'/g, "&#39;").replace(/"/g, "&#34;");  
+	      
+	    //on bloque le textarea  
+	    $('.button').addClass('disabled');
+	      
+	    var stream = new StreamModel({
+	          type : "comment",
+	          playerid : playerid,
+	          token : token,
+	          text : comment,
+	          gameid : gameid
+	    });
+	    stream.save().done(function (streamItem) {
+	      that.streamItemsCollection.fetch();
+	      that.$('#messageText').val('');
+	      that.scrollTop();
+	      that.$('.button').removeClass("disabled");
+	      
+	    }).fail(function (err) {
+		    that.$(".button.send").addClass("ko");
+		    that.shareTimeout = window.setTimeout(function () {
+		      that.$(".button.send").removeClass("ko");
+		      that.shareTimeout = null;
+		  	  that.$('.button').removeClass("disabled");    
+		    }, 4000);
+	    }); 
+    
+    }  
     
   }, 
  

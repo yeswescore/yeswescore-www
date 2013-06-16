@@ -15,16 +15,12 @@ Y.Views.PlayerForm = Y.View.extend({
   clubs:null,
   useSearch:0,	     
   mode:'',
-  shareTimeout: null,    
 
-  myinitialize:function(obj) {
-  
-    this.player = null;  
+  myinitialize:function(obj) { 
     this.useSearch = 0;	
-    
     this.mode = obj.mode;
-          
-	//header
+  
+	  //header
     Y.GUI.header.title(i18n.t('playerform.title')); 
   
     // loading templates.
@@ -33,25 +29,17 @@ Y.Views.PlayerForm = Y.View.extend({
       playerform:  Y.Templates.get('playerForm'),
       clublist: Y.Templates.get('clubListAutoComplete')
     };
-       
-    this.owner = Y.User.getPlayer();    
-    this.token = this.owner.get('token');
-    this.playerid = this.owner.get('id');
-    this.clubid = this.owner.get('club').id;
     
-    
-    // we render immediatly
-    this.render();    
-    
-    this.player = new PlayerModel({id : this.owner.id});
+    this.player = Y.User.getPlayer();
+    this.clubid = this.player.get('club').id;
     this.player.once("sync", this.renderPlayer, this);	
     this.player.fetch();
-     	
 
+    // we render immediatly
+    this.render();
   },
   
   autocompleteClubs: function (input, callback) {
-  
     if (input.indexOf('  ')!==-1 || input.length<= 1 )
       callback('empty');		
     
@@ -69,17 +57,12 @@ Y.Views.PlayerForm = Y.View.extend({
     }).fail(function (xhr, error) { 
       callback(error);
     });
-
   },
 
   autocompleteChoose: function (data) {
-
     if (data && data.name) {
       this.$("#club").val(data.name);
-      this.clubid = data.id; 
-      
-
-           
+      this.clubid = data.id;
       this.$('club_error').html('');      
     }
   },
@@ -103,7 +86,7 @@ Y.Views.PlayerForm = Y.View.extend({
   updateList: function (event) {
     var q = $("#club").val();
    	
-    this.clubs = new ClubsCollection();
+    this.clubs = new ClubsCollection();108
     this.clubs.setMode('search',q);
     if (q.length>2) {
       this.useSearch=1;
@@ -118,29 +101,17 @@ Y.Views.PlayerForm = Y.View.extend({
   render: function () {
     // empty page.
 	  this.$el.html(this.templates.layout());
+    this.$(".container").addClass(this.mode);
 	  return this;
   },
   
-    
   renderList: function () {
     var q = $("#club").val();  	
-  	
-	$(this.listview).html(this.templates.clublist({clubs:this.clubs.toJSON(), query:q}));
-	
-
-	
-
+	  $(this.listview).html(this.templates.clublist({clubs:this.clubs.toJSON(), query:q}));
   },
-    
-    
-      
+  
   add: function (event) {
-  
-    //$.ui.toggleNavMenu(true);
-  
     var name = $('#name').val()
-      , password = $('#password').val().replace(/ /g, "")
-      , email = $('#email').val().replace(/ /g, "")
       , rank = $('#rank').val().replace(/ /g, "")
       , playerid = this.playerid
       , token = this.token
@@ -150,84 +121,60 @@ Y.Views.PlayerForm = Y.View.extend({
       , player = null;
       
     //On cache toutes les erreurs 
-    $("span[class*='_error']").hide();
-    $("span.success").hide();
-          
-    if (checkEmail(email) && email.length>0) {
-	  $('span.email_error').html(i18n.t('message.bad_mail')+' !').show();
-      $('#email').val('');        
-      return false;	   
-    };
+    $("div.success").hide();
 
     if (checkRank(rank) && rank.length>0) {
-	  $('span.rank_error').html(i18n.t('message.bad_rank')+' !').show();
+	    $('.rank_error').html(i18n.t('message.bad_rank')+' !').show();
       $('#rank').val('');        
-      return false;	   
-    };
-           
-    if (checkPassword(password) && password.length>0) {
-	  $('span.password_error').html(i18n.t('message.bad_password')+' !').show();
-      $('#password').val('');        
       return false;	   
     };
     
     if (name.length==0) {
-	  $('span.name_error').html(i18n.t('message.empty_name')+' !').show();      
+	    $('.name_error').html(i18n.t('message.empty_name')+' !').show();      
       return false;	   
     };
     
-    
     if (checkName(name) && name.length>0) {
-	  $('span.name_error').html(i18n.t('message.bad_name')+' !').show();
+	    $('.name_error').html(i18n.t('message.bad_name')+' !').show();
       $('#name').val('');        
       return false;	   
     };
 
     if (checkLicence(idlicence) && idlicence.length>0) {
-	  $('span.idlicence_error').html(i18n.t('message.bad_licence')+' !').show();
+	    $('.idlicence_error').html(i18n.t('message.bad_licence')+' !').show();
       $('#idlicence').val('');        
       return false;	   
     };
 
     if (checkName(club) && club.length>0) {
-	  $('span.club_error').html(i18n.t('message.bad_name')+' !').show();
+	    $('.club_error').html(i18n.t('message.bad_name')+' !').show();
       $('#club').val('');        
       return false;	   
     };
-        
-    var player = new PlayerModel({
-        name: name
-      , password: password
-      , email: email
-      , rank: rank                  	
-      , playerid: playerid
-      , idlicence:idlicence
-      , token: token
-      , club: club
-      , clubid:clubid            
-    });
-
-	//FIXME :  add control error
+    
     var that = this;
-    player.save().done(function (result) {
-      
-        $('span.success').css({display:"block"});
-      	$('span.success').html(i18n.t('message.updateok')).show();
-		$('span.success').i18n();
-		
+    var player = Y.User.getPlayer();
+    player.set('name', name);
+    player.set('rank', rank);
+    player.set('idlicence', idlicence);
+    player.set('club', club);
+    player.set('clubid', clubid);
 
-		Y.User.setPlayer(new PlayerModel(result));
-		
-		if (that.mode === 'first') {
-		  Y.Router.navigate("games/add", {trigger: true});	   
-		}
-		else {
-		   that.shareTimeout = window.setTimeout(function () {
-	      		Y.Router.navigate("account", {trigger: true});
-	      		that.shareTimeout = null;
-	    	}, 2000);	
-    	}	
-      
+	  //FIXME :  add control error
+    player.save().done(function (result) {
+      $('div.success').css({display:"block"});
+      $('div.success').html(i18n.t('message.updateok')).show();
+		  $('div.success').i18n();
+		  Y.User.setPlayer(new PlayerModel(result));
+		  if (that.mode === 'first') {
+		    Y.Router.navigate("games/add", {trigger: true});  	   
+		  }
+		  else if (that.mode === 'search') {
+		    Y.Router.navigate("search/form", {trigger: true});  	   
+		  }		  
+		  else {
+		    Y.Router.navigate("account", {trigger: true});
+    	}
     });
    
     return false;
@@ -236,13 +183,11 @@ Y.Views.PlayerForm = Y.View.extend({
 
   //render the content into div of view
   renderPlayer: function(){
-    	
     player = this.player.toJSON();
         
     var dataDisplay = {
 	      name:player.name
 	    , rank:player.rank
-	    , password:player.password
 	    , idlicence:player.idlicense
 	    , playerid:this.playerid
 	    , token:this.token
@@ -253,23 +198,11 @@ Y.Views.PlayerForm = Y.View.extend({
       dataDisplay.idclub = player.club.id;      	
     }
     
-    if (player.email!== undefined) {    
-      dataDisplay.email = player.email.address;    
-    }
-    else 
-      dataDisplay.email = '';
-    
-
     this.$el.html(this.templates.playerform({data : dataDisplay}));
-    
-    if (this.mode === 'first') {
-		$('#form_firstconnection').hide();
-	}
-	else {
-		$('#intro_firstconnection').hide();
-	}
 
-	this.$el.i18n();
+    this.$(".container").addClass(this.mode);
+
+	  this.$el.i18n();
 
     return this;
   },
@@ -279,10 +212,5 @@ Y.Views.PlayerForm = Y.View.extend({
     
     this.player.off("sync", this.renderPlayer, this);	
     if (this.useSearch===1) this.clubs.off( "sync", this.renderList, this );
-    
-     if (this.shareTimeout) {
-      window.clearTimeout(this.shareTimeout);
-      this.shareTimeout = null;
-    }    
   }
 });
