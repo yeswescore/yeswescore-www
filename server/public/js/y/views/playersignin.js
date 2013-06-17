@@ -174,6 +174,7 @@ Y.Views.PlayerSignin = Y.View.extend({
         if (that.unloaded)
           return; // prevent errors.
         that.hideError();
+      	
       	that.updateStatus(that.status.REGISTERED);
       },
       error: function (err) {
