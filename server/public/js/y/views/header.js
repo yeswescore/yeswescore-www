@@ -2,7 +2,8 @@ Y.Views.Header = Y.View.extend({
   el: "#header",
 
   events: {
-    "click .backButton": "goBack"
+    "click .backButton": "goBack",
+    "click .connectionStatus": "goLink"
   },
 
   initialize: function () {
@@ -14,9 +15,15 @@ Y.Views.Header = Y.View.extend({
       that.repaintBack();
     });
 
-    Backbone.on("request.start", function () { that.animateConnection("on"); });
-    Backbone.on("request.end", function () { that.animateConnection("off"); });
+    // loading owner
+    this.owner = Y.User.getPlayer();
+    
+    console.log('this.owner',this.owner);
 
+	if (this.owner===null)
+	  $('.connectionStatus').html(i18n.t('header.connexion'));
+ 	else
+ 	  $('.connectionStatus').html(i18n.t('header.myaccount'));
  
   },
   render: function () { },
@@ -32,6 +39,16 @@ Y.Views.Header = Y.View.extend({
     window.history.go(-1);
     return false;
   },
+
+  goLink: function () {
+    //window.history.go(-1);
+    //return false;
+    if (this.owner===null)
+      Y.Router.navigate("players/signin", {trigger: true}); 
+    else
+      Y.Router.navigate("players/form", {trigger: true});  
+      
+  },
   
   showBack: function () { this.$(".backButton").show() },
   hideBack: function () { this.$(".backButton").hide() },
@@ -46,13 +63,7 @@ Y.Views.Header = Y.View.extend({
       this.showBack();
   },
 
-  connectionStatus: (function () {
-    var status = "connected";
-    return function (newStatus) {
-      // FIXME: repaint GUI depending on newStatus.
-      return status;
-    };
-  })(),
+
 
   hide: function () { 
 
@@ -62,57 +73,6 @@ Y.Views.Header = Y.View.extend({
   show: function () { 
 
 	  this.$el.show();
-  },
-
-  animateConnection: (function () {
-    // private vars
-    var i = 0;
-    var intervalId = null;
-    var animationImages = [
-      //"images/header-logo-on-animate-1.png",
-      //"images/header-logo-on-animate-2.png",
-      "images/pixel.png",
-      "images/header-logo-on-animate-3.png",
-      "images/header-logo-on-animate-4.png",
-      "images/header-logo-on.png"
-    ];
-    var animationImagesLag = [
-      //"images/header-logo-on-lag-animate-1.png",
-      //"images/header-logo-on-lag-animate-2.png",
-      "images/pixel.png",
-      "images/header-logo-on-lag-animate-3.png",
-      "images/header-logo-on-lag-animate-4.png",
-      "images/header-logo-on-lag.png"
-    ];
-    var animationIndex = 0;
-    //
-    return function (status) {
-      var connectionStatus = this.$(".connectionStatus");
-      // animation repaint 
-      var repaint = function () {
-        var animationImage;
-        
-        animationImage = animationImages[animationIndex % animationImages.length];
-
-        connectionStatus.attr("src", animationImage);
-        animationIndex++;
-        if (animationIndex % animationImages.length == 0 && i == 0) {
-          window.clearInterval(intervalId);
-          intervalId = null;
-        }
-      };
-      // handling "on" / "off"
-      if (status == "on") {
-        // on
-        if (i == 0 && intervalId == null) {
-          intervalId = window.setInterval(repaint, 200);
-          repaint();
-        }
-        i++;
-      } else {
-        // off
-        i--;
-      }
-    };
-  })()
+  }
+  
 });

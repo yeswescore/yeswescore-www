@@ -387,8 +387,9 @@ body.inputmodeon .button-form[data-input-mode="process"] {
 
 #header .connectionStatus {
 	position: absolute;
-	top: 15px;
+	top: 12px;
 	right: 13px;
+	cursor:pointer;
 }
 
 
@@ -746,6 +747,83 @@ ul>li.player>a {
 	height: 30px;
 }
 
+
+/*****/
+
+.blue-screen {
+	/* we have to absolutly position this, because of content padding. */
+	width: 100%;
+}
+
+.blue-screen.background {
+	background-color: #45b1db;
+}
+
+.blue-screen.content-container {
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 0px;
+}
+
+.blue-screen .container {
+  background-color:#45b1db;  
+  width:100%;
+  min-height: 100%;
+  padding: 9px;
+  padding-bottom: 110px;
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:        border-box;
+}
+
+.blue-screen .zone-list {
+  background-color:#45b1db;  
+  width:100%;
+  min-height: 100%;
+  padding: 9px;
+  padding-bottom: 110px;
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:        border-box;
+}
+
+.blue-screen .ui-grid-b .ui-block-a {
+	width: 45%;
+	height: 30px;
+	padding-right: 10px;
+}
+
+.blue-screen .ui-grid-b .ui-block-b {
+	width: 35%;
+	padding-right: 10px;
+}
+
+.blue-screen .ui-grid-b .ui-block-c {
+	width: 20%;
+}
+
+/* option formulaire simple */
+.blue-screen .simple .ui-grid-b .ui-block-a,.gameAdd .ui-grid-b.me .ui-block-a
+	{
+	width: 80%;
+}
+
+.blue-screen .simple .ui-grid-b .ui-block-b,.gameAdd .ui-grid-b.me .ui-block-b
+	{
+	display: none;
+	width: 0%;
+	padding: 0;
+}
+
+.blue-screen .simple .ui-grid-b .ui-block-c,.gameAdd .ui-grid-b.me .ui-block-c
+{
+	width: 20%;
+}
+
+.blue-screen .serverbar a
+{
+	height:30px;
+}
 
 /**
  * 

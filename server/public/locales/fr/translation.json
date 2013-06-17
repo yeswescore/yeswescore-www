@@ -5,6 +5,10 @@
     "submitidea": "Soumettre une suggestion",
     "submitbug": "Rapporter un bug"
   },
+  "header": {
+    "connexion": "CONNEXION",
+    "myaccount": "MON COMPTE"
+  },  
   "account": {
     "title": "PROFIL",
     "mymatch": "Mes Matchs",
