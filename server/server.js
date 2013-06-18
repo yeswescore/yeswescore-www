@@ -6,6 +6,9 @@ if (fs.existsSync('../../yeswescore-server/server/conf.js')) {
   var Conf = require('../../yeswescore-server/server/conf.js')
     , app = require('./app.js');
 
+  // chargement de la logique de pages
+  require('./pages')
+
   //
   console.log('spawning static server on port ' + Conf.get('www.http.static.port'));
   console.log('spawning proxy server on port ' + Conf.get('www.http.proxy.port'));
