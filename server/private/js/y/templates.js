@@ -49,7 +49,7 @@
         });
       } else {
       /*#endif*/
-        $.ajax('build/%%%@YESWESCORE_WWW_BUILD_VERSION%%%/templates.html',
+        $.ajax('build/%%%@ENV YESWESCORE_WWW_BUILD_VERSION%%%/templates.html',
                { dataType: 'text',
                  success: function (text) {
                     // loading response as html.
