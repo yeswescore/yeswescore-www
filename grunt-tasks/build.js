@@ -113,6 +113,46 @@ module.exports = function( grunt ) {
       });
     });
   })();
+  
+  (function () {
+    // <!-- @ENV file -->
+    var regexp = /(<!\-\-|\/\*|%%%)\s*\@ENV\s+([a-zA-Z0-9_\.\/]+)\s*(\-\->|\*\/|%%%)/gm
+    //var regexp = /(%%%)\s*([a-zA-Z0-9_\.\/]+)\s*(%%%)/gm
+
+    grunt.registerMultiTask('env_vars', 'env_vars', function() {
+      // Iterate over all specified file groups.
+      this.files.forEach(function(f) {
+      
+        // this plugin doesn't concat.
+        // we need the same number of src & dest files
+        if (f.src.length !== f.dest.length) {
+          grunt.log.warn('Number of source and destination file differs files.src.length='+f.src.length+', files.dest.length='+f.dest.length);
+          return false;
+        }
+
+        // processing files
+        var src = f.src.forEach(function(filepath, i) {
+          // Warn on and remove invalid source files (if nonull was set).
+          if (!grunt.file.exists(filepath)) {
+            grunt.log.warn('Source file "' + filepath + '" not found.');
+            return false;
+          }
+          var filecontent = grunt.file.read(filepath)
+            , result = filecontent;
+          // searching includes
+          var m, result;
+          while (m = regexp.exec(filecontent)) {
+            grunt.log.writeln("@env_vars var "+m[2]);
+            result = result.replace(m[0], function () { return process.env[m[2]] }); // avoid $` bugs..
+          }
+
+          // Write the destination file.
+          grunt.file.write(f.dest[i], result);
+        });
+      });
+    });
+  })();
+
 
   // Based on jQuery UI build.js
   grunt.registerTask("clean", function () {
