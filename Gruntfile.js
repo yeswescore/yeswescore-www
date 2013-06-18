@@ -88,7 +88,7 @@ module.exports = function (grunt) {
       },
       dist_html: {
         src: ['server/private/index.html'],
-        dest: 'server/public/build/'+version+'/index.html'
+        dest: 'server/public/build/index.html'
       }
     },
     copy: {
@@ -123,14 +123,14 @@ module.exports = function (grunt) {
     },
     ifdef: {
       files: {
-        src: [ 'server/public/build/'+version+'/index.html'],
-        dest: [ 'server/public/build/'+version+'/index.html']
+        src: [ 'server/public/build/index.html'],
+        dest: [ 'server/public/build/index.html']
       }
     },
     env_vars: {
       files: {
-        src: [ 'server/public/build/'+version+'/index.html' ],
-        dest: [ 'server/public/build/'+version+'/index.html' ]
+        src: [ 'server/public/build/index.html' ],
+        dest: [ 'server/public/build/index.html' ]
       }
     },
     env: {
