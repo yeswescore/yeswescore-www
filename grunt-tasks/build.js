@@ -117,9 +117,10 @@ module.exports = function( grunt ) {
   // Based on jQuery UI build.js
   grunt.registerTask("clean", function () {
       rimraf.sync("dist");
-      rimraf.sync("platforms/android/build");
-      rimraf.sync("platforms/ios/build");
-      rimraf.sync("platforms/wp8/build");
-      rimraf.sync("platforms/blackberry/build");
+      rimraf.sync("server/public/images");
+      rimraf.sync("server/public/js");
+      rimraf.sync("server/public/locales");
+      rimraf.sync("server/public/styles");	 
+      rimraf.sync("server/public/build");		  
   });
 };

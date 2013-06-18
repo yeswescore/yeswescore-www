@@ -1,5 +1,7 @@
 module.exports = function (grunt) {
 
+  var version = parseInt(process.env.YESWESCORE_WWW_BUILD_VERSION, 10) || "42";
+
   // External tasks.
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -25,8 +27,10 @@ module.exports = function (grunt) {
   while ((r = re.exec(html)) !== null) {
     // excluding cordova file (to not be included twice)
     if (r[0].indexOf("data-grunt-included=\"false\"") == -1)
-      scripts.push('src/' + r[1]); // ex: src/js/main.js
+      scripts.push('server/private/' + r[1]); // ex: src/js/main.js
   }
+  
+  console.log('scripts',scripts);
 
   // harvesting css: <link (...) href="styles/main.css"></link>
   var css = [];
@@ -34,9 +38,11 @@ module.exports = function (grunt) {
   while ((r = re.exec(html)) !== null) {
     // excluding cordova file (to not be included twice)
     if (r[0].indexOf("data-grunt-included=\"false\"") == -1)
-      css.push('src/' + r[1]); // ex: src/styles/main.css
+      css.push('server/private/' + r[1]); // ex: src/styles/main.css
   }
 
+  console.log('css',css);
+  
   //
   // Project configuration
   //
@@ -62,23 +68,23 @@ module.exports = function (grunt) {
             footer: '</script>',
             inject: [{
               prop: 'src',
-              rem: 'src/templates/',
+              rem: 'server/private/templates/',
               repl: { ".html": "" }
             }]
           }
         },
         src: ['server/private/templates/*.html'],
-        dest: 'dist/templates.html'
+        dest: 'server/public/build/'+version+'/templates.html'
       }
     },
     concat: {
       dist_javascript: {
         src: scripts,
-        dest: 'dist/app.js'
+        dest: 'server/public/build/'+version+'/app.js'
       },
       dist_css: {
         src: css,
-        dest: 'dist/app.css'
+        dest: 'server/public/build/'+version+'/app.css'
       },
       dist_html: {
         src: ['server/private/index.html'],
@@ -129,12 +135,12 @@ module.exports = function (grunt) {
     },
     env: {
       web: {
-        WEB:true,
+        WEB:false,
         CORDOVA: false,
-        NOCORDOVA: false,
+        NOCORDOVA: true,
         CORS: false,
-        DEV:true/*, // cross domain
-        NOCONCAT: true*/
+        DEV:false, // cross domain
+        NOCONCAT: true
       }
     }
   });
