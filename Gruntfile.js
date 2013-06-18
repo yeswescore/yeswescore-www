@@ -111,26 +111,26 @@ module.exports = function (grunt) {
     },
     uglify: {
       build: {
-        src: 'dist/app.js',
-        dest: 'dist/app.min.js'
+        src: 'server/public/build/'+version+'/app.js',
+        dest: 'server/public/build/'+version+'/app.min.js'
       }
     },
     cssmin: {
       my_target: {
-        src: 'dist/app.css',
-        dest: 'dist/app.min.css'
+        src: 'server/public/build/'+version+'/app.css',
+        dest: 'server/public/build/'+version+'/app.min.css'
       }
     },
     ifdef: {
       files: {
-        src: [ "dist/app.css", "dist/app.js", "dist/index.html"],
-        dest: [ "dist/app.css", "dist/app.js", "dist/index.html"]
+        src: [ 'server/public/build/'+version+'/app.css', 'server/public/build/'+version+'/app.js', 'server/public/build/'+version+'/index.html'],
+        dest: [ 'server/public/build/'+version+'/app.css', 'server/public/build/'+version+'/app.js', 'server/public/build/'+version+'/index.html']
       }
     },
     include: {
       files: {
-        src: [ "dist/index.html" ],
-        dest: [ "dist/index.html" ]
+        src: [ "server/public/index.html" ],
+        dest: [ "server/public/index.html" ]
       }
     },
     env: {

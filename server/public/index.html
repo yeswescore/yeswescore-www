@@ -10,12 +10,13 @@
   
   <!-- Production environment -->
   <style>
-    /* @include build/1/app.css */
+    /* @include build/42/app.css */
   </style>
   <script type="text/javascript">
-    /* @include build/1/app.js */
+    /* @include build/42/app.js */
   </script>  
 
+  <!-- #ifdef NOCONCAT -->
   <!-- Third party css -->
   <!-- our css -->
   <link rel="stylesheet" href="styles/main.css">
@@ -71,6 +72,8 @@
   <!-- start the app ! -->
   <script type="text/javascript" src="js/main.js"></script>
   
+  <!-- #endif -->
+  
   <script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-37891108-2']);
@@ -100,9 +103,7 @@
   <!-- autocomplete view -->
   <div id="autocomplete"></div>
       
-  
   <div class="footer">&nbsp;@ 2013 zeNodus SAS - <a href="/faq.html">faq</a> - <a href="/contact.html">contact</a></div>
   
-  <!-- @include dist/templates.html -->
 </body>
 </html>
