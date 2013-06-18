@@ -1,23 +1,30 @@
 {
-  "name": "yeswescore-www",
-  "private": true,
-  "description": "yeswescore website",
+  "name": "YesWeScore",
   "version": "0.0.1",
-  "engines": { "node": "0.8.x" },
+  "description": "Live Score",
+  "main": "grunt.js",
   "dependencies": {
-    "http-proxy": "0.10.x",
-    "express": "3.0.x",
-    "winston": "0.6.x"
+    "grunt": ">= 0.3.11",
+    "grunt-less": ">= 0.1.3",
+    "rimraf": ">= 2.0.2"
   },
   "devDependencies": {
-    "mocha": "1.8.1"
-  },
-  "author": "Marc Dassonneville <marcd@yeswescore.com>",
-  "scripts": {
-    "test": "../ut/server/mocha"
+    "grunt-contrib-uglify": "~0.1.1",
+    "grunt-contrib-jshint": "~0.2.0",
+    "grunt-contrib-concat": "~0.1.3",
+    "grunt-css": "~0.5.4",
+    "grunt-contrib-copy": "~0.4.0",
+    "grunt-contrib-watch": "~0.2.0",
+    "grunt-lib-legacyhelpers": "~0.1.1",
+    "grunt-template-helper": "~0.1.5",
+    "grunt-env": "~0.2.1",
+    "express": "3.0.x"
   },
   "repository": {
-    "type" : "git",
-    "url" : "git://github.com/voltek62/yeswescore-www.git"
-  }
+    "type": "git",
+    "url": "https://github.com/voltek62/yeswescore-client.git"
+  },
+  "author": "zeNodus",
+  "license": "Commercial",
+  "readmeFilename": "readme.md"
 }
