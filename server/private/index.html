@@ -9,13 +9,10 @@
   <meta name="msapplication-tap-highlight" content="no" /> 
   
   <!-- Production environment -->
-  <style>
-    /* @include server/public/build/42/app.css */
-  </style>
+  <link rel="stylesheet" href="build/42/app.css"> 
+  <script type="text/javascript" src="build/42/app.js"></script>
   <script type="text/javascript">
-    /* @include server/public/build/42/app.js */
-	
-	$.get('public/build/42/templates.html');
+	$.get('build/42/templates.html');
   </script>  
 
   <!-- #ifdef NOCONCAT -->

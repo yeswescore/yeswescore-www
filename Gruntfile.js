@@ -127,12 +127,7 @@ module.exports = function (grunt) {
         dest: [ 'server/public/build/'+version+'/app.css', 'server/public/build/'+version+'/app.js', 'server/public/build/'+version+'/index.html']
       }
     },
-    include: {
-      files: {
-        src: [ "server/public/index.html" ],
-        dest: [ "server/public/index.html" ]
-      }
-    },
+
     env: {
       web: {
         WEB:false,
@@ -153,6 +148,6 @@ module.exports = function (grunt) {
 
   // Default task(s).
   //, 'to-web'
-  grunt.registerTask('web', ['clean', 'env:web', 'template', 'concat', 'copy', 'ifdef', 'include']);
+  grunt.registerTask('web', ['clean', 'env:web', 'template', 'concat', 'copy', 'ifdef']);
 
 };
