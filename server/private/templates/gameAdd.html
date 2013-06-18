@@ -1,0 +1,77 @@
+<div class="gameAdd background"></div>
+<div class="gameAdd content-container">
+
+  <div id="gameAddForm" class="zone-list simple">
+	    <span class="success label label-info hide"></span>
+	
+      <div class="form-label" data-i18n="gameadd.player1"></div>
+
+		  <div class="ui-grid-b first-team me">
+			  <div class="ui-block-a">
+				  <input type="text" id="team1" name="team1" data-i18n="[placeholder]gameadd.player1_holder;" value="" data-autocomplete="autocompletePlayers" data-autocomplete-onselected="autocompleteTeam1" disabled/>
+			  </div>
+			  <div class="ui-block-b">
+				  <input type="text" id="rank1" name="rank1" data-i18n="[placeholder]gameadd.rank;" class='jq-ui-forms-white' value="" />
+			  </div>
+        <div class="ui-block-c" data-input-mode="hide">
+				  <span class="form-button other-team" data-i18n="gameadd.other"></span>
+			  </div>
+		  </div>
+		
+		  <div>				
+			  <ul id="team1_suggestions" data-role="listview" data-inset="true"></ul>
+			  <input type="hidden" id="team1_id" class="input" value="" /> 
+			  <span class="team1_error label label-info hide"></span>
+		  </div>
+	
+      <div class="form-label" data-i18n="gameadd.player2"></div>
+
+		  <div class="ui-grid-b">
+			  <div class="ui-block-a">
+				  <input type="text" id="team2" name="team2" data-i18n="[placeholder]gameadd.player2;" value="" data-autocomplete="autocompletePlayers" data-autocomplete-onselected="autocompleteTeam2"/>
+			  </div>
+			  <div class="ui-block-b">
+				  <input type="text" id="rank2" name="rank2" data-i18n="[placeholder]gameadd.rank;" value="" />
+			  </div>
+        <div class="ui-block-c">
+          <span class="form-button more-options" data-i18n="gameadd.plus"></span>
+        </div>
+		  </div>
+		
+        <div>
+          <ul id="team2_suggestions" data-role="listview" data-inset="true"></ul>
+          <input type="hidden" id="team2_id" class="input" value="" /> 
+          <span class="team2_error label label-info hide"></span>
+        </div>  
+    
+      <div class="additionnal-options">	
+
+        <div class="form-label" style="position:relative" data-i18n="gameadd.city"></div>
+        
+		    <div>
+			    <input type="text" id="city" name="city" data-i18n="[placeholder]gameadd.city;" value="" /> 
+			    <span class="city_error label label-info hide"></span>
+		    </div>
+        
+            <div id="inject-select"></div>
+		
+		    
+
+      </div>
+      
+        <div style="padding:20px"></div>
+        
+    </div>
+</div>
+
+<!--
+  LINKS TO COMMENTS
+-->
+<div class="button-form" data-input-mode="process">
+  <div class="background rounded"></div>
+  <div class="background trapeze"></div>
+  <div class="link-form"><div class="button" id="addGame" data-i18n="gameadd.submit"></div></div>
+</div>
+
+
+

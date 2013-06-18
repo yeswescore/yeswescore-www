@@ -1,0 +1,13 @@
+<div class="content-container">
+  <div class="account">
+    <a class="button" href="#games/me/<%= owner.id %>" data-i18n="account.mymatch" data-js-navigate></a>
+    <%
+     if( clubid === '' || clubid === undefined ) 
+       print ('<a class="button" href="" data-i18n="account.myclub" data-js-navigate="" disabled></a>'); 
+     else
+       print ('<a class="button" href="#clubs/'+clubid+'" data-i18n="account.myclub" data-js-navigate></a>'); 
+    %>
+    <a class="button" href="#players/form" data-i18n="account.myprofil" data-js-navigate></a>
+    <a class="button" href="#players/signin" data-i18n="account.connect" data-js-navigate></a>
+  </div>
+</div>

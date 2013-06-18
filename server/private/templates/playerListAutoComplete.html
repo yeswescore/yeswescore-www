@@ -1,0 +1,16 @@
+<% if(players.length==0) { %>
+<li class="player"><p><span data-i18n="message.noresultfor"></span><%= query %></p></li>
+<% } %> 
+<% for (var i = 0; i < players.length; i++) { player = players[i]; %>
+
+<li class="player" title="<% if (player!==undefined) print(player.id); %>">
+
+<input type="checkbox" name="team<%= select %>_choice" value="<% if (player!==undefined) print(player.id); %>" id="team<%= select %>_choice" class="custom" /> 
+<label for="team<%= select %>_name"><% if (player!==undefined) print(player.name); %></label> 
+<label for="team<%= select %>_rank"><% if (player!==undefined) print(player.rank); %></label> 
+<label for="team<%= select %>_club"><% if (player!==undefined) if (player.club!==undefined) print(player.club.name); %></label>
+
+</li>
+<% if (i>5) break; } if (players.length>5) { %>
+<li>... ( <%= players.length %> <span data-i18n="message.results"></span>)</li>
+<% } %>
