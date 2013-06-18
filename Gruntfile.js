@@ -88,7 +88,7 @@ module.exports = function (grunt) {
       },
       dist_html: {
         src: ['server/private/index.html'],
-        dest: 'server/public/index.html'
+        dest: 'server/public/build/'+version+'/index3.html'
       }
     },
     copy: {
@@ -129,8 +129,8 @@ module.exports = function (grunt) {
     },
     env_vars: {
       files: {
-        src: [ "server/public/index.html" ],
-        dest: [ "server/public/index.html" ]
+        src: [ 'server/public/build/'+version+'/index.html' ],
+        dest: [ 'server/public/build/'+version+'/index.html' ]
       }
     },
     env: {
@@ -151,5 +151,5 @@ module.exports = function (grunt) {
   */
 
   // Default task(s).
-  grunt.registerTask('web', ['clean', 'env:web', 'template', 'concat', 'copy', 'ifdef', 'env_vars'/*, 'to-web' */]);
+  grunt.registerTask('web', ['clean', 'env:web', 'template', 'concat', 'copy', 'ifdef', 'env_vars']);
 };
