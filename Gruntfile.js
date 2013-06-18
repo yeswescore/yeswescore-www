@@ -88,7 +88,7 @@ module.exports = function (grunt) {
       },
       dist_html: {
         src: ['server/private/index.html'],
-        dest: 'server/public/build/'+version+'/index3.html'
+        dest: 'server/public/build/'+version+'/index.html'
       }
     },
     copy: {
