@@ -2,6 +2,7 @@
   web fonts
   to be tested under Android/iOS.
 */
+/*
 @font-face {
 	font-family: 'Open Sans';
 	font-style: normal;
@@ -22,6 +23,7 @@
 	font-weight: 800;
 	src: url(../styles/webfonts/opensans-800.ttf) format('truetype'); 
 }
+*/
 /* 
  disabled: bug on WP8
  @see http://stackoverflow.com/questions/14575208/using-css-font-face-in-a-phonegap-windows-phone-8-app
