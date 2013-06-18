@@ -145,13 +145,14 @@ module.exports = function (grunt) {
     }
   });
 
-
+/*
   grunt.registerTask('to-web', function () {
     grunt.file.copy('dist/index.html', 'server/public/index.html');
   });
-  
+  */
 
   // Default task(s).
-  grunt.registerTask('web', ['clean', 'env:web', 'template', 'concat', 'copy', 'ifdef', 'include', 'to-web']);
+  //, 'to-web'
+  grunt.registerTask('web', ['clean', 'env:web', 'template', 'concat', 'copy', 'ifdef', 'include']);
 
 };
