@@ -127,12 +127,6 @@ module.exports = function (grunt) {
         dest: [ 'server/public/build/'+version+'/app.css', 'server/public/build/'+version+'/app.js', 'server/public/build/'+version+'/index.html']
       }
     },
-    include: {
-      files: {
-        src: [ "server/public/index.html" ],
-        dest: [ "server/public/index.html" ]
-      }
-    },
     env_vars: {
       files: {
         src: [ "server/public/index.html" ],
@@ -151,13 +145,12 @@ module.exports = function (grunt) {
     }
   });
 
-
+  /*
   grunt.registerTask('to-web', function () {
     grunt.file.copy('dist/index.html', 'server/public/index.html');
   });
-  
+  */
 
   // Default task(s).
-  grunt.registerTask('web', ['clean', 'env:web', 'template', 'concat', 'copy', 'ifdef', 'include', 'env_vars', 'to-web']);
-
+  grunt.registerTask('web', ['clean', 'env:web', 'template', 'concat', 'copy', 'ifdef', 'env_vars'/*, 'to-web' */]);
 };
