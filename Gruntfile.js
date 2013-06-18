@@ -140,7 +140,6 @@ module.exports = function (grunt) {
         NOCORDOVA: true,
         CORS: false,
         DEV:false, // cross domain
-        NOCONCAT: true
       }
     }
   });
