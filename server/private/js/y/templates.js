@@ -12,17 +12,7 @@
 
     // Load all the templates Async
     loadAsync: function (callback) {
-      // searching scripts nodes
-      var nodes = document.querySelectorAll("script[type=text\\/template]");
-      // foreach script node, get the html.
       var html = this.templates.HTML;
-      _(nodes).forEach(function (node) {
-        // save the template
-        var templateId = node.getAttribute('id');
-        html[templateId] = node.innerHTML;
-        // optim: remove the script from the dom.
-        node.parentNode.removeChild(node);
-      });
       /*#ifdef NOCONCAT*/
       if (true) {
         
@@ -59,11 +49,27 @@
         });
       } else {
       /*#endif*/
-
-        // production environment
-        // we have finished.
-        callback();
-
+        $.ajax('build/%%%@YESWESCORE_WWW_BUILD_VERSION%%%/templates.html',
+               { dataType: 'text',
+                 success: function (text) {
+                    // loading response as html.
+                    var div = document.createElement("div");
+                    div.innerHTML = text;
+                    // searching scripts nodes
+                    var nodes = div.querySelectorAll("script[type=text\\/template]");
+                    // foreach script node, get the html.
+                    _(nodes).forEach(function (node) {
+                      // save the template
+                      var templateId = node.getAttribute('id');
+                      html[templateId] = node.innerHTML;
+                    });
+                    
+                    // production environment
+                    // we have finished.
+                    callback();
+                 }
+               });
+        
       /*#ifdef NOCONCAT*/
       }
       /*#endif*/
