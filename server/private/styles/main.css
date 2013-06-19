@@ -539,7 +539,7 @@ body.inputmodeon .button-form[data-input-mode="process"] {
 .button-search {
 	width: 17px;
 	height: 17px;
-	background-image: url(../images/ico-magnifier-glass.jpg);
+	background-image: url(/images/ico-magnifier-glass.jpg);
 	background-size: 100%;
 	background-repeat: no-repeat;
 	cursor: pointer;
