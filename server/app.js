@@ -11,6 +11,13 @@ app.use(function (req, res, next) {
   next();
 });
 
+// we want the dynamic routes, ex: / to be executed 
+//  prior to static files.
+app.configure(function() {
+  app.use(app.router);
+  app.use(express.static(__dirname));
+});
+
 //
 var logsPath = Conf.get("www.logs.path");
 // definition of access, default & stats loggers.
@@ -58,6 +65,9 @@ var winstonStream = {
 app.use(express.logger({stream:winstonStream}));
 
 // static
+if (Conf.get("env") === "DEV") {
+  app.use(express.static(__dirname + '/private'));
+}
 app.use(express.static(__dirname + '/public'));
 
 module.exports = app;
