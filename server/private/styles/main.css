@@ -232,21 +232,6 @@ input:-ms-input-placeholder {
 }
 
 /**********************************************************
-	WP8 specifics.
-**********************************************************/
-@media screen and (orientation: portrait) {
-	@-ms-viewport {
-		width: 320px; /* should be device-width
-                         but there is a bug in ie10 (puts screen resolution, not css resolution)
-                         @see http://timkadlec.com/2013/01/windows-phone-8-and-device-width/
-                      */
-		user-zoom: fixed;
-		max-zoom: 1;
-		min-zoom: 1;
-	}
-}
-
-/**********************************************************
 	GENERAL UI ELEMENTS
 **********************************************************/
 html {
