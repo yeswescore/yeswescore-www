@@ -123,18 +123,19 @@ module.exports = function (grunt) {
     },
     ifdef: {
       files: {
-        src: [ 'server/public/build/index.html', 'server/public/build/'+version+'/app.js'],
-        dest: [ 'server/public/build/index.html', 'server/public/build/'+version+'/app.js']
+        src: [ 'server/public/build/index.html', 'server/public/build/'+version+'/app.js',  'server/public/build/'+version+'/app.css'],
+        dest: [ 'server/public/build/index.html', 'server/public/build/'+version+'/app.js',  'server/public/build/'+version+'/app.css']
       }
     },
     env_vars: {
       files: {
-        src: [ 'server/public/build/index.html', 'server/public/build/'+version+'/app.js' ],
-        dest: [ 'server/public/build/index.html', 'server/public/build/'+version+'/app.js' ]
+        src: [ 'server/public/build/index.html', 'server/public/build/'+version+'/app.js',  'server/public/build/'+version+'/app.css'],
+        dest: [ 'server/public/build/index.html', 'server/public/build/'+version+'/app.js', 'server/public/build/'+version+'/app.css']
       }
     },
     env: {
       web: {
+        COMPILED:true,
         WEB:false,
         CORDOVA: false,
         NOCORDOVA: true,
