@@ -10,6 +10,7 @@
 
     routes: {
       '': 'index',
+      'index.html': 'index',
       'index': 'index',
       'sort/:id': 'gameList',
       'search/form': 'searchForm',      
