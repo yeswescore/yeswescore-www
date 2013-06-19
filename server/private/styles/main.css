@@ -404,6 +404,15 @@ body.inputmodeon .button-form[data-input-mode="process"] {
 	top: 12px;
 	right: 13px;
 	cursor:pointer;
+	font-size: 14px;
+}
+
+@media screen and (max-width: 960px)  {
+  #header .connectionStatus {
+    right: 2px;
+    top: 7px;
+    font-size: 10px;
+  }
 }
 
 
