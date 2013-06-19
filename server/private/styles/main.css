@@ -34,7 +34,7 @@ update the app
   margin:0 auto;
 }
 
-@media screen and (max-width: 960px)  {
+@media screen and (max-width: 718px)  {
   .intro {
     width:100%;
   }
@@ -47,11 +47,14 @@ update the app
   color:white;
   font-family: 'Open Sans', sans-serif;
   font-weight: 800;
+  background-color: rgba(51, 51, 51, 0);
+  transition: padding .2s;
 }
 
-@media screen and (max-width: 960px)  {
+@media screen and (max-width: 718px)  {
   .intro .search {
     padding-top:10px;
+    background-color: rgba(51, 51, 51, 1);
   }
 }
 
@@ -117,7 +120,7 @@ update the app
    */
   position:fixed;
   width:200px;
-  height:18px;
+  height:16px; /* 18 - padding top */
   right:-91px;
   bottom:91px;
   background-color:#98012e;
@@ -126,6 +129,8 @@ update the app
   font-size:10px;
   font-weight:400;
   text-align:center;
+  
+  padding-top: 2px;
 
   /* the rotation is centered on the div */
   -webkit-transform: rotate(-90deg);
