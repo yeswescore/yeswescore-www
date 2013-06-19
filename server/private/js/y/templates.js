@@ -19,12 +19,10 @@
         // dev environment, loading template using $.get()
         // pas trouvé mieux pour l'instant...
         var templates = [
-          "account", 
           "clubAdd", "clubListAutoComplete", "club", "clubList","clubListSearch", 
-          "gameAdd", "gameComments","gameEnd", "gameListSearch", "gameList","gameSelect","gameInput",
-          "gameCommentsScore", "gameCommentsComment","gameScoreBoard", "game", "gameForm", "gameShortList",
+          "gameAdd", "gameListSearch", "gameList",
+          "gameCommentsComment", "game", "gameShortList",
           "index", "empty", "error","ongoing",
-          "searchForm",
           "player", "playerForget", "playerForm", "playerListAutoComplete", "playerList",
           "playerListSearch", "playerSignin",
         ];

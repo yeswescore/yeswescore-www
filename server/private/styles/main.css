@@ -466,6 +466,7 @@ body.inputmodeon .button-form[data-input-mode="process"] {
 	height: 43px;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
+	/*border : 1px solid blue;*/
 	background-color: #19171c;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
