@@ -30,11 +30,15 @@
         if (err)
           return callback(err);
         // une fois les clefs chargées, on appelle le bootstrap.
+        /*
         this.loadBootstrap(function (err) {
           if (err)
             return callback(err); // might be a "network error" or "deprecated"
           callback();
         });
+        */
+        callback();
+        
       }, this);
 
       // conf not loaded => we load temporary keys & permanent keys
@@ -152,38 +156,6 @@
     },
 
 
-    // FIXME: might be in an "app" class ?
-    loadBootstrap: function (callback) {
-      // on ecrase avec les changements et on change les versions
-      // variable qui oblige à mettre à jour -> objet connnection toujours offline
-      Backbone.ajax({
-        type: 'GET',
-        url: this.get('api.url.bootstrap').replace("%VERSION%", Y.App.VERSION),
-        success: function (infos) { 
-          var deprecated = false;
-          infos.forEach(function (info) {      
-            if (info.key.indexOf("app.deprecated") !== -1) {
-            	//console.log('on detecte app deprecated');
-            	if (info.value === true) {
-            		//console.log('Il faut mettre à jour l\'apps');
-                deprecated = true;
-            	}
-            } else {
-            	Y.Conf.set(info.key, info.value);  
-            }   	
-          });
-          if (deprecated)
-            return callback("deprecated"); // deprecated app is considered as an error.
-          return callback(); // everything was ok.
-        },
-        error: function (err) {
-          //console.log('err Connection', err);
-          //Y.Connection.setOffline(); // usefull ?
-          return callback("network error");
-        },
-        dataType: "JSON"
-      });
-    },
 
     // Read API
     // @param string/regExp key
