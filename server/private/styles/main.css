@@ -423,7 +423,7 @@ body.inputmodeon .button-form[data-input-mode="process"] {
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 	/*border : 1px solid blue;*/
-	background-color: #19171c;
+	background-color: #333333;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
@@ -436,7 +436,7 @@ body.inputmodeon .button-form[data-input-mode="process"] {
 	margin-left: -40px;
 	width: 85px;
 	height: 33px;
-	border-bottom: 33px solid #19171c;
+	border-bottom: 33px solid #333333;
 	border-left: 5px solid transparent;
 	border-right: 5px solid transparent;
 	-moz-box-sizing: border-box;
