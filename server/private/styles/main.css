@@ -90,6 +90,12 @@ update the app
   margin:0 auto;
 }
 
+@media screen and (max-width: 960px)  {
+  .intro {
+    width:100%;
+  }
+}
+
 .intro .search {
   padding-top:510px;
   text-align:center;
@@ -656,6 +662,12 @@ ul>li.player>a {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
+}
+
+@media screen and (max-width: 960px)  {
+  #content {
+    width:100%;
+  }
 }
 
 .content-container {
