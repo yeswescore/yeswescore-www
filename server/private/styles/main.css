@@ -1391,6 +1391,28 @@ ul>li.player>a {
 	margin-top: 5px;
 }
 
+/* clubList.html */
+#listClubsView .game-player {
+	font-family: Open Sans;
+	font-size: 14px;
+	line-height: 14px;
+	/* trunk text */
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+#listClubsView .infos {
+	font-family: Open Sans;
+	font-size: 14px;
+	line-height: 14px;
+	/* trunk text */
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	margin-top: 5px;
+}
+
 /* gameListViewTemplate.html */
 #listGamesView li {
 	height: 87px;
