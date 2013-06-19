@@ -40,6 +40,15 @@
     left:20px;
     color:white;
   }
+  
+	@media screen and (max-width: 960px)  {
+	  .header .title {
+	    font-size:46px;
+    	top:30px;
+    	left:20px;	    
+	  }
+	}  
+  
   .header .baseline {
     font-family:Helvetica, Arial, sans-serif;
     font-size:18px;
@@ -49,11 +58,26 @@
     left:160px;
     color:white;
   }
+  
+	@media screen and (max-width: 960px)  {
+	  .header .baseline {
+	    font-size:12px;
+    	top:80px;
+    	left:50px;
+	  }
+	}   
+  
   .content {
     width:800px;margin:auto;
     font:normal normal normal 12px/1.3em Helvetica, Arial, sans-serif;
     color:rgb(117, 112, 112);
   }
+  
+	@media screen and (max-width: 960px)  {
+	  .content {
+	    width:100%;
+	  }
+	}    
   
   h1,h2 {
     color:black;
@@ -64,6 +88,8 @@
     border-top:1px solid rgba(173, 173, 173, 0.470588);
     text-align:center;
   }
+  
+  
   
   .footer .mentions-legales {
     width:100%;
