@@ -240,7 +240,7 @@ html {
 
 body {
 	color: #000;
-	background-color: white;
+	background-color: #19171c;
 	margin: 0;
 	padding: 0;
 }
@@ -632,6 +632,7 @@ ul>li.player>a {
   box-sizing: border-box;
   height:100%;
   margin: 0 auto;
+  background-color:white;
 }
 
 #content>.background {
