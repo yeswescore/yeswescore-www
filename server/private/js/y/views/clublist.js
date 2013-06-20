@@ -2,7 +2,8 @@ Y.Views.ClubList = Y.View.extend({
   el : "#content",
 
   events : {
-    "keyup input#search-basic" : "search",
+    // "keyup input#search-basic" : "search", // FIXME: keypress ENTER.
+    "click .magnifier": "search",
     "click li": "chooseClub"
   },
 
@@ -61,19 +62,6 @@ Y.Views.ClubList = Y.View.extend({
     
     var that = this;
     this.clubs.setMode('search', q);
-    /*
-    this.clubs.fetch();
-    
-	try {
-	    $(this.listview).html(this.templates.clublist, {
-	      clubs : this.clubs.toJSON(),
-	      query : q
-	    });
-    }
-    catch(e) {
-
-    }*/
-    
 
     this.clubs.fetch().done($.proxy(function () {  
 

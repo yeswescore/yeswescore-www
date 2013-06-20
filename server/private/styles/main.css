@@ -1367,10 +1367,15 @@ ul>li.player>a {
   border: 1px solid #e9f1f3;
   width: 400px;
 }
+.content-container.clubs-list .search .bar input {
+  width: 100%;
+  padding-right:40px;
+}
 @media screen and (max-width: 420px)  {
   .content-container.clubs-list .search .bar {
     width:100%;
   }
+  
 }
 
 
