@@ -164,7 +164,7 @@ span.undoSelect {
 input.mylib-forms {
 	display: block;
 	padding: 2px;
-	border: solid 1px #ededed;
+	border: solid 0px #ededed;
 	outline: 0;
 	background: #ededed;
 	-webkit-border-radius: 10px;
@@ -1500,6 +1500,11 @@ ul>li.player>a {
 	line-height: 50px;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+}
+
+#search-basic {
+ border: 0px solid;
+ background-color:white;
 }
 
 /* account.html */
