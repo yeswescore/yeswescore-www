@@ -10,6 +10,9 @@
 
     routes: {
       '': 'index',
+      /*#ifndef WEB*/
+      'index.html': 'index',
+      /*#endif*/
       'index': 'index',
       'sort/:id': 'gameList',
       'search/form': 'searchForm',      
