@@ -10,7 +10,6 @@
 
     routes: {
       '': 'index',
-      'index.html': 'index',
       'index': 'index',
       'sort/:id': 'gameList',
       'search/form': 'searchForm',      
@@ -36,7 +35,7 @@
       'clubs/follow': 'clubFollow', 
       'clubs/list/:id': 'clubList',      
       'clubs/list': 'clubList',           
-      'clubs/:id/:game': 'clubGame',
+      'clubs/:id/game/:game': 'clubGame',
       'clubs/:id': 'club',
       'account': 'account'
     },
