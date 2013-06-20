@@ -80,25 +80,7 @@ Y.Views.Club = Y.View.extend({
       Y.Router.navigate("clubs/"+this.clubid+"/game/"+this.gameid, {trigger: true}); 
       
     }
-  },  
-
-  /*
-  renderComments : function() {
-    
-    if (this.gameid!=0) {
-    
-	  this.streamItemsCollection = new StreamsCollection([], {gameid : this.gameid});
-	  this.streamItemsCollection.on("sync", this.renderListComments, this);
-	
-	  // pool the collection regulary
-	  var pollingOptions = { delay: Y.Conf.get("game.refresh") };
-	  this.poller = Backbone.Poller.get(this.streamItemsCollection, pollingOptions);
-	  this.poller.start();
-	        
-    }
   },
-  */
-
  
   renderListGame : function() {
     var that = this;    
@@ -136,21 +118,19 @@ Y.Views.Club = Y.View.extend({
       $("#scoreBoard").html(this.templates.error({}));  
     }
     else {
-    
       var pollingOptions = { delay: Y.Conf.get("game.refresh") };
     
-	  this.game = new GameModel({id : this.gameid});
-	  this.game.on("sync", this.renderViewGame, this);
-	  this.poller = Backbone.Poller.get(this.game, pollingOptions);
-	  this.poller.start();
-	  //this.game.fetch();
-	  
-	  this.streamItemsCollection = new StreamsCollection([], {gameid : this.gameid});
-	  this.streamItemsCollection.on("sync", this.renderListComments, this); 
-	  //this.streamItemsCollection.fetch();
-	  this.poller2 = Backbone.Poller.get(this.streamItemsCollection, pollingOptions);
-	  this.poller2.start();	  
-	  
+      this.game = new GameModel({id : this.gameid});
+      this.game.once("sync", this.renderViewGame, this);
+      this.poller = Backbone.Poller.get(this.game, pollingOptions);
+      this.poller.start();
+      //this.game.fetch();
+      
+      this.streamItemsCollection = new StreamsCollection([], {gameid : this.gameid});
+      this.streamItemsCollection.on("sync", this.renderListComments, this); 
+      //this.streamItemsCollection.fetch();
+      this.poller2 = Backbone.Poller.get(this.streamItemsCollection, pollingOptions);
+      this.poller2.start();
 	        
     }
   },  
