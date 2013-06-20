@@ -1597,18 +1597,33 @@ ul>li.player>a {
 }
 
 .ltcol { 
-	float:left; 
-	width:220px; 
-	padding-left: 3px;
-	padding-right: 3px;
-	padding-top: 8px;	
+  float:left; 
+  width:260px; 
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 8px;	
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .game {
-	float:left; 
-	width:600px;
-	padding-left: 12px;
-	padding-right: 0px;
+  float:left; 
+  width:600px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.content-container.content-game {
+  background-color: #19171c;
+}
+.content-container.content-game .ltcol {
+  background-color: white;  
+}
+.content-container.content-game .game {
+  background-color: white;  
+  margin-left:20px;
 }
 
 
