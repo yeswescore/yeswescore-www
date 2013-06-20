@@ -67,7 +67,8 @@ app.use(express.logger({stream:winstonStream}));
 // static
 if (Conf.get("env") === "DEV") {
   app.use(express.static(__dirname + '/private'));
+} else {
+  app.use(express.static(__dirname + '/public'));
 }
-app.use(express.static(__dirname + '/public'));
 
 module.exports = app;
