@@ -87,6 +87,9 @@
 
                    // init router
                    that.Router.initialize();
+                    /*#ifdef DEV*/
+    				console.log('router initialized');
+    				/*#endif*/
                    
                    // load the templates.
                    that.Templates.loadAsync(function () {
@@ -103,7 +106,7 @@
                      /*#endif*/
                      // start dispatching routes
                      // @see http://backbonejs.org/#History-start
-                     Backbone.history.start({ pushState: true });
+                     Backbone.history.start();
                      // Everything is ok => updating networkg status
                      // FiXME: remplacer cet artefact de chargement par un splashscreen étendu.
                      //Y.Connection.resetStatus();

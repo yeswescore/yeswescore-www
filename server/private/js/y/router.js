@@ -35,7 +35,7 @@
       'clubs/follow': 'clubFollow', 
       'clubs/list/:id': 'clubList',      
       'clubs/list': 'clubList',           
-      'clubs/:id/game/:game': 'clubGame',
+      'clubs/:id/game/:gameid': 'clubGame',
       'clubs/:id': 'club',
       'account': 'account'
     },
@@ -64,11 +64,8 @@
       this.changePage(this.createViewFactory(Y.Views.Club, { id: id }));
     },
 
-    clubGame: function (id,game) {
-      console.log('id',id);
-      console.log('game',game);
-      
-      this.changePage(this.createViewFactory(Y.Views.Club, { id: id, game: game }));
+    clubGame: function (id,gameid) {
+      this.changePage(this.createViewFactory(Y.Views.Club, { id: id, gameid: gameid }));
     },
 
     clubAdd: function (id) {

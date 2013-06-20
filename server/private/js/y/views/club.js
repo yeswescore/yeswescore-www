@@ -10,7 +10,7 @@ Y.Views.Club = Y.View.extend({
   pageHash : "clubs/",
   gameid: 0,
   
-  initialize : function() {
+  initialize : function(param) {
   
 	//header    
   	Y.GUI.header.title(i18n.t('club.title'));  	
@@ -33,7 +33,17 @@ Y.Views.Club = Y.View.extend({
 	this.streamItemsCollection = null;
 	this.game = null;
 
-    this.club = new ClubModel({id : this.id});   
+	this.clubid = param.id;
+	
+	console.log('param',param);
+	
+	if (param.gameid!==undefined) {
+	  this.gameid = param.gameid;  	
+	}
+	else
+	  this.gameid=0;
+
+    this.club = new ClubModel({id : this.clubid});   
     this.club.once('sync', this.renderClub, this);      
     this.club.fetch();
     
@@ -57,12 +67,11 @@ Y.Views.Club = Y.View.extend({
     if (elmt.currentTarget.id) {
       this.gameid = elmt.currentTarget.id;
       
-      console.log(this.gameid);
-      this.renderGame();
+      //console.log(this.gameid);
+      //this.renderGame();
       
-      //this.renderComments();
-
-       
+      Y.Router.navigate("clubs/"+this.clubid+"/game/"+this.gameid, {trigger: true}); 
+      
     }
   },  
 
