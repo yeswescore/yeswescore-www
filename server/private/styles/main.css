@@ -28,9 +28,9 @@ update the app
   position:relative;
   width: 718px;
   height: 800px;
-  background-image: url('/%%%@ENV YESWESCORE_WWW_BUILD_VERSION%%%/images/intro.jpg');
+  background-image: url('/static/%%%@ENV YESWESCORE_WWW_BUILD_VERSION%%%/images/intro.jpg');
   /*#ifndef COMPILED*/
-  background-image: url('/images/intro.jpg');
+  background-image: url('/static/images/intro.jpg');
   /*#endif*/
   background-repeat:no-repeat;
   background-position:center center;
@@ -76,7 +76,7 @@ update the app
   height:25px;
   
   /*
-  background-image: url(/images/ico-magnifier-glass.jpg);
+  background-image: url(/static/images/ico-magnifier-glass.jpg);
   background-position: right center;
   background-repeat:no-repeat;
   background-size: 50%;
@@ -539,7 +539,7 @@ body.inputmodeon .button-form[data-input-mode="process"] {
 .button-search {
 	width: 17px;
 	height: 17px;
-	background-image: url(/images/ico-magnifier-glass.jpg);
+	background-image: url(/static/images/ico-magnifier-glass.jpg);
 	background-size: 100%;
 	background-repeat: no-repeat;
 	cursor: pointer;
@@ -1258,7 +1258,6 @@ ul>li.player>a {
 	font-family: 'Open Sans';
 	font-style: normal;
 	font-weight: 700;
-	src: url(../styles/webfonts/opensans-700.ttf) format('truetype');	
 }
 
 /* filter links */

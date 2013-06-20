@@ -1,7 +1,8 @@
 var express = require("express")
   , app = express()
   , Conf    = require('../../yeswescore-server/server/conf.js')
-  , winston = require("winston");
+  , winston = require("winston")
+  , ejs = require('ejs');
   
 app.use(express.compress());
 // security
@@ -11,12 +12,11 @@ app.use(function (req, res, next) {
   next();
 });
 
-// we want the dynamic routes, ex: / to be executed 
-//  prior to static files.
+// using ejs
 app.configure(function() {
-  app.use(app.router);
-  app.use(express.static(__dirname));
+    app.set('views', __dirname + '/public');
 });
+app.engine('html', ejs.renderFile);
 
 //
 var logsPath = Conf.get("www.logs.path");
@@ -66,9 +66,8 @@ app.use(express.logger({stream:winstonStream}));
 
 // static
 if (Conf.get("env") === "DEV") {
-  app.use(express.static(__dirname + '/private'));
-} else {
-  app.use(express.static(__dirname + '/public'));
+  app.use('/static', express.static(__dirname + '/private'));
 }
+app.use('/static', express.static(__dirname + '/public'));
 
 module.exports = app;

@@ -71,13 +71,7 @@
                  // internationalization.
                  var i18nOptions = { lng: "fr-FR", fallbackLng: "fr" };
                  that.i18nOptions = i18nOptions;
-                 /*#ifndef WP8*/
-                 if (false) {
-                 /*#endif*/
-                   i18nOptions.resGetPath = '/www/locales/__lng__/translation.json';
-                 /*#ifndef WP8*/
-                 }
-                 /*#endif*/
+                 i18nOptions.resGetPath = '/static/locales/__lng__/translation.json';
                  i18n.init(i18nOptions, function() {
                    // FIXME: error handling; rework the loading process.
                    //  if err is "deprecated" => we stop loading.

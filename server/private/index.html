@@ -8,65 +8,67 @@
   <!-- @see http://stackoverflow.com/questions/13529777/ie10-gray-square-on-click-in-windows-8 -->
   <meta name="msapplication-tap-highlight" content="no" /> 
   
+  <!-- AHAH : <%= foo %> -->
+  
   <!-- Production environment -->
-  <link rel="stylesheet" href="%%%@ENV YESWESCORE_WWW_BUILD_VERSION%%%/app.css"/> 
-  <script type="text/javascript" src="%%%@ENV YESWESCORE_WWW_BUILD_VERSION%%%/app.js"></script>
+  <link rel="stylesheet" href="/static/%%%@ENV YESWESCORE_WWW_BUILD_VERSION%%%/app.css"/> 
+  <script type="text/javascript" src="/static/%%%@ENV YESWESCORE_WWW_BUILD_VERSION%%%/app.js"></script>
 
   <!-- #ifdef NOCONCAT -->
   <!-- Third party css -->
   <!-- our css -->
-  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="/static/styles/main.css">
   <!-- 3rd party libraries & configuration -->
-  <script type="text/javascript" src="js/vendor/jquery/jquery-1.9.1.min.js"></script>
-  <script type="text/javascript" src="js/vendor/jquery/i18next-1.6.0.min.js"></script>  
-  <script type="text/javascript" src="js/vendor/lodash/lodash.min.js"></script>
-  <script type="text/javascript" src="js/vendor/backbone/backbone.js"></script>
-  <script type="text/javascript" src="js/vendor/backbone/backbone.touch.js"></script>
-  <script type="text/javascript" src="js/vendor/backbone/backbone.poller.min.js"></script>
-  <script type="text/javascript" src="js/vendor/date_iso8601_polyfill.js"></script>  
+  <script type="text/javascript" src="/static/js/vendor/jquery/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="/static/js/vendor/jquery/i18next-1.6.0.min.js"></script>  
+  <script type="text/javascript" src="/static/js/vendor/lodash/lodash.min.js"></script>
+  <script type="text/javascript" src="/static/js/vendor/backbone/backbone.js"></script>
+  <script type="text/javascript" src="/static/js/vendor/backbone/backbone.touch.js"></script>
+  <script type="text/javascript" src="/static/js/vendor/backbone/backbone.poller.min.js"></script>
+  <script type="text/javascript" src="/static/js/vendor/date_iso8601_polyfill.js"></script>  
 
   <!-- our libs -->
-  <script type="text/javascript" src="js/mylib/helpers.js"></script>
+  <script type="text/javascript" src="/static/js/mylib/helpers.js"></script>
 
   <!-- our code -->
-  <script type="text/javascript" src="js/y/y.js"></script>
-  <script type="text/javascript" src="js/y/app.js"></script>
-  <script type="text/javascript" src="js/y/db.js"></script>
-  <script type="text/javascript" src="js/y/conf.js"></script>
-  <script type="text/javascript" src="js/y/autocomplete.js"></script>
-  <script type="text/javascript" src="js/y/gui.js"></script>
-  <script type="text/javascript" src="js/y/router.js"></script>
-  <script type="text/javascript" src="js/y/templates.js"></script>
-  <script type="text/javascript" src="js/y/user.js"></script>
-  <script type="text/javascript" src="js/y/view.js"></script>
+  <script type="text/javascript" src="/static/js/y/y.js"></script>
+  <script type="text/javascript" src="/static/js/y/app.js"></script>
+  <script type="text/javascript" src="/static/js/y/db.js"></script>
+  <script type="text/javascript" src="/static/js/y/conf.js"></script>
+  <script type="text/javascript" src="/static/js/y/autocomplete.js"></script>
+  <script type="text/javascript" src="/static/js/y/gui.js"></script>
+  <script type="text/javascript" src="/static/js/y/router.js"></script>
+  <script type="text/javascript" src="/static/js/y/templates.js"></script>
+  <script type="text/javascript" src="/static/js/y/user.js"></script>
+  <script type="text/javascript" src="/static/js/y/view.js"></script>
   <!-- Core -->
-  <script type="text/javascript" src="js/y/models/game.js"></script>
-  <script type="text/javascript" src="js/y/models/stream.js"></script>
-  <script type="text/javascript" src="js/y/models/player.js"></script>
-  <script type="text/javascript" src="js/y/models/club.js"></script>
-  <script type="text/javascript" src="js/y/collections/games.js"></script>
-  <script type="text/javascript" src="js/y/collections/players.js"></script> 
-  <script type="text/javascript" src="js/y/collections/clubs.js"></script>
-  <script type="text/javascript" src="js/y/collections/streams.js"></script>  
+  <script type="text/javascript" src="/static/js/y/models/game.js"></script>
+  <script type="text/javascript" src="/static/js/y/models/stream.js"></script>
+  <script type="text/javascript" src="/static/js/y/models/player.js"></script>
+  <script type="text/javascript" src="/static/js/y/models/club.js"></script>
+  <script type="text/javascript" src="/static/js/y/collections/games.js"></script>
+  <script type="text/javascript" src="/static/js/y/collections/players.js"></script> 
+  <script type="text/javascript" src="/static/js/y/collections/clubs.js"></script>
+  <script type="text/javascript" src="/static/js/y/collections/streams.js"></script>  
   <!-- Views -->
-  <script type="text/javascript" src="js/y/views/autocomplete.js"></script>
-  <script type="text/javascript" src="js/y/views/club.js"></script>
-  <script type="text/javascript" src="js/y/views/clubadd.js"></script>
-  <script type="text/javascript" src="js/y/views/clublist.js"></script> 
-  <script type="text/javascript" src="js/y/views/header.js"></script>
-  <script type="text/javascript" src="js/y/views/index.js"></script>
-  <script type="text/javascript" src="js/y/views/navbar.js"></script>
-  <script type="text/javascript" src="js/y/views/player.js"></script>
-  <script type="text/javascript" src="js/y/views/playerform.js"></script>
-  <script type="text/javascript" src="js/y/views/playersignin.js"></script>
-  <script type="text/javascript" src="js/y/views/playerforget.js"></script>
-  <script type="text/javascript" src="js/y/views/index.js"></script> 
+  <script type="text/javascript" src="/static/js/y/views/autocomplete.js"></script>
+  <script type="text/javascript" src="/static/js/y/views/club.js"></script>
+  <script type="text/javascript" src="/static/js/y/views/clubadd.js"></script>
+  <script type="text/javascript" src="/static/js/y/views/clublist.js"></script> 
+  <script type="text/javascript" src="/static/js/y/views/header.js"></script>
+  <script type="text/javascript" src="/static/js/y/views/index.js"></script>
+  <script type="text/javascript" src="/static/js/y/views/navbar.js"></script>
+  <script type="text/javascript" src="/static/js/y/views/player.js"></script>
+  <script type="text/javascript" src="/static/js/y/views/playerform.js"></script>
+  <script type="text/javascript" src="/static/js/y/views/playersignin.js"></script>
+  <script type="text/javascript" src="/static/js/y/views/playerforget.js"></script>
+  <script type="text/javascript" src="/static/js/y/views/index.js"></script> 
   
   <!-- overwrite Y.env -->
-  <script type="text/javascript" src="js/y/env.js"></script>
+  <script type="text/javascript" src="/static/js/y/env.js"></script>
 
   <!-- start the app ! -->
-  <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/javascript" src="/static/js/main.js"></script>
   
   <!-- #endif -->
   
@@ -118,7 +120,7 @@
     </div>
   </div>  
       
-  <div class="footer">&nbsp;@ 2013 zeNodus SAS - <a href="/faq.html">faq</a> - <a href="/contact.html">contact</a></div>
+  <div class="footer">&nbsp;@ 2013 zeNodus SAS - <a href="faq.html">faq</a> - <a href="contact.html">contact</a></div>
   
 </body>
 </html>
