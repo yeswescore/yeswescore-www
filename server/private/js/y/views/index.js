@@ -12,39 +12,9 @@ Y.Views.Index = Y.View.extend({
   myinitialize: function () {
     Y.GUI.header.title(i18n.t('index.title'));
 
-    var that = this;
-    //
     this.indexViewTemplate = Y.Templates.get('index');
     
     Y.GUI.header.hide();
-    //Y.GUI.navbar.hide();
-
-	/*
-    var playerDeferred = $.Deferred();
-    this.$el.html("please wait, loading player");
-    Y.User.getPlayerAsync(function (err, player) {
-      if (err) {
-        // no player => creating player.
-     
-        // creating the player.
-        Y.User.createPlayerAsync(function (err, player) {
-          // FIXME: err, reject deferred
-      
-          playerDeferred.resolve();
-        });
-        return;
-      }
-      playerDeferred.resolve();
-    });
-
-    // FIXME: handling error with deferreds
-    $.when(
-      playerDeferred
-    ).done(function () {
-      that.render();
-
-    });
-    */
     
     this.render();
     
