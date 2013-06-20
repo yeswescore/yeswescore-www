@@ -66,7 +66,7 @@ update the app
   font-size: 20px;
 }
 
-.intro .search .bar {
+.search .bar {
   display:inline-block;
   position:relative;
   background-color:white;
@@ -83,13 +83,13 @@ update the app
   */
 }
 
-.intro .search .bar input {
+.search .bar input {
   position:absolute;
   margin-top:3px;
   margin-left:5px;
   width:190px;
 }
-.intro .search .bar .magnifier {
+.search .bar .magnifier {
  position:absolute;
  right:0px;
  width:30px;
@@ -1359,6 +1359,22 @@ ul>li.player>a {
 	margin-top: 5px;
 }
 
+.content-container.clubs-list .search {
+  margin-top:15px;
+  margin-bottom:15px;
+}
+.content-container.clubs-list .search .bar {
+  border: 1px solid #e9f1f3;
+  width: 400px;
+}
+@media screen and (max-width: 420px)  {
+  .content-container.clubs-list .search .bar {
+    width:100%;
+  }
+}
+
+
+
 /* gameListViewTemplate.html */
 #listGamesView li {
 	height: 87px;
@@ -1601,8 +1617,6 @@ ul>li.player>a {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
-	height:600px;
-	overflow-y : scroll;
 }
 
 .clear {
