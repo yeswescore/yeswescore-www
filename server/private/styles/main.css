@@ -1640,7 +1640,7 @@ ul>li.player>a {
 }
 
 .game .infobar {
-	height: 53px;
+	height: 42px;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
@@ -1669,7 +1669,7 @@ ul>li.player>a {
 	text-align: center;
 	font-size: 10px;
 	font-family: Open Sans;
-	height: 28px;
+	height: 17px;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
