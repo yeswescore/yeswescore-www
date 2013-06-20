@@ -22,6 +22,7 @@ Y.Views.Club = Y.View.extend({
       game: Y.Templates.get('game'),  
       listmatch: Y.Templates.get('gameShortList'),           
       club:  Y.Templates.get('club'),
+      clubempty:  Y.Templates.get('clubEmpty'),
       comment: Y.Templates.get('gameCommentsComment'),
       error: Y.Templates.get('error'),
       ongoing: Y.Templates.get('ongoing')      
@@ -33,19 +34,25 @@ Y.Views.Club = Y.View.extend({
 	this.streamItemsCollection = null;
 	this.game = null;
 
-	this.clubid = param.id;
 	
-	console.log('param',param);
 	
 	if (param.gameid!==undefined) {
 	  this.gameid = param.gameid;  	
 	}
 	else
 	  this.gameid=0;
-
-    this.club = new ClubModel({id : this.clubid});   
-    this.club.once('sync', this.renderClub, this);      
-    this.club.fetch();
+	  
+	  
+	if (param.id!==undefined) {  
+	  this.clubid = param.id;  
+	  this.club = new ClubModel({id : this.clubid});   
+	  this.club.once('sync', this.renderClub, this);      
+	  this.club.fetch();
+    }
+    else {
+      this.clubid = 0;
+      this.renderNoClub();
+    }
     
     this.follow = 'false';    
     
@@ -268,6 +275,20 @@ Y.Views.Club = Y.View.extend({
     }  
     
   }, 
+  
+  renderNoClub : function() {
+
+  	/* On affiche les infos du club*/
+    this.$el.html(this.templates.clubempty({}));
+
+	$('.ltcol').hide();	
+
+	this.renderGame();
+	
+	this.$el.i18n();    
+
+    return this;
+  },  
  
   // render the content into div of view
   renderClub : function() {

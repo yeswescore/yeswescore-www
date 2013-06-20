@@ -21,7 +21,7 @@
       'games/club/:id': 'gameClub',
       'games/list': 'gameList',  
       'games/:id/comments/': 'gameComment', 
-      'games/:id': 'game', 
+      'games/:gameid': 'game', 
       'games/': 'gameList',        
       'players/list': 'playerList',
       'players/club/:id': 'playerListByClub',
@@ -85,9 +85,9 @@
       this.changePage(this.createViewFactory(Y.Views.Index, { sort: id }));
     },
 
-    game: function (id) {
-      this.changePage(this.createViewFactory(Y.Views.Game, { id: id }));
-    },
+    game: function (gameid) {
+      this.changePage(this.createViewFactory(Y.Views.Club, { gameid: gameid }));
+    },    
 
     gameList: function (sort) {
       if (typeof sort === "undefined") sort='';
