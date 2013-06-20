@@ -1791,9 +1791,6 @@ ul>li.player>a {
 
 .scoreBoard {
 	background-color: #45b1db;
-	border-left: 1px solid #a3d7ed;
-	border-right: 1px solid #d0ebf6;
-	border-bottom: 1px solid #d0ebf6;
 	padding-left: 15px;
 	padding-top: 10px;
 	padding-right: 15px;
@@ -2055,6 +2052,7 @@ ul>li.player>a {
 	font-size: 14px;
 	font-weight: 800;
 	color: #fff;
+  margin-bottom:10px;
 }
 
 .list-comment {
