@@ -22,7 +22,7 @@
       'games/club/:id': 'gameClub',
       'games/list': 'gameList',  
       'games/:id/comments/': 'gameComment', 
-      'games/:id': 'game', 
+      'games/:gameid': 'game', 
       'games/': 'gameList',        
       'players/list': 'playerList',
       'players/club/:id': 'playerListByClub',
@@ -36,7 +36,7 @@
       'clubs/follow': 'clubFollow', 
       'clubs/list/:id': 'clubList',      
       'clubs/list': 'clubList',           
-      'clubs/:id/:game': 'clubGame',
+      'clubs/:id/game/:gameid': 'clubGame',
       'clubs/:id': 'club',
       'account': 'account'
     },
@@ -65,11 +65,8 @@
       this.changePage(this.createViewFactory(Y.Views.Club, { id: id }));
     },
 
-    clubGame: function (id,game) {
-      console.log('id',id);
-      console.log('game',game);
-      
-      this.changePage(this.createViewFactory(Y.Views.Club, { id: id, game: game }));
+    clubGame: function (id,gameid) {
+      this.changePage(this.createViewFactory(Y.Views.Club, { id: id, gameid: gameid }));
     },
 
     clubAdd: function (id) {
@@ -89,9 +86,9 @@
       this.changePage(this.createViewFactory(Y.Views.Index, { sort: id }));
     },
 
-    game: function (id) {
-      this.changePage(this.createViewFactory(Y.Views.Game, { id: id }));
-    },
+    game: function (gameid) {
+      this.changePage(this.createViewFactory(Y.Views.Club, { gameid: gameid }));
+    },    
 
     gameList: function (sort) {
       if (typeof sort === "undefined") sort='';

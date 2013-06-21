@@ -91,24 +91,6 @@ module.exports = function (grunt) {
         dest: 'server/public/build/index.html'
       }
     },
-    copy: {
-      images: {
-        files: [
-          { expand: true, flatten: true, src: ['server/private/images/*'], dest: 'server/public/images/', filter: 'isFile' }
-        ]
-      },
-      locales: {
-        files: [
-          { expand: true, flatten: true, src: ['server/private/locales/fr-FR/*'], dest: 'server/public/locales/fr-FR/', filter: 'isFile' },
-          { expand: true, flatten: true, src: ['server/private/locales/fr/*'], dest: 'server/public/locales/fr/', filter: 'isFile' }
-        ]
-      },	  
-      fonts: {
-        files: [
-          { expand: true, flatten: true, src: ['server/private/styles/webfonts/*'], dest: 'server/public/styles/webfonts/', filter: 'isFile' }
-        ]
-      }
-    },
     uglify: {
       build: {
         src: 'server/public/build/'+version+'/app.js',
@@ -123,18 +105,19 @@ module.exports = function (grunt) {
     },
     ifdef: {
       files: {
-        src: [ 'server/public/build/index.html', 'server/public/build/'+version+'/app.js'],
-        dest: [ 'server/public/build/index.html', 'server/public/build/'+version+'/app.js']
+        src: [ 'server/public/build/index.html', 'server/public/build/'+version+'/app.js',  'server/public/build/'+version+'/app.css'],
+        dest: [ 'server/public/build/index.html', 'server/public/build/'+version+'/app.js',  'server/public/build/'+version+'/app.css']
       }
     },
     env_vars: {
       files: {
-        src: [ 'server/public/build/index.html', 'server/public/build/'+version+'/app.js' ],
-        dest: [ 'server/public/build/index.html', 'server/public/build/'+version+'/app.js' ]
+        src: [ 'server/public/build/index.html', 'server/public/build/'+version+'/app.js',  'server/public/build/'+version+'/app.css'],
+        dest: [ 'server/public/build/index.html', 'server/public/build/'+version+'/app.js', 'server/public/build/'+version+'/app.css']
       }
     },
     env: {
       web: {
+        COMPILED:true,
         WEB:false,
         CORDOVA: false,
         NOCORDOVA: true,
@@ -151,5 +134,5 @@ module.exports = function (grunt) {
   
 
   // Default task(s).
-  grunt.registerTask('web', ['clean', 'env:web', 'template', 'concat', 'copy', 'ifdef', 'env_vars','to-page-css']);
+  grunt.registerTask('web', ['clean', 'env:web', 'template', 'concat', 'ifdef', 'env_vars','to-page-css']);
 };

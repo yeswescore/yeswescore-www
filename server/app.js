@@ -1,7 +1,8 @@
 var express = require("express")
   , app = express()
   , Conf    = require('../../yeswescore-server/server/conf.js')
-  , winston = require("winston");
+  , winston = require("winston")
+  , ejs = require('ejs');
   
 app.use(express.compress());
 // security
@@ -10,6 +11,12 @@ app.use(function (req, res, next) {
   res.setHeader('X-Powered-By', 'PHP/5.2.4-2freebsd'); // fake headers, but shouldn't be the same in dev & prod.
   next();
 });
+
+// using ejs
+app.configure(function() {
+    app.set('views', __dirname + '/public');
+});
+app.engine('html', ejs.renderFile);
 
 //
 var logsPath = Conf.get("www.logs.path");
@@ -58,6 +65,9 @@ var winstonStream = {
 app.use(express.logger({stream:winstonStream}));
 
 // static
-app.use(express.static(__dirname + '/public'));
+if (Conf.get("env") === "DEV") {
+  app.use('/static', express.static(__dirname + '/private'));
+}
+app.use('/static', express.static(__dirname + '/public'));
 
 module.exports = app;

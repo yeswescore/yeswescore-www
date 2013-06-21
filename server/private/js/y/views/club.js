@@ -10,7 +10,7 @@ Y.Views.Club = Y.View.extend({
   pageHash : "clubs/",
   gameid: 0,
   
-  initialize : function() {
+  initialize : function(param) {
   
 	//header    
   	Y.GUI.header.title(i18n.t('club.title'));  	
@@ -22,6 +22,7 @@ Y.Views.Club = Y.View.extend({
       game: Y.Templates.get('game'),  
       listmatch: Y.Templates.get('gameShortList'),           
       club:  Y.Templates.get('club'),
+      clubempty:  Y.Templates.get('clubEmpty'),
       comment: Y.Templates.get('gameCommentsComment'),
       error: Y.Templates.get('error'),
       ongoing: Y.Templates.get('ongoing')      
@@ -33,9 +34,25 @@ Y.Views.Club = Y.View.extend({
 	this.streamItemsCollection = null;
 	this.game = null;
 
-    this.club = new ClubModel({id : this.id});   
-    this.club.once('sync', this.renderClub, this);      
-    this.club.fetch();
+	
+	
+	if (param.gameid!==undefined) {
+	  this.gameid = param.gameid;  	
+	}
+	else
+	  this.gameid=0;
+	  
+	  
+	if (param.id!==undefined) {  
+	  this.clubid = param.id;  
+	  this.club = new ClubModel({id : this.clubid});   
+	  this.club.once('sync', this.renderClub, this);      
+	  this.club.fetch();
+    }
+    else {
+      this.clubid = 0;
+      this.renderNoClub();
+    }
     
     this.follow = 'false';    
     
@@ -57,32 +74,13 @@ Y.Views.Club = Y.View.extend({
     if (elmt.currentTarget.id) {
       this.gameid = elmt.currentTarget.id;
       
-      console.log(this.gameid);
-      this.renderGame();
+      //console.log(this.gameid);
+      //this.renderGame();
       
-      //this.renderComments();
-
-       
-    }
-  },  
-
-  /*
-  renderComments : function() {
-    
-    if (this.gameid!=0) {
-    
-	  this.streamItemsCollection = new StreamsCollection([], {gameid : this.gameid});
-	  this.streamItemsCollection.on("sync", this.renderListComments, this);
-	
-	  // pool the collection regulary
-	  var pollingOptions = { delay: Y.Conf.get("game.refresh") };
-	  this.poller = Backbone.Poller.get(this.streamItemsCollection, pollingOptions);
-	  this.poller.start();
-	        
+      Y.Router.navigate("clubs/"+this.clubid+"/game/"+this.gameid, {trigger: true}); 
+      
     }
   },
-  */
-
  
   renderListGame : function() {
     var that = this;    
@@ -120,21 +118,19 @@ Y.Views.Club = Y.View.extend({
       $("#scoreBoard").html(this.templates.error({}));  
     }
     else {
-    
       var pollingOptions = { delay: Y.Conf.get("game.refresh") };
     
-	  this.game = new GameModel({id : this.gameid});
-	  this.game.on("sync", this.renderViewGame, this);
-	  this.poller = Backbone.Poller.get(this.game, pollingOptions);
-	  this.poller.start();
-	  //this.game.fetch();
-	  
-	  this.streamItemsCollection = new StreamsCollection([], {gameid : this.gameid});
-	  this.streamItemsCollection.on("sync", this.renderListComments, this); 
-	  //this.streamItemsCollection.fetch();
-	  this.poller2 = Backbone.Poller.get(this.streamItemsCollection, pollingOptions);
-	  this.poller2.start();	  
-	  
+      this.game = new GameModel({id : this.gameid});
+      this.game.once("sync", this.renderViewGame, this);
+      this.poller = Backbone.Poller.get(this.game, pollingOptions);
+      this.poller.start();
+      //this.game.fetch();
+      
+      this.streamItemsCollection = new StreamsCollection([], {gameid : this.gameid});
+      this.streamItemsCollection.on("sync", this.renderListComments, this); 
+      //this.streamItemsCollection.fetch();
+      this.poller2 = Backbone.Poller.get(this.streamItemsCollection, pollingOptions);
+      this.poller2.start();
 	        
     }
   },  
@@ -259,6 +255,20 @@ Y.Views.Club = Y.View.extend({
     }  
     
   }, 
+  
+  renderNoClub : function() {
+
+  	/* On affiche les infos du club*/
+    this.$el.html(this.templates.clubempty({}));
+
+	$('.ltcol').hide();	
+
+	this.renderGame();
+	
+	this.$el.i18n();    
+
+    return this;
+  },  
  
   // render the content into div of view
   renderClub : function() {

@@ -71,13 +71,7 @@
                  // internationalization.
                  var i18nOptions = { lng: "fr-FR", fallbackLng: "fr" };
                  that.i18nOptions = i18nOptions;
-                 /*#ifndef WP8*/
-                 if (false) {
-                 /*#endif*/
-                   i18nOptions.resGetPath = '/www/locales/__lng__/translation.json';
-                 /*#ifndef WP8*/
-                 }
-                 /*#endif*/
+                 i18nOptions.resGetPath = '/static/locales/__lng__/translation.json';
                  i18n.init(i18nOptions, function() {
                    // FIXME: error handling; rework the loading process.
                    //  if err is "deprecated" => we stop loading.
@@ -88,8 +82,8 @@
                    // init router
                    that.Router.initialize();
                     /*#ifdef DEV*/
-    				console.log('router initialized');
-    				/*#endif*/
+                    console.log('router initialized');
+                    /*#endif*/
                    
                    // load the templates.
                    that.Templates.loadAsync(function () {
@@ -106,7 +100,7 @@
                      /*#endif*/
                      // start dispatching routes
                      // @see http://backbonejs.org/#History-start
-                     Backbone.history.start();
+                     Backbone.history.start({pushState:true});
                      // Everything is ok => updating networkg status
                      // FiXME: remplacer cet artefact de chargement par un splashscreen étendu.
                      //Y.Connection.resetStatus();

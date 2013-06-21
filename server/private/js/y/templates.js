@@ -19,7 +19,7 @@
         // dev environment, loading template using $.get()
         // pas trouvé mieux pour l'instant...
         var templates = [
-          "clubAdd", "clubListAutoComplete", "club", "clubList","clubListSearch", 
+          "clubAdd", "clubListAutoComplete", "club", "clubEmpty", "clubList","clubListSearch", 
           "gameAdd", "gameListSearch", "gameList",
           "gameCommentsComment", "game", "gameShortList",
           "index", "empty", "error","ongoing",
@@ -35,7 +35,7 @@
         }, 2000);
         var i = 0;
         templates.forEach(function (template) {
-          $.get("templates/"+template+".html", function (text) {
+          $.get("/static/templates/"+template+".html", function (text) {
             html[template] = text;
             i++;
             if (i == templates.length)
@@ -47,7 +47,7 @@
         });
       } else {
       /*#endif*/
-        $.ajax('%%%@ENV YESWESCORE_WWW_BUILD_VERSION%%%/templates.html',
+        $.ajax('/static/%%%@ENV YESWESCORE_WWW_BUILD_VERSION%%%/templates.html',
                { dataType: 'text',
                  success: function (text) {
                     // loading response as html.

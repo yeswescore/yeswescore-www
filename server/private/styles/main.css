@@ -1,59 +1,3 @@
-/*
-  web fonts
-  to be tested under Android/iOS.
-*/
-/*
-@font-face {
-	font-family: 'Open Sans';
-	font-style: normal;
-	font-weight: 400;
-	src: url(../styles/webfonts/opensans-400.ttf) format('truetype'); 
-}
-
-@font-face {
-	font-family: 'Open Sans';
-	font-style: normal;
-	font-weight: 700;
-	src: url(../styles/webfonts/opensans-700.ttf) format('truetype');
-}
-
-@font-face {
-	font-family: 'Open Sans';
-	font-style: normal;
-	font-weight: 800;
-	src: url(../styles/webfonts/opensans-800.ttf) format('truetype'); 
-}
-*/
-/* 
- disabled: bug on WP8
- @see http://stackoverflow.com/questions/14575208/using-css-font-face-in-a-phonegap-windows-phone-8-app
- maybe bug on android / iOS.
-@font-face {
-  font-family: 'Sosa';
-  font-style: normal;
-  font-weight: normal;
-  src: url(/styles/webfonts/sosa-regular.woff) format('woff');
-}
-*/
-
-/*******************
-no connection
-******************/
-.offline {
-	position:absolute;
-  top: 0px;
-	left:0px;
-	height:100%;
-	width:100%;
-	background-color:#a0a0a0;
-	-moz-opacity:0.38;
-	opacity:0.38;
-	filter:alpha(opacity=38);
-	z-index: 20000;
-	pointer-events: none;
-  cursor: default;
-}
-
 /*******************
 update the app
 ******************/
@@ -84,13 +28,16 @@ update the app
   position:relative;
   width: 718px;
   height: 800px;
-  background-image: url(../images/intro.jpg);
+  background-image: url('/static/%%%@ENV YESWESCORE_WWW_BUILD_VERSION%%%/images/intro.jpg');
+  /*#ifndef COMPILED*/
+  background-image: url('/static/images/intro.jpg');
+  /*#endif*/
   background-repeat:no-repeat;
   background-position:center center;
   margin:0 auto;
 }
 
-@media screen and (max-width: 960px)  {
+@media screen and (max-width: 718px)  {
   .intro {
     width:100%;
   }
@@ -103,11 +50,14 @@ update the app
   color:white;
   font-family: 'Open Sans', sans-serif;
   font-weight: 800;
+  background-color: rgba(51, 51, 51, 0);
+  transition: padding .2s;
 }
 
-@media screen and (max-width: 960px)  {
+@media screen and (max-width: 718px)  {
   .intro .search {
     padding-top:10px;
+    background-color: rgba(51, 51, 51, 1);
   }
 }
 
@@ -116,7 +66,7 @@ update the app
   font-size: 20px;
 }
 
-.intro .search .bar {
+.search .bar {
   display:inline-block;
   position:relative;
   background-color:white;
@@ -126,20 +76,20 @@ update the app
   height:25px;
   
   /*
-  background-image: url(/images/ico-magnifier-glass.jpg);
+  background-image: url(/static/images/ico-magnifier-glass.jpg);
   background-position: right center;
   background-repeat:no-repeat;
   background-size: 50%;
   */
 }
 
-.intro .search .bar input {
+.search .bar input {
   position:absolute;
   margin-top:3px;
   margin-left:5px;
   width:190px;
 }
-.intro .search .bar .magnifier {
+.search .bar .magnifier {
  position:absolute;
  right:0px;
  width:30px;
@@ -173,7 +123,7 @@ update the app
    */
   position:fixed;
   width:200px;
-  height:18px;
+  height:16px; /* 18 - padding top */
   right:-91px;
   bottom:91px;
   background-color:#98012e;
@@ -182,6 +132,8 @@ update the app
   font-size:10px;
   font-weight:400;
   text-align:center;
+  
+  padding-top: 2px;
 
   /* the rotation is centered on the div */
   -webkit-transform: rotate(-90deg);
@@ -212,7 +164,7 @@ span.undoSelect {
 input.mylib-forms {
 	display: block;
 	padding: 2px;
-	border: solid 1px #ededed;
+	border: solid 0px #ededed;
 	outline: 0;
 	background: #ededed;
 	-webkit-border-radius: 10px;
@@ -280,21 +232,6 @@ input:-ms-input-placeholder {
 }
 
 /**********************************************************
-	WP8 specifics.
-**********************************************************/
-@media screen and (orientation: portrait) {
-	@-ms-viewport {
-		width: 320px; /* should be device-width
-                         but there is a bug in ie10 (puts screen resolution, not css resolution)
-                         @see http://timkadlec.com/2013/01/windows-phone-8-and-device-width/
-                      */
-		user-zoom: fixed;
-		max-zoom: 1;
-		min-zoom: 1;
-	}
-}
-
-/**********************************************************
 	GENERAL UI ELEMENTS
 **********************************************************/
 html {
@@ -303,7 +240,7 @@ html {
 
 body {
 	color: #000;
-	background-color: white;
+	background-color: #19171c;
 	margin: 0;
 	padding: 0;
 }
@@ -488,7 +425,7 @@ body.inputmodeon .button-form[data-input-mode="process"] {
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 	/*border : 1px solid blue;*/
-	background-color: #19171c;
+	background-color: #333333;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
@@ -501,7 +438,7 @@ body.inputmodeon .button-form[data-input-mode="process"] {
 	margin-left: -40px;
 	width: 85px;
 	height: 33px;
-	border-bottom: 33px solid #19171c;
+	border-bottom: 33px solid #333333;
 	border-left: 5px solid transparent;
 	border-right: 5px solid transparent;
 	-moz-box-sizing: border-box;
@@ -602,7 +539,7 @@ body.inputmodeon .button-form[data-input-mode="process"] {
 .button-search {
 	width: 17px;
 	height: 17px;
-	background-image: url(../images/ico-magnifier-glass.jpg);
+	background-image: url(/static/images/ico-magnifier-glass.jpg);
 	background-size: 100%;
 	background-repeat: no-repeat;
 	cursor: pointer;
@@ -695,6 +632,7 @@ ul>li.player>a {
   box-sizing: border-box;
   height:100%;
   margin: 0 auto;
+  background-color:white;
 }
 
 #content>.background {
@@ -1321,7 +1259,6 @@ ul>li.player>a {
 	font-family: 'Open Sans';
 	font-style: normal;
 	font-weight: 700;
-	src: url(../styles/webfonts/opensans-700.ttf) format('truetype');	
 }
 
 /* filter links */
@@ -1422,6 +1359,27 @@ ul>li.player>a {
 	margin-top: 5px;
 }
 
+.content-container.clubs-list .search {
+  margin-top:15px;
+  margin-bottom:15px;
+}
+.content-container.clubs-list .search .bar {
+  border: 1px solid #e9f1f3;
+  width: 400px;
+}
+.content-container.clubs-list .search .bar input {
+  width: 100%;
+  padding-right:40px;
+}
+@media screen and (max-width: 420px)  {
+  .content-container.clubs-list .search .bar {
+    width:100%;
+  }
+  
+}
+
+
+
 /* gameListViewTemplate.html */
 #listGamesView li {
 	height: 87px;
@@ -1476,7 +1434,7 @@ ul>li.player>a {
 
 /* column */
 
-.ltcol .game-player {
+.col.col-lt .game-player {
 	color: #000;
 	font-family: Open Sans;
 	font-size: 16px;
@@ -1487,7 +1445,7 @@ ul>li.player>a {
 	padding-left:10px;
 }
 
-.ltcol .city {
+.col.col-lt .city {
 	font-family: Open Sans;
 	font-size: 12px;
 	/* trunk text */
@@ -1497,7 +1455,7 @@ ul>li.player>a {
 	padding-left:10px;
 }
 
-.ltcol .title1 {
+.col.col-lt .title1 {
 	font-family: Open Sans;
 	font-weight:800;
 	font-size: 16px;
@@ -1508,7 +1466,7 @@ ul>li.player>a {
 	padding-left:10px;
 }
 
-.ltcol .title2 {
+.col.col-lt .title2 {
 	font-family: Open Sans;
 	font-weight:700;	
 	font-size: 14px;
@@ -1519,7 +1477,7 @@ ul>li.player>a {
 	padding-left:10px;
 }
 
-.ltcol .title3 {
+.col.col-lt .title3 {
 	font-family: Open Sans;
 	font-size: 12px;
 	/* trunk text */
@@ -1564,6 +1522,11 @@ ul>li.player>a {
 	line-height: 50px;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+}
+
+#search-basic {
+ border: 0px solid;
+ background-color:white;
 }
 
 /* account.html */
@@ -1633,21 +1596,30 @@ ul>li.player>a {
 	cursor:pointer;
 }
 
-.ltcol { 
-	float:left; 
-	width:220px; 
-	padding-left: 3px;
-	padding-right: 3px;
-	padding-top: 8px;	
+.col {
+  float:left;
+  border-radius: 10px;
+  background-color:white;
+  
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-.game {
-	float:left; 
-	width:600px;
-	padding-left: 12px;
-	padding-right: 0px;
+.col.col-lt {
+  width:260px;
+  padding:10px;
+  overflow-x:hidden;
 }
 
+.col.col-game {
+  margin-left:20px;
+  width:600px;
+}
+
+.content-container.content-game {
+  background-color: #19171c;
+}
 
 
 .commentBoard {
@@ -1659,8 +1631,8 @@ ul>li.player>a {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
-	height:600px;
-	overflow-y : scroll;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .clear {
@@ -1819,9 +1791,6 @@ ul>li.player>a {
 
 .scoreBoard {
 	background-color: #45b1db;
-	border-left: 1px solid #a3d7ed;
-	border-right: 1px solid #d0ebf6;
-	border-bottom: 1px solid #d0ebf6;
 	padding-left: 15px;
 	padding-top: 10px;
 	padding-right: 15px;
@@ -2083,6 +2052,7 @@ ul>li.player>a {
 	font-size: 14px;
 	font-weight: 800;
 	color: #fff;
+  margin-bottom:10px;
 }
 
 .list-comment {
