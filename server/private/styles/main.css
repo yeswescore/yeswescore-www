@@ -344,7 +344,7 @@ body.inputmodeon .button-form[data-input-mode="process"] {
 	font-size: 14px;
 }
 
-@media screen and (max-width: 960px)  {
+@media screen and (max-width: 900px)  {
   #header .connectionStatus {
     right: 2px;
     top: 7px;
@@ -616,7 +616,7 @@ ul>li.player>a {
 	box-sizing: border-box;
 }
 
-@media screen and (max-width: 960px)  {
+@media screen and (max-width: 900px)  {
   #content {
     width:100%;
   }
@@ -1597,7 +1597,6 @@ ul>li.player>a {
 }
 
 .col {
-  float:left;
   border-radius: 10px;
   background-color:white;
   
@@ -1606,21 +1605,44 @@ ul>li.player>a {
   box-sizing: border-box;
 }
 
+.content-container.content-game {
+  display:table;
+  width:100%;
+}
+
 .col.col-lt {
+  display:table-cell;
   width:260px;
   padding:10px;
   overflow-x:hidden;
 }
 
+.col.col-separator {
+  display:table-cell;
+  width:20px;
+  background-color:transparent;
+}
+
 .col.col-game {
-  margin-left:20px;
+    display:table-cell;
+    vertical-align:top;
   width:600px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color:transparent;
 }
 
 .content-container.content-game {
   background-color: #19171c;
 }
 
+
+.game #scoreBoard {
+  background-color:white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
 
 .commentBoard {
 	background-color: #41c68f;
@@ -2038,7 +2060,6 @@ ul>li.player>a {
   background-color:#41c68f;  
   width:100%;
   min-height: 100%;
-  padding: 9px;
   padding-bottom: 110px;
   -moz-box-sizing:    border-box;
   -webkit-box-sizing: border-box;
@@ -2185,4 +2206,35 @@ ul>li.player>a {
   background-color:#41c68f;
 	-webkit-border-radius: 20px;
 	border-radius: 20px;
+}
+
+
+
+
+/***** MEDIA QUERIES *********/
+
+@media screen and (max-width: 700px)  {
+  .col.col-lt, .col.col-separator { display:none }
+}
+@media screen and (max-width: 350px)  {
+  .commentBoard {
+    padding-left:0px;
+    padding-right:0px;
+  }
+  .content-container.content-game {
+    padding-left:0;
+    padding-right:0;
+  }
+  
+  .scoreBoard .score-grid {
+    width:100%; 
+  }
+  
+  /* resize info bar pour que ca reste lisible */
+  .game .infobar {
+    height:50px;
+  }
+  .game .infobar .text>div {
+   height: 25px; 
+  }
 }
