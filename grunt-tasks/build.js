@@ -155,12 +155,7 @@ module.exports = function( grunt ) {
 
 
   // Based on jQuery UI build.js
-  grunt.registerTask("clean", function () {
-      rimraf.sync("dist");
-      rimraf.sync("server/public/images");
-      rimraf.sync("server/public/js");
-      rimraf.sync("server/public/locales");
-      rimraf.sync("server/public/styles");	 
+  grunt.registerTask("clean", function () {	 
       rimraf.sync("server/public/build");		  
   });
 };
