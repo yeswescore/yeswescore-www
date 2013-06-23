@@ -28,7 +28,7 @@ update the app
   position:relative;
   width: 718px;
   height: 800px;
-  background-image: url('/static/%%%@ENV YESWESCORE_WWW_BUILD_VERSION%%%/images/intro.jpg');
+  background-image: url('/%%%@ENV YESWESCORE_WWW_BUILD_VERSION%%%/images/intro.jpg');
   /*#ifndef COMPILED*/
   background-image: url('/static/images/intro.jpg');
   /*#endif*/
