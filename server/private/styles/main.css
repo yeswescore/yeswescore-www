@@ -654,6 +654,10 @@ ul>li.player>a {
   background-color:white;
 }
 
+.blue-screen .content-container {
+  background-color:#45b1db;
+}
+
 #content>.background {
 	position: absolute;
 	width: 100%;
