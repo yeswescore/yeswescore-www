@@ -30,4 +30,9 @@ echo "grunt.sh: Version utilisee pour la build = "$version
 export YESWESCORE_WWW_BUILD_VERSION=$version
 
 # on build
-grunt --force web
+if [ $1 -eq "prod" ]
+then
+  grunt --force prod
+else
+  grunt --force web
+fi

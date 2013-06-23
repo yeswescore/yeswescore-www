@@ -135,6 +135,13 @@ module.exports = function (grunt) {
         NOCORDOVA: true,
         CORS: false,
         DEV:true // cross domain
+      },
+      prod: {
+        COMPILED:true,
+        WEB:true,
+        CORDOVA: false,
+        NOCORDOVA: true,
+        CORS: false
       }
     }
   });
@@ -147,4 +154,5 @@ module.exports = function (grunt) {
 
   // Default task(s).
   grunt.registerTask('web', ['clean', 'env:web', 'template', 'concat', 'ifdef', 'env_vars','to-page-css']);
+  grunt.registerTask('prod', ['clean', 'env:prod', 'template', 'concat', 'ifdef', 'env_vars','to-page-css']);
 };

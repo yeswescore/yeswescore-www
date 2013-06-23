@@ -80,7 +80,7 @@ else
 fi
 
 # now we can use GRUNT
-./grunt.sh
+./grunt.sh prod
 
 # good directory for rsync 
 cd ~/deploy-www/
