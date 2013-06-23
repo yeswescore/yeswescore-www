@@ -24,6 +24,11 @@ app.get('/players/signin', function (req, res) {
   res.render(index, {foo: "bar"});
 });
 
+// page players/form
+app.get('/players/form', function (req, res) {
+  res.render(index, {foo: "bar"});
+});
+
 app.get('/:version/app.css', function (req, res) {
   res.setHeader("Cache-Control", "public, max-age=345600"); // 4 days
   res.setHeader("Expires", new Date(Date.now() + 345600000).toUTCString());
