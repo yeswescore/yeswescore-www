@@ -338,26 +338,39 @@ body.inputmodeon .button-form[data-input-mode="process"] {
 
 #header .connection {
   width: 900px;
+  height: 25px;
   position: relative;
   margin: auto;
   top: 15px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: bold;
   text-align: right;
-  padding-right: 20px;
   color:#EFEFEF;
 }
-#header .connection:hover {
+#header .connection .status {
+  font-size: 14px;
+  font-weight: bold;
+  padding-right: 20px;
+  color:#EFEFEF;
+  cursor: pointer;
+}
+#header .connection .status:hover {
   color:white;  
 }
-
+#header .connection .status.connected {
+  background-image: url('/static/images/ico-profil-transparent.png');
+  background-repeat:no-repeat;
+  background-position:top right; 
+  margin-right:7px;
+  padding-right:0px;
+  height: 25px;
+}
 
 @media screen and (max-width: 900px)  {
   #header .connection {
     position:absolute;
-    right: 2px;
-    padding-right:7px;
+    right:0px;
+  }
+  #header .connection .status {
+    padding-right:7px; 
   }
 }
 @media screen and (max-width: 350px)  {
@@ -365,7 +378,7 @@ body.inputmodeon .button-form[data-input-mode="process"] {
     font-size:14px;
   }
   
-  #header .connection {
+  #header .connection .status {
     font-size: 10px;
     padding-right:0px;
   }
