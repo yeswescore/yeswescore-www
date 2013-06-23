@@ -336,19 +336,38 @@ body.inputmodeon .button-form[data-input-mode="process"] {
 
 
 
-#header .connectionStatus {
-	position: absolute;
-	top: 12px;
-	right: 13px;
-	cursor:pointer;
-	font-size: 14px;
+#header .connection {
+  width: 900px;
+  position: relative;
+  margin: auto;
+  top: 15px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: right;
+  padding-right: 20px;
+  color:#EFEFEF;
+}
+#header .connection:hover {
+  color:white;  
 }
 
+
 @media screen and (max-width: 900px)  {
-  #header .connectionStatus {
+  #header .connection {
+    position:absolute;
     right: 2px;
-    top: 7px;
+    padding-right:7px;
+  }
+}
+@media screen and (max-width: 350px)  {
+  #header .title {
+    font-size:14px;
+  }
+  
+  #header .connection {
     font-size: 10px;
+    padding-right:0px;
   }
 }
 
