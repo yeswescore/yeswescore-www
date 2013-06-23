@@ -30,6 +30,8 @@ module.exports = function (grunt) {
       file = r[1];
       if (file[0] == '/')
         file = file.substr(1);
+      // en mode bourrin
+      file = file.replace('static/', '');
       scripts.push('server/private/' + file); // ex: src/js/main.js
     }
   }
@@ -45,6 +47,8 @@ module.exports = function (grunt) {
       file = r[1];
       if (file[0] == '/')
         file = file.substr(1);
+      // en mode bourrin
+      file = file.replace('static/', '');
       css.push('server/private/' + file); // ex: src/styles/main.css
     }
   }
