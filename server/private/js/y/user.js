@@ -119,6 +119,7 @@
       if (player.get('club') !== undefined)
       	Y.User.setClub(player.get('club').id);
       
+      this.trigger("changed", this);
     },
 
     createPlayerAsync: function (callback) {
@@ -154,6 +155,9 @@
       // do not update permanent keys.
     }
   };
+  
+  // using mixin
+  _.extend(User, Backbone.Events);
 
   Y.User = User;
 })(Y);
