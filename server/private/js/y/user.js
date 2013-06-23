@@ -119,7 +119,20 @@
       if (player.get('club') !== undefined)
       	Y.User.setClub(player.get('club').id);
       
-      this.trigger("changed", this);
+      console.log('TRIGGER PLAYER CHANGED');
+      this.trigger("changed", player);
+    },
+ 
+    removePlayer: function () {
+      // remove in this class
+      player = null;
+      // remove from DB
+      DB.remove("Player");
+      // remove from conf keys
+      Y.Conf.del(playerIdConfKey);
+      Y.Conf.del(playerTokenConfKey);
+      //
+      this.trigger("changed", player);
     },
 
     createPlayerAsync: function (callback) {
