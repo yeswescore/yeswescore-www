@@ -63,9 +63,7 @@ Y.Views.Index = Y.View.extend({
   
   autocompleteChoose: function (data) {
     if (data && data.name) {
-      this.$("#club").val(data.name);
-      this.clubid = data.id;
-      this.$('club_error').html('');      
+      this.$("#search-basic").val(data.name);   
     }
   },    
 

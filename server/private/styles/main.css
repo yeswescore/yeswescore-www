@@ -360,14 +360,14 @@ body.inputmodeon .button-form[data-input-mode="process"] {
   position: fixed;
   z-index: 12;
   width: 100%;
-  bottom: 0px;
+  top: 0px;
   text-align: center;
 }
 
 #autocomplete div {
   float: left;
-  border:  1px solid #d0ebf6;
-  background-color: #46b1db;
+  border:  1px solid #ffff;
+  background-color: #333333;
   
   padding: 5px;
   margin-right: 5px;
