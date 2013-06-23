@@ -23,11 +23,15 @@ module.exports = function (grunt) {
   // FIXME: regexp doesn't prevent including commented scripts !
   // harvesting javascripts: <script (...) src="..."></script>
   var re = /<script.*src="([^"]+)">/gi;
-  var scripts = [], r;
+  var scripts = [], r, file;
   while ((r = re.exec(html)) !== null) {
     // excluding cordova file (to not be included twice)
-    if (r[0].indexOf("data-grunt-included=\"false\"") == -1)
-      scripts.push('server/private/' + r[1]); // ex: src/js/main.js
+    if (r[0].indexOf("data-grunt-included=\"false\"") == -1) {
+      file = r[1];
+      if (file[0] == '/')
+        file = file.substr(1);
+      scripts.push('server/private/' + file); // ex: src/js/main.js
+    }
   }
   
   console.log('scripts',scripts);
@@ -37,8 +41,12 @@ module.exports = function (grunt) {
   re = /<link.*href="([^"]+)">/gi;
   while ((r = re.exec(html)) !== null) {
     // excluding cordova file (to not be included twice)
-    if (r[0].indexOf("data-grunt-included=\"false\"") == -1)
-      css.push('server/private/' + r[1]); // ex: src/styles/main.css
+    if (r[0].indexOf("data-grunt-included=\"false\"") == -1) {
+      file = r[1];
+      if (file[0] == '/')
+        file = file.substr(1);
+      css.push('server/private/' + file); // ex: src/styles/main.css
+    }
   }
 
   console.log('css',css);
