@@ -2,20 +2,22 @@ Y.Views.Header = Y.View.extend({
   el: "#header",
 
   events: {
-    "click .connectionStatus": "goLink"
+    "click .connection": "goLink"
   },
 
   initialize: function () {
-    this.owner = Y.User.getPlayer();
+    // update le header au signin.
+    Y.User.on("changed", this.render, this);
+    //
     this.render();
   },
   
   render: function () {
-    if (this.owner===null) {
-      $('.connectionStatus').removeClass("connected");
-      $('.connectionStatus').html(i18n.t('header.connexion'));
+    if (Y.User.getPlayer() === null) {
+      $('.connection').removeClass("connected");
+      $('.connection').html(i18n.t('header.connexion'));
     } else {
-      $('.connectionStatus').addClass("connected");
+      $('.connection').addClass("connected");
     }
   },
 
@@ -27,7 +29,7 @@ Y.Views.Header = Y.View.extend({
   },
 
   goLink: function () {
-    if (this.owner===null)
+    if (Y.User.getPlayer() === null)
       Y.Router.navigate("players/signin", {trigger: true}); 
     else
       Y.Router.navigate("players/form", {trigger: true});  
