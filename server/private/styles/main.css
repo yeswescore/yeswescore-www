@@ -66,6 +66,16 @@ update the app
   font-size: 20px;
 }
 
+.intro .baseline {
+  position:absolute;
+  width:100%;
+  text-align:center;
+  font-size:18px;
+  font-style:italic;
+  color:white;
+  top:380px;
+}
+
 .search .bar {
   display:inline-block;
   position:relative;
