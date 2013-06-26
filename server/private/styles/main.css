@@ -1656,6 +1656,10 @@ ul>li.player>a {
   width:100%;
 }
 
+.content-container.content-game .commentBoard.unlogged .form-button-black {
+  margin-top:0px;
+}
+
 .col.col-lt {
   display:table-cell;
   width:260px;
