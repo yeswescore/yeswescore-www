@@ -3,6 +3,7 @@ Y.Views.Club = Y.View.extend({
   
   events : {
     'mousedown .button.send' : 'sendComment',
+    'mousedown .button.login': 'goToLogin',
     'click li': 'goToGame'
   },
 
@@ -66,7 +67,8 @@ Y.Views.Club = Y.View.extend({
   render: function () {
     // empty page.
 	  this.$el.html(this.templates.layout());
-
+    //
+    
 	  return this;
   },
 
@@ -280,6 +282,15 @@ Y.Views.Club = Y.View.extend({
       club : this.club.toJSON(),follow:this.follow
     }));
 
+    // can the user post comments ?
+    if (Y.User.getPlayer() === null) {
+      $('.commentBoard').removeClass("logged");
+      $('.commentBoard').addClass("unlogged");
+    } else {
+      $('.commentBoard').removeClass("unlogged");
+      $('.commentBoard').addClass("logged");
+    }
+    
 	this.renderListGame();
 	
 		
@@ -288,6 +299,10 @@ Y.Views.Club = Y.View.extend({
     return this;
   },
 
+  goToLogin: function () {
+    Y.Router.navigate("players/signin", {trigger: true});
+  },
+  
   onClose : function() {
     this.undelegateEvents();
     this.club.off("sync", this.renderClub, this);  

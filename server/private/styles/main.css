@@ -2112,6 +2112,22 @@ ul>li.player>a {
   box-sizing:        border-box;
 }
 
+/* default: hidding everything */
+.commentBoard .textarea-border,
+.commentBoard .button.send,
+.commentBoard .button.login {
+  display:none;
+}
+
+.commentBoard.logged .textarea-border,
+.commentBoard.logged .button.send {
+  display:block;
+}
+
+.commentBoard.unlogged .button.login {
+  display:block;
+}
+
 .list-comment-title {
 	width: 100%;
 	text-align: center;
