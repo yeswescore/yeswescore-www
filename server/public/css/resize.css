@@ -1,0 +1,269 @@
+
+/* #Media Queries
+================================================== */
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+  	p{font-size: 13px !important;line-height: 21px !important;}
+  	nav ul li{padding: 0;}
+  	.topleft li{margin-right: 0;}
+  	nav ul li a{margin: 5px 10px 0;}
+  	#intro-block{padding-top: 80px;}
+  	.intro-text h1{padding-bottom: 0px !important;}
+  	 .intro-text .intro-small{font-size: 0.5em !important;}
+  	 .intro-text .intro-big{font-size: 1.9em !important;}
+  	 #about h1, #services h1, #portfolio h1, #elements h2, #contact h1{font-size: 1.7em !important;}
+  	 .parallax-title h1, .parallax-title h2, .parallax-title h3, .parallax-title h4, .parallax-title h5, .parallax-title h6{font-size: 1.6em;}
+  	 #about a.ct-button{width: 100% !important;padding: 20px 0;margin: 5px 0 !important;}
+  	 #services h3 {font-size: 16px;}
+  	 .parallax{height: 300px;background-attachment:scroll !important;background-position:center center !important;}
+  	 #parallax-home{height: 650px;background-size: auto !important;}
+  	 span.roll {height: 197px;width: 236px;}
+  	 .masonry_item{height: 197px;}
+  	 .flex-direction-nav a{margin: -40px 0 0;}
+  	 #projects .proj_img iframe{height: 350px;}
+  	 .bi-project-title h3{font-size: 27px;left: -15px;}
+  	 a.ct-button{width: 72.5%;}
+  	 .entries{width: 100%;}
+  	 .flex-direction-nav li a.next{right: 0 !important;}
+  	 .flex-direction-nav li a.prev{left: 0 !important;}
+  	 .social{left: 0;}
+  	 .img_holder a:hover .hover-proj{padding-top: 80px;}
+  	 .description{display: none !important;}
+  	 .social_container{padding: 0px;}
+  	 .social-icons .icon{width: 20px;}
+  	 #projects .video iframe{height: 450px;}
+  	 .topleft li i{padding-right: 0;}
+  	 .parallax .recent-clients .client-logos a img{margin-right: 20px; width: 6.2em; height: auto;}
+  	 .next-section{margin-top: 20px !important;}
+  	 #elements .font-int h6{font-size: 12px;}
+  	 .contacts li{font-size: 13px; margin: 20px 15px 0 0;}
+  	 a.footer-logo{margin: 60px 0 0 0;}
+  	 .ff-items .gallery-item{height: 143px;}
+  	 .ff-items li:not(.disabled) a:hover .hover-proj{padding-top: 65px;}
+  	 #parallax-home .social-icons{margin-top: 40px;}
+  	 #second-slide h1, #third-slide h1{width: 61% !important;font-size: 1.7em !important;}
+  	 #third-slide h3{width: 89% !important;font-size: 1.2em !important;}
+  	 #second-slide h3{width: 47% !important;}
+  	 #slides .social-icons{margin-top: 40px;}
+  	 .slides-navigation .prev, .slides-navigation .next{right: 44.5% !important;float: right !important;}
+}
+
+
+/* For vertical ipad style */
+@media only screen and (min-width: 768px) and (max-width: 793px) {
+	p{font-size: 13px !important;line-height: 21px !important;}
+  	nav ul li a{margin: 5px 10px 0;}
+  	nav ul li{padding: 0;}
+  	#parallax-home .social-icons{margin-top: 40px;}
+  	.topleft li{margin-right: 0;}
+  	#intro-block{padding-top: 50px;}
+  	.intro-text h1{padding-bottom: 0px !important;}
+  	 .intro-text .intro-small{font-size: 0.5em !important;}
+  	 .intro-text .intro-big{font-size: 1.9em !important;}
+  	.intro-text .intro-small{font-size: 0.5em !important;}
+  	 #about h1, #services h1, #portfolio h1, #elements h2, #contact h1{font-size: 2em;}
+  	 .parallax-title h1, .parallax-title h2, .parallax-title h3, .parallax-title h4, .parallax-title h5, .parallax-title h6{font-size: 1.6em;}
+  	 #about a.ct-button{width: 100% !important;padding: 20px 0;margin: 5px 0 !important;}
+  	 #services h3 {font-size: 16px;}
+  	 .parallax{height: 300px;background-attachment:scroll !important;background-position:center center !important;}
+  	 #parallax-home{height: 650px;background-size: auto !important;}
+  	 span.roll {height: 197px;width: 236px;}
+  	 .masonry_item{height: 197px;}
+  	 .flex-direction-nav a{margin: -40px 0 0;}
+  	 #projects .proj_img iframe{height: 350px;}
+  	 .bi-project-title h3{font-size: 27px;left: -15px;}
+  	 a.ct-button{width: 72.5%;}
+  	 .entries{width: 100%;}
+  	 .flex-direction-nav li a.next{right: 0 !important;}
+  	 .flex-direction-nav li a.prev{left: 0 !important;}
+  	 .social{left: 0;}
+  	 .description{display: none !important;}
+  	 .social_container{padding: 0;}
+  	 .img_holder a:hover .hover-proj{padding-top: 80px;}
+  	 .social-icons .icon{width: 20px;}
+  	 #projects .video iframe{height: 380px;}
+  	 .topleft li i{padding-right: 0;}
+  	  .parallax .recent-clients .client-logos a img{margin-right: 20px; width: 6.2em; height: auto;}
+  	  .intro-text h1{padding-bottom: 0px !important;}
+  	 .intro-text .intro-small{font-size: 0.5em !important;}
+  	 .intro-text .intro-big{font-size: 1.3em !important;}
+  	 .next-section{margin-top: 20px !important;}
+  	 #elements .font-int h6{font-size: 12px;}
+  	 .contacts li{font-size: 13px; margin: 20px 15px 0 0;}
+  	 a.footer-logo{margin: 60px 0 0 0;}
+  	 .ff-items .gallery-item{height: 143px;}
+  	 .ff-items li:not(.disabled) a:hover .hover-proj{padding-top: 65px;}
+  	 #second-slide h1, #third-slide h1{width: 61% !important;font-size: 1.7em !important;}
+  	 #third-slide h3{width: 89% !important;font-size: 1.2em !important;}
+  	 #second-slide h3{width: 47% !important;}
+  	 #slides .social-icons{margin-top: 40px;}
+  	 .slides-navigation .prev, .slides-navigation .next{right: 44.5% !important;float: right !important;}
+}
+
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+	#intro-block{padding-top: 80px;}
+	#intro-block .intro-text .intro-big{font-size: 1em !important;}
+	p{font-size: 13px !important;line-height: 21px !important;}
+  	nav ul li a{margin: 5px 5px 0;}
+  	nav{padding: 5px 0 20px 0;z-index: 9999999;z-index: 9999999999;}
+  	#logo{width: 100% !important;margin: 0 auto;display: inline-block;text-align: center;padding-top: 10px;}
+  	nav ul{text-align: center;}
+  	.intro-text .intro-small{font-size: 0.5em !important;line-height: 1em;}
+  	 #about h1, #services h1, #portfolio h1, #elements h2, #contact h1{font-size: 1.3em !important;}
+  	 #parallax-home{height: 450px;background-size: auto !important;}
+  	 .parallax-title h1, .parallax-title h2, .parallax-title h3, .parallax-title h4, .parallax-title h5, .parallax-title h6{font-size: 1.1em;}
+  	 #services h3 {font-size: 16px;}
+  	 .parallax{height: 200px;background-attachment:scroll !important;background-position:center center !important;}
+  	 span.roll {height: 197px;width: 300px;}
+  	 .masonry_item{height: 197px;}
+  	 .flex-direction-nav a{margin: -40px 0 0;}
+  	 #projects .proj_img iframe{height: 350px;}
+  	 .bi-project-title h3{font-size: 27px;left: -15px;}
+  	 .contact-form a.ct-button, a.ct-button{width: 75.5%;}
+  	 .entries{width: 99%;}
+  	 #projects .flex-direction-nav {position: absolute;width: 100%;height: auto !important;top: 27% !important;}
+  	 .flex-direction-nav {position: absolute;width: 100%;height: auto !important;top: 44% !important;}
+patrickmoreira.net
+  	 .flex-direction-nav li a.next, .flex-direction-nav .next{right: 0 !important;}
+  	 .flex-direction-nav li a.prev, .flex-direction-nav .prev{left: 0 !important;}
+  	 .social{left: 0;}
+  	 .slidecontent .project-title h3{padding: 20px 0 17px 0;font-size: 22px;margin-bottom: 20px;}
+  	 #parallax-5{height: 300px;}
+  	 #loader{bottom: 0;}
+  	 #close{bottom: -3px;right: -5px;}
+  	 a.footer-logo{padding: 25px 0 0 0;margin: 0;}
+  	 .button.blue, .button.blue2{padding: 8px 15px !important;margin: 15px 0 !important;font-size: 10px !important;}
+  	 .next-section{padding: 0px 0 40px;margin-top: 30px;}
+  	 .description{display: none !important;}
+  	 .social_container{padding: 0;}
+  	 .social-icons .icon{width: 20px;}
+  	 nav ul li{padding: 0;}
+  	 .topleft{text-align: center;}
+  	 .topright{position: relative;display: inline-block !important;text-align: center;width: 100%;}
+	.social-icons{position: relative;display: inline-block !important;text-align: center;width: 100%;width: 82%;margin-top: 40px;}
+  	 .topleft li{margin-right: 10px;position: relative;display: inline-block;text-align: center;font-size: 12px !important;}
+  	 #projects .video iframe{height: 300px;left: -5px; position: relative;}
+  	  #projects .video{top: 0;}
+  	  .slidecontent .project-title {padding: 0 16px 0 16px;width: 92% !important;}
+  	  .contacts li{font-size: 14px; text-align: center; width: 100%;position: relative; float: left; line-height: 20px;}
+  	 .font-int{margin-bottom: 60px !important;}
+  	 .logo-img{width: 100% !important;margin: 0 auto;display: inline-block;text-align: center;left: 35%;}
+  	 .profile{position: relative;left: 5px;margin: 20px 0 !important;}
+  	  .parallax .recent-clients .client-logos a img{margin-right: 20px; width: 4.2em; height: auto;}
+  	  #team{left: -5px;}
+  	  #elements .parallax-title h2{font-size: 20px; line-height: 20px;}
+  	  .footer h6{font-size: 27px;}
+  	  .img_holder .hover-proj{left: 60px;width: 71.5%;padding-top: 80px !important;}
+  	  .intro-text h1{padding-bottom: 0px !important;}
+  	 .contacts li{font-size: 13px; margin: 20px 15px 0 0;}
+  	 .pricing{margin-top: 40px;}
+  	 .title-heading{font-size: 13px;}
+  	 .divider{margin: 10px 0 40px 0 !important;}
+  	 .filter li{background: none; margin-right: 0px;}
+  	 #contact .form-success p{padding: 5px;}
+  	 .ff-items .gallery-item{min-height: 250px;margin-bottom: 20px;}
+  	 .ff-items .gallery-item img{width: 100%;}
+  	 .masonry_item{margin-bottom: 20px !important;float: left;height: 250px !important;}
+  	 #parallax-home .social-icons{margin-top: 40px;width: 80%;}
+  	 #intro-block .intro-text .intro-big{opacity: 1;}
+  	 #slides .social-icons{margin-top: 40px;}
+  	 #slides nav{margin-top: 320px;}
+  	 #second-slide h1, #third-slide h1{width: 83% !important;font-size: 0.7em !important;}
+  	 #third-slide h3{width: 79% !important;font-size: 0.6em !important;}
+  	 #second-slide h3{width: 79% !important;font-size: 0.8em !important;}
+  	 .slides-navigation .prev, .slides-navigation .next{right: 42% !important;float: right !important;}
+  	 .toppanel, .toppanel_trigger{display: none;}
+}
+
+@media only screen and (max-width: 479px) {
+	#intro-block{padding-top: 55px;}
+	#intro-block .intro-text .intro-big{font-size: 1.1em !important;}
+	p{font-size: 13px !important;line-height: 21px !important;}
+  	nav ul li a{margin: 0; font-size: 9px;}
+  	a.go-about, a.go-about:hover{top: 100px;}
+  	nav{padding: 5px 0 0 0;z-index: 9999999999;}
+  	#logo{width: 100% !important;margin: 0 auto;display: inline-block;text-align: center;padding-top: 10px;left: -10px;position: relative;}
+  	.logo-img{margin: 0 auto;display: inline-block;text-align: center;left: 30%;}
+  	nav ul{text-align: center;padding-bottom: 10px;padding-top: 0;}
+  	.slidecontent{margin: 0 !important;left: -5px;position: relative;}
+  	nav #logo{margin-top: 0;}
+  	#undefined-sticky-wrapper{height: 69px !important;}
+  	.intro-text h1{line-height: 11px;padding: 15px 0 10px 0;font-size: 1.6em !important;}
+  	.intro-text .intro-small{font-size: 0.5em; position: relative; top: 15px; line-height: 1.4em;letter-spacing: 2px;}
+  	 #about h1, #services h1, #portfolio h1, #elements h2, #contact h1{font-size: 1.4em !important;}
+  	 #parallax-home{height: 600px;background-size: auto !important;}
+  	 .parallax-title h1, .parallax-title h2, .parallax-title h3, .parallax-title h4, .parallax-title h5, .parallax-title h6{font-size: 0.8em;}
+  	 #about a.ct-button{width: 100% !important;padding: 15px 0;margin: 10px 0 !important;}
+  	 #services h3 {font-size: 16px;}
+  	 .profile{position: relative;left: 5px;margin: 20px 0 !important;}
+  	 .parallax{height: 200px;background-attachment:scroll !important;background-position:center center !important;}
+  	 span.roll {height: 197px;width: 300px;}
+  	 .masonry_item{height: 197px;}
+  	 .flex-direction-nav a{margin: -20px 0 0;}
+  	 #projects .proj_img iframe{height: 180px;}
+  	 .bi-project-title h3{font-size: 27px;left: -30px;}
+  	 .contact-form a.ct-button, a.ct-button{width: 67.5% !important;}
+  	 .entries{width: 99%;}
+  	 #loader{bottom: 0;}
+  	 #close{bottom: -3px;right: -5px;}
+  	 #projects .flex-direction-nav {position: absolute;width: 100%;height: auto !important;top: 45% !important;}
+  	 .flex-direction-nav {position: absolute;width: 100%;height: auto !important;top: 44% !important;}
+patrickmoreira.net
+  	 .flex-direction-nav li a.next, .flex-direction-nav .next{right: 0 !important;}
+  	 .flex-direction-nav li a.prev, .flex-direction-nav .prev{left: 0 !important;}
+  	 .social{left: 0;}
+  	 .slidecontent .project-title h3{padding: 20px 0 17px 0;font-size: 22px;margin-bottom: 20px;}
+  	 #parallax-5{height: 350px;}
+  	 a.footer-logo{padding: 35px 0 0 0;margin: 0;}
+  	 .tp-leftarrow.default{left:10px !important;}
+  	 .tp-rightarrow.default{right:10px !important;}
+  	 #about h3{font-size: 20px; margin: 45px 0 30px 0;}
+  	 .contacts li{font-size: 14px; text-align: center; width: 100%;position: relative; float: left; line-height: 20px;}
+  	 .font-int{margin-bottom: 60px !important;}
+	 .button.blue, .button.blue2{padding: 2px 5px !important;margin: 8px 0 !important;font-size: 10px !important;}
+	 .next-section{height: 80px;}
+	 a.logo-homepage{width: 30px;height: 30px;margin: -15px 0 0 -15px;background: #fff url(../images/next-section-mobile.png) no-repeat center center;}
+	 a.logo-homepage:hover{width:80px;height: 80px;margin: -40px 0 0 -40px;background: #68a9b9 url(../images/next-section-mobile.png) no-repeat center center;}
+	 .description{display: none !important;}
+  	 .social_container{padding: 0;}
+  	 .social-icons .icon{width: 20px;}
+  	 nav ul li{padding: 0;}
+  	 .topleft{text-align: center;}
+  	 .topright{position: relative;display: inline-block !important;text-align: center;width: 100%;}
+	.social-icons{position: relative;display: inline-block !important;text-align: center;width: 100%;width: 90%;margin-top: 40px;}
+  	 .topleft li{margin-right: 10px;position: relative;display: inline-block;text-align: center;font-size: 12px !important;}
+  	 #projects .video iframe{height: 250px;left: -5px; position: relative;}
+  	 #projects .video{top: 0;}
+  	 .slidecontent .project-title {padding: 0 16px 0 16px;width: 89% !important;}
+  	 #projects .proj_img{margin-top: 15px;left: -5px;position: relative;}
+  	  .parallax .recent-clients .client-logos a img{margin-right: 20px; width: 2.2em; height: auto;}
+  	  #team{left: -5px;}
+  	  #elements .parallax-title h2{font-size: 16px !important; line-height: 16px;}
+  	  .footer h6{font-size: 20px;}
+  	  .img_holder .hover-proj{padding-top: 115px !important;}
+  	  .intro-text h1{padding-bottom: 0px !important;}
+  	 #elements .font-int h6{font-size: 12px;}
+  	 .contacts li{font-size: 13px; margin: 20px 15px 0 0;}
+  	 .intro-text h1{padding-bottom: 0px !important;}
+  	 .contacts li{font-size: 13px; margin: 20px 15px 0 0;}
+  	 .pricing{margin-top: 40px;}
+  	 .title-heading{font-size: 12px;}
+  	 .divider{margin: 10px 0 40px 0 !important;}
+  	 .filter li{background: none; margin-right: 0px;line-height: 1em;}
+  	 #contact .form-success p{padding: 5px;}
+  	 .ff-items .gallery-item{min-height: 250px;margin-bottom: 20px;}
+  	 .ff-items .gallery-item img{width: 100%;}
+  	 .masonry_item{margin-bottom: 20px !important;float: left;height: 250px !important;}
+  	 #parallax-home .social-icons{margin-top: 40px;width: 75%;}
+  	 #intro-block .intro-text .intro-big{opacity: 1 !important;}
+  	 #second-slide h1, #third-slide h1{width: 83% !important;font-size: 0.7em !important;}
+  	 #third-slide h3{width: 79% !important;font-size: 0.6em !important;}
+  	 #second-slide h3{width: 79% !important;font-size: 0.8em !important;}
+  	 #slides .social-icons{margin-top: 40px;width: 75% !important;left: 10%;}
+  	 .slides-navigation .prev, .slides-navigation .next{right: 36% !important;float: right !important;}
+  	 #slides nav{margin-top: 5px !important;}
+  	 .toppanel, .toppanel_trigger{display: none;}
+}

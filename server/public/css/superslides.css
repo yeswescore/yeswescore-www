@@ -1,0 +1,113 @@
+#slides {
+  position: relative;
+  background: url(../images/slider-pattern.png) no-repeat;
+	width: 100%;
+	height: 100%;
+}
+#slides .slides-container {
+  display: none;
+}
+#slides .slides-container li{
+	background: url(../images/slider-pattern.png) no-repeat;
+	width: 100%;
+	height: 100%;
+}
+#slides .scrollable {
+  *zoom: 1;
+  position: relative;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  height: 100%;
+}
+#slides .scrollable:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+#slides nav{
+	background: none !important;
+	margin-top: 20px;
+}
+.slides-navigation {
+  margin: 0 auto;
+  position: absolute;
+  z-index: 3;
+  width: 100%;
+}
+.slides-navigation a {
+  position: absolute;
+}
+
+.slides-navigation .prev{z-index:100;cursor:pointer; position:relative;	background:url(../images/large_left.png) no-Repeat 0 0;	width:52px;	height:52px;right: 60px;float: right;}
+.slides-navigation .next{z-index:100;cursor:pointer; position:relative;	background:url(../images/large_right.png) no-Repeat 0 0;width:52px;	height:52px;right: 60px;float: right;}
+
+.slides-navigation .prev:hover,
+.slides-navigation .next:hover{
+	background-position:bottom left;
+}
+.slides-pagination {
+  position: absolute;
+  z-index: 3;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+}
+.slides-pagination a {
+  border: 2px solid #222;
+  border-radius: 15px;
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  margin: 2px;
+}
+.slides-pagination a.current {
+  background: #222;
+}
+/* CAPTIONS */
+#second-slide, #third-slide{
+	margin-top: 40%;
+}
+#second-slide h1, #third-slide h1{
+	font-family: OpenSansBold, sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 5px;
+	background: #212121;
+	padding: 10px !important;
+	text-align: left;
+	height: auto;
+	border-bottom: none !important;
+	width: 61%;
+	color: #fff;
+}
+#second-slide h3{
+	font-family: OpenSansLight, sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 5px;
+	background: #fff;
+	padding: 4px 10px !important;
+	text-align: left;
+	height: auto;
+	border-bottom: none !important;
+	width: 37%;
+	color: #212121;
+	font-size: 25px;
+}
+#third-slide h3{
+	font-family: OpenSansLight, sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 5px;
+	background: #fff;
+	padding: 4px 10px !important;
+	text-align: left;
+	height: auto;
+	border-bottom: none !important;
+	width: 89%;
+	color: #212121;
+	font-size: 14px;
+}
+#slides .client-logos img{
+	width: auto !important;
+	height: auto !important;
+}
