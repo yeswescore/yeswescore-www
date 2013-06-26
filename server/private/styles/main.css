@@ -28,7 +28,7 @@ update the app
   position:relative;
   width: 718px;
   height: 800px;
-  background-image: url('/static/%%%@ENV YESWESCORE_WWW_BUILD_VERSION%%%/images/intro.jpg');
+  background-image: url('/%%%@ENV YESWESCORE_WWW_BUILD_VERSION%%%/images/intro.jpg');
   /*#ifndef COMPILED*/
   background-image: url('/static/images/intro.jpg');
   /*#endif*/
@@ -64,6 +64,16 @@ update the app
 .intro .search .text {
   height:35px;
   font-size: 20px;
+}
+
+.intro .baseline {
+  position:absolute;
+  width:100%;
+  text-align:center;
+  font-size:18px;
+  font-style:italic;
+  color:white;
+  top:380px;
 }
 
 .search .bar {
@@ -336,19 +346,51 @@ body.inputmodeon .button-form[data-input-mode="process"] {
 
 
 
-#header .connectionStatus {
-	position: absolute;
-	top: 12px;
-	right: 13px;
-	cursor:pointer;
-	font-size: 14px;
+#header .connection {
+  width: 900px;
+  height: 25px;
+  position: relative;
+  margin: auto;
+  top: 15px;
+  text-align: right;
+  color:#EFEFEF;
+}
+#header .connection .status {
+  font-size: 14px;
+  font-weight: bold;
+  padding-right: 20px;
+  color:#EFEFEF;
+  cursor: pointer;
+}
+#header .connection .status:hover {
+  color:white;  
+}
+#header .connection .status.connected {
+  background-image: url('/static/images/ico-profil-transparent.png');
+  background-repeat:no-repeat;
+  background-position:top right; 
+  margin-right:7px;
+  padding-right:0px;
+  height: 25px;
 }
 
 @media screen and (max-width: 900px)  {
-  #header .connectionStatus {
-    right: 2px;
-    top: 7px;
+  #header .connection {
+    position:absolute;
+    right:0px;
+  }
+  #header .connection .status {
+    padding-right:7px; 
+  }
+}
+@media screen and (max-width: 350px)  {
+  #header .title {
+    font-size:14px;
+  }
+  
+  #header .connection .status {
     font-size: 10px;
+    padding-right:0px;
   }
 }
 
@@ -360,14 +402,14 @@ body.inputmodeon .button-form[data-input-mode="process"] {
   position: fixed;
   z-index: 12;
   width: 100%;
-  bottom: 0px;
+  top: 0px;
   text-align: center;
 }
 
 #autocomplete div {
   float: left;
-  border:  1px solid #d0ebf6;
-  background-color: #46b1db;
+  border:  1px solid #ffff;
+  background-color: #333333;
   
   padding: 5px;
   margin-right: 5px;
@@ -633,6 +675,10 @@ ul>li.player>a {
   height:100%;
   margin: 0 auto;
   background-color:white;
+}
+
+.blue-screen.content-container {
+  background-color:#45b1db;
 }
 
 #content>.background {
@@ -1610,6 +1656,10 @@ ul>li.player>a {
   width:100%;
 }
 
+.content-container.content-game .commentBoard.unlogged .form-button-black {
+  margin-top:0px;
+}
+
 .col.col-lt {
   display:table-cell;
   width:260px;
@@ -2064,6 +2114,22 @@ ul>li.player>a {
   -moz-box-sizing:    border-box;
   -webkit-box-sizing: border-box;
   box-sizing:        border-box;
+}
+
+/* default: hidding everything */
+.commentBoard .textarea-border,
+.commentBoard .button.send,
+.commentBoard .button.login {
+  display:none;
+}
+
+.commentBoard.logged .textarea-border,
+.commentBoard.logged .button.send {
+  display:block;
+}
+
+.commentBoard.unlogged .button.login {
+  display:block;
 }
 
 .list-comment-title {

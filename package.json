@@ -19,7 +19,9 @@
     "grunt-template-helper": "~0.1.5",
     "grunt-env": "~0.2.1",
     "express": "3.0.x",
-    "ejs": "0.8.x"
+    "ejs": "0.8.x",
+    "http-proxy": "0.10.x",
+    "winston": "0.7.x"
   },
   "repository": {
     "type": "git",

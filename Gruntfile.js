@@ -23,11 +23,17 @@ module.exports = function (grunt) {
   // FIXME: regexp doesn't prevent including commented scripts !
   // harvesting javascripts: <script (...) src="..."></script>
   var re = /<script.*src="([^"]+)">/gi;
-  var scripts = [], r;
+  var scripts = [], r, file;
   while ((r = re.exec(html)) !== null) {
     // excluding cordova file (to not be included twice)
-    if (r[0].indexOf("data-grunt-included=\"false\"") == -1)
-      scripts.push('server/private/' + r[1]); // ex: src/js/main.js
+    if (r[0].indexOf("data-grunt-included=\"false\"") == -1) {
+      file = r[1];
+      if (file[0] == '/')
+        file = file.substr(1);
+      // en mode bourrin
+      file = file.replace('static/', '');
+      scripts.push('server/private/' + file); // ex: src/js/main.js
+    }
   }
   
   console.log('scripts',scripts);
@@ -37,8 +43,14 @@ module.exports = function (grunt) {
   re = /<link.*href="([^"]+)">/gi;
   while ((r = re.exec(html)) !== null) {
     // excluding cordova file (to not be included twice)
-    if (r[0].indexOf("data-grunt-included=\"false\"") == -1)
-      css.push('server/private/' + r[1]); // ex: src/styles/main.css
+    if (r[0].indexOf("data-grunt-included=\"false\"") == -1) {
+      file = r[1];
+      if (file[0] == '/')
+        file = file.substr(1);
+      // en mode bourrin
+      file = file.replace('static/', '');
+      css.push('server/private/' + file); // ex: src/styles/main.css
+    }
   }
 
   console.log('css',css);
@@ -123,6 +135,13 @@ module.exports = function (grunt) {
         NOCORDOVA: true,
         CORS: false,
         DEV:true // cross domain
+      },
+      prod: {
+        COMPILED:true,
+        WEB:true,
+        CORDOVA: false,
+        NOCORDOVA: true,
+        CORS: false
       }
     }
   });
@@ -135,4 +154,5 @@ module.exports = function (grunt) {
 
   // Default task(s).
   grunt.registerTask('web', ['clean', 'env:web', 'template', 'concat', 'ifdef', 'env_vars','to-page-css']);
+  grunt.registerTask('prod', ['clean', 'env:prod', 'template', 'concat', 'ifdef', 'env_vars','to-page-css']);
 };

@@ -95,15 +95,8 @@ Y.Views.PlayerSignin = Y.View.extend({
 
   deconnexion: function (event) {
     // on repasse par un player temporaire / anonyme ?
-    var that = this;
-    Y.User.createPlayerAsync(function (err) {
-        if (that.unloaded)
-          return; // prevent errors.
-        if (err)
-          return that.displayError(i18n.t("message.error_deconnexion"));
-        that.hideError();
-        that.updateStatus(that.status.UNREGISTERED);
-    });
+    Y.User.removePlayer();
+    this.updateStatus(that.status.UNREGISTERED);
   },
 
   checkingEmail: false,

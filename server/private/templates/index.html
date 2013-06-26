@@ -1,10 +1,12 @@
+<!-- template index.html -->
 <div class="index background"></div>
 <div class="index content-container">
   <div class="intro">
+    <div class="baseline">Partager vos performances et vos émotions</div>
     <div class="search">
       <div class="text">RECHERCHER UN CLUB</div>
       <div class="bar">
-        <input type="search" class="mylib-forms" name="name" id="search-basic" value="" />
+        <input type="search" class="mylib-forms" name="name" id="search-basic" value="" data-autocomplete="autocompleteClubs" data-autocomplete-onselected="autocompleteChoose"/>
         <div class="magnifier">
           <img src="/static/images/ico-magnifier-glass.jpg" width="15" height="15" style="margin:5px"/>
         </div>

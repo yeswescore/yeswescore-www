@@ -153,6 +153,7 @@
   },  
   "gamecomment": {
     "title": "COMMENTAIRES",
+    "connexion": "s'inscrire pour commenter",
     "delete" : "supprimer",
     "alert" : "signaler",
     "alerted" : "Message signalé.",     

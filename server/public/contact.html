@@ -25,7 +25,7 @@
             var sujet      = $("#sujet").val();
             var email      = $("#email").val();
             var message    = $("#message").val();
-            var dataString = nom + sujet + email + message;
+            var dataString = sujet + email + message;
             var msg_all    = 'Merci de remplir tous les champs';
             var msg_alert  = 'Merci de remplir ce champs';
             if(dataString  == '')
@@ -65,8 +65,9 @@
 <body>
   <div class="header">
     <div class="bandeau">
-      <a href="/faq.html">FAQ</a>
-      <a href="/">Home</a>
+      <a href="/static/faq.html">FAQ</a>
+      <a href="/static/contact.html">Contact</a>
+      <a href="/">Accueil</a>
     </div>
     <div class="title">YesWeScore</div>
     <div class="baseline">Partagez vos performances et vos émotions</div>

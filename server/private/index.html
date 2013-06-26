@@ -11,8 +11,8 @@
   <!-- AHAH : <%= foo %> -->
   
   <!-- Production environment -->
-  <link rel="stylesheet" href="/static/%%%@ENV YESWESCORE_WWW_BUILD_VERSION%%%/app.css"/> 
-  <script type="text/javascript" src="/static/%%%@ENV YESWESCORE_WWW_BUILD_VERSION%%%/app.js"></script>
+  <link rel="stylesheet" href="/%%%@ENV YESWESCORE_WWW_BUILD_VERSION%%%/app.css" data-grunt-included="false"/> 
+  <script type="text/javascript" src="/%%%@ENV YESWESCORE_WWW_BUILD_VERSION%%%/app.js" data-grunt-included="false"></script>
 
   <!-- #ifdef NOCONCAT -->
   <!-- Third party css -->
@@ -91,7 +91,7 @@
     <div class="backButton"><div class="triangle"></div></div>
     <div class="logo">&middot; YES WE SCORE &middot;</div> 
     <div class="title">CHARGEMENT...</div>
-    <div class="connection"></div>
+    <div class="connection"><div class="status"></div></div>
   </div>
    
   <div id="content">     
@@ -120,7 +120,7 @@
     </div>
   </div>  
       
-  <div class="footer">&nbsp;@ 2013 zeNodus SAS - <a href="faq.html">faq</a> - <a href="contact.html">contact</a></div>
+  <div class="footer">&nbsp;@ 2013 zeNodus SAS - <a href="/static/faq.html">faq</a> - <a href="/static/contact.html">contact</a></div>
   
 </body>
 </html>

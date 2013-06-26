@@ -24,19 +24,66 @@ fi
 # start checkout
 echo "checkouting $1"
 # cleaning deploy directory
-rm -rf ~/deploy/
-mkdir ~/deploy/
-cd ~/deploy/
-# grabbing code from github
-git clone -b $1 git@github.com:voltek62/yeswescore-www.git
-# analysing result
-if [ $? -eq 0 ]
+if [ ! -d ~/deploy-www/ ]
 then
-  echo "branch $1 is deployed in ~/deploy/yeswescore-www/"
+  echo "directory doesn't exist => creating  ~/deploy-www/"
+  mkdir ~/deploy-www/
+  # changing directory
+  cd ~/deploy-www/
+  # grabbing code from github
+  git clone -b $1 git@github.com:voltek62/yeswescore-www.git
+  # analysing result
+  if [ $? -eq 0 ]
+  then
+    echo "branch $1 is deployed in ~/deploy-www/yeswescore-www/"
+  else
+    echo "error during clone, abort."
+    exit 1
+  fi
+  # changing directory
+  cd ~/deploy-www/yeswescore-www/
+  # npm
+  npm install -l
 else
-  echo "error during clone, abort."
-  exit 1
+  # changing directory
+  cd ~/deploy-www/yeswescore-www/
+  #
+  git checkout $1
+  # analysing result
+  if [ $? -eq 0 ]
+  then
+    echo "checkouting to $1 in ~/deploy-www/yeswescore-www/"
+  else
+    echo "error during checkout of $1, abort."
+    exit 1
+  fi
+  # fetching
+  git fetch
+  # analysing result
+  if [ $? -eq 0 ]
+  then
+    echo "fetching ok"
+  else
+    echo "error during fetch, abort."
+    exit 1
+  fi
+  # pulling
+  git pull origin $1
+  # analysing result
+  if [ $? -eq 0 ]
+  then
+    echo "pulling $1 from origin"
+  else
+    echo "error during pull of $1 from origin, abort."
+    exit 1
+  fi
 fi
+
+# now we can use GRUNT
+./grunt.sh prod
+
+# good directory for rsync 
+cd ~/deploy-www/
 
 # rsync
 echo "sending code to integration environment"

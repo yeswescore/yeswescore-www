@@ -119,6 +119,20 @@
       if (player.get('club') !== undefined)
       	Y.User.setClub(player.get('club').id);
       
+      console.log('TRIGGER PLAYER CHANGED');
+      this.trigger("changed", player);
+    },
+ 
+    removePlayer: function () {
+      // remove in this class
+      player = null;
+      // remove from DB
+      DB.remove("Player");
+      // remove from conf keys
+      Y.Conf.del(playerIdConfKey);
+      Y.Conf.del(playerTokenConfKey);
+      //
+      this.trigger("changed", player);
     },
 
     createPlayerAsync: function (callback) {
@@ -154,6 +168,9 @@
       // do not update permanent keys.
     }
   };
+  
+  // using mixin
+  _.extend(User, Backbone.Events);
 
   Y.User = User;
 })(Y);
