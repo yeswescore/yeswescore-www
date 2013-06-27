@@ -1366,7 +1366,7 @@ display: none;
 	float: left;
 }
 .ff-items .gallery-item{
-	height: 80px;
+	height: 60px;
 	margin-bottom: 20px;
 	overflow: hidden;
 }
@@ -1395,7 +1395,7 @@ display: none;
 	line-height: 1em;
 }	
 .ff-items li:not(.disabled) a:hover .hover-proj {
-	padding-top: 25px;
+	padding-top: 18px;
 	opacity: 1;
 }
 li.gallery-item > a{display: none;}
