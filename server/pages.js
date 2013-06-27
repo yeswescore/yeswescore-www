@@ -6,7 +6,7 @@ var index = (env === "DEV") ? '../private/index.html' : 'build/index.html';
 
 // HOME 
 app.get('/', function (req, res) {
-  res.render(index, {foo: "bar"});
+  res.render('../public/blog.html', {foo: "bar"});
 });
 
 // resultats de recherche

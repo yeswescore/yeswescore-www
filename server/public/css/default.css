@@ -1068,7 +1068,7 @@ border: 1px solid rgb(41, 109, 126);
 	text-align: center;
 	background-color: #fff;
     /*margin: -100px 0 0 -400px;*/
-    padding-top: 80px;
+    padding-top: 20px;
 }
 
 .proj h3{
@@ -1081,7 +1081,7 @@ border: 1px solid rgb(41, 109, 126);
 }
 
 .img_holder a:hover .hover-proj{
-  padding-top:105px;
+/*  padding-top:105px;*/
   opacity:1;
 }
 
@@ -1366,7 +1366,7 @@ display: none;
 	float: left;
 }
 .ff-items .gallery-item{
-	height: 180px;
+	height: 80px;
 	margin-bottom: 20px;
 	overflow: hidden;
 }
@@ -1395,7 +1395,7 @@ display: none;
 	line-height: 1em;
 }	
 .ff-items li:not(.disabled) a:hover .hover-proj {
-	padding-top: 85px;
+	padding-top: 25px;
 	opacity: 1;
 }
 li.gallery-item > a{display: none;}
