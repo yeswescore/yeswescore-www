@@ -35,11 +35,14 @@ update the app
   background-repeat:no-repeat;
   background-position:center center;
   margin:0 auto;
+  border-radius:20px;
+  margin-top:20px;
 }
 
 @media screen and (max-width: 718px)  {
   .intro {
     width:100%;
+    margin-top:0px;
   }
 }
 
