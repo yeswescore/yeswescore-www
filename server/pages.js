@@ -15,6 +15,11 @@ app.get('/clubs/list/:txt', function (req, res) {
 });
 
 // page club
+app.get('/clubs/:clubid/game/:gameid', function (req, res) {
+  res.render(index, {foo: "bar"});
+});
+
+// page club
 app.get('/clubs/:id', function (req, res) {
   res.render(index, {foo: "bar"});
 });

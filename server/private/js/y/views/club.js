@@ -300,7 +300,7 @@ Y.Views.Club = Y.View.extend({
   },
 
   goToLogin: function () {
-    Y.Router.navigate("players/signin", {trigger: true});
+    Y.Router.navigate("players/signin?back=true", {trigger: true});
   },
   
   onClose : function() {

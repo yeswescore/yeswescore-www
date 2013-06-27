@@ -3,6 +3,7 @@ Y.Views.PlayerForm = Y.View.extend({
     
   events: {
     'click #savePlayer':'add',
+    'click #deconnexion':'deconnexion',
     'keyup #club': 'updateList',
     'click #club_choice' : 'displayClub'
   },
@@ -19,8 +20,8 @@ Y.Views.PlayerForm = Y.View.extend({
   myinitialize:function(obj) { 
     this.useSearch = 0;	
     this.mode = obj.mode;
-  
-	  //header
+
+    //header
     Y.GUI.header.title(i18n.t('playerform.title'));
     Y.GUI.header.show();
   
@@ -64,51 +65,20 @@ Y.Views.PlayerForm = Y.View.extend({
     if (data && data.name) {
       this.$("#club").val(data.name);
       this.clubid = data.id;
-      this.$('club_error').html('');      
+      this.$('.error').html('');      
     }
   },
-    
-  /*  
-  
-  displayClub: function(li) {
-    selectedId = $('#club_choice:checked').val();
-    selectedName = $('#club_choice:checked').next('label').text();
-    	
-    $('#club').val(selectedName);
-    //FIXME : differencier idclub et fftid
-    $('#clubid').val(selectedId); 
-    $('club_error').html('');
-    	
-   
-    	
-    $(this.listview).html('');
-  },  
-  
-  updateList: function (event) {
-    var q = $("#club").val();
-   	
-    this.clubs = new ClubsCollection();108
-    this.clubs.setMode('search',q);
-    if (q.length>2) {
-      this.useSearch=1;
-      this.clubs.fetch();
-      this.clubs.on( 'sync', this.renderList, this );
-    }
-
-  },
-  
-  */
   
   render: function () {
     // empty page.
-	  this.$el.html(this.templates.layout());
+    this.$el.html(this.templates.layout());
     this.$(".container").addClass(this.mode);
-	  return this;
+    return this;
   },
-  
+
   renderList: function () {
     var q = $("#club").val();  	
-	  $(this.listview).html(this.templates.clublist({clubs:this.clubs.toJSON(), query:q}));
+    $(this.listview).html(this.templates.clublist({clubs:this.clubs.toJSON(), query:q}));
   },
   
   add: function (event) {
@@ -125,30 +95,30 @@ Y.Views.PlayerForm = Y.View.extend({
     $("div.success").hide();
 
     if (checkRank(rank) && rank.length>0) {
-	    $('.rank_error').html(i18n.t('message.bad_rank')+' !').show();
+      $('.rank_error').html(i18n.t('message.bad_rank')+' !').show();
       $('#rank').val('');        
       return false;	   
     };
     
     if (name.length==0) {
-	    $('.name_error').html(i18n.t('message.empty_name')+' !').show();      
+      $('.name_error').html(i18n.t('message.empty_name')+' !').show();      
       return false;	   
     };
     
     if (checkName(name) && name.length>0) {
-	    $('.name_error').html(i18n.t('message.bad_name')+' !').show();
+      $('.name_error').html(i18n.t('message.bad_name')+' !').show();
       $('#name').val('');        
       return false;	   
     };
 
     if (checkLicence(idlicence) && idlicence.length>0) {
-	    $('.idlicence_error').html(i18n.t('message.bad_licence')+' !').show();
+      $('.idlicence_error').html(i18n.t('message.bad_licence')+' !').show();
       $('#idlicence').val('');        
       return false;	   
     };
 
     if (checkName(club) && club.length>0) {
-	    $('.club_error').html(i18n.t('message.bad_name')+' !').show();
+      $('.error').html(i18n.t('message.bad_name')+' !').show();
       $('#club').val('');        
       return false;	   
     };
@@ -161,29 +131,34 @@ Y.Views.PlayerForm = Y.View.extend({
     player.set('club', club);
     player.set('clubid', clubid);
 
-	  //FIXME :  add control error
+    //FIXME :  add control error
     player.save().done(function (result) {
       $('div.success').css({display:"block"});
       $('div.success').html(i18n.t('message.updateok')).show();
-		  $('div.success').i18n();
-		  Y.User.setPlayer(new PlayerModel(result));
-		  
+      $('div.success').i18n();
+      Y.User.setPlayer(new PlayerModel(result));
     });
    
     return false;
   },     
     
-
+  deconnexion : function (event) {
+    // removing player
+    Y.User.removePlayer();
+    // routing to homepage
+    Y.Router.navigate("", {trigger: true});
+  },
+  
   //render the content into div of view
   renderPlayer: function(){
     player = this.player.toJSON();
         
     var dataDisplay = {
-	      name:player.name
-	    , rank:player.rank
-	    , idlicence:player.idlicense
-	    , playerid:this.playerid
-	    , token:this.token
+        name:player.name
+      , rank:player.rank
+      , idlicence:player.idlicense
+      , playerid:this.playerid
+      , token:this.token
     };
       
     if (player.club!== undefined) {    
@@ -195,7 +170,7 @@ Y.Views.PlayerForm = Y.View.extend({
 
     this.$(".container").addClass(this.mode);
 
-	  this.$el.i18n();
+    this.$el.i18n();
 
     return this;
   },

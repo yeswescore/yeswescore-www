@@ -3,8 +3,7 @@
 <div class="blue-screen player-form content-container">
   <div class="container">
     <div class="success label label-info hide"></div>
-    
-    <div id="intro_firstconnection" class="form-label label-info show-if-first" data-i18n="playerform.firstconnection"></div>
+    <div class="error label label-error hide"></div>
     
     <div>
     	<label  class="form-label" for="name" data-i18n="playerform.name"></label><label  class="form-label show-if-first">*</label> 
@@ -32,19 +31,14 @@
       <input type="text" id="club" name="club" data-i18n="[placeholder]playerform.clubname;" value="<%= data.club %>" data-autocomplete="autocompleteClubs" data-autocomplete-onselected="autocompleteChoose"/>
     </div>
 
-    <div class="club_error label label-error hide"></div>
-
+    
+    <div id="savePlayer" class="button simple black" data-i18n="playerform.save" style="float:left;"></div>
+    <div id="deconnexion" class="button simple black" data-i18n="playerform.deconnexion" style="float:right;"></div>
+    
   </div>
   
   <div style="padding:20px"></div>
   
-</div>
-
- 
-<div class="button-form" data-input-mode="process">
-  <div class="background rounded"></div>
-  <div class="background trapeze"></div>
-  <div class="link-form"><div class="button" id="savePlayer" data-i18n="playerform.save"></div></div>  
 </div>
 
 	

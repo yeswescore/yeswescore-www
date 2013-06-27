@@ -8,6 +8,9 @@
 
     currentView: null,
 
+    previousFragment: null,
+    currentFragment: null,
+    
     routes: {
       '': 'index',
       'index.html': 'index',
@@ -28,6 +31,7 @@
       'players/club/:id': 'playerListByClub',
       'players/form/me': 'playerFormFirst',        
       'players/form': 'playerForm',     
+      'players/signin?back=:back': 'playerSignin',
       'players/signin': 'playerSignin',
       'players/forget': 'playerForget',
       'players/follow': 'playerFollow',                                              
@@ -44,7 +48,7 @@
     initialize: function (options) {
 
     },
-
+    
     /*
     * @param Y.Views.*  view 
     * @param object     params 
@@ -77,7 +81,6 @@
       this.changePage(this.createViewFactory(Y.Views.ClubList, { id: id }));
     },
     
-
     clubFollow: function () {
       this.changePage(this.createViewFactory(Y.Views.ClubFollow));
     },
@@ -155,8 +158,8 @@
       this.changePage(this.createViewFactory(Y.Views.PlayerList, { id: id }));
     },
 
-    playerSignin: function () {
-      this.changePage(this.createViewFactory(Y.Views.PlayerSignin));
+    playerSignin: function (back) {
+      this.changePage(this.createViewFactory(Y.Views.PlayerSignin, { back: !!back }));
     },
 
     playerForget: function () {
@@ -185,6 +188,10 @@
       if (this.currentView && this.currentView.pageHash)
         previousPageHash = this.currentView.pageHash;
 
+      // previous fragment.
+      this.previousFragment = this.currentFragment;
+      this.currentFragment = Backbone.history.fragment;
+      
       // event
       try {
         this.trigger('beforePageChanged', previousPageName, previousPageHash);

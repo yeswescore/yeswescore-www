@@ -2096,6 +2096,13 @@ ul>li.player>a {
   display:block;
 }
 
+.commentBoard .button.simple.black {
+  margin-top:0px;
+}
+.commentBoard.logged .button.simple.black {
+  margin-top:10px;
+}
+
 .list-comment-title {
 	width: 100%;
 	text-align: center;

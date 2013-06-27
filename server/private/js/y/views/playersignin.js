@@ -18,8 +18,10 @@ Y.Views.PlayerSignin = Y.View.extend({
     LOGIN: "login",
     current: null
   },
+  
+  back: false,
 
-  myinitialize : function() {
+  myinitialize : function (back) {
     // title
     Y.GUI.header.title(i18n.t('playersignin.title'));     
     Y.GUI.header.show();
@@ -35,6 +37,9 @@ Y.Views.PlayerSignin = Y.View.extend({
     } else {
       this.status.current = this.status.UNREGISTERED;
     }
+    
+    this.back = back;
+    
     // rendering will switch between status.
     this.render();
   },
@@ -166,9 +171,10 @@ Y.Views.PlayerSignin = Y.View.extend({
 		    Y.User.setPlayer(player);
         if (that.unloaded)
           return; // prevent errors.
-        that.hideError();
-      	
-      	that.updateStatus(that.status.REGISTERED);
+        that.hideError();        
+        that.updateStatus(that.status.REGISTERED);
+        // on redirige
+        that.redirect();
       },
       error: function (err) {
         that.logging = false;
@@ -181,6 +187,14 @@ Y.Views.PlayerSignin = Y.View.extend({
     return this;
   },
 
+  redirect: function () {
+    if (this.back) {
+      Y.Router.navigate(Y.Router.previousFragment, {trigger: true});
+    } else {
+      Y.Router.navigate("players/form", {trigger: true});
+    }
+  },
+  
   checkPassword : function (input) {
     var ck_password =  /^[A-Za-z0-9!@#$%^&*()_]{6,20}$/;
     if (!ck_password.test(input)) 
@@ -206,17 +220,17 @@ Y.Views.PlayerSignin = Y.View.extend({
     var that = this;
     
     Y.User.createPlayerAsync(function (err, player) {
-
-	    var player = Y.User.getPlayer();
-	    player.set('email', email);
-	    player.set('uncryptedPassword', password);
-	    player.save().done(function (result) {
-			  Y.User.setPlayer(new PlayerModel(result));
-	      that.updateStatus(that.status.REGISTERED);
-	    }).fail(function () {
-	      that.displayError(i18n.t("message.registering_error"));
-	    });;
-	    
+      var player = Y.User.getPlayer();
+      player.set('email', email);
+      player.set('uncryptedPassword', password);
+      player.save().done(function (result) {
+        Y.User.setPlayer(new PlayerModel(result));
+        that.updateStatus(that.status.REGISTERED);
+        // on redirige
+        that.redirect();
+      }).fail(function () {
+        that.displayError(i18n.t("message.registering_error"));
+      });
     });
 
   },
