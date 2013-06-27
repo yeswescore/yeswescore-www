@@ -93,7 +93,10 @@ update the app
     box-shadow:none;
     filter: none;
     border-radius:0;
+    padding:0;
   }
+  
+  .footer { display: none }
 }
 
 .intro .search .text {
