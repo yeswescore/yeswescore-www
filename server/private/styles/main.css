@@ -111,6 +111,20 @@ update the app
   font-family: 'Open Sans', sans-serif;
 }
 
+.search .about {
+  text-decoration:none;
+  width:100%;
+  text-align:center;
+  position:relative;
+  display:block;
+  cursor:pointer;
+  color:white;
+  background-color:rgba(255,0,0,0.2);
+}
+.search .about:hover {
+  text-decoration:underline;
+}
+
 .search .bar {
   display:inline-block;
   position:relative;
