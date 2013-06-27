@@ -4,8 +4,13 @@ var app = require('./app.js'),
 var env = Conf.get("env");
 var index = (env === "DEV") ? '../private/index.html' : 'build/index.html';
 
-// HOME 
+// HOME
 app.get('/', function (req, res) {
+  res.render(index, {foo: "bar"});
+});
+
+// about
+app.get('/about/', function (req, res) {
   res.render('../public/blog.html', {foo: "bar"});
 });
 
