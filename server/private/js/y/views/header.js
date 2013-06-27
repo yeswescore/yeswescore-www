@@ -2,7 +2,7 @@ Y.Views.Header = Y.View.extend({
   el: "#header",
 
   events: {
-    "click .connection .status": "goLink"
+    "click .connection": "goLink"
   },
 
   initialize: function () {
@@ -14,11 +14,11 @@ Y.Views.Header = Y.View.extend({
   
   render: function () {
     if (Y.User.getPlayer() === null) {
-      $('.connection .status').removeClass("connected");
-      $('.connection .status').html(i18n.t('header.connexion'));
+      $('.connection').removeClass("connected");
+      $('.connection').html(i18n.t('header.connexion'));
     } else {
-      $('.connection .status').addClass("connected");
-      $('.connection .status').empty();
+      $('.connection').addClass("connected");
+      $('.connection').empty();
     }
   },
 
