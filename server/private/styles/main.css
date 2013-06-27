@@ -358,7 +358,7 @@ body.inputmodeon .button-form[data-input-mode="process"] {
 #header .logo {
 	position: absolute;
 	top: 5px;
-  left: 5px;
+  left: 0px;
 	width: 68px;
   height: 34px;
   background-image: url('/static/images/ico-home.png');
@@ -369,7 +369,7 @@ body.inputmodeon .button-form[data-input-mode="process"] {
 #header .button.connection {
   float:right;
   margin-top:12px;
-  margin-right:10px;
+  margin-right:0px;
   width:80px;
   height:20px;
   line-height:20px;
@@ -380,7 +380,7 @@ body.inputmodeon .button-form[data-input-mode="process"] {
   background-image: url('/static/images/ico-profil-transparent.png');
   background-repeat:no-repeat;
   background-position:top right;
-  margin-right:7px;
+  margin-right:0px;
   padding-right:0px;
   height: 25px;
   width:25px;
@@ -635,9 +635,9 @@ ul>li.club {
 	list-style: none;
 	background: #fff;
 	color: #0000;
-	padding: 5px;
 	border-top: 1px solid rgba(80, 80, 80, .5);
 	height: 40px;
+  margin-top:2px;
 }
 
 ul>li.player>a {
@@ -670,8 +670,6 @@ ul>li.player>a {
 .content-container {
   padding-top: 44px; /* #header */
   padding-bottom: 42px; /* #navbar */
-  padding-left: 10px;
-  padding-right: 10px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -1374,8 +1372,14 @@ ul>li.player>a {
 	margin-top: 5px;
 }
 
+.content-container.clubs-list .indexViewTemplate {
+  border-radius:10px;
+  background-color:white;
+  padding:10px;
+}
+
 .content-container.clubs-list .search {
-  margin-top:15px;
+  margin-top:5px;
   margin-bottom:15px;
 }
 .content-container.clubs-list .search .bar {
@@ -1646,6 +1650,10 @@ ul>li.player>a {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   background-color:transparent;
+}
+
+.content-container.clubs-list {
+  background-color: #19171c;  
 }
 
 .content-container.content-game {
