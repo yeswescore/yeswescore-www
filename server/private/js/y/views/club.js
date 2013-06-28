@@ -12,11 +12,10 @@ Y.Views.Club = Y.View.extend({
   gameid: 0,
   
   initialize : function(param) {
-  
-	//header    
-  	Y.GUI.header.title(i18n.t('club.title'));  	
-  	Y.GUI.header.show();
-  
+    // header
+    Y.GUI.header.title(i18n.t('club.title'));  	
+    Y.GUI.header.show();
+
     // loading templates.
     this.templates = {
       layout: Y.Templates.get('empty'),
@@ -32,23 +31,20 @@ Y.Views.Club = Y.View.extend({
     // we render immediatly
     this.render();        
 
-	this.streamItemsCollection = null;
-	this.game = null;
+    this.streamItemsCollection = null;
+    this.game = null;
 
-	
-	
-	if (param.gameid!==undefined) {
-	  this.gameid = param.gameid;  	
-	}
-	else
-	  this.gameid=0;
-	  
-	  
-	if (param.id!==undefined) {  
-	  this.clubid = param.id;  
-	  this.club = new ClubModel({id : this.clubid});   
-	  this.club.once('sync', this.renderClub, this);      
-	  this.club.fetch();
+    if (param.gameid!==undefined) {
+      this.gameid = param.gameid;  	
+    }
+    else
+      this.gameid=0;
+    
+    if (param.id!==undefined) {  
+      this.clubid = param.id;  
+      this.club = new ClubModel({id : this.clubid});   
+      this.club.once('sync', this.renderClub, this);      
+      this.club.fetch();
     }
     else {
       this.clubid = 0;
@@ -59,28 +55,20 @@ Y.Views.Club = Y.View.extend({
     
     // loading owner
     this.owner = Y.User.getPlayer();
-
   },
-
-	
 
   render: function () {
     // empty page.
-	  this.$el.html(this.templates.layout());
+    this.$el.html(this.templates.layout());
     //
     
-	  return this;
+    return this;
   },
 
   goToGame: function (elmt) {
     if (elmt.currentTarget.id) {
-      this.gameid = elmt.currentTarget.id;
-      
-      //console.log(this.gameid);
-      //this.renderGame();
-      
+      this.gameid = elmt.currentTarget.id;      
       Y.Router.navigate("clubs/"+this.clubid+"/game/"+this.gameid, {trigger: true}); 
-      
     }
   },
  
@@ -102,7 +90,6 @@ Y.Views.Club = Y.View.extend({
         //$(that.listview).i18n();
       }
       else {
-      	//console.log('games',that.games.toJSON()[0].id);
         if (this.gameid == 0) {
           console.log('pas de gameid, on cherche le premier');
           that.gameid = that.games.toJSON()[0].id;
@@ -277,25 +264,24 @@ Y.Views.Club = Y.View.extend({
   }, 
   
   renderNoClub : function() {
-
-  	/* On affiche les infos du club*/
+    /* On affiche les infos du club*/
     this.$el.html(this.templates.clubempty({}));
 
-	$('.ltcol').hide();	
+    $('.ltcol').hide();	
 
-	this.renderGame();
-	
-	this.$el.i18n();    
+    this.renderGame();
+
+    this.$el.i18n();    
 
     return this;
   },  
  
   // render the content into div of view
   renderClub : function() {
-  	
-  	this.clubid = this.club.get('id'); 
-  	
-  	/* On affiche les infos du club*/
+    
+    this.clubid = this.club.get('id'); 
+    
+    /* On affiche les infos du club*/
     this.$el.html(this.templates.club({
       club : this.club.toJSON(),follow:this.follow
     }));
@@ -308,11 +294,8 @@ Y.Views.Club = Y.View.extend({
       $('.commentBoard').removeClass("unlogged");
       $('.commentBoard').addClass("logged");
     }
-    
-	this.renderListGame();
-	
-		
-	this.$el.i18n();    
+    this.renderListGame(); 
+    this.$el.i18n();    
 
     return this;
   },
@@ -325,12 +308,12 @@ Y.Views.Club = Y.View.extend({
     this.undelegateEvents();
     this.club.off("sync", this.renderClub, this);  
      
-	if (this.game!==null) {
+    if (this.game!==null) {
       this.game.off('sync', this.renderViewGame, this);
       this.poller.stop();    
     }
     
-	if (this.streamItemsCollection!==null) {    
+    if (this.streamItemsCollection!==null) {    
       this.streamItemsCollection.off("sync", this.renderListComments, this);
       this.poller2.stop();      	
     }
