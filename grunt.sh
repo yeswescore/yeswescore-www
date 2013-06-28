@@ -14,6 +14,7 @@ then
     exit 1
   fi
   echo "1" > $fileversion
+  chmod 777 $fileversion
 fi
 
 # lecture de la version actuelle
