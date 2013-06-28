@@ -814,7 +814,7 @@ a.go-about:hover {
 #services h3{
     font-size: 18px;
 	color: #2c6776;
-	margin: 44px 0 16px 0;
+	/*margin: 44px 0 16px 0;*/
 	font-family: OpenSansBold, sans-serif;
 	text-transform: capitalize;
 }
