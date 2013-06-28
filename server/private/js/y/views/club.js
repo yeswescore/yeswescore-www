@@ -85,13 +85,17 @@ Y.Views.Club = Y.View.extend({
   },
  
   renderListGame : function() {
-    var that = this;    
+       
     this.games = new GamesCollection();
-    this.games.addSearch('club',this.club.get('id'));  
+    
+    console.log('renderListGame clubid', this.club.get('id'));
+    
+    this.games.addSearch('club');
+    this.games.setClub(this.club.get('id'));  
     //this.$listmatch.html(this.templates.listmatch({'games':this.games}));
-    $("#listMatchClubs").html(that.templates.ongoing());
+    $("#listMatchClubs").html(this.templates.ongoing());
 
-
+	var that = this; 
     this.games.fetch().done($.proxy(function () {  
       if (that.games.toJSON().length === 0) {
         $("#listMatchClubs").html(that.templates.error());

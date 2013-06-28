@@ -31,6 +31,9 @@ var GamesCollection = Backbone.Collection.extend({
     else
     	url += "&";      
     
+    console.log('searchOption',this.searchOption.indexOf('club'));	
+    console.log('club',this.club);	
+        
     if (this.searchOption.indexOf('club') !== -1 && this.club!=='') {
       url += "club=" + this.club; 
       url += "&"; 
