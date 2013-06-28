@@ -59,13 +59,11 @@
     },
 
     inputModeOn: function (e) {
-
-      
-      this.lastInput = document.activeElement.id;
-     
+      this.lastInput = document.activeElement.id;     
       this.clearInputModeOffDelayed();
-      if ($(e.target).attr("data-autocomplete"))
-        this.autocompleteStart(e);
+      // Autocomplete is disabled.
+      //if ($(e.target).attr("data-autocomplete"))
+      //  this.autocompleteStart(e);
       Y.GUI.inputMode(true);
       return true;
     },
@@ -205,6 +203,14 @@
     autocompleteCall: function (e) {
       if (this.autocompleteObj)
         this.autocompleteObj.trigger("input", $(e.target).val());
+    },
+    
+    hide: function () { 
+      this.$el.hide();
+    },
+
+    show: function () { 
+      this.$el.show();
     }
   });
 

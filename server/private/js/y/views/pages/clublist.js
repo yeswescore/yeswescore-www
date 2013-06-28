@@ -1,6 +1,4 @@
-Y.Views.ClubList = Y.View.extend({
-  el : "#content",
-
+Y.Views.Pages.ClubList = Y.View.extend({
   events : {
     // "keyup input#search-basic" : "search", // FIXME: keypress ENTER.
     "click .magnifier": "search",
@@ -14,9 +12,9 @@ Y.Views.ClubList = Y.View.extend({
   
   clubs:null,
 
-  initialize : function() {
+  myinitialize : function() {
   
-	//header    
+    //header    
     Y.GUI.header.title(i18n.t('clublist.title')); 
     
     Y.GUI.header.show();
@@ -35,24 +33,19 @@ Y.Views.ClubList = Y.View.extend({
     // we render immediatly
     this.render();    
 
-	console.log('id  ',this.id);
-
     this.clubs = new ClubsCollection();
 
-	// renderList
+    // renderList
     if (this.id !== 'null') {
       this.clubs.setMode('search', this.id);
       this.clubs.on('sync', this.renderList, this);            
       this.clubs.fetch();
     }
-    
-    
-    
   },
 
   chooseClub : function(elmt) { 
     var ref = elmt.currentTarget.id;
-	Y.Router.navigate(ref, {trigger: true});  
+    Y.Router.navigate(ref, {trigger: true});  
   },
 
   search : function() {
@@ -102,8 +95,6 @@ Y.Views.ClubList = Y.View.extend({
   },
 
   onClose : function() {
-    this.undelegateEvents();
-
     this.clubs.off('sync', this.renderList, this);
   }
 });

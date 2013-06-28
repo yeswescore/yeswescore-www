@@ -9,7 +9,7 @@
     Conf: null,      // @see y/conf.js
     Router: null,    // @see y/router.js
     Templates: null, // @see y/tempates.js
-    Views: {},       // @see y/views/*
+    Views: { Pages: { } },       // @see y/views/*
 
     GUI: null,       // @see y/gui.js
 
@@ -91,9 +91,8 @@
                      console.log('template loaded');
                      /*#endif*/
                      // init GUI singleton
-                     that.GUI.header = new Y.Views.Header();
+                     that.GUI.header = new Y.Views.Header({el: "#header"});
                      that.GUI.content = null; // will be overwrite by the router.
-                     that.GUI.autocomplete = new Y.Views.Autocomplete();
                      that.GUI.navbar = new Y.Views.Navbar();  // unused yet.
                      /*#ifdef DEV*/
                      console.log('backbone history start');

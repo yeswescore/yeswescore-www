@@ -1,6 +1,4 @@
-Y.Views.PlayerSignin = Y.View.extend({
-  el : "#content",
-
+Y.Views.Pages.PlayerSignin = Y.View.extend({
   events: {
     'click #connexion' : 'connexion',
     'click #deconnexion' : 'deconnexion',
@@ -248,9 +246,5 @@ Y.Views.PlayerSignin = Y.View.extend({
     this.status.current = newStatus;
     this.$(".container").removeClass(_.values(this.status).join(" "));
     this.$(".container").addClass(this.status.current);
-  },
-
-  onClose : function() {
-    this.undelegateEvents();
   }
 });

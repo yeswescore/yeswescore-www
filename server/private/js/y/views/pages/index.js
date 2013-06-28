@@ -1,6 +1,4 @@
-Y.Views.Index = Y.View.extend({
-  el: "#content",
-  
+Y.Views.Pages.Index = Y.View.extend({
   events: {
     "keyup input#search-basic": "searchOnKey",
     "mousedown .magnifier": "searchButton"
@@ -10,14 +8,9 @@ Y.Views.Index = Y.View.extend({
   pageHash : "index",  
   
   myinitialize: function () {
-    Y.GUI.header.title(i18n.t('index.title'));
-
-    this.indexViewTemplate = Y.Templates.get('index');
-    
     Y.GUI.header.hide();
-    
+    this.indexViewTemplate = Y.Templates.get('page-index');
     this.render();
-    
   },
 
   searchButton: function () {
@@ -33,17 +26,15 @@ Y.Views.Index = Y.View.extend({
   },
   
   search: function () {
-  
-	var q = $("#search-basic").val();
-  	
-  	if (q.length>0)
-  	  Y.Router.navigate('clubs/list/'+q, {trigger: true});
-   
+    var q = $("#search-basic").val();
+    
+    if (q.length>0)
+      Y.Router.navigate('clubs/list/'+q, {trigger: true});s
   },  
   
   autocompleteClubs: function (input, callback) {
     if (input.indexOf('  ')!==-1 || input.length<= 1 )
-      callback('empty');		
+      callback('empty');    
     
     Backbone.ajax({
       url: Y.Conf.get("api.url.autocomplete.clubs"),
@@ -71,10 +62,5 @@ Y.Views.Index = Y.View.extend({
   render: function () {
     this.$el.html(this.indexViewTemplate(), {});
     return this;
-  },
-
-  onClose: function () {
-    this.undelegateEvents();
-    //this.games.off("all", this.renderList, this);
   }
 });

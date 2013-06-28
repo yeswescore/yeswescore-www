@@ -1,6 +1,4 @@
-Y.Views.PlayerForm = Y.View.extend({
-  el:"#content",
-    
+Y.Views.Pages.PlayerForm = Y.View.extend({
   events: {
     'click #savePlayer':'add',
     'click #deconnexion':'deconnexion',
@@ -176,8 +174,6 @@ Y.Views.PlayerForm = Y.View.extend({
   },
 
   onClose: function(){
-    this.undelegateEvents();
-    
     this.player.off("sync", this.renderPlayer, this);	
     if (this.useSearch===1) this.clubs.off( "sync", this.renderList, this );
   }

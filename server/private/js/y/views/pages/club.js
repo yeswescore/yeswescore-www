@@ -1,6 +1,4 @@
-Y.Views.Club = Y.View.extend({
-  el : "#content",
-  
+Y.Views.Pages.Club = Y.View.extend({
   events : {
     'mousedown .button.send' : 'sendComment',
     'mousedown .button.login': 'goToLogin',
@@ -11,7 +9,7 @@ Y.Views.Club = Y.View.extend({
   pageHash : "clubs/",
   gameid: 0,
   
-  initialize : function(param) {
+  myinitialize : function(param) {
     // header
     Y.GUI.header.title(i18n.t('club.title'));  	
     Y.GUI.header.show();
@@ -305,7 +303,6 @@ Y.Views.Club = Y.View.extend({
   },
   
   onClose : function() {
-    this.undelegateEvents();
     this.club.off("sync", this.renderClub, this);  
      
     if (this.game!==null) {
@@ -317,6 +314,5 @@ Y.Views.Club = Y.View.extend({
       this.streamItemsCollection.off("sync", this.renderListComments, this);
       this.poller2.stop();      	
     }
-    
   }
 });

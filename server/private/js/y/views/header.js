@@ -1,6 +1,4 @@
 Y.Views.Header = Y.View.extend({
-  el: "#header",
-
   events: {
     "click .connection": "goLink",
     "click .logo": "goHome"
@@ -39,13 +37,5 @@ Y.Views.Header = Y.View.extend({
 
   goHome: function () {
     Y.Router.navigate("", {trigger: true});
-  },
-  
-  hide: function () { 
-    this.$el.hide();
-  },
-
-  show: function () { 
-    this.$el.show();
   }
 });
