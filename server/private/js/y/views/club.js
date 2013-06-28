@@ -178,10 +178,24 @@ Y.Views.Club = Y.View.extend({
 		 else {
 		   timer = '00:00';  		    
 		 }       
-	  }	      
+	  }	    
+
+	  
+	  var sets = this.game.getSets('&nbsp')
+      , score = this.game.getScore();
 	   
 	  $("#scoreBoard").html(this.templates.game({ 
-	  game: this.game.toJSON(),timer : timer }));  	
+	  game: this.game.toJSON()
+  	  , team1_set1 : sets[0][0]
+  	  , team1_set2 : sets[1][0]
+      , team1_set3 : sets[2][0]
+      , team2_set1 : sets[0][1]
+      , team2_set2 : sets[1][1]
+      , team2_set3 : sets[2][1]
+      , team1_sets : String(score[0]) || '&nbsp'
+      , team2_sets : String(score[1]) || '&nbsp'	  
+	  , timer : timer }));  	
+	  
 	  $("#scoreBoard").i18n();
 	        
 	 }
