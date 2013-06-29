@@ -1,0 +1,102 @@
+<!-- template scoreboard.html -->
+
+<div class="scoreBoard">
+
+   <%
+   if (game.teams[0].players[0].owner === undefined) 
+   { 
+   %>     
+  <div class="player-info" id="#players/<%= game.teams[0].players[0].id %>"></div>
+     <div class="playerInfos" id="#players/<%= game.teams[0].players[0].id %>">  
+  <%
+   }
+   else {
+   %>
+     <div class="playerInfos">     
+   <%
+   }
+  %>
+  
+  
+    <span class="player-name"> 
+      <b class="server1">&nbsp;&nbsp;&nbsp;</b>&nbsp;<%= game.teams[0].players[0].name %>
+    </span>
+  
+    <div class="other">
+      <span class="club">
+        <%
+         if (game.teams[0].players[0].club !== undefined) {  
+           print(' '+game.teams[0].players[0].club.name);  
+         } 
+        %>
+      </span>
+      <span class="player-rank">
+        <%= game.teams[0].players[0].rank %>
+      </span>
+    </div>
+  </div> 
+   
+    
+  <div class="score-grid">
+    <div class="ui-grid-c">
+        <div class="ui-block-a legend">1</div>
+        <div class="ui-block-b legend">2</div>
+        <div class="ui-block-c legend">3</div>
+        <div class="ui-block-d legend"></div>
+        <div class="ui-block-e legend">sets</div>
+    </div>
+
+    <div class="ui-grid-c">
+        <div class="ui-block-a" id="team1_set1_div"><div class="score"><%= team1_set1 %></div></div>
+        <div class="ui-block-b" id="team1_set2_div"><div class="score"><%= team1_set2 %></div></div>
+        <div class="ui-block-c" id="team1_set3_div"><div class="score"><%= team1_set3 %></div></div>
+        <div class="ui-block-d"></div>
+        <div class="ui-block-e" id="team1_sets_div"><div class="score sets"><%= team1_sets %></div></div>
+    </div>
+    <!-- /grid-a -->
+
+    <div class="ui-grid-c" style="margin-top:6px;">
+        <div class="ui-block-a" id="team2_set1_div"><div class="score"><%= team2_set1 %></div></div>
+        <div class="ui-block-b" id="team2_set2_div"><div class="score"><%= team2_set2 %></div></div>
+        <div class="ui-block-c" id="team2_set3_div"><div class="score"><%= team2_set3 %></div></div>
+        <div class="ui-block-d"></div>
+        <div class="ui-block-e" id="team2_sets_div"><div class="score sets"><%= team2_sets %></div></div>
+    </div>
+    <div class="separator"></div>
+  </div>
+
+   <%
+   if (game.teams[1].players[0].owner === undefined) 
+   { 
+   %>     
+    <div class="player-info" id="#players/<%= game.teams[1].players[0].id %>"></div>
+      <div class="playerInfos" id="#players/<%= game.teams[1].players[0].id %>">  
+  <%
+   }
+   else {
+   %>
+      <div class="playerInfos">     
+   <%
+   }
+  %>
+         
+    
+    <span class="player-name">   
+       <b class="server2">&nbsp;&nbsp;&nbsp;</b>&nbsp;<%= game.teams[1].players[0].name %>
+    </span>
+    <div class="other">
+      <span class="club">
+      <% 
+        if (game.teams[1].players[0].club !== undefined) {  
+          print(' '+game.teams[1].players[0].club.name);  
+        } 
+      %>
+      </span>
+      <span class="player-rank">
+        <%= game.teams[1].players[0].rank %>
+      </span>
+    </div>
+  </div>
+  
+ 
+</div>

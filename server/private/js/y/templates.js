@@ -22,7 +22,9 @@
           // pages
           "page-club", "page-game", "page-index", "page-player", "page-profil", "page-signin", "page-clublist",
           // composants
-          "search", "list-clubs"
+          "search", 
+          "club", "game", "game-comments", "game-infobar", "game-scoreboard",
+          "list-clubs", "list-games", "list-comments"
         ];
         var timeoutid = setTimeout(function () {
            var harvestedTemplates = _.keys(html);

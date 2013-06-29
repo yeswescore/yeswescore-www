@@ -1,0 +1,20 @@
+<!-- template club.html -->
+<div class="club">
+  <div class="ui-grid-a">
+    <div class="ui-block-a" style="width: 20%;">
+    <img src="/static/images/club-pic.jpg" width="40px" height="40px" />
+    </div>
+    <div class="ui-block-b" style="width: 80%;valign:top;">
+    <div class="game-player"><%= club.name %></div>
+    <div class="city"><%= club.location.city %></div>
+    </div>
+  </div>     
+  <hr/>
+  <b data-i18n="club.outdoor"></b> : <%= club.outdoor %>
+  <hr/>
+  <b data-i18n="club.indoor"></b> : <%= club.indoor %>
+  <hr/>
+  <b data-i18n="club.countPlayers"></b> : <%= club.countPlayers %>
+  <hr/>
+  <b data-i18n="club.countTeams"></b> : <%= club.countTeams %>
+</div>

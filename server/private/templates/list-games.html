@@ -1,0 +1,104 @@
+<!-- template list-matchs.html -->
+<!-- template gameShortList.html -->
+<% if(games.length==0) { %>
+<li><p class="message" data-i18n="message.noresult"></p></li>
+<% } %> 
+<% for (var i = 0; i < games.length; i++) { 
+
+game = games[i]; 
+
+if (game.error!==undefined) 
+{
+  if (game.error.length > 1 ) 
+  {  
+%>
+<li><p class="message" data-i18n="message.error"></p></li>  
+<%
+   break;
+  }
+}
+
+team1_set1 = '&nbsp;'; 
+team1_set2 = '&nbsp;'; 
+team1_set3 = '&nbsp;';
+team2_set1 = '&nbsp;'; 
+team2_set2 = '&nbsp;'; 
+team2_set3 = '&nbsp;';
+set_current = 1; 
+team1_sets = '0'; 
+team2_sets = '0'; 
+
+if (game.infos.score !== null ) { 
+  if(game.infos.score.indexOf('/')!=-1) { 
+    scoreboard = game.infos.score.split('/'); 
+    team1_sets = scoreboard[0]; 
+    team2_sets = scoreboard[1]; 
+    } 
+} 
+  
+if (game.infos.sets !== null ) { 
+  if (game.infos.sets.indexOf(';')!=-1) { 
+    scoreboard = game.infos.sets.split(';'); 
+    
+    if (scoreboard.length==2 ||scoreboard.length==3) { 
+      scoreboard1 = scoreboard[0].split('/');
+      team1_set1 = scoreboard1[0]; 
+      team2_set1 = scoreboard1[1]; 
+      scoreboard2 = scoreboard[1].split('/'); 
+      team1_set2 = scoreboard2[0]; 
+      team2_set2 = scoreboard2[1]; 
+      set_current=2; 
+    } 
+    
+    if (scoreboard.length==3) { 
+      scoreboard3 = scoreboard[2].split('/'); 
+      team1_set3 = scoreboard3[0]; 
+      team2_set3 = scoreboard3[1]; set_current=3; 
+    } 
+  } 
+  // 1 set 
+  else { 
+    if (game.infos.sets.indexOf('/')!=-1) { 
+      scoreboard1 = game.infos.sets.split('/'); 
+      team1_set1 = scoreboard1[0]; 
+      team2_set1 = scoreboard1[1]; 
+    } 
+  } 
+} 
+
+if (game.dates.start !== undefined ) {  
+  //game.dates.startConvert = new Date(game.dates.start);
+    game.dates.startConvert = Date.fromString(game.dates.start);
+  game.dates.startDate = game.dates.startConvert.getDate()+' '+game.dates.startConvert.getMonthName()+' '+game.dates.startConvert.getFullYear();
+}
+else
+  game.dates.startDate = 'A venir';
+
+
+if (game.status === "ongoing") game.status = i18n.t('game.ongoing');
+else if (game.status === "finished") game.status = i18n.t('game.finished');
+else if (game.status === "created") game.status = i18n.t('game.created');
+ 
+%>
+<li id="<%= game.id %>">
+  <span class="title2"><%= game.teams[0].players[0].name %></span><br/>
+  <span class="title3">
+  <%= game.teams[0].players[0].rank %> - 
+  <% 
+    if (game.teams[0].players[0].club !== undefined) {  
+      print(game.teams[0].players[0].club.name);  
+    } 
+  %>   
+  </span>
+  <br/>
+  <span class="title2"><%= game.teams[1].players[0].name %></span><br/>
+  <span class="title3">
+  <%= game.teams[1].players[0].rank %> - 
+  <% 
+    if (game.teams[1].players[0].club !== undefined) {  
+      print(game.teams[1].players[0].club.name);  
+    } 
+  %>  
+  </span>   
+</li>
+<% } %>

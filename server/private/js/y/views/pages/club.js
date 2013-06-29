@@ -7,13 +7,28 @@ Y.Views.Pages.Club = Y.View.extend({
 
   pageName: "club",
   pageHash : "clubs/",
-  gameid: 0,
   
-  myinitialize : function(param) {
+  clubid: null,
+  
+  myinitialize : function() {
     // header
     Y.GUI.header.title(i18n.t('club.title'));  	
     Y.GUI.header.show();
 
+    this.templates = {
+      page: Y.Templates.get('page-club')
+    };
+    
+    // subviews
+    this.subviews = {
+      'div[data-template="club"]': new Y.Views.Club({id: this.id})
+    };
+    
+    this.render();
+  },
+  /*
+    
+    
     // loading templates.
     this.templates = {
       layout: Y.Templates.get('empty'),
@@ -54,12 +69,13 @@ Y.Views.Pages.Club = Y.View.extend({
     // loading owner
     this.owner = Y.User.getPlayer();
   },
+  */
 
   render: function () {
     // empty page.
-    this.$el.html(this.templates.layout());
-    //
-    
+    this.$el.html(this.templates.page());
+    // render subviews (automatic)
+    this.renderSubviews();
     return this;
   },
 
@@ -81,7 +97,7 @@ Y.Views.Pages.Club = Y.View.extend({
     //this.$listmatch.html(this.templates.listmatch({'games':this.games}));
     $("#listMatchClubs").html(this.templates.ongoing());
 
-	var that = this; 
+    var that = this; 
     this.games.fetch().done($.proxy(function () {  
       if (that.games.toJSON().length === 0) {
         $("#listMatchClubs").html(that.templates.error());
