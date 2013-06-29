@@ -1,9 +1,9 @@
-Y.Views.Club = Y.View.extend({
+Y.Views.ClubInfos = Y.View.extend({
   club: null,
   
   myinitialize : function(param) {
     this.templates = {
-      club: Y.Templates.get('club')
+      club: Y.Templates.get('club-infos')
     };
     
     this.club = new ClubModel({id: this.id});
