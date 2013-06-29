@@ -23,56 +23,19 @@
   <!-- infos -->
   <div class="ui-grid-d text">
     <div class="ui-block-a">
-      <span class="timer"><%= timer %></span>
+      <span class="timer">${timer}</span>
     </div>
     <div class="ui-block-b">
-    <%
-    if (game.dates) {        
-        if (game.dates.start !== undefined ) {            
-          if (game.dates.start==="") {
-              game.dates = {
-                startDate : '',
-                startTime : ''
-              };              
-          }
-          else { 
-            //game.dates.startConvert = new Date(game.dates.start);
-            game.dates.startConvert = Date.fromString(game.dates.start);
-            game.dates.startConvert.month = game.dates.startConvert.getMonth() + 1;
-            game.dates.startDate = ('0'+game.dates.startConvert.getDate()).slice(-2)+'/'+('0'+game.dates.startConvert.month).slice(-2)+'/'+(''+game.dates.startConvert.getFullYear()).slice(-2);
-            game.dates.startTime = ('0'+game.dates.startConvert.getHours()).slice(-2)+'h'+('0'+game.dates.startConvert.getMinutes()).slice(-2);
-          }
-        } 
-        else {                      
-          game.dates = {
-            startDate : '',
-            startTime : ''
-          };           
-      }
-    }
-    else {        
-        game.dates = {
-          startDate : '',
-          startTime : ''
-        };           
-    }
-    %>
     <b>
-    <%= game.dates.startDate  %> - 
-    <%= game.dates.startTime %>
+    ${startDate} - ${startTime}
     </b>
     </div>
     <div class="ui-block-c">
-    <b><%= game.location.city %></b>
+    <b>${city}</b>
     </div>
     <div class="ui-block-d">
     <b>
-    <%
-    if (game.status === "ongoing") game.status = i18n.t('game.ongoing');
-    else if (game.status === "finished") game.status = i18n.t('game.finished');
-    else if (game.status === "created") game.status = i18n.t('game.created');
-    print(game.status);
-    %>
+    ${status}
     </b>
     </div>
     <div class="ui-block-e">

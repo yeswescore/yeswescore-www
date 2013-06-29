@@ -113,9 +113,22 @@
       return true;
     },
 
+    closeSubviews: function () {
+      _.keys(this.subviews).forEach(function (selector) {
+        this.subviews[selector].close();
+      }, this);
+    },
+    
     close : function () {
+      // closing subviews first
+      this.closeSubviews();
+      // normal close
       this.undelegateEvents();
       this.unloaded = true;
+      // fixme:
+      //  inputmodeoff, autocomplete, ...
+      //  should only be done while closing "page root view" 
+      //
       this.inputModeOff();
       this.autocompleteStop();
       this.off();

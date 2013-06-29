@@ -362,15 +362,36 @@ var GameModel = Backbone.Model.extend({
   },
   
   getStartDate: function () {
-    var startDate = i18n.t("game.created");
+    var startDate = ''; // i18n.t("game.created");
     if (this.get('dates') !== undefined &&
         this.get('dates').start !== undefined) {  
       var startConvert = Date.fromString(this.get('dates').start);
-      startDate = startConvert.getDate()+' '+startConvert.getMonthName()+' '+startConvert.getFullYear();
+      //startDate = startConvert.getDate()+' '+startConvert.getMonthName()+' '+startConvert.getFullYear();
+      startDate = String(startConvert.getDate()).padLeft(2, '0') + '/' +
+                  String(startConvert.getMonth() + 1).padLeft(2, '0') + '/' +
+                  String(startConvert.getFullYear()).slice(-2);
     }
     return startDate;
   },
+  
+  getStartTime: function () {
+    var startTime = '';
+    if (this.get('dates') !== undefined &&
+        this.get('dates').start !== undefined) {  
+      var startConvert = Date.fromString(this.get('dates').start);
+      game.dates.startTime = ('0'+game.dates.startConvert.getHours()).slice(-2)+'h'+('0'+game.dates.startConvert.getMinutes()).slice(-2);
+    }
+    return startTime;
+  },
 
+  getStatusText: function () {
+    return i18n.t('game.'+this.get('status')); // FIXME: risky ?
+  },
+  
+  getCity: function () {
+    return this.get('location').city;
+  },
+  
   // compute score based on sets.
   // @return "scoreTeam1/scoreTeam2"
   computeScore : function() { 
@@ -420,7 +441,8 @@ var GameModel = Backbone.Model.extend({
       elapsed = dateEnd - dateStart;
       if (elapsed > 0) {
         elapsed = new Date(0, 0, 0, 0, 0, 0, elapsed);
-        return ('0'+elapsed.getHours()).slice(-2)+':'+('0'+elapsed.getMinutes()).slice(-2);  
+        return String(elapsed.getHours()).padLeft(2, '0') + ':' + 
+               String(elapsed.getMinutes()).padLeft(2, '0');
       }
     }
     if (this.isOngoing()) {
@@ -430,8 +452,9 @@ var GameModel = Backbone.Model.extend({
       elapsed = dateEnd - dateStart;
       if (elapsed>0)
       {
-	      elapsed = new Date(0, 0, 0, 0, 0, 0, elapsed);         
-	      return ('0'+elapsed.getHours()).slice(-2)+':'+('0'+elapsed.getMinutes()).slice(-2);
+        elapsed = new Date(0, 0, 0, 0, 0, 0, elapsed);         
+        return String(elapsed.getHours()).padLeft(2, '0') + ':' + 
+               String(elapsed.getMinutes()).padLeft(2, '0');
       }
     }
     return '00:00';

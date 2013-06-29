@@ -23,7 +23,8 @@
           "page-club", "page-game", "page-index", "page-player", "page-profil", "page-signin", "page-clublist",
           // composants
           "search", 
-          "club", "game", "game-comments", "game-infobar", "game-scoreboard",
+          "club-infos", 
+          "game", "game-comments", "game-infobar", "game-scoreboard",
           "list-clubs", "list-games", "list-comments",
           "listitem-game"
         ];

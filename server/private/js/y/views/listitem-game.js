@@ -7,14 +7,10 @@ Y.Views.ListItemGame = Y.View.extend({
   myinitialize : function() {
     assert(this.options.game);
     
+    this.game = this.options.game;
     this.templates = {
       game: Y.Templates.get('listitem-game')
     };
-    
-    //
-    this.game = this.options.game;
-    
-    // render immediately
     this.render();
   },
   
@@ -22,17 +18,12 @@ Y.Views.ListItemGame = Y.View.extend({
     if (this.game.error && game.error.length > 1)
       this.$el.html(this.templates.game({game: null}));      
     else {
-      var score = this.game.getScore(); // [ 0, 0 ]
-      var sets = this.game.getSets('&nbsp;'); // [[6, 2], [6, 3], ['&nbsp;', '&nbsp;']]
-      var startDate = this.game.getStartDate();
-      var status = i18n.t('game.'+this.game.status); // FIXME: risky ?
-      
       this.$el.html(this.templates.game({
         game: this.game.attributes,
-        score: score,
-        sets: sets,
-        startDate: startDate,
-        status: status
+        score: this.game.getScore(),
+        sets: this.game.getSets('&nbsp;'),
+        startDate: this.game.getStartDate(),
+        status: this.game.getStatusText()
       }));
     }
     return this;

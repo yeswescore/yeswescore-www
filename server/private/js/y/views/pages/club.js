@@ -21,7 +21,7 @@ Y.Views.Pages.Club = Y.View.extend({
     
     // subviews
     this.subviews = {
-      'div[data-template="club"]': new Y.Views.Club({id: this.id}),
+      'div[data-template="club-infos"]': new Y.Views.ClubInfos({id: this.id}),
       'ul[data-template="club-list-games"]': new Y.Views.ClubListGames({id: this.id})
     };
     
@@ -73,7 +73,6 @@ Y.Views.Pages.Club = Y.View.extend({
   */
 
   render: function () {
-    // empty page.
     this.$el.html(this.templates.page());
     // render subviews (automatic)
     this.renderSubviews();
@@ -145,46 +144,6 @@ Y.Views.Pages.Club = Y.View.extend({
   
   renderViewGame : function() {
  
-    if (this.game.toJSON().length === 0) {
-	  $("#scoreBoard").html(this.templates.error());
-	  $("#scoreBoard").i18n();
-	}
-	else {	      
-	  var timer = '';
-	  var game = this.game;
-		  	  
-	  if ( game.get('status') === "finished" ) {
-		       
-	    var dateEnd = Date.fromString(game.get('dates').end);      
-		var dateStart = Date.fromString(game.get('dates').start);
-		          	
-		timer = dateEnd - dateStart;
-		var dateTimer = new Date(0, 0, 0, 0, 0, 0, timer);  
-		      
-		if (timer>0)       
-		  timer = ('0'+dateTimer.getHours()).slice(-2)+':'+('0'+dateTimer.getMinutes()).slice(-2);  
-		else
-		  timer = '00:00';   
-		         
-		$("#statusButton").html(i18n.t('game.finished'));	         
-		$("#optionButton").attr("id","statusRestart");
-		$("#statusRestart").html(i18n.t('game.restart'));
-		 	  		        
-	  }
-	  else if ( game.get('status') === "ongoing" ) {		        
-		 var dateEnd = new Date();
-		 var dateStart = Date.fromString(game.get('dates').start);
-		 timer = dateEnd - dateStart;
-   
-		 if (timer>0)
-		 {		          
-	       var dateTimer = new Date(0, 0, 0, 0, 0, 0, timer);         
-		   timer = ('0'+dateTimer.getHours()).slice(-2)+':'+('0'+dateTimer.getMinutes()).slice(-2);        
-		 }
-		 else {
-		   timer = '00:00';  		    
-		 }       
-	  }	    
 
 	  
 	  var sets = this.game.getSets('&nbsp')
@@ -204,7 +163,6 @@ Y.Views.Pages.Club = Y.View.extend({
 	  
 	  $("#scoreBoard").i18n();
 	        
-	 }
   },  
   
   renderListComments : function() {
