@@ -32,6 +32,8 @@
       this.events = _.assign(events, this.events || {});
       // might be usefull
       this.unloaded = false;
+      //
+      this.subviews = {};
       // proxy func call.
       return this.myinitialize.apply(this, arguments);
     },
@@ -55,6 +57,17 @@
       return false;
     },
 
+    renderSubviews: function () {
+      _.keys(this.subviews).forEach(function (selector) {
+        try {
+          var view = this.subviews[selector];
+          view.setElement(this.$(selector)).render();
+        } catch (e) {
+          console.log('exception rendering subview ' + selector + "\n" + e);
+        }
+      }, this);
+    },
+    
     clearInputModeOffDelayed: function () {
       if (this.inputModeOffTimeout) {
         window.clearTimeout(this.inputModeOffTimeout);
