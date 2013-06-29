@@ -22,12 +22,16 @@
   var View = Backbone.View.extend({
   
     lastInput : null,
+    
+    unloaded: false,
   
     initialize: function () {
       // before anything, linking the DOM to this view.
       this.el.view = this;
       // merging this.events with events.
       this.events = _.assign(events, this.events || {});
+      // might be usefull
+      this.unloaded = false;
       // proxy func call.
       return this.myinitialize.apply(this, arguments);
     },
@@ -62,8 +66,8 @@
       this.lastInput = document.activeElement.id;     
       this.clearInputModeOffDelayed();
       // Autocomplete is disabled.
-      //if ($(e.target).attr("data-autocomplete"))
-      //  this.autocompleteStart(e);
+      if ($(e.target).attr("data-autocomplete"))
+        this.autocompleteStart(e);
       Y.GUI.inputMode(true);
       return true;
     },
@@ -82,33 +86,6 @@
           //console.log('View.js: new activeElement is an input');
           return; // security...
         }
-        //console.log('View.js: => input mode off ' + activeElement.nodeName + ' => on bascule en input mode off');
-
-		/*console.log('lastInput ',that.lastInput);*/
-		
-		/*
-		if (that.lastInput !== null)
-		{
-			var element = $('#'+that.lastInput);
-			console.log('element où on force blur ',element)
-			
-			if (element.is('input')) element.attr('readonly', 'readonly'); // Force keyboard to hide on input field.
-		    if (element.is('textarea')) element.attr('disabled', 'true'); // Force keyboard to hide on textarea field.
-		    setTimeout(function() {
-		        element.blur();  //actually close the keyboard
-		        // Remove readonly attribute after keyboard is hidden.
-		        if (element.is('input')) element.removeAttr('readonly');
-		        if (element.is('textarea')) element.removeAttr('disabled');
-		        console.log('View.js on cache le clavier');
-		        
-		    }, 100);
-		};*/
-		
-		/*
-		console.log('View.js action ');
-		$(activeElement).filter(':input:focus').blur();
-		*/
-		   
         Y.GUI.inputMode(false);
       }, 100);
       // au cas ou ... on n'a pas d'autres moyens de toute façon..
@@ -124,6 +101,8 @@
     },
 
     close : function () {
+      this.undelegateEvents();
+      this.unloaded = true;
       this.inputModeOff();
       this.autocompleteStop();
       this.off();
@@ -149,6 +128,7 @@
     // autocomplete helpers
     autocompleteObj: null,
     autocompleteTimeout: null,
+    autocompleteGUI: null,
 
     autocompleteStart: function (e) {
       if (this.autocompleteTimeout) {
@@ -162,7 +142,7 @@
       //
       var fetchFunctionName = $(e.target).attr("data-autocomplete");
       assert(typeof this[fetchFunctionName] === "function");
-      this.autocompleteObj = new Y.Autocomplete();
+      this.autocompleteObj = new Y.Autocomplete({GUI: this.autocompleteGUI});
       this.autocompleteObj.on("input.temporized", function (input) {
         // fetching data for input
         this[fetchFunctionName](input, _.bind(function (err, data) {

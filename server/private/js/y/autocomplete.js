@@ -27,6 +27,7 @@
     this._timeout = null;
     this._fetching = false;
     this._nextInput = null;
+    this._GUI = options.GUI || Y.GUI.autocomplete;
     // public
     this.proposals = [/* { text: "..." } */];
     // mapping events to methods.
@@ -93,7 +94,7 @@
     },
 
     repaint : function () {
-      Y.GUI.autocomplete.setProposals(this, this.proposals);
+      this._GUI.setProposals(this, this.proposals);
     },
 
     fetch : function (data) { return [ { text: data } ]; }, // default is echo request.
@@ -102,8 +103,8 @@
       // events
       this.off();
       // repainting GUI with no proposals
-      Y.GUI.autocomplete.setProposals(this, []);
-      Y.GUI.autocomplete.autocomplete = null; // removing ref (Hacky Hacky)
+      this._GUI.setProposals(this, []);
+      this._GUI.autocomplete = null; // removing ref (Hacky Hacky)
       // temporization
       if (this._timeout) {
         window.clearTimeout(this._timeout);

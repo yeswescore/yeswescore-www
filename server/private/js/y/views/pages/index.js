@@ -7,10 +7,33 @@ Y.Views.Pages.Index = Y.View.extend({
   pageName: "index",
   pageHash : "index",  
   
+  // interface.
+  autocompleteGUI: {
+    setProposals: null
+  },
+  
   myinitialize: function () {
     Y.GUI.header.hide();
+    var that = this;
+    this.autocompleteGUI.setProposals = $.proxy(this.setProposals, this);
     this.indexViewTemplate = Y.Templates.get('page-index');
     this.render();
+  },
+  
+  setProposals: function (autocomplete, proposals) {
+    // proposals = [ { id: "...", name: "...", text: "..." }, ... ]
+    console.log('setProposals ! ' + proposals.length);
+    if (proposals.length === 0)
+      return;
+    var $autocomplete = this.$(".autocomplete");
+    var $about = this.$(".about");
+    $about.hide();
+    $autocomplete.empty();
+    $autocomplete.show();
+    proposals.forEach(function (proposal) {
+      // FIXME: remove html from view code.
+      $autocomplete.append('<li>'+proposal.text+'</li>');
+    }, this);
   },
 
   searchButton: function () {
@@ -29,7 +52,7 @@ Y.Views.Pages.Index = Y.View.extend({
     var q = $("#search-basic").val();
     
     if (q.length>0)
-      Y.Router.navigate('clubs/list/'+q, {trigger: true});s
+      Y.Router.navigate('clubs/list/'+q, {trigger: true});
   },  
   
   autocompleteClubs: function (input, callback) {

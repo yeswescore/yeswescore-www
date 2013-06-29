@@ -177,6 +177,14 @@ update the app
 }
 */
 
+.index ul.autocomplete li {
+  background:transparent;
+  border:0px;
+}
+.index ul.autocomplete li:hover {
+  text-decoration:underline;
+}
+
 .footer {
   /* the rotation is centered on the div :
      so, if width is W

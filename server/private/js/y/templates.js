@@ -19,7 +19,10 @@
         // dev environment, loading template using $.get()
         // pas trouvé mieux pour l'instant...
         var templates = [
-          "page-club", "page-game", "page-index", "page-player", "page-profil", "page-signin"
+          // pages
+          "page-club", "page-game", "page-index", "page-player", "page-profil", "page-signin", "page-clublist",
+          // composants
+          "search", "list-clubs"
         ];
         var timeoutid = setTimeout(function () {
            var harvestedTemplates = _.keys(html);
