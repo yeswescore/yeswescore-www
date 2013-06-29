@@ -84,7 +84,7 @@ Y.Views.Pages.ClubList = Y.View.extend({
   },
   
   goToClub : function(elmt) { 
-    var ref = elmt.currentTarget.id;
-    Y.Router.navigate(ref, {trigger: true});  
+    var clubid = $(elmt.currentTarget).data("clubid");
+    Y.Router.navigate("#clubs/"+clubid, {trigger: true});  
   }
 });

@@ -1,7 +1,8 @@
 Y.Views.Pages.Index = Y.View.extend({
   events: {
     "keyup input#search-basic": "searchOnKey",
-    "mousedown .magnifier": "searchButton"
+    "mousedown .magnifier": "searchButton",
+    "mousedown .autocomplete li": "goToClub"
   },  
 
   pageName: "index",
@@ -32,7 +33,7 @@ Y.Views.Pages.Index = Y.View.extend({
     $autocomplete.show();
     proposals.forEach(function (proposal) {
       // FIXME: remove html from view code.
-      $autocomplete.append('<li>'+proposal.text+'</li>');
+      $autocomplete.append('<li data-clubid="'+ proposal.id + '">'+proposal.text+'</li>');
     }, this);
   },
 
@@ -77,10 +78,15 @@ Y.Views.Pages.Index = Y.View.extend({
   
   autocompleteChoose: function (data) {
     if (data && data.name) {
-      this.$("#search-basic").val(data.name);   
+      this.$("#search-basic").val(data.name);
     }
   },    
 
+  goToClub: function (ev) {
+    var clubid = $(ev.target).data("clubid");
+    Y.Router.navigate("#clubs/"+clubid, {trigger: true});  
+  },
+  
   // should not take any parameters
   render: function () {
     this.$el.html(this.indexViewTemplate(), {});
