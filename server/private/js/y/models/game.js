@@ -360,6 +360,16 @@ var GameModel = Backbone.Model.extend({
       return parseInt(num, 10);
     });
   },
+  
+  getStartDate: function () {
+    var startDate = i18n.t("game.created");
+    if (this.get('dates') !== undefined &&
+        this.get('dates').start !== undefined) {  
+      var startConvert = Date.fromString(this.get('dates').start);
+      startDate = startConvert.getDate()+' '+startConvert.getMonthName()+' '+startConvert.getFullYear();
+    }
+    return startDate;
+  },
 
   // compute score based on sets.
   // @return "scoreTeam1/scoreTeam2"

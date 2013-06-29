@@ -1,0 +1,32 @@
+<!-- template listitem-game.html -->
+<div class="game short">
+  <%
+    if (game) {
+  %>
+  <span class="title2"><%= game.teams[0].players[0].name %></span><br/>
+  <span class="title3">
+  <%= game.teams[0].players[0].rank %> - 
+  <% 
+    if (game.teams[0].players[0].club !== undefined) {  
+      print(game.teams[0].players[0].club.name);  
+    } 
+  %>   
+  </span>
+  <br/>
+  <span class="title2"><%= game.teams[1].players[0].name %></span><br/>
+  <span class="title3">
+  <%= game.teams[1].players[0].rank %> - 
+  <% 
+    if (game.teams[1].players[0].club !== undefined) {  
+      print(game.teams[1].players[0].club.name);  
+    } 
+  %>
+  </span>
+  <%
+    } else {
+  %>
+  <p class="message" data-i18n="message.error"></p>
+  <%
+    }
+  %>
+</div>

@@ -21,7 +21,8 @@ Y.Views.Pages.Club = Y.View.extend({
     
     // subviews
     this.subviews = {
-      'div[data-template="club"]': new Y.Views.Club({id: this.id})
+      'div[data-template="club"]': new Y.Views.Club({id: this.id}),
+      'ul[data-template="club-list-games"]': new Y.Views.ClubListGames({id: this.id})
     };
     
     this.render();

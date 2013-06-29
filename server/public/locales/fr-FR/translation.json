@@ -57,6 +57,7 @@
     "finish": "Terminer match",
     "ongoing": "En direct",
     "finished": "Terminé",
+    "canceled": "Annulé",
     "created": "A venir",
     "undo" : "Annuler",
     "begin" : "Commencer le match",

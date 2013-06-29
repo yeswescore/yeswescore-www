@@ -783,10 +783,619 @@ ul>li.player>a {
 	box-sizing: border-box;	
 }
 
+/**********************************************************
+  club list : FIXME
+**********************************************************/
+
+
+/**********************************************************
+  Shared: club & game
+**********************************************************/
+.col {
+  border-radius: 10px;
+  background-color:white;
+  
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.col.col-lt {
+  display:table-cell;
+  width:260px;
+  padding:10px;
+  overflow-x:hidden;
+}
+
+.col.col-separator {
+  display:table-cell;
+  width:20px;
+  background-color:transparent;
+}
+
+.col.col-game {
+    display:table-cell;
+    vertical-align:top;
+  width:600px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color:transparent;
+}
+
+/**********************************************************
+  club
+**********************************************************/
+.content-container.content-club {
+  display:table;
+  width:100%;
+  background-color: #19171c;
+}
+
+/**********************************************************
+  game
+**********************************************************/
+.content-container.content-game {
+  display:table;
+  width:100%;
+  background-color: #19171c;
+}
+
+.content-container.clubs-list {
+  background-color: #19171c;  
+}
+
+.game #scoreBoard {
+  background-color:white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.commentBoard {
+  background-color: #41c68f;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-right: 15px;
+  padding-bottom: 10px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.clear {
+    clear: both;
+}
+
+.game .infobar {
+  height: 42px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.game .infobar .header>div {
+  padding-top: 5px;
+  border-right: 1px dotted #adadad;
+  text-align: center;
+  height: 25px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.game .infobar .header>div:last-child {
+  border-right: none;
+}
+
+.game .infobar .text {
+  margin-top: 1px; /* just for dashed border :p */
+}
+
+.game .infobar .text>div {
+  border-right: 1px dotted #adadad;
+  text-align: center;
+  font-size: 10px;
+  font-family: Open Sans;
+  height: 17px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.game .infobar .text>div:last-child {
+  border-right: none;
+}
+
+/*.game .infobar .text */
+.timer {
+  font-size: 12px;
+  font-family: Open Sans;
+  font-weight: bold;
+}
+
+.game .socialbar {
+  width: 100%;
+  height: 44px;
+  padding: 0;
+  padding-top: 5px;
+}
+
+.game .socialbar .ui-grid-b {
+  height: 100%;
+}
 
 
 
-/*****/
+.game .socialbar .button {
+  display: table;
+  height: 100%;
+  vertical-align: middle;
+  text-align: center;
+  background-color: #46b1dd;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  border: 1px solid #74c5e3;
+  cursor: pointer;
+}
+
+.game .socialbar .buttonSpecial {
+  display: table;
+  height: 100%;
+  vertical-align: middle;
+  text-align: center;
+  background-color: #46b1dd;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  border: 1px solid #74c5e3;
+}
+
+.game .socialbar .share {
+  /*text-align: center;*/
+  
+}
+
+.game .socialbar .button a {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 12px;
+  font-family: Open Sans;
+  font-weight: 700;
+  color: white;
+  /* hack, pour monter legerement le texte */
+  top: -2px;
+  position: relative;
+}
+
+.game .socialbar .buttonSpecial span {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 12px;
+  font-family: Open Sans;
+  font-weight: 700;
+  color: white;
+  /* hack, pour monter legerement le texte */
+  top: -2px;
+  position: relative;
+}
+
+.game .facebook {
+  width: 42px;
+  height: 42px;
+  margin: auto;
+  -webkit-border-radius: 22px;
+  border-radius: 22px;
+  background-color: #46b1dd;
+  border: 1px solid #74c5e3;
+  cursor: pointer;
+}
+
+.game .facebook .message {
+  display: none;
+  font-size: 12px;
+  font-family: Open Sans;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.game .facebook img {
+  position: relative;
+  top: 9px;
+  left: 15px;
+}
+
+.game .facebook.ok { background-color: #41c68f; border: 1px solid #41c68f; }
+.game .facebook.ko { background-color: #f2734c; border: 1px solid #f2734c; }
+
+.game .facebook.ok .message.ok { display: block; }
+.game .facebook.ok .message.ko { display: none; }
+.game .facebook.ok img { display: none; }
+
+.game .facebook.ko .message.ok { display: none; }
+.game .facebook.ko .message.ko { display: block; }
+.game .facebook.ko img { display: none; }
+
+/*
+ * game-scoreboard
+ */
+
+.scoreBoard {
+  background-color: #45b1db;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-right: 15px;
+  padding-bottom: 10px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.scoreBoard .playerInfos {
+  text-align: center;
+}
+
+.scoreBoard .playerInfos .player-name {
+  display: block;
+  color: #000;
+  font-family: Open Sans;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  line-height: 16px;
+}
+
+.scoreBoard .playerInfos .other {
+  line-height: 10px;
+  height: 11px;
+  /* allow empty scoreboard height to equal full scoreboard */
+}
+
+.scoreBoard .playerInfos .club {
+  font-family: Open Sans;
+  font-size: 10px;
+}
+
+.scoreBoard .playerInfos .player-rank {
+  font-family: Open Sans;
+  font-size: 10px;
+}
+
+.scoreBoard .score-grid {
+  position: relative;
+  width: 320px;
+  margin-top: 8px;
+  margin-bottom: 13px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.scoreBoard .score-grid .ui-grid-c .ui-block-a,.scoreBoard .score-grid .ui-grid-c .ui-block-b,.scoreBoard .score-grid .ui-grid-c .ui-block-c,.scoreBoard .score-grid .ui-grid-c .ui-block-e
+  {
+  width: 24%;
+  margin-right: -.5px
+}
+
+.scoreBoard .score-grid .ui-grid-c .ui-block-d {
+  width: 4%;
+  margin-right: -.5px
+}
+
+.scoreBoard .score-grid .legend {
+  color: white;
+  font-family: Open Sans;
+  font-size: 10px;
+  text-align: center;
+}
+
+.scoreBoard .score-grid .separator {
+  position: absolute;
+  top: 15px;
+  left: 73%;
+  height: 96px;
+  border-right: 2px dotted #ddf1f8;
+}
+
+.scoreBoard .score-grid .score {
+  width: 46px;
+  height: 46px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 45px; /* default should be 48 */
+  text-align: center;
+  color: #000;
+  background-color: white;
+  border: 1px solid 75c4e2;
+  font-family: Open Sans;
+  font-size: 28px;
+  font-weight: 800;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.scoreBoard .score-grid .score.ongoing {
+  color: #7b7c7e;
+}
+
+.scoreBoard .score-grid .score.sets {
+  font-weight: normal;
+}
+
+.scoreBoard .scoreButton {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  padding-top: 8px;
+  height: 48px;
+  width: 48px;
+  color: #000;
+  background-color: #fff;
+}
+
+/*
+ * game-comments
+ */
+
+.button-comments {
+  position: fixed;
+  left: 0px;
+  width: 100%;
+  bottom: 0px;
+  height: 87px; /* default = 87*/
+  overflow: hidden;
+  /* performance issues, disabled
+  -webkit-transition: all 1s ease 0s;
+  transition: all 1s ease 0s;
+  */
+  cursor: pointer;
+}
+
+.button-comments .background.rounded {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  height: 87px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background-color: #41c68f;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.button-comments .background.trapeze {
+  position: absolute;
+  top: 15px;
+  left: 0%;
+  width: 100%;
+  height: 33px;
+  border-bottom: 72px solid #41c68f;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.button-comments .link-comments {
+  position: absolute;
+  width: 100%;
+  top: 13px;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: -moz-none;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  line-height: 14px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.comments {
+  /* we have to absolutly position this, because of content padding. */
+  width: 100%;
+}
+
+.comments.background {
+  background-color: #41c68f;
+}
+
+.comments.content-container {
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+}
+
+.comments .ui-grid-a {
+  background-color: white;
+}
+
+.comments .ui-block-a.colTimer {
+  width: 25%;
+  text-align: center;
+  padding-top: 6px;
+}
+
+.comments .ui-block-b.players {
+  width: 75%;
+  border-left: 1px dotted #cdcdcd;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.comments .player-infos {
+  height: 26px;
+  padding: 2px;
+  padding-right: 10px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.comments .player-infos:nth-child(1) {
+  border-bottom: 1px dotted #cdcdcd;
+}
+
+.comments .player-name {
+  padding-left: 5px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  line-height: 20px;
+}
+
+.comments .zone-list {
+  background-color:#41c68f;  
+  width:100%;
+  min-height: 100%;
+  padding: 9px;
+  padding-bottom: 110px;
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:        border-box;
+}
+
+.commentBoard .zone-list {
+  background-color:#41c68f;  
+  width:100%;
+  min-height: 100%;
+  padding-bottom: 110px;
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:        border-box;
+}
+
+/* default: hidding everything */
+.commentBoard .textarea-border,
+.commentBoard .button.send,
+.commentBoard .button.login {
+  display:none;
+}
+
+.commentBoard.logged .textarea-border,
+.commentBoard.logged .button.send {
+  display:block;
+}
+
+.commentBoard.unlogged .button.login {
+  display:block;
+}
+
+.commentBoard .button.simple.black {
+  margin-top:0px;
+}
+.commentBoard.logged .button.simple.black {
+  margin-top:10px;
+}
+
+.list-comment-title {
+  width: 100%;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom:10px;
+}
+
+.list-comment {
+  margin-top: 9px;
+  background-color: #fff;
+  text-align: left;
+  color: #000;
+  width: 100%;
+}
+
+.infocomment {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 10px;
+  font-weight: normal;
+  color: #7b797a;
+}
+
+.infocomment .player-name {
+  font-weight: bold;
+  padding: 0;
+}
+
+.comment {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: normal;
+  font-size: 12px;
+  border-bottom: 1px dotted #9c9e9d;
+  padding: 5px;
+  padding-bottom: 0px;
+  clear: both;
+  -webkit-user-select: text; /* Chrome all / Safari all */
+  -moz-user-select: text; /* Firefox all */
+  -ms-user-select: text; /* IE 10+ */
+  user-select: text;
+}
+
+.comment .links {
+  height: 20px;
+  font-size: 10px;
+}
+
+.warnComment,.deleteComment {
+  float: right;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.warnComment {
+  color: #740000;
+}
+
+.textarea-border {
+  width: 100%;
+  height: 110px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.textarea-comment {
+  -webkit-appearance:caret;
+  font-family: 'Open Sans', sans-serif;
+  font-weight:normal;
+  font-size:12px;
+  padding: 5px;
+  margin: 0;
+  width:100%;
+  height:100px;
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:        border-box;
+}
+
+.textarea-comment:focus {
+  outline: 0px none transparent;
+  -webkit-appearance: caret;
+  -moz-appearance: caret;
+  border: 0;
+}
+
+
+/***
+ Blue Screen
+ **/
 
 .blue-screen {
 	/* we have to absolutly position this, because of content padding. */
@@ -1667,598 +2276,11 @@ ul>li.player>a {
 	margin-bottom: 10px;
 }
 
-/* game.html */
-.undoAction {
-	cursor:pointer;
-}
 
-.col {
-  border-radius: 10px;
-  background-color:white;
-  
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.content-container.content-game {
-  display:table;
-  width:100%;
-}
-
-.col.col-lt {
-  display:table-cell;
-  width:260px;
-  padding:10px;
-  overflow-x:hidden;
-}
-
-.col.col-separator {
-  display:table-cell;
-  width:20px;
-  background-color:transparent;
-}
-
-.col.col-game {
-    display:table-cell;
-    vertical-align:top;
-  width:600px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  background-color:transparent;
-}
-
-.content-container.clubs-list {
-  background-color: #19171c;  
-}
-
-.content-container.content-game {
-  background-color: #19171c;
-}
-
-
-.game #scoreBoard {
-  background-color:white;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-.commentBoard {
-	background-color: #41c68f;
-	padding-left: 15px;
-	padding-top: 10px;
-	padding-right: 15px;
-	padding-bottom: 10px;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-
-.clear {
-    clear: both;
-}
-
-.game .infobar {
-	height: 42px;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
-.game .infobar .header>div {
-	padding-top: 5px;
-	border-right: 1px dotted #adadad;
-	text-align: center;
-	height: 25px;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
-.game .infobar .header>div:last-child {
-	border-right: none;
-}
-
-.game .infobar .text {
-	margin-top: 1px; /* just for dashed border :p */
-}
-
-.game .infobar .text>div {
-	border-right: 1px dotted #adadad;
-	text-align: center;
-	font-size: 10px;
-	font-family: Open Sans;
-	height: 17px;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
-.game .infobar .text>div:last-child {
-	border-right: none;
-}
-
-/*.game .infobar .text */
-.timer {
-	font-size: 12px;
-	font-family: Open Sans;
-	font-weight: bold;
-}
-
-.game .socialbar {
-	width: 100%;
-	height: 44px;
-	padding: 0;
-	padding-top: 5px;
-}
-
-.game .socialbar .ui-grid-b {
-	height: 100%;
-}
-
-
-
-.game .socialbar .button {
-	display: table;
-	height: 100%;
-	vertical-align: middle;
-	text-align: center;
-	background-color: #46b1dd;
-	-webkit-border-radius: 20px;
-	border-radius: 20px;
-	border: 1px solid #74c5e3;
-	cursor: pointer;
-}
-
-.game .socialbar .buttonSpecial {
-	display: table;
-	height: 100%;
-	vertical-align: middle;
-	text-align: center;
-	background-color: #46b1dd;
-	-webkit-border-radius: 20px;
-	border-radius: 20px;
-	border: 1px solid #74c5e3;
-}
-
-.game .socialbar .share {
-	/*text-align: center;*/
-	
-}
-
-.game .socialbar .button a {
-	display: table-cell;
-	vertical-align: middle;
-	font-size: 12px;
-	font-family: Open Sans;
-	font-weight: 700;
-	color: white;
-	/* hack, pour monter legerement le texte */
-	top: -2px;
-	position: relative;
-}
-
-.game .socialbar .buttonSpecial span {
-	display: table-cell;
-	vertical-align: middle;
-	font-size: 12px;
-	font-family: Open Sans;
-	font-weight: 700;
-	color: white;
-	/* hack, pour monter legerement le texte */
-	top: -2px;
-	position: relative;
-}
-
-.game .facebook {
-	width: 42px;
-	height: 42px;
-	margin: auto;
-	-webkit-border-radius: 22px;
-	border-radius: 22px;
-	background-color: #46b1dd;
-	border: 1px solid #74c5e3;
-	cursor: pointer;
-}
-
-.game .facebook .message {
-  display: none;
-  font-size: 12px;
-  font-family: Open Sans;
-  font-weight: 700;
-  color: white;
-  text-align: center;
-  margin-top: 10px;
-}
-
-.game .facebook img {
-	position: relative;
-	top: 9px;
-	left: 15px;
-}
-
-.game .facebook.ok { background-color: #41c68f; border: 1px solid #41c68f; }
-.game .facebook.ko { background-color: #f2734c; border: 1px solid #f2734c; }
-
-.game .facebook.ok .message.ok { display: block; }
-.game .facebook.ok .message.ko { display: none; }
-.game .facebook.ok img { display: none; }
-
-.game .facebook.ko .message.ok { display: none; }
-.game .facebook.ko .message.ko { display: block; }
-.game .facebook.ko img { display: none; }
-
-.scoreBoard {
-	background-color: #45b1db;
-	padding-left: 15px;
-	padding-top: 10px;
-	padding-right: 15px;
-	padding-bottom: 10px;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
-.scoreBoard .playerInfos {
-	text-align: center;
-}
-
-.scoreBoard .playerInfos .player-name {
-	display: block;
-	color: #000;
-	font-family: Open Sans;
-	font-size: 16px;
-	font-weight: bold;
-	text-decoration: none;
-	line-height: 16px;
-}
-
-.scoreBoard .playerInfos .other {
-	line-height: 10px;
-	height: 11px;
-	/* allow empty scoreboard height to equal full scoreboard */
-}
-
-.scoreBoard .playerInfos .club {
-	font-family: Open Sans;
-	font-size: 10px;
-}
-
-.scoreBoard .playerInfos .player-rank {
-	font-family: Open Sans;
-	font-size: 10px;
-}
-
-.scoreBoard .score-grid {
-	position: relative;
-	width: 320px;
-	margin-top: 8px;
-	margin-bottom: 13px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.scoreBoard .score-grid .ui-grid-c .ui-block-a,.scoreBoard .score-grid .ui-grid-c .ui-block-b,.scoreBoard .score-grid .ui-grid-c .ui-block-c,.scoreBoard .score-grid .ui-grid-c .ui-block-e
-	{
-	width: 24%;
-	margin-right: -.5px
-}
-
-.scoreBoard .score-grid .ui-grid-c .ui-block-d {
-	width: 4%;
-	margin-right: -.5px
-}
-
-.scoreBoard .score-grid .legend {
-	color: white;
-	font-family: Open Sans;
-	font-size: 10px;
-	text-align: center;
-}
-
-.scoreBoard .score-grid .separator {
-	position: absolute;
-	top: 15px;
-	left: 73%;
-	height: 96px;
-	border-right: 2px dotted #ddf1f8;
-}
-
-.scoreBoard .score-grid .score {
-	width: 46px;
-	height: 46px;
-	margin-left: auto;
-	margin-right: auto;
-	line-height: 45px; /* default should be 48 */
-	text-align: center;
-	color: #000;
-	background-color: white;
-	border: 1px solid 75c4e2;
-	font-family: Open Sans;
-	font-size: 28px;
-	font-weight: 800;
-	-webkit-border-radius: 10px;
-	border-radius: 10px;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
-.scoreBoard .score-grid .score.ongoing {
-	color: #7b7c7e;
-}
-
-.scoreBoard .score-grid .score.sets {
-	font-weight: normal;
-}
-
-.scoreBoard .scoreButton {
-	text-align: center;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 5px;
-	padding-top: 8px;
-	height: 48px;
-	width: 48px;
-	color: #000;
-	background-color: #fff;
-}
-
-.button-comments {
-	position: fixed;
-	left: 0px;
-	width: 100%;
-	bottom: 0px;
-	height: 87px; /* default = 87*/
-	overflow: hidden;
-	/* performance issues, disabled
-  -webkit-transition: all 1s ease 0s;
-  transition: all 1s ease 0s;
-  */
-	cursor: pointer;
-}
-
-.button-comments .background.rounded {
-	position: absolute;
-	left: 12px;
-	right: 12px;
-	height: 87px;
-	border-top-left-radius: 20px;
-	border-top-right-radius: 20px;
-	background-color: #41c68f;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
-.button-comments .background.trapeze {
-	position: absolute;
-	top: 15px;
-	left: 0%;
-	width: 100%;
-	height: 33px;
-	border-bottom: 72px solid #41c68f;
-	border-left: 12px solid transparent;
-	border-right: 12px solid transparent;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
-.button-comments .link-comments {
-	position: absolute;
-	width: 100%;
-	top: 13px;
-	-ms-user-select: none;
-	-webkit-user-select: none;
-	-moz-user-select: -moz-none;
-	font-family: 'Open Sans', sans-serif;
-	font-weight: 800;
-	font-size: 14px;
-	color: white;
-	text-transform: uppercase;
-	text-decoration: none;
-	text-align: center;
-	line-height: 14px;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-}
 
 /**********************************************************
 	COMMENT
 **********************************************************/
-.comments {
-	/* we have to absolutly position this, because of content padding. */
-	width: 100%;
-}
-
-.comments.background {
-	background-color: #41c68f;
-}
-
-.comments.content-container {
-	padding-left: 0px;
-	padding-right: 0px;
-	padding-bottom: 0px;
-}
-
-.comments .ui-grid-a {
-	background-color: white;
-}
-
-.comments .ui-block-a.colTimer {
-	width: 25%;
-	text-align: center;
-	padding-top: 6px;
-}
-
-.comments .ui-block-b.players {
-	width: 75%;
-	border-left: 1px dotted #cdcdcd;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
-.comments .player-infos {
-	height: 26px;
-	padding: 2px;
-	padding-right: 10px;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
-.comments .player-infos:nth-child(1) {
-	border-bottom: 1px dotted #cdcdcd;
-}
-
-.comments .player-name {
-	padding-left: 5px;
-	font-family: 'Open Sans', sans-serif;
-	font-size: 10px;
-	font-weight: bold;
-	line-height: 20px;
-}
-
-.comments .zone-list {
-  background-color:#41c68f;  
-  width:100%;
-  min-height: 100%;
-  padding: 9px;
-  padding-bottom: 110px;
-  -moz-box-sizing:    border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing:        border-box;
-}
-
-.commentBoard .zone-list {
-  background-color:#41c68f;  
-  width:100%;
-  min-height: 100%;
-  padding-bottom: 110px;
-  -moz-box-sizing:    border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing:        border-box;
-}
-
-/* default: hidding everything */
-.commentBoard .textarea-border,
-.commentBoard .button.send,
-.commentBoard .button.login {
-  display:none;
-}
-
-.commentBoard.logged .textarea-border,
-.commentBoard.logged .button.send {
-  display:block;
-}
-
-.commentBoard.unlogged .button.login {
-  display:block;
-}
-
-.commentBoard .button.simple.black {
-  margin-top:0px;
-}
-.commentBoard.logged .button.simple.black {
-  margin-top:10px;
-}
-
-.list-comment-title {
-	width: 100%;
-	text-align: center;
-	font-family: 'Open Sans', sans-serif;
-	font-size: 14px;
-	font-weight: 800;
-	color: #fff;
-  margin-bottom:10px;
-}
-
-.list-comment {
-	margin-top: 9px;
-	background-color: #fff;
-	text-align: left;
-	color: #000;
-	width: 100%;
-}
-
-.infocomment {
-	font-family: 'Open Sans', sans-serif;
-	font-size: 10px;
-	font-weight: normal;
-	color: #7b797a;
-}
-
-.infocomment .player-name {
-	font-weight: bold;
-	padding: 0;
-}
-
-.comment {
-	font-family: 'Open Sans', sans-serif;
-	font-weight: normal;
-	font-size: 12px;
-	border-bottom: 1px dotted #9c9e9d;
-	padding: 5px;
-	padding-bottom: 0px;
-	clear: both;
-	-webkit-user-select: text; /* Chrome all / Safari all */
-	-moz-user-select: text; /* Firefox all */
-	-ms-user-select: text; /* IE 10+ */
-	user-select: text;
-}
-
-.comment .links {
-	height: 20px;
-	font-size: 10px;
-}
-
-.warnComment,.deleteComment {
-	float: right;
-	text-decoration: none;
-	cursor: pointer;
-}
-
-.warnComment {
-	color: #740000;
-}
-
-.textarea-border {
-	width: 100%;
-	height: 110px;
-	margin-left: auto;
-	margin-right: auto;
-	background-color: #fff;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
-.textarea-comment {
-  -webkit-appearance:caret;
-  font-family: 'Open Sans', sans-serif;
-  font-weight:normal;
-  font-size:12px;
-  padding: 5px;
-  margin: 0;
-  width:100%;
-  height:100px;
-  -moz-box-sizing:    border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing:        border-box;
-}
-
-.textarea-comment:focus {
-	outline: 0px none transparent;
-	-webkit-appearance: caret;
-	-moz-appearance: caret;
-	border: 0;
-}
 
 
 /*
@@ -2317,13 +2339,19 @@ ul>li.player>a {
 /***** MEDIA QUERIES *********/
 
 @media screen and (max-width: 700px)  {
-  .col.col-lt, .col.col-separator { display:none }
+  /* disparition col gauche pour game */
+  .content-container.content-game .col.col-lt,
+  .content-container.content-game .col.col-separator { display:none }
+  /* disparition col droite pour club */
+  .content-container.content-club .col.col-game,
+  .content-container.content-club .col.col-separator { display:none }
 }
 @media screen and (max-width: 350px)  {
   .commentBoard {
     padding-left:0px;
     padding-right:0px;
   }
+  .content-container.content-club,
   .content-container.content-game {
     padding-left:0;
     padding-right:0;
