@@ -2144,15 +2144,16 @@ ul>li.player>a {
 	padding-left:10px;
 }
 
-.col.col-lt .title1 {
-	font-family: Open Sans;
-	font-weight:800;
-	font-size: 16px;
-	/* trunk text */
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	overflow: hidden;
-	padding-left:10px;
+.col.col-lt .title-list-games {
+  font-family: Open Sans;
+  font-weight:800;
+  font-size: 16px;
+  /* trunk text */
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-top:40px;
 }
 
 .col.col-lt .title2 {
@@ -2163,7 +2164,6 @@ ul>li.player>a {
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
-	padding-left:10px;
 }
 
 .col.col-lt .title3 {
@@ -2173,7 +2173,6 @@ ul>li.player>a {
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
-	padding-left:10px;
 }
 /* index.html */
 .index {

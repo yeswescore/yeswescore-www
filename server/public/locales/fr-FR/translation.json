@@ -30,11 +30,12 @@
     "city":"Ville",
     "site":"Site",
     "listplayers":"Liste des joueurs",
-    "lastresult":"Dernier résultat"  
+    "lastresult":"Dernier résultat",
     "outdoor":"Court(s) extérieur(s)",
     "indoor":"Court(s) intérieur(s)",  
     "countPlayers":"Nombre de joueurs",  
-    "countTeams":"Nombre d'équipes"                             
+    "countTeams":"Nombre d'équipes"   ,
+    "gamelist": "Les Matchs"                          
   },
   "clublist": {
     "title": "LISTE DES CLUBS"
