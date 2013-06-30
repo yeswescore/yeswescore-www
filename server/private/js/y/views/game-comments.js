@@ -6,7 +6,7 @@ Y.Views.GameComments = Y.View.extend({
     assert(this.options.game);
     
     this.game = this.options.game;
-    this.owner = Y.User.getPlayer();
+    this.player = Y.User.getPlayer();
     
     this.templates = {
       comments: Y.Templates.get('game-comments'),
@@ -26,10 +26,16 @@ Y.Views.GameComments = Y.View.extend({
   },
   
   render: function () {
-    console.log('render');
     this.$el.html(this.templates.comments({
       game: this.game.attributes
     }));
+    if (this.player) {
+      $('.commentBoard').removeClass("unlogged");
+      $('.commentBoard').addClass("logged");
+    } else {
+      $('.commentBoard').removeClass("logged");
+      $('.commentBoard').addClass("unlogged");
+    }
     this.$el.i18n();
     return this;
   },
@@ -45,7 +51,7 @@ Y.Views.GameComments = Y.View.extend({
       $(divHiddenContainer).html(this.templates.listitem({
         streamItem: streamItem.attributes,
         playerName: streamItem.getPlayerName(),
-        owner: this.owner
+        player: this.player
       }));
       $list.prepend(divHiddenContainer);
       $(divHiddenContainer).fadeIn();
