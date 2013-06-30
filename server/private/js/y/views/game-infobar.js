@@ -11,19 +11,22 @@ Y.Views.GameInfoBar = Y.View.extend({
     if (this.options.autorender)
       this.render();
     // render when game is refreshed.
-    this.game.on('sync', this.render, this);
+    this.game.on('sync', this.renderGame, this);
   },
   
   render: function () {
-    this.$el.html(this.templates.list({
-      startDate: this.game.getStartDate(),
-      startTime: this.game.getStartTime(),
-      status: this.game.getStatusText(),
-      timer: this.game.getElapsedTime(),
-      city: this.game.getCity()
-    }));
+    this.$el.html(this.templates.list());
     this.$el.i18n();
     return this;
+  },
+  
+  // avoid flickering
+  renderGame: function () {
+    this.$('span[data-var="timer"]').text(this.game.getElapsedTime());
+    this.$('span[data-var="startDate"]').text(this.game.getStartDate());
+    this.$('span[data-var="startTime"]').text(this.game.getStartTime());
+    this.$('span[data-var="status"]').text(this.game.getStatusText());
+    this.$('span[data-var="city"]').text(this.game.getCity());
   },
   
   onClose: function () {
