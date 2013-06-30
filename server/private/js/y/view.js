@@ -4,16 +4,18 @@
   /*#endif*/
 
   var events = {
-    // input mode
+    // input mode is disabled
     //'click input': 'inputModeOn', // we cannot use focus, bugs with device virtual keyboard :(
-    'blur input': 'inputModeOffDelayed',
+    //'blur input': 'inputModeOffDelayed',
     //'click textarea': 'inputModeOn', // we cannot use focus, bugs with device virtual keyboard :(
     //'blur textarea': 'inputModeOffDelayed',
 
     // helpers
-    'click *[data-js-call]': 'mycall',
+    //'click *[data-js-call]': 'mycall', // disabled, cannot work with nested views.
     'click a[data-js-navigate]': 'navigate',
-    // autocompletion
+ 
+    // /!\ might cannot work with nested views
+    // autocompletion 
     'click *[data-autocomplete]': 'autocompleteStart',
     //'blur *[data-autocomplete]': 'autocompleteStopDelayed', // keep 0.5 sec on screen.
     'keyup *[data-autocomplete]': 'autocompleteCall'
