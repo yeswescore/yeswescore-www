@@ -32,7 +32,7 @@ Y.Views.Header = Y.View.extend({
     if (Y.User.getPlayer() === null)
       Y.Router.navigate("players/signin", {trigger: true}); 
     else
-      Y.Router.navigate("players/form", {trigger: true});  
+      Y.Router.navigate("players/profil", {trigger: true});  
   },
 
   goHome: function () {

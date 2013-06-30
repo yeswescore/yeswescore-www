@@ -34,8 +34,8 @@ app.get('/players/signin', function (req, res) {
   res.render(index, {foo: "bar"});
 });
 
-// page players/form
-app.get('/players/form', function (req, res) {
+// page players/profil
+app.get('/players/profil', function (req, res) {
   res.render(index, {foo: "bar"});
 });
 

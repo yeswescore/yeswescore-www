@@ -20,7 +20,8 @@
       'games/:id/club/:clubid': 'game',
       'games/:id': 'game',
       'players/signin?back=:back': 'playerSignin',
-      'players/signin': 'playerSignin'
+      'players/signin': 'playerSignin',
+      'players/profil': 'playerProfil'
     },
 
     initialize: function (options) {
@@ -34,6 +35,8 @@
     */
     createViewFactory: function (view, params) {
       assert(typeof view !== "undefined");
+      
+      params = params || {};
       if (!params.el)
         params.el = "#content";
       return function () {
@@ -59,6 +62,10 @@
 
     playerSignin: function (back) {
       this.changePage(this.createViewFactory(Y.Views.Pages.PlayerSignin, { back: !!back }));
+    },
+    
+    playerProfil: function () {
+      this.changePage(this.createViewFactory(Y.Views.Pages.PlayerProfil));
     },
 
     /*

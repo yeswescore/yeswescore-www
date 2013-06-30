@@ -25,7 +25,7 @@ Y.Views.Pages.PlayerSignin = Y.View.extend({
     Y.GUI.header.show();
       	
     // loading template
-    this.playerSigninTemplate = Y.Templates.get('playerSignin');
+    this.playerSigninTemplate = Y.Templates.get('page-signin');
     // loading status
     this.player = Y.User.getPlayer();
     if (this.player &&
@@ -62,7 +62,7 @@ Y.Views.Pages.PlayerSignin = Y.View.extend({
       return this.displayError(i18n.t("message.bad_mail"));
 
     this.forgetting = true;
-	  Backbone.ajax({
+    Backbone.ajax({
       dataType: 'json',
       url: Y.Conf.get("api.url.auth") + "resetPassword/",
       type: 'POST',
@@ -155,7 +155,7 @@ Y.Views.Pages.PlayerSignin = Y.View.extend({
 
     this.logging = true;
     this.hideMessages();
-	  Backbone.ajax({
+    Backbone.ajax({
       dataType: 'json',
       url: Y.Conf.get("api.url.auth"),
       type: 'POST',
@@ -165,8 +165,8 @@ Y.Views.Pages.PlayerSignin = Y.View.extend({
       },
       success: function (result) {
         that.logging = false;
-		    var player = new PlayerModel(result);	
-		    Y.User.setPlayer(player);
+        var player = new PlayerModel(result);	
+        Y.User.setPlayer(player);
         if (that.unloaded)
           return; // prevent errors.
         that.hideError();        
@@ -179,7 +179,7 @@ Y.Views.Pages.PlayerSignin = Y.View.extend({
         if (that.unloaded)
           return; // prevent errors.
         that.$("#forgetPassword").show();
-		    that.displayError(i18n.t('message.signinerror'));
+        that.displayError(i18n.t('message.signinerror'));
       }
     });
     return this;
@@ -189,7 +189,7 @@ Y.Views.Pages.PlayerSignin = Y.View.extend({
     if (this.back) {
       Y.Router.navigate(Y.Router.previousFragment, {trigger: true});
     } else {
-      Y.Router.navigate("players/form", {trigger: true});
+      Y.Router.navigate("players/profil", {trigger: true});
     }
   },
   

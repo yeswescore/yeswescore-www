@@ -24,6 +24,7 @@ Y.Views.Pages.Club = Y.View.extend({
     };
     
     // rendering subview game, when search is finished.
+    // depending on subview pooling (hacky)
     this.games.once("sync", this.renderGame, this);
     
     this.render();
