@@ -1,7 +1,9 @@
 Y.Views.GameComments = Y.View.extend({
   events : {
     'mousedown .button.send' : 'sendComment',
-    'mousedown .button.login': 'goToLogin'
+    'mousedown .button.login': 'goToLogin',
+    'click .warnComment': 'reportComment',
+    'click .deleteComment': 'deleteComment'
   },
   
   game: null,
@@ -61,9 +63,9 @@ Y.Views.GameComments = Y.View.extend({
         player: this.player
       }));
       $list.prepend(divHiddenContainer);
+      $(divHiddenContainer).i18n();
       $(divHiddenContainer).fadeIn();
     }
-    $list.i18n();
   },
   
   sendComment : function() {
@@ -118,6 +120,36 @@ Y.Views.GameComments = Y.View.extend({
           elmt.removeAttr('data-js-call');
         }
       });
+  },
+  
+  deleteComment : function(e) {  
+    var elmt = $(e.currentTarget);
+    var id = elmt.attr("data-js-streamitemid");
+    
+    Backbone.ajax({
+      dataType : 'json',
+      url : Y.Conf.get("api.url.games")
+      + this.game.get('id') 
+      + '/stream/'
+      + id 
+      + '/?playerid='+this.player.get('id')
+      +'&token='+this.player.get('token')
+      +'&_method=delete',
+        
+      type : 'POST',
+      success : function(result) {
+      }
+    }).always(_.bind(function () {
+      // on le retire du DOM
+      $("#comment"+id).fadeOut().remove();
+      // on le supprime de la collection
+      var streamItem = this.streamItemsCollection.findWhere({id: id});
+      if (streamItem) {
+        this.streamItemsCollection.remove(streamItem);
+      } else {
+        assert(false);
+      }
+    }, this));
   },
   
   goToLogin: function () {

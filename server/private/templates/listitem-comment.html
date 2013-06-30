@@ -23,10 +23,10 @@
 
   <div class="links">
     <% if (streamItem.owner.player!==undefined && player && streamItem.owner.player.id === player.id ) { %> 
-            <a class="deleteComment" data-js-streamitemid="<%= streamItem.id %>" data-js-call="deleteComment" data-i18n="gamecomment.delete"></a> 
+            <a class="deleteComment" data-js-streamitemid="<%= streamItem.id %>" data-i18n="gamecomment.delete"></a> 
     <% } %>
     <% if (streamItem.owner.player!==undefined && player && streamItem.owner.player.id !== player.id ) { %> 
-        <a class="warnComment" data-js-streamitemid="<%= streamItem.id %>" data-js-call="reportComment" data-i18n="gamecomment.alert"></a> 
+        <a class="warnComment" data-js-streamitemid="<%= streamItem.id %>" data-i18n="gamecomment.alert"></a> 
     <% } %>
   </div>
 </div>
