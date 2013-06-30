@@ -23,7 +23,7 @@ Y.Views.ClubListGames = Y.View.extend({
   
   render: function () {
     if (this.games.length === 0) {
-      this.$el.html(this.templates.list({empty:true}));
+      this.$el.html(this.templates.listitem({game: null}));
       return this;
     }
     // once rendered, we fill the templates using listitem-game view.
