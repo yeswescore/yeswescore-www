@@ -102,7 +102,23 @@ Y.Views.GameComments = Y.View.extend({
         that.$('.button').removeClass("disabled");    
       }, 4000);
     }); 
-  }, 
+  },
+  
+  reportComment : function(e) {
+    var elmt = $(e.currentTarget);
+    var id = elmt.attr("data-js-streamitemid");
+
+    Backbone.ajax({
+        dataType : 'json',
+        url : Y.Conf.get("api.url.reports.games")+ this.game.get('id') + '/stream/'+ id + '/',
+        type : 'GET',
+        success : function(result) {
+          elmt.html(i18n.t('gamecomment.alerted'));
+          elmt.removeAttr('href');
+          elmt.removeAttr('data-js-call');
+        }
+      });
+  },
   
   goToLogin: function () {
     Y.Router.navigate("players/signin?back=true", {trigger: true});
