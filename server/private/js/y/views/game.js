@@ -29,7 +29,8 @@ Y.Views.Game = Y.View.extend({
     this.poller.start();
     
     // render immediately
-    this.render();
+    if (this.options.autorender)
+      this.render();
   },
   
   render: function () {

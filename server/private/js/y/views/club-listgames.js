@@ -13,8 +13,8 @@ Y.Views.ClubListGames = Y.View.extend({
     this.games.fetch();
     this.games.on('sync', this.render, this);
     
-    // render immediately
-    this.render();
+    if (this.options.autorender)
+      this.render();
   },
   
   render: function () {
@@ -27,7 +27,8 @@ Y.Views.ClubListGames = Y.View.extend({
       var game = this.games.at(i);
       // creating list item game content
       var listitem = new Y.Views.ListItemGame({
-        game:game
+        game: game,
+        autorender: true
       });
       // creating li
       var li = $(this.templates.list({empty:false})).append(listitem.$el);

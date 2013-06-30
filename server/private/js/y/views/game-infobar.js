@@ -8,8 +8,8 @@ Y.Views.GameInfoBar = Y.View.extend({
     this.templates = {
       list: Y.Templates.get('game-infobar')
     };
-    // render first
-    this.render();
+    if (this.options.autorender)
+      this.render();
     // render when game is refreshed.
     this.games.on('sync', this.render, this);
   },

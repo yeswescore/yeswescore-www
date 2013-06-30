@@ -11,7 +11,8 @@ Y.Views.ListItemGame = Y.View.extend({
     this.templates = {
       game: Y.Templates.get('listitem-game')
     };
-    this.render();
+    if (this.options.autorender)
+      this.render();
   },
   
   render: function () {
