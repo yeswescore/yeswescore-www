@@ -1,8 +1,8 @@
 <!-- template listitem-game.html -->
-<li class="game short">
-  <%
-    if (game) {
-  %>
+<%
+  if (game) {
+%>
+<li class="game short" id="<%= game.id %>">
   <span class="title2"><%= game.teams[0].players[0].name %></span><br/>
   <span class="title3">
   <%= game.teams[0].players[0].rank %> - 
@@ -22,11 +22,13 @@
     } 
   %>
   </span>
-  <%
-    } else {
-  %>
-  <p class="message" data-i18n="message.error"></p>
-  <%
-    }
-  %>
 </li>
+<%
+  } else {
+%>
+<li class="game short">
+  <p class="message" data-i18n="message.error"></p>
+</li>
+<%
+  }
+%>

@@ -1,4 +1,8 @@
 Y.Views.ClubListGames = Y.View.extend({
+  events : {
+    'click li': 'goToGame'
+  },
+  
   games: null,
   
   myinitialize : function() {
@@ -39,6 +43,12 @@ Y.Views.ClubListGames = Y.View.extend({
       }
     }
     return this;
+  },
+  
+  goToGame: function (ev) {
+    if (ev.currentTarget.id) {
+      Y.Router.navigate("games/"+ev.currentTarget.id+"/club/"+this.id, {trigger: true}); 
+    }
   },
   
   onClose : function() {

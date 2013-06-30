@@ -15,9 +15,10 @@
     
     routes: {
       '': 'index',
-      'clubs/list/:text': 'clubList',      
-      'clubs/:id/game/:gameid': 'clubGame',
+      'clubs/list/:text': 'clubList',
       'clubs/:id': 'club',
+      'games/:id/club/:clubid': 'game',
+      'games/:id': 'game',
       'players/signin?back=:back': 'playerSignin',
       'players/signin': 'playerSignin'
     },
@@ -43,10 +44,6 @@
     index: function (id) {
       this.changePage(this.createViewFactory(Y.Views.Pages.Index, { sort: id }));
     },
-
-    clubGame: function (id,gameid) {
-      this.changePage(this.createViewFactory(Y.Views.Pages.Club, { id: id, gameid: gameid }));
-    },
     
     clubList: function (text) {
       this.changePage(this.createViewFactory(Y.Views.Pages.ClubList, { text: text }));
@@ -54,6 +51,10 @@
 
     club: function (id) {
       this.changePage(this.createViewFactory(Y.Views.Pages.Club, { id: id }));
+    },
+    
+    game: function (id, clubid) {
+      this.changePage(this.createViewFactory(Y.Views.Pages.Game, { id: id, clubid: clubid }));
     },
 
     playerSignin: function (back) {

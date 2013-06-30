@@ -1,6 +1,13 @@
 Y.Views.GameComments = Y.View.extend({
+  events : {
+    'mousedown .button.send' : 'sendComment',
+    'mousedown .button.login': 'goToLogin'
+  },
+  
   game: null,
   streamItemsCollection: null,
+  
+  timeout: null,
   
   myinitialize : function() {
     assert(this.options.game);
@@ -59,8 +66,54 @@ Y.Views.GameComments = Y.View.extend({
     $list.i18n();
   },
   
+  sendComment : function() {
+    if (this.player===undefined)
+      return Y.Router.navigate("players/signin", {trigger: true});
+    
+    var playerid = this.player.id
+    , token  = this.player.get('token')
+    , gameid = this.game.get('id')
+    , comment = $('#messageText').val()
+    , that = this;
+
+    if (comment.length === 0)
+      return; // empty => doing nothing.
+    
+    //on bloque le textarea  
+    $('.button').addClass('disabled');
+      
+    var stream = new StreamModel({
+          type : "comment",
+          playerid : playerid,
+          token : token,
+          text : comment,
+          gameid : gameid
+    });
+    stream.save().done(function (streamItem) {
+      that.streamItemsCollection.fetch();
+      that.$('#messageText').val('');
+      that.scrollTop();
+      that.$('.button').removeClass("disabled");
+    }).fail(function (err) {
+      that.$(".button.send").addClass("ko");
+      that.timeout = window.setTimeout(function () {
+        that.$(".button.send").removeClass("ko");
+        that.timeout = null;
+        that.$('.button').removeClass("disabled");    
+      }, 4000);
+    }); 
+  }, 
+  
+  goToLogin: function () {
+    Y.Router.navigate("players/signin?back=true", {trigger: true});
+  },
+  
   onClose: function () {
     this.streamItemsCollection.off("sync", this.render, this);
     this.poller.stop();
+    if (this.timeout) {
+      window.clearTimeout(this.timeout);
+      this.timeout = null;
+    }
   }
 });
