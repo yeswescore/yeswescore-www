@@ -6,16 +6,17 @@ Y.Views.GameComments = Y.View.extend({
     assert(this.options.game);
     
     this.game = this.options.game;
+    this.owner = Y.User.getPlayer();
     
     this.templates = {
-      comments: Y.Templates.get('game-comments')/*,
-      list: Y.Templates.*/
+      comments: Y.Templates.get('game-comments'),
+      listitem: Y.Templates.get('listitem-comment')
     };
     
     //
     var pollingOptions = { delay: Y.Conf.get("game.refresh") };
     this.streamItemsCollection = new StreamsCollection([], {gameid : this.game.get('id')});
-    this.streamItemsCollection.on("sync", this.render, this); 
+    this.streamItemsCollection.on("sync", this.renderComments, this); 
     this.poller = Backbone.Poller.get(this.streamItemsCollection, pollingOptions);
     this.poller.start();
     
@@ -25,10 +26,31 @@ Y.Views.GameComments = Y.View.extend({
   },
   
   render: function () {
+    console.log('render');
     this.$el.html(this.templates.comments({
       game: this.game.attributes
     }));
+    this.$el.i18n();
     return this;
+  },
+  
+  renderComments: function () {
+    $list = this.$('div[data-template="list-comments"]');
+    for (var i = 0, l = this.streamItemsCollection.length; i < l; ++i) {
+      var streamItem = this.streamItemsCollection.at(i);
+      if (document.getElementById("comment"+streamItem.get('id')))
+        continue;
+      var divHiddenContainer = document.createElement("div");
+      divHiddenContainer.style.display = "none";
+      $(divHiddenContainer).html(this.templates.listitem({
+        streamItem: streamItem.attributes,
+        playerName: streamItem.getPlayerName(),
+        owner: this.owner
+      }));
+      $list.prepend(divHiddenContainer);
+      $(divHiddenContainer).fadeIn();
+    }
+    $list.i18n();
   },
   
   onClose: function () {

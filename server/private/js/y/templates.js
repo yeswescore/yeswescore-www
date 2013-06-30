@@ -25,8 +25,7 @@
           "search", 
           "club-infos", 
           "game", "game-comments", "game-infobar", "game-scoreboard",
-          "list-clubs", "list-comments",
-          "listitem-game"
+          "list-clubs", "listitem-game", "listitem-comment"
         ];
         var timeoutid = setTimeout(function () {
            var harvestedTemplates = _.keys(html);

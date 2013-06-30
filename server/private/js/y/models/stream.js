@@ -53,6 +53,17 @@ var StreamModel = Backbone.Model.extend({
         }        
       });
     } 
-  }
+  },
 
+  getPlayerName: function () {
+    if (typeof this.get('owner').player !== "undefined" &&
+        this.get('owner').player.name) {
+      return this.get('owner').player.name || 'Anonymous';
+    }
+    if (typeof this.get('owner').facebook !== "undefined" &&
+        this.get('owner').facebook.name) {
+      return this.get('owner').facebook.name || 'Anonymous';
+    }
+    return '';
+  }
 });
