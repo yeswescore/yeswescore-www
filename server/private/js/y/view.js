@@ -68,6 +68,12 @@
       }, this);
     },
     
+    addSubview: function (selector, subview, norender) {
+      this.subviews[selector] = subview;
+      if (!norender)
+        subview.setElement(this.$(selector)).render();
+    },
+    
     clearInputModeOffDelayed: function () {
       if (this.inputModeOffTimeout) {
         window.clearTimeout(this.inputModeOffTimeout);

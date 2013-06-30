@@ -7,7 +7,7 @@ Y.Views.ClubListGames = Y.View.extend({
     };
     
     // query
-    this.games = new GamesCollection();
+    this.games = this.options.games || new GamesCollection();
     this.games.addSearch('club');
     this.games.setClub(this.id);  
     this.games.fetch();

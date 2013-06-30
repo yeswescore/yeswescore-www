@@ -11,7 +11,7 @@ Y.Views.GameInfoBar = Y.View.extend({
     if (this.options.autorender)
       this.render();
     // render when game is refreshed.
-    this.games.on('sync', this.render, this);
+    this.game.on('sync', this.render, this);
   },
   
   render: function () {
@@ -21,12 +21,12 @@ Y.Views.GameInfoBar = Y.View.extend({
       status: this.game.getStatusText(),
       timer: this.game.getElapsedTime(),
       city: this.game.getCity()
-    });
+    }));
     this.$el.i18n();
     return this;
   },
   
   onClose: function () {
-    this.games.off('sync', this.render, this);
+    this.game.off('sync', this.render, this);
   }
 });

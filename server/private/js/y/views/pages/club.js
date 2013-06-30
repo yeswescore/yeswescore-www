@@ -1,14 +1,15 @@
 Y.Views.Pages.Club = Y.View.extend({
   events : {
     'mousedown .button.send' : 'sendComment',
-    'mousedown .button.login': 'goToLogin',
-    'click li': 'goToGame'
+    'mousedown .button.login': 'goToLogin'/*,
+    'click li': 'goToGame'*/
   },
 
   pageName: "club",
   pageHash : "clubs/",
   
-  clubid: null,
+  games: null, // game collection
+  game: null,  // eventualy displayed game
   
   myinitialize : function() {
     // header
@@ -19,11 +20,17 @@ Y.Views.Pages.Club = Y.View.extend({
       page: Y.Templates.get('page-club')
     };
     
+    // creating game collection
+    this.games = new GamesCollection();
+    
     // subviews
     this.subviews = {
       'div[data-template="club-infos"]': new Y.Views.ClubInfos({id: this.id}),
-      'ul[data-template="club-list-games"]': new Y.Views.ClubListGames({id: this.id})
+      'ul[data-template="club-list-games"]': new Y.Views.ClubListGames({id: this.id, games: this.games})
     };
+    
+    // rendering subview game, when search is finished.
+    this.games.once("sync", this.renderGame, this);
     
     this.render();
   },
@@ -78,14 +85,23 @@ Y.Views.Pages.Club = Y.View.extend({
     this.renderSubviews();
     return this;
   },
+  
+  renderGame: function () {
+    if (this.games.length > 0) {
+      this.game = this.games.at(0);
+      // subview game
+      this.addSubview('div[data-template="game"]', new Y.Views.Game({game: this.game}));
+    }
+  },
 
+  /*
   goToGame: function (elmt) {
     if (elmt.currentTarget.id) {
       this.gameid = elmt.currentTarget.id;      
-      Y.Router.navigate("clubs/"+this.clubid+"/game/"+this.gameid, {trigger: true}); 
+      Y.Router.navigate("games/"+this.gameid+"/club/"+this.clubid, {trigger: true}); 
     }
   },
- 
+ */
   renderListGame : function() {
        
     this.games = new GamesCollection();
@@ -118,7 +134,7 @@ Y.Views.Pages.Club = Y.View.extend({
       
     }, this));  
   },
-  
+  /*
   renderGame : function() {
     
     if (this.gameid == 0) {
@@ -141,6 +157,7 @@ Y.Views.Pages.Club = Y.View.extend({
 	        
     }
   },  
+  */
   
   renderViewGame : function() {
  
@@ -278,8 +295,8 @@ Y.Views.Pages.Club = Y.View.extend({
   },
   
   onClose : function() {
-    this.club.off("sync", this.renderClub, this);  
-     
+    this.game.off("sync", this.renderGame, this);
+/*     
     if (this.game!==null) {
       this.game.off('sync', this.renderViewGame, this);
       this.poller.stop();    
@@ -289,5 +306,6 @@ Y.Views.Pages.Club = Y.View.extend({
       this.streamItemsCollection.off("sync", this.renderListComments, this);
       this.poller2.stop();      	
     }
+    */
   }
 });

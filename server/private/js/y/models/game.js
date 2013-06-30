@@ -379,7 +379,8 @@ var GameModel = Backbone.Model.extend({
     if (this.get('dates') !== undefined &&
         this.get('dates').start !== undefined) {  
       var startConvert = Date.fromString(this.get('dates').start);
-      game.dates.startTime = ('0'+game.dates.startConvert.getHours()).slice(-2)+'h'+('0'+game.dates.startConvert.getMinutes()).slice(-2);
+      startTime = String(startConvert.getHours()).padLeft(2, '0') + 'h' + 
+                  String(startConvert.getMinutes()).padLeft(2, '0');
     }
     return startTime;
   },
