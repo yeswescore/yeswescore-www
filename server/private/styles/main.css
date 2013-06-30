@@ -847,6 +847,10 @@ ul>li.player>a {
 
 .game #scoreBoard {
   background-color:white;
+}
+
+.game .infobar {
+  background-color:white;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }

@@ -18,8 +18,8 @@ Y.Views.Game = Y.View.extend({
     
     // subviews
     this.subviews = {
-      'div[data-template="game-infobar"]': new Y.Views.GameInfoBar({game: this.game})/*,
-      'div[data-template="game-scoreboard"]': new Y.Views.GameScoreboard({game: this.game}),
+      'div[data-template="game-infobar"]': new Y.Views.GameInfoBar({game: this.game}),
+      'div[data-template="game-scoreboard"]': new Y.Views.GameScoreboard({game: this.game})/*,
       'div[data-template="game-comments"]': new Y.Views.GameComments({game: this.game})*/
     };
     
