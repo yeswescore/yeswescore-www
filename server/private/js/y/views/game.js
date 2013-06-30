@@ -13,7 +13,6 @@ Y.Views.Game = Y.View.extend({
       this.game = this.options.game;
     } else {
       this.game = new GameModel({id : this.id});
-      this.game.once("sync", this.renderViewGame, this);
     }
     
     // subviews

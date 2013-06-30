@@ -35,7 +35,8 @@
     "indoor":"Court(s) intérieur(s)",  
     "countPlayers":"Nombre de joueurs",  
     "countTeams":"Nombre d'équipes"   ,
-    "gamelist": "Les Matchs"                          
+    "gamelist": "Les Matchs",
+    "noneAssociated": "Aucun club n'est associé à cette partie"
   },
   "clublist": {
     "title": "LISTE DES CLUBS"

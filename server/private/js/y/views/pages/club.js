@@ -45,20 +45,6 @@ Y.Views.Pages.Club = Y.View.extend({
     }
   },
   
-  /*
-  renderNoClub : function() {
-    this.$el.html(this.templates.clubempty({}));
-
-    $('.ltcol').hide();	
-
-    this.renderGame();
-
-    this.$el.i18n();    
-
-    return this;
-  },  
-  */
-  
   onClose : function() {
     if (this.game)
       this.game.off("sync", this.renderGame, this);
