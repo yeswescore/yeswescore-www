@@ -19,8 +19,13 @@ app.get('/clubs/list/:txt', function (req, res) {
   res.render(index, {foo: "bar"});
 });
 
-// page club
-app.get('/clubs/:clubid/game/:gameid', function (req, res) {
+// page game (avec club)
+app.get('/games/:id/club/:clubid', function (req, res) {
+  res.render(index, {foo: "bar"});
+});
+
+// page game
+app.get('/games/:id', function (req, res) {
   res.render(index, {foo: "bar"});
 });
 
