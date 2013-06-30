@@ -102,6 +102,7 @@ Y.Views.Pages.Club = Y.View.extend({
     }
   },
  */
+  /*
   renderListGame : function() {
        
     this.games = new GamesCollection();
@@ -134,6 +135,7 @@ Y.Views.Pages.Club = Y.View.extend({
       
     }, this));  
   },
+  */
   /*
   renderGame : function() {
     

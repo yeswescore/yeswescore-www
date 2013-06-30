@@ -3,7 +3,7 @@ Y.Views.ClubListGames = Y.View.extend({
   
   myinitialize : function() {
     this.templates = {
-      list: Y.Templates.get('list-games')
+      listitem: Y.Templates.get('listitem-game')
     };
     
     // query
@@ -11,7 +11,7 @@ Y.Views.ClubListGames = Y.View.extend({
     this.games.addSearch('club');
     this.games.setClub(this.id);  
     this.games.fetch();
-    this.games.on('sync', this.render, this);
+    this.games.once('sync', this.render, this);
     
     if (this.options.autorender)
       this.render();
@@ -23,17 +23,20 @@ Y.Views.ClubListGames = Y.View.extend({
       return this;
     }
     // once rendered, we fill the templates using listitem-game view.
+    this.$el.empty();
     for (var i = 0, l = this.games.length; i < l; ++i) {
       var game = this.games.at(i);
-      // creating list item game content
-      var listitem = new Y.Views.ListItemGame({
-        game: game,
-        autorender: true
-      });
-      // creating li
-      var li = $(this.templates.list({empty:false})).append(listitem.$el);
-      // append to current DOM
-      this.$el.append(li);
+      if (game.error && game.error.length > 1) {
+        this.$el.append(this.templates.listitem({game: null}));
+      } else {
+        this.$el.append(this.templates.listitem({
+          game: game.attributes,
+          score: game.getScore(),
+          sets: game.getSets('&nbsp;'),
+          startDate: game.getStartDate(),
+          status: game.getStatusText()
+        }));
+      }
     }
     return this;
   },
