@@ -16,8 +16,10 @@
     routes: {
       '': 'index',
       'clubs/list/:text': 'clubList',
+      'clubs/:id/': 'club',
       'clubs/:id': 'club',
       'games/:id/club/:clubid': 'game',
+      'games/:id/': 'game',
       'games/:id': 'game',
       'players/signin?back=:back': 'playerSignin',
       'players/signin': 'playerSignin',
@@ -59,7 +61,7 @@
     game: function (id, clubid) {
       this.changePage(this.createViewFactory(Y.Views.Pages.Game, { id: id, clubid: clubid }));
     },
-
+    
     playerSignin: function (back) {
       this.changePage(this.createViewFactory(Y.Views.Pages.PlayerSignin, { back: !!back }));
     },
