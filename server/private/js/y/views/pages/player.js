@@ -6,6 +6,8 @@ Y.Views.Pages.Player = Y.View.extend({
   pageName: "player",
   pageHash : "players/",
 
+  isPage: true,
+  
   myinitialize: function(options) {
   
     this.pageHash += this.id; 

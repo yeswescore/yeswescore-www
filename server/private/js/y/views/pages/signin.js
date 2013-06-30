@@ -6,6 +6,8 @@ Y.Views.Pages.PlayerSignin = Y.View.extend({
     'keyup #email': 'onKeyupEmail'
   },
 
+  isPage: true,
+  
   pageName: "playerSignin",
   pageHash : "players/signin",
 

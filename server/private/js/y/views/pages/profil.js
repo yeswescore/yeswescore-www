@@ -10,7 +10,9 @@ Y.Views.Pages.PlayerProfil = Y.View.extend({
 
   pageName: "playerProfil",
   pageHash : "players/profil",  
-    
+  
+  isPage: true,
+  
   clubs:null,
 
   myinitialize:function() {

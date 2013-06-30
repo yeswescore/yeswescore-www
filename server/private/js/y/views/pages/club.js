@@ -2,6 +2,8 @@ Y.Views.Pages.Club = Y.View.extend({
   pageName: "club",
   pageHash : "clubs/",
   
+  isPage: true,
+  
   games: null, // game collection
   game: null,  // eventualy displayed game
   

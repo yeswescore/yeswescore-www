@@ -2,6 +2,8 @@ Y.Views.Pages.Game = Y.View.extend({
   pageName: "game",
   pageHash : "games/",
   
+  isPage: true,
+  
   game: null,  // displayed game
   
   myinitialize : function() {

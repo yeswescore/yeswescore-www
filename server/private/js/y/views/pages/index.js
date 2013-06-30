@@ -8,6 +8,8 @@ Y.Views.Pages.Index = Y.View.extend({
   pageName: "index",
   pageHash : "index",  
   
+  isPage: true,
+  
   // interface.
   autocompleteGUI: {
     setProposals: null

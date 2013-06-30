@@ -8,6 +8,8 @@ Y.Views.Pages.ClubList = Y.View.extend({
   pageName: "clubList",
   pageHash : "clubs/list", 
   
+  isPage: true,
+  
   text: null,
   clubs: null,
   
