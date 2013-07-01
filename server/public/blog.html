@@ -12,9 +12,9 @@ Portfolio:  http://themeforest.net/user/designare
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="keywords" content="score,scoring,partage de scores,temps réel">
-<meta name="description" content="YOUR DESCRIPTION"/>
+<meta name="description" content="zeNodus"/>
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1" name="viewport">
-<title>Yes We Score - Scoring Application</title>
+<title>Yes We Score - Scoring Mobile Application</title>
 
 <!-- Place favicon.ico and apple-touch-icons in the images folder -->
 <!-- favicon -->
@@ -56,20 +56,17 @@ Portfolio:  http://themeforest.net/user/designare
     $(function(){
         $("#contactAction").submit(function(event){
 
-            var nom        = $("#name").val();
-            var sujet      = $("#subject").val();
-            var email      = $("#email").val();
-            var message    = $("#message").val();
+            var nom        = $("#nameContact").val();
+            var sujet      = $("#subjectContact").val();
+            var email      = $("#emailContact").val();
+            var message    = $("#messageContact").val();
             var dataString = sujet + email + message;
             var msg_all    = 'Merci de remplir tous les champs';
             var msg_alert  = 'Merci de remplir ce champs';
-            if(dataString  == '')
+            
+            if(sujet == '')
             {
-                $('#msg_all').html(msg_all);
-            }
-            else if(sujet == '')
-            {
-                $('#msg_sujet').html(msg_alert);
+                $('#msg_subject').html(msg_alert);
             }
             else if(email == '')
             {
@@ -1007,7 +1004,7 @@ Portfolio:  http://themeforest.net/user/designare
 			
 			<!-- BEGIN: CONTACT FORM -->			
 			<!-- FIXME -->
-			<div id="contact_form" style="display:none">
+			<div id="contact_form">
 				<div class="location sixteen columns"> 
 					<h4>Nous restons à votre écoute</h4>
 				</div>
@@ -1018,20 +1015,23 @@ Portfolio:  http://themeforest.net/user/designare
 		    		<form action="" id="contactAction" method="post" class="form">   	
 		            	<div class="location eight columns"> 
 			            	<span>Nom</span> 
-			                <input class="text" type="text" name="name"> 
+			                <input class="text" type="text" name="name" id="nameContact">                          
 			                    
 			                <span>E-Mail</span> 
-			                <input class="text" type="text" name="email"> 
+			                <input class="text" type="text" name="email" id="emailContact"> 
+                            <span id="msg_email"></span>
 			                    
 			                <span>Sujet</span> 
-			                <input class="text" type="text" name="subject">
-			                
+			                <input class="text" type="text" name="subject" id="subjectContact">
+			                <span id="msg_subject"></span>
+                      
 		            	</div>
 		            	
 		                <div class="location eight columns">    
 			                <span>Message</span> 
-			                <textarea name="message" rows="8" cols="60"></textarea> 
-			                   
+			                <textarea name="message" rows="8" cols="60" id="messageContact"></textarea> 
+			                <span id="msg_message"></span>
+                      
                             <input type="submit" value="Envoyer" class="ct-button" />
 			                    
 			                 <div class="loading"></div>
