@@ -486,114 +486,8 @@ body.inputmodeon .button-form[data-input-mode="process"] {
   cursor: pointer;
 }
 
-/**********************************************************
-	NAV BAR
-**********************************************************/
-
-/*
-  navbar height is 42 :)
-*/
-#navbar {
-	z-index: 11;
-	height: 42px;
-	position: fixed;
-	bottom: 0px;
-	padding-left: 10px;
-	padding-right: 10px;
-	width: 100%;
-	overflow: visible;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
-#navbar>div {
-	position: relative;
-	display: inline-block;
-	width: 33%; /* navbar splitted in 3 */
-	height: 42px;
-	bottom: 0px;
-	overflow: visible;
-	text-align: center;
-}
-
-/* background button design: rounded + trapeze */
-#navbar .background.rounded {
-	position: absolute;
-	left: 50%;
-	margin-left: -35px;
-	width: 75px;
-	height: 43px;
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
-	/*border : 1px solid blue;*/
-	background-color: #333333;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
-#navbar .background.trapeze {
-	position: absolute;
-	top: 10px;
-	left: 50%;
-	margin-left: -40px;
-	width: 85px;
-	height: 33px;
-	border-bottom: 33px solid #333333;
-	border-left: 5px solid transparent;
-	border-right: 5px solid transparent;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
-#navbar a {
-	position: absolute;
-	left: 50%;
-	width: 75px;
-	height: 43px;
-	margin-left: -35px;
-	-ms-user-select: none;
-	-webkit-user-select: none;
-	-moz-user-select: -moz-none;
-	font-family: 'Open Sans', sans-serif;
-	font-weight: 800;
-	font-size: 12px;
-	color: white;
-	text-transform: uppercase;
-	text-decoration: none;
-	line-height: 14px;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
-#navbar a:active {
-	/* @see http://stackoverflow.com/questions/13529777/ie10-gray-square-on-click-in-windows-8 */
-	background: inherit;
-}
-
-#navbar a.highlighted {
-	color: #46c0e9;
-}
-
-/*
-#navbar a:active, #navbar a:focus, #navbar a:active:focus,  #navbar .selected{
-  background-image:none; 
-  color:#45b1db !important;
-  font-weight:bold;
-  font-size:12px;
-  height:40px;
-  width:78px;
-  line-height:40px;
-  text-transform:uppercase;
-}
 
 
-#navbar a:not(:last-of-type) {
-  border-right:0px;
-}*/
 
 /**********************************************************
 	BUTTON STYLES
@@ -2371,4 +2265,51 @@ ul>li.player>a {
   .game .infobar .text>div {
    height: 25px; 
   }
+}
+
+/**********************************************************
+	NAV BAR
+**********************************************************/
+
+/*
+  navbar height is 42 :)
+*/
+#navbar {
+  z-index: 11;
+  height: 80px;
+  width: 267px;
+  margin:0 auto;
+  overflow: visible;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+
+div#carouselPlatforms a {
+  background-image: url('/%%%@ENV YESWESCORE_WWW_BUILD_VERSION%%%/images/platforms1.png');
+  /*#ifndef COMPILED*/
+  background-image: url('/static/images/platforms1.png');
+  /*#endif*/
+  background-repeat:no-repeat;
+  background-position:0 0;
+  display: inline-block;
+  zoom: 1;
+  width: 80px;
+  height: 57px;
+  padding-top: 60px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: normal;
+  color: #ffff;
+  opacity: 0.3;
+  filter: alpha(opacity=30);
+}
+
+div#carouselPlatforms a:hover {
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+  color: #ffff;
 }
