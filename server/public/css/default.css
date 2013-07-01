@@ -814,7 +814,7 @@ a.go-about:hover {
 #services h3{
     font-size: 18px;
 	color: #2c6776;
-	/*margin: 44px 0 16px 0;*/
+	margin: 44px 0 16px 0;
 	font-family: OpenSansBold, sans-serif;
 	text-transform: capitalize;
 }
@@ -837,6 +837,13 @@ a.go-about:hover {
    float: left;
    margin-bottom: 30px;
 }
+.sv.federation{background: url(../images/icons-service/federation.png) no-repeat center center;}
+.sv.notification{background: url(../images/icons-service/notification.png) no-repeat center center;}
+.sv.objconnectes{background: url(../images/icons-service/objconnectes.png) no-repeat center center;}
+.sv.pro{background: url(../images/icons-service/pro.png) no-repeat center center;}
+.sv.streaming{background: url(../images/icons-service/streaming.png) no-repeat center center;}
+.sv.voix{background: url(../images/icons-service/voix.png) no-repeat center center;}
+
 .sv.love{background: url(../images/icons-service/love.svg) no-repeat center center;}
 .sv.diamond{background: url(../images/icons-service/diamond.svg) no-repeat center center;}
 .sv.iphone{background: url(../images/icons-service/iphone.svg) no-repeat center center;}
@@ -1366,7 +1373,7 @@ display: none;
 	float: left;
 }
 .ff-items .gallery-item{
-	height: 60px;
+	height: 80px;
 	margin-bottom: 20px;
 	overflow: hidden;
 }
@@ -1395,7 +1402,7 @@ display: none;
 	line-height: 1em;
 }	
 .ff-items li:not(.disabled) a:hover .hover-proj {
-	padding-top: 18px;
+	padding-top: 25px;
 	opacity: 1;
 }
 li.gallery-item > a{display: none;}
