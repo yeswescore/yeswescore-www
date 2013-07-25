@@ -249,7 +249,8 @@
     "club":"Club",
     "idlicence":"ID de la licence",
     "clubname":"Nom du Club",
-    "save":"ENREGISTRER"  
+    "save":"ENREGISTRER",
+    "deconnexion":"DECONNEXION"     
   },     
   "playerlist": {
     "title": "LISTE DES JOUEURS"
