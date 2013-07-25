@@ -6,7 +6,7 @@
     "submitbug": "Rapporter un bug"
   },
   "header": {
-    "connexion": "LOGIN",
+    "connexion": "CONNEXION",
     "myaccount": "MON COMPTE"
   },  
   "account": {
@@ -25,18 +25,16 @@
     "name": "Yes We Score"
   },
   "club": {
-    "title": "RESULTATS DU CLUB",
+    "title": "RESULTAT DU CLUB",
     "sport":"Sport",
     "city":"Ville",
     "site":"Site",
     "listplayers":"Liste des joueurs",
-    "lastresult":"Dernier résultat",
+    "lastresult":"Dernier résultat"  
     "outdoor":"Court(s) extérieur(s)",
     "indoor":"Court(s) intérieur(s)",  
     "countPlayers":"Nombre de joueurs",  
-    "countTeams":"Nombre d'équipes"   ,
-    "gamelist": "Les Matchs",
-    "noneAssociated": "Aucun club n'est associé à cette partie"
+    "countTeams":"Nombre d'équipes"                             
   },
   "clublist": {
     "title": "LISTE DES CLUBS"
@@ -59,7 +57,6 @@
     "finish": "Terminer match",
     "ongoing": "En direct",
     "finished": "Terminé",
-    "canceled": "Annulé",
     "created": "A venir",
     "undo" : "Annuler",
     "begin" : "Commencer le match",
@@ -82,7 +79,9 @@
     "fbversus3" : "a joué contre",
     "fbstatus1" : "a gagné",
     "fbstatus2" : "mène le jeu",
-    "fbpromo" : "Bientôt les résultats sportifs de vos amis au creux de votre main avec YesWeScore." 
+    "fbpromo" : "Bientôt les résultats sportifs de vos amis au creux de votre main avec YesWeScore.",
+    "official":"Match Officiel",
+    "notofficial":"Match Amical"  
   },   
   "gamelist": {
     "titleyourgames": "LISTE DE VOS MATCHS",
@@ -250,8 +249,7 @@
     "club":"Club",
     "idlicence":"ID de la licence",
     "clubname":"Nom du Club",
-    "save":"Enregistrer",
-    "deconnexion": "Se Deconnecter"
+    "save":"ENREGISTRER"  
   },     
   "playerlist": {
     "title": "LISTE DES JOUEURS"
