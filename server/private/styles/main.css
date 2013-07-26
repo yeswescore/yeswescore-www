@@ -2285,10 +2285,8 @@ ul>li.player>a {
   box-sizing: border-box;
 }
 
-
-
 div#carouselPlatforms a {
-  background-image: url('/%%%@ENV YESWESCORE_WWW_BUILD_VERSION%%%/images/platforms1.png');
+  background-image: url('/static/images/platforms1.png');
   /*#ifndef COMPILED*/
   background-image: url('/static/images/platforms1.png');
   /*#endif*/
