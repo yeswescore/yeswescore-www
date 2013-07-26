@@ -49,8 +49,25 @@ app.get('/games/:id', function (req, res) {
     
     //TODO : on construit le message
     // Vincent T (15/5) contre Antoine (15/3) à Calais le 24/09 à 17:10
+    var msg ="Suivez le match ";
     
-  	res.render(index, {title: "Suivez le match "+game.teams[0].players[0].name+" vs "+game.teams[1].players[0].name,url:urlsite});  
+    var player1 = game.teams[0].players[0].name;
+    if (game.teams[0].players[0].rank)
+      player1 += " ("+game.teams[0].players[0].rank+")";     
+    msg += player1+" contre ";
+    
+    var player2 = game.teams[1].players[0].name;
+    if (game.teams[1].players[0].rank)
+      player2 += " ("+game.teams[1].players[0].rank+")";      
+    msg += player2;
+    
+    var city = "";
+    if (game.location.city)    
+      city = " à "+game.location.city;
+    msg += city;
+      
+          
+  	res.render(index, {title: msg ,url:urlsite});  
   });
 
   
