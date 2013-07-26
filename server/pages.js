@@ -8,25 +8,25 @@ var index = (env === "DEV") ? '../private/index.html' : 'build/index.html';
 // HOME
 app.get('/', function (req, res) {
   var urlsite = req.protocol + "://" + req.get('host') + req.url;
-  res.render(index, {title: "YesWeScore",url:urlsite});
+  res.render(index, {title: "YesWeScore",url:urlsite,event:"event",score:""});
 });
 
 // about
 app.get('/about/', function (req, res) {
   var urlsite = req.protocol + "://" + req.get('host') + req.url;
-  res.render('../public/blog.html', {title: "YesWeScore",url:urlsite});
+  res.render('../public/blog.html', {title: "YesWeScore : A propos",url:urlsite,event:"event",score:""});
 });
 
 // resultats de recherche
 app.get('/clubs/list/:txt', function (req, res) {
   var urlsite = req.protocol + "://" + req.get('host') + req.url;
-  res.render(index, {title: "YesWeScore",url:urlsite});
+  res.render(index, {title: "YesWeScore : Liste des clubs",url:urlsite,event:"event",score:""});
 });
 
 // page game (avec club)
 app.get('/games/:id/club/:clubid', function (req, res) {
   var urlsite = req.protocol + "://" + req.get('host') + req.url;
-  res.render(index, {title: "YesWeScore",url:urlsite});
+  res.render(index, {title: "YesWeScore : Match du Club",url:urlsite,event:"event",score:""});
 });
 
 // page game
@@ -65,9 +65,16 @@ app.get('/games/:id', function (req, res) {
     if (game.location.city)    
       city = " à "+game.location.city;
     msg += city;
-      
+    
+    var event = "event;"
+    if (game.status==="finished") {
+      event = "game.achievement";
+    }
+
+    var score = game.infos.score;
+    
           
-  	res.render(index, {title: msg ,url:urlsite});  
+  	res.render(index, {title: msg ,url:urlsite, event:event, score:score});  
   });
 
   
@@ -76,19 +83,20 @@ app.get('/games/:id', function (req, res) {
 // page club
 app.get('/clubs/:id', function (req, res) {
   var urlsite = req.protocol + "://" + req.get('host') + req.url;
-  res.render(index, {title: "YesWeScore",url:urlsite});
+  
+  res.render(index, {title:"YesWeScore : Club",url:urlsite,event:"event",score:""});
 });
 
 // page player/signin
 app.get('/players/signin', function (req, res) {
   var urlsite = req.protocol + "://" + req.get('host') + req.url;
-  res.render(index, {title: "YesWeScore",url:urlsite});
+  res.render(index, {title: "YesWeScore :  Connexion",url:urlsite,event:"event",score:""});
 });
 
 // page players/profil
 app.get('/players/profil', function (req, res) {
   var urlsite = req.protocol + "://" + req.get('host') + req.url;
-  res.render(index, {title: "YesWeScore",url:urlsite});
+  res.render(index, {title: "YesWeScore : Votre profil",url:urlsite,event:"event",score:""});
 });
 
 app.get('/:version/app.css', function (req, res) {
