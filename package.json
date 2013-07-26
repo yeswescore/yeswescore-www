@@ -1,5 +1,5 @@
 {
-  "name": "YesWeScore",
+  "name": "yeswescore-www",
   "version": "0.0.1",
   "description": "Live Score",
   "main": "grunt.js",
@@ -16,7 +16,8 @@
     "ejs": "0.8.x",
     "http-proxy": "0.10.x",
     "winston": "0.7.x",
-    "rimraf": "2.2.x"
+    "rimraf": "2.2.x",
+    "restify": "2.6.x"
   },
   "repository": {
     "type": "git",
