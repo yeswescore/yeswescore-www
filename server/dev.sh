@@ -14,7 +14,7 @@ export NODE_ENV="DEV"
 if [ -f ".port" ]
 then
   wwwport=`cat .port | head -1`
-  port=`cat ../../yeswescore-server/server/.port`
+  port=`cat ../../yeswescore-api/server/.port`
   proxyport=`cat ../../yeswescore-proxy/server/.port`
   echo "using port number $wwwport from file .port for www"
   echo "using port number $port from file .port for api"

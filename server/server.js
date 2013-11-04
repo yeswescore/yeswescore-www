@@ -1,9 +1,9 @@
 var fs = require('fs')
   , httpProxy = require('http-proxy');
 
-if (fs.existsSync('../../yeswescore-server/server/conf.js')) {
+if (fs.existsSync('../../yeswescore-api/server/conf.js')) {
   // configuration
-  var Conf = require('../../yeswescore-server/server/conf.js')
+  var Conf = require('../../yeswescore-api/server/conf.js')
     , app = require('./app.js');
 
   // chargement de la logique de pages

@@ -1,6 +1,6 @@
 var express = require("express")
   , app = express()
-  , Conf    = require('../../yeswescore-server/server/conf.js')
+  , Conf    = require('../../yeswescore-api/server/conf.js')
   , winston = require("winston")
   , ejs = require('ejs');
   
