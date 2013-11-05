@@ -43,7 +43,7 @@ then
   # changing directory
   cd ~/deploy-www/yeswescore-www/
   # npm
-  npm install -l
+  npm install
 else
   # changing directory
   cd ~/deploy-www/yeswescore-www/
