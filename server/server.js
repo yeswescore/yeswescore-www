@@ -19,7 +19,8 @@ if (fs.existsSync('../../yeswescore-api/server/conf.js')) {
   // spawning proxy server
   httpProxy.createServer(function (req, res, proxy) {
     if (req.url.substr(0, 4) === "/v1/" ||
-        req.url.substr(0, 4) === "/v2/") {
+        req.url.substr(0, 4) === "/v2/" ||
+        req.subdomains.indexOf("api") !== -1) {
       console.log('routing ' + req.url + ' to api (port:' + Conf.get("proxy.http.port") + ') ');
       // routing /v1/* => to v1 server
       proxy.proxyRequest(req, res, {
