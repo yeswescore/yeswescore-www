@@ -1,6 +1,6 @@
 var app = require('./app.js'),
    restify = require('restify'),
-   Conf = require('../../yeswescore-server/server/conf.js');
+   Conf = require('../../yeswescore-api/server/conf.js');
 
 var env = Conf.get("env");
 var index = (env === "DEV") ? '../private/index.html' : 'build/index.html';

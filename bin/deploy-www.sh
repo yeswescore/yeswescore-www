@@ -31,7 +31,7 @@ then
   # changing directory
   cd ~/deploy-www/
   # grabbing code from github
-  git clone -b $1 git@github.com:voltek62/yeswescore-www.git
+  git clone -b $1 git@github.com:yeswescore/yeswescore-www.git
   # analysing result
   if [ $? -eq 0 ]
   then
@@ -43,7 +43,7 @@ then
   # changing directory
   cd ~/deploy-www/yeswescore-www/
   # npm
-  npm install -l
+  npm install
 else
   # changing directory
   cd ~/deploy-www/yeswescore-www/
@@ -87,6 +87,6 @@ cd ~/deploy-www/
 
 # rsync
 echo "sending code to integration environment"
-sudo rsync -rltov --del --ignore-errors --exclude node_modules --exclude .git --force -e 'ssh -p 42' yeswescore-www /opt/web/
-echo "sending code to prod server"
-sudo rsync -rltov --del --ignore-errors --exclude node_modules --exclude .git --force -e 'ssh -p 42' yeswescore-www root@176.31.108.85:/opt/web/
+sudo rsync -rltov --del --ignore-errors --exclude node_modules --exclude .git --force -e 'ssh -p 42' yeswescore-www node@www.yeswescore.com:/opt/web/
+#echo "sending code to prod server"
+#sudo rsync -rltov --del --ignore-errors --exclude node_modules --exclude .git --force -e 'ssh -p 42' yeswescore-www root@176.31.108.85:/opt/web/
