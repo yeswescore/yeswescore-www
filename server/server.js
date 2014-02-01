@@ -18,7 +18,22 @@ if (fs.existsSync('../../yeswescore-api/server/conf.js')) {
   
   // spawning proxy server
   httpProxy.createServer(function (req, res, proxy) {
-    if (req.url.substr(0, 4) === "/v1/" ||
+  
+    var hostname = req.headers.host; 
+    
+    if ( hostname.indexOf("docteur-sav.fr") != -1 ) {    
+      proxy.proxyRequest(req, res, {
+        host: '127.0.0.1',
+        port: '10000'
+      });    
+    }
+	else if ( hostname.indexOf("cimme.net") != -1 ) {    
+      proxy.proxyRequest(req, res, {
+        host: '127.0.0.1',
+        port: '27015'
+      });    
+    }	
+    else if (req.url.substr(0, 4) === "/v1/" ||
         req.url.substr(0, 4) === "/v2/") {
       console.log('routing ' + req.url + ' to api (port:' + Conf.get("proxy.http.port") + ') ');
       // routing /v1/* => to v1 server
