@@ -1,5 +1,8 @@
 var app = require('./app.js'),
+<<<<<<< HEAD
    restify = require('restify'),
+=======
+>>>>>>> d08cf7e8523799fd312f3b1f73b32377f29cf977
    Conf = require('../../yeswescore-api/server/conf.js');
 
 var env = Conf.get("env");

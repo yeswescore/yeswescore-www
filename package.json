@@ -8,8 +8,12 @@
     "ejs": "0.8.x",
     "http-proxy": "0.10.x",
     "winston": "0.7.2",
+<<<<<<< HEAD
     "rimraf": "2.2.x",
     "restify" : "2.6.x"
+=======
+    "rimraf": "2.2.x"
+>>>>>>> d08cf7e8523799fd312f3b1f73b32377f29cf977
   },
   "devDependencies": {
     "grunt-contrib-uglify": "~0.2.2",
