@@ -26,7 +26,15 @@ Y.Views.GameInfoBar = Y.View.extend({
     this.$('span[data-var="startDate"]').text(this.game.getStartDate());
     this.$('span[data-var="startTime"]').text(this.game.getStartTime());
     this.$('span[data-var="status"]').text(this.game.getStatusText());
-    this.$('span[data-var="city"]').text(this.game.getCity());
+    this.$('span[data-var="city"]').text(this.game.getCity());   
+    
+    if (this.game.get('infos').official) {
+      this.$('span[data-var="official"]').text(i18n.t('game.official')); 
+    }
+    else {
+      this.$('span[data-var="official"]').text(i18n.t('game.notofficial')); 
+    }
+
   },
   
   onClose: function () {

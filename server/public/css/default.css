@@ -1880,22 +1880,22 @@ a.sgoogle:hover{
 	1. Contact Form
 -------------------------------------------
 */
-#contact{
+#contact, #presse{
 	background: #025164;
 }
 
-#contact > .container:first-child{
+#contact, #presse > .container:first-child{
 	padding: 130px 0 50px;
 }
 
-#contact h1{
+#contact h1, #presse h1{
 	color: #f2f2f2;
 	font-size: 44px;
 	border-bottom: 1px solid #045965;
 	padding-bottom: 60px;
 	
 }
-#contact h4{
+#contact h4, #presse h4{
     font-size: 18px;
 	font-weight: 100;
 	color: #04323d;

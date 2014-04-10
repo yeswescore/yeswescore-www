@@ -31,7 +31,7 @@ then
   # changing directory
   cd ~/deploy-www/
   # grabbing code from github
-  git clone -b $1 git@github.com:voltek62/yeswescore-www.git
+  git clone -b $1 git@github.com:yeswescore/yeswescore-www.git
   # analysing result
   if [ $? -eq 0 ]
   then
@@ -43,7 +43,7 @@ then
   # changing directory
   cd ~/deploy-www/yeswescore-www/
   # npm
-  npm install -l
+  npm install
 else
   # changing directory
   cd ~/deploy-www/yeswescore-www/

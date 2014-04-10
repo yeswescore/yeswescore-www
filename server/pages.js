@@ -1,47 +1,102 @@
 var app = require('./app.js'),
-   Conf = require('../../yeswescore-server/server/conf.js');
+   restify = require('restify'),
+   Conf = require('../../yeswescore-api/server/conf.js');
 
 var env = Conf.get("env");
 var index = (env === "DEV") ? '../private/index.html' : 'build/index.html';
 
 // HOME
 app.get('/', function (req, res) {
-  res.render(index, {foo: "bar"});
+  var urlsite = req.protocol + "://" + req.get('host') + req.url;
+  res.render(index, {title: "YesWeScore",url:urlsite,event:"event",score:""});
 });
 
 // about
 app.get('/about/', function (req, res) {
-  res.render('../public/blog.html', {foo: "bar"});
+  var urlsite = req.protocol + "://" + req.get('host') + req.url;
+  res.render('../public/blog.html', {title: "YesWeScore : A propos",url:urlsite,event:"event",score:""});
 });
 
 // resultats de recherche
 app.get('/clubs/list/:txt', function (req, res) {
-  res.render(index, {foo: "bar"});
+  var urlsite = req.protocol + "://" + req.get('host') + req.url;
+  res.render(index, {title: "YesWeScore : Liste des clubs",url:urlsite,event:"event",score:""});
 });
 
 // page game (avec club)
 app.get('/games/:id/club/:clubid', function (req, res) {
-  res.render(index, {foo: "bar"});
+  var urlsite = req.protocol + "://" + req.get('host') + req.url;
+  res.render(index, {title: "YesWeScore : Match du Club",url:urlsite,event:"event",score:""});
 });
 
 // page game
 app.get('/games/:id', function (req, res) {
-  res.render(index, {foo: "bar"});
+
+  var urlsite = req.protocol + "://" + req.get('host') + req.url;
+  var url = "http://"+Conf.get("http.host")+':'+Conf.get("http.port");
+
+  var client = restify.createJsonClient({
+    url: url
+  });
+
+  client.get(url+Conf.get("api.games")+req.params.id, function (err, req2, res2, game) {
+    if (err) {
+      //console.log('url',url+Conf.get("api.games")+req.params.id);
+      console.log(err);
+    }
+      
+    //console.log('Server returned: %j', game);
+    
+    //TODO : on construit le message
+    // Vincent T (15/5) contre Antoine (15/3) à Calais le 24/09 à 17:10
+    var msg ="Suivez le match ";
+    
+    var player1 = game.teams[0].players[0].name;
+    if (game.teams[0].players[0].rank)
+      player1 += " ("+game.teams[0].players[0].rank+")";     
+    msg += player1+" contre ";
+    
+    var player2 = game.teams[1].players[0].name;
+    if (game.teams[1].players[0].rank)
+      player2 += " ("+game.teams[1].players[0].rank+")";      
+    msg += player2;
+    
+    var city = "";
+    if (game.location.city)    
+      city = " à "+game.location.city;
+    msg += city;
+    
+    var event = "event;"
+    if (game.status==="finished") {
+      event = "game.achievement";
+    }
+
+    var score = game.infos.score;
+    
+          
+  	res.render(index, {title: msg ,url:urlsite, event:event, score:score});  
+  });
+
+  
 });
 
 // page club
 app.get('/clubs/:id', function (req, res) {
-  res.render(index, {foo: "bar"});
+  var urlsite = req.protocol + "://" + req.get('host') + req.url;
+  
+  res.render(index, {title:"YesWeScore : Club",url:urlsite,event:"event",score:""});
 });
 
 // page player/signin
 app.get('/players/signin', function (req, res) {
-  res.render(index, {foo: "bar"});
+  var urlsite = req.protocol + "://" + req.get('host') + req.url;
+  res.render(index, {title: "YesWeScore :  Connexion",url:urlsite,event:"event",score:""});
 });
 
 // page players/profil
 app.get('/players/profil', function (req, res) {
-  res.render(index, {foo: "bar"});
+  var urlsite = req.protocol + "://" + req.get('host') + req.url;
+  res.render(index, {title: "YesWeScore : Votre profil",url:urlsite,event:"event",score:""});
 });
 
 app.get('/:version/app.css', function (req, res) {
