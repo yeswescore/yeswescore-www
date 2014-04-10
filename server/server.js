@@ -34,13 +34,8 @@ if (fs.existsSync('../../yeswescore-api/server/conf.js')) {
       });
     }
     else if (req.url.substr(0, 4) === "/v1/" ||
-<<<<<<< HEAD
         req.url.substr(0, 4) === "/v2/" ||
 hostname.indexOf("api.") != -1) {
-=======
-             req.url.substr(0, 4) === "/v2/" ||
-              hostname.indexOf("api.") != -1 ) {
->>>>>>> d08cf7e8523799fd312f3b1f73b32377f29cf977
       console.log('routing ' + req.url + ' to api (port:' + Conf.get("proxy.http.port") + ') ');
       // routing /v1/* => to v1 server
       proxy.proxyRequest(req, res, {
