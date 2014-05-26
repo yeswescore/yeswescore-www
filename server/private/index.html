@@ -10,11 +10,17 @@
   <meta property="og:description" content="<%= title %>" />
   <meta property="game:points" content="<%= score %>"/>
   
+  <meta name="author" content="YesWeScore, Inc.">
+  <meta name="apple-itunes-app" content="app-id=654933094">
+  <meta name="google-play-app" content="app-id=com.zenodus.client.html5">  
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="format-detection" content="telephone=no"/>
   <meta charset="utf-8">
   <!-- @see http://stackoverflow.com/questions/13529777/ie10-gray-square-on-click-in-windows-8 -->
-  <meta name="msapplication-tap-highlight" content="no" /> 
+  <meta name="msapplication-tap-highlight" content="no" />
+  
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' data-grunt-included="false">
   
@@ -34,7 +40,8 @@
   <script type="text/javascript" src="/static/js/vendor/backbone/backbone.touch.js"></script>
   <script type="text/javascript" src="/static/js/vendor/backbone/backbone.poller.min.js"></script>
   <script type="text/javascript" src="/static/js/vendor/date_iso8601_polyfill.js"></script>  
-
+  <script type="text/javascript" src="/static/js/vendor/smartbanner/jquery.smartbanner.js"></script>
+  
   <!-- our libs -->
   <script type="text/javascript" src="/static/js/mylib/helpers.js"></script>
 
@@ -123,8 +130,27 @@
 	</div>
   </div>
   
-      
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&appId=667987886587961&version=v2.0";
+      fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
+
+  <div class="fb-like-box" data-href="https://www.facebook.com/yeswescore" data-colorscheme="dark" data-show-faces="true" data-header="true" data-stream="true" data-show-border="true"></div>
+    
   <a class="footer" href="/about/#0">&nbsp;@ 2014 - A propos</a>
+  
+  <script type="text/javascript">
+      $(function() {
+        if ( !(/(iPad|iPhone|iPod).*OS [6-7].*AppleWebKit.*Mobile.*Safari/.test(navigator.userAgent)) ) {
+          $.smartbanner()
+        }
+      } );
+  </script>  
   
 </body>
 </html>
