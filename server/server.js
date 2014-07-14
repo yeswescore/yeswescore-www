@@ -19,7 +19,7 @@ if (fs.existsSync('../../yeswescore-api/server/conf.js')) {
   // spawning proxy server
   httpProxy.createServer(function (req, res, proxy) {
   
-    var hostname = req.headers.host; 
+    var hostname = req.headers.host || ''; 
     
     if ( hostname.indexOf("docteur-sav.fr") != -1 ) {
       proxy.proxyRequest(req, res, {
